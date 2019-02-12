@@ -1,5 +1,8 @@
+@import './common/variables.css';
+
 .app {
-  margin: 1rem;
+  margin: var(--m-5);
+  font-size: var(--fs-7);
   font-family: Arial, Helvetica, sans-serif;
-  color: blue;
+  color: purple;
 }
