@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <Router className={styles.app}>
         <SignIn path="/" />
-        <SignUp path="/signup" />
+        <SignUp path="signup" />
       </Router>
     )
   }

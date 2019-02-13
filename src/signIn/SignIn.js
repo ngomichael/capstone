@@ -35,7 +35,7 @@ const SignIn = props => {
         />
         <button className={styles.button}>Log In</button>
       </form>
-      <Link to="/signup">Sign Up</Link>
+      <Link to="signup">Sign Up</Link>
     </div>
   )
 }
