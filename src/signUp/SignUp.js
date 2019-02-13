@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { Link } from '@reach/router'
+
 import styles from './SignUp.module.css'
 
 const SignUp = props => {
@@ -74,6 +76,7 @@ const SignUp = props => {
         />
         <button className={styles.button}>Create Account</button>
       </form>
+      <Link to="/">Sign In</Link>
     </div>
   )
 }

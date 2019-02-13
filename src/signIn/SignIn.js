@@ -1,21 +1,11 @@
 import React, { useState } from 'react'
+import { Link } from '@reach/router'
 import styles from './SignIn.module.css'
 
 const SignIn = props => {
   // These are state hooks - https://reactjs.org/docs/hooks-state.html
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [zipcode, setZipcode] = useState('')
-
-  function handleFirstNameChange(e) {
-    setFirstName(e.target.value)
-  }
-
-  function handleLastNameChange(e) {
-    setLastName(e.target.value)
-  }
 
   function handleEmailChange(e) {
     setEmail(e.target.value)
@@ -23,10 +13,6 @@ const SignIn = props => {
 
   function handlePasswordChange(e) {
     setPassword(e.target.value)
-  }
-
-  function handleZipcodeChange(e) {
-    setZipcode(e.target.value)
   }
 
   return (
@@ -49,6 +35,7 @@ const SignIn = props => {
         />
         <button className={styles.button}>Log In</button>
       </form>
+      <Link to="signup">Sign Up</Link>
     </div>
   )
 }
