@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
 import { Link } from '@reach/router'
-
+import firebase from 'firebase/app'
+import 'firebase/auth'
 import styles from './SignUp.module.css'
 
 const SignUp = props => {
   // These are state hooks - https://reactjs.org/docs/hooks-state.html
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [zipcode, setZipcode] = useState('')
+  const [firstName, setFirstName] = useState(props.firstName)
+  const [lastName, setLastName] = useState(props.lastName)
+  const [email, setEmail] = useState(props.email)
+  const [password, setPassword] = useState(props.password)
+  const [zipcode, setZipcode] = useState(props.zipCode)
+  const [user, setUser] = useState(props.user)
 
   function handleFirstNameChange(e) {
     setFirstName(e.target.value)
@@ -29,6 +31,15 @@ const SignUp = props => {
 
   function handleZipcodeChange(e) {
     setZipcode(e.target.value)
+  }
+  //Method for someone signing up
+  function handleSignUp() {
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .then(() => {
+        console.log('user created')
+      })
   }
 
   return (
@@ -58,7 +69,7 @@ const SignUp = props => {
           value={email}
           type="text"
           placeholder="Email"
-          onChange={handleEmailChange}
+          onChange={ handleEmailChange}
         />
         <input
           className={styles.input}
@@ -74,7 +85,12 @@ const SignUp = props => {
           placeholder="Zipcode"
           onChange={handleZipcodeChange}
         />
-        <button className={styles.button}>Create Account</button>
+        <button
+          className={styles.button}
+          onClick={ handleSignUp }
+        >
+          Create Account
+        </button>
       </form>
       <Link to="/">Sign In</Link>
     </div>

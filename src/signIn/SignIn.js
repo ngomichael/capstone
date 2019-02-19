@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import { Link } from '@reach/router'
 import styles from './SignIn.module.css'
 
+
+
 const SignIn = props => {
   // These are state hooks - https://reactjs.org/docs/hooks-state.html
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState(this.props.email)
+  const [password, setPassword] = useState(this.props.password)
 
   function handleEmailChange(e) {
     setEmail(e.target.value)
@@ -24,14 +26,14 @@ const SignIn = props => {
           value={email}
           type="text"
           placeholder="Email"
-          onChange={handleEmailChange}
+          onChange={() => handleEmailChange()}
         />
         <input
           className={styles.input}
           value={password}
           type="password"
           placeholder="Password"
-          onChange={handlePasswordChange}
+          onChange={() => handlePasswordChange()}
         />
         <button className={styles.button}>Log In</button>
       </form>
