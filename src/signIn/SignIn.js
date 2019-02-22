@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
-import { Link } from '@reach/router'
+import { Link, redirectTo } from '@reach/router'
 import styles from './SignIn.module.css'
-
+import firebase from '../Firebase/firebase'
 
 
 const SignIn = props => {
   // These are state hooks - https://reactjs.org/docs/hooks-state.html
-  const [email, setEmail] = useState(this.props.email)
-  const [password, setPassword] = useState(this.props.password)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   function handleEmailChange(e) {
     setEmail(e.target.value)
@@ -26,20 +26,29 @@ const SignIn = props => {
           value={email}
           type="text"
           placeholder="Email"
-          onChange={() => handleEmailChange()}
+          onChange={(e) => handleEmailChange(e)}
         />
         <input
           className={styles.input}
           value={password}
           type="password"
           placeholder="Password"
-          onChange={() => handlePasswordChange()}
+          onChange={(e) => handlePasswordChange(e)}
         />
-        <button className={styles.button}>Log In</button>
+        <button className={styles.button} onClick={login} >Log In</button>
       </form>
       <Link to="signup">Sign Up</Link>
     </div>
   )
+
+  async function login() {
+    try {
+      await firebase.login(email, password)
+      redirectTo('/')
+    } catch(error) {
+      alert(error.message)
+    }
+  }
 }
 
 export default SignIn
