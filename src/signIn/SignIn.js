@@ -17,6 +17,15 @@ const SignIn = props => {
     setPassword(e.target.value)
   }
 
+  async function login() {
+    try {
+      await firebase.login(email, password)
+      redirectTo('/')
+    } catch(error) {
+      alert(error.message)
+    }
+  }
+
   return (
     <div className={styles.container}>
       <p className={styles.title}>Log into your PearCare Account</p>
@@ -41,14 +50,8 @@ const SignIn = props => {
     </div>
   )
 
-  async function login() {
-    try {
-      await firebase.login(email, password)
-      redirectTo('/')
-    } catch(error) {
-      alert(error.message)
-    }
-  }
+  
+
 }
 
 export default SignIn

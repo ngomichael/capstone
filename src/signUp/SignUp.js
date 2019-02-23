@@ -33,6 +33,18 @@ const SignUp = props => {
     setZipcode(e.target.value)
   }
   
+    //Method for someone signing up
+    async function handleSignUp() {
+      console.log('IN HERE')
+      try {
+        
+        await firebase.register(name, email, password)
+        await firebase.addInformation(firstName, lastName, password, email, zipcode)
+      } catch(error) {
+        alert(error.message)
+      }
+  
+    }
 
   return (
     <div className={styles.container}>
@@ -77,32 +89,19 @@ const SignUp = props => {
           placeholder="Zipcode"
           onChange={(e) => handleZipcodeChange(e)}
         />
-        <button
+        
+      </form>
+      <button
           className={styles.button}
           onClick={ handleSignUp }
         >
           Create Account
         </button>
-      </form>
       <Link to="/">Sign In</Link>
     </div>
   )
 
-  //Method for someone signing up
-  async function handleSignUp() {
-    try {
-      await firebase.register(name, email, password)
-      await firebase.addFirstName(firstName)
-      await firebase.addLastName(lastName)
-      await firebase.addPassword(password)
-      await firebase.addEmail(email)
-      await firebase.addZipCode(zipCode)
-      redirectTo('/')
-    } catch(error) {
-      alert(error.message)
-    }
 
-  }
 }
 
 export default SignUp

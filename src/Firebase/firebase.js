@@ -24,49 +24,19 @@ class Firebase {
       displayName: name
     })
   }
-  addFirstName(firstName) {
-    if (!this.auth.currentUser) {
-      return alert('Not Authorize')
-    }
-    return this.db.doc(`users_pearcare/${this.auth.currentUser.uid}`).set({
-      firstName
-    })
-  }
 
-  addLastName(lastName) {
+  addInformation(firstName, lastName, password, email, zipcode) {
     if (!this.auth.currentUser) {
-      return alert('Not Authorize')
+      return alert('Not Authorized')
     }
-    return this.db.doc(`users_pearcare/${this.auth.currentUser.uid}`).set({
-      lastName
-    })
-  }
+    return this.db.collection('users_pearcare').add({
+      first_name: firstName,
+      last_name: lastName, 
+      email_address:email, 
+      pass_word: password, 
+      zip_code: zipcode
 
-  addEmail(email) {
-    if (!this.auth.currentUser) {
-      return alert('Not Authorize')
-    }
-    return this.db.doc(`users_pearcare/${this.auth.currentUser.uid}`).set({
-      email
-    })
-  }
-
-  addZipCode(zipCode) {
-    if (!this.auth.currentUser) {
-      return alert('Not Authorize')
-    }
-    return this.db.doc(`users_pearcare/${this.auth.currentUser.uid}`).set({
-      zipCode
-    })
-  }
-
-  addPassword(password) {
-    if (!this.auth.currentUser) {
-      return alert('Not Authorize')
-    }
-    return this.db.doc(`users_pearcare/${this.auth.currentUser.uid}`).set({
-      password
-    })
+    }).catch(err => console.log(err))
   }
 
   isInitialized() {
