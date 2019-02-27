@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, redirectTo} from '@reach/router'
+import { Link, Redirect} from '@reach/router'
 import styles from './SignUp.module.css'
 import firebase from '../Firebase/firebase'
 
@@ -12,6 +12,7 @@ const SignUp = props => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [zipcode, setZipcode] = useState('')
+  const [createdAccount, setCreatedAccount] = useState(false)
 
   function handleFirstNameChange(e) {
     setFirstName(e.target.value)
@@ -35,11 +36,10 @@ const SignUp = props => {
   
     //Method for someone signing up
     async function handleSignUp() {
-      console.log('IN HERE')
       try {
-        
         await firebase.register(name, email, password)
         await firebase.addInformation(firstName, lastName, password, email, zipcode)
+        setCreatedAccount(true)
       } catch(error) {
         alert(error.message)
       }
@@ -97,6 +97,7 @@ const SignUp = props => {
         >
           Create Account
         </button>
+      {createdAccount ? <Redirect noThrow to='/' /> : null}
       <Link to="/">Sign In</Link>
     </div>
   )

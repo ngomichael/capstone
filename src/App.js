@@ -16,11 +16,6 @@ export default function App() {
    })
  })
   
-
-
-
-  
-
     return firebaseInitialized !== false ? (
       <Router className={styles.app}>
         <SignIn path="/"  />
