@@ -19,3 +19,9 @@ p {
   font-family: 'Open Sans';
   letter-spacing: 0.05em;
 }
+
+html {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(198, 203, 219);
+}

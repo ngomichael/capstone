@@ -1,6 +1,7 @@
 import React from 'react'
-import styles from './QuestionnaireModal.module.css'
+import styles from './ProviderModal.module.css'
 import Card from './Card'
+import { Link } from '@reach/router'
 
 const providerTypes = [
   {
@@ -21,7 +22,7 @@ const providerTypes = [
   },
 ]
 
-const QuestionnaireModal = props => {
+const ProviderModal = props => {
   return (
     <div className={styles.container}>
       <div className={styles.modal}>
@@ -30,13 +31,16 @@ const QuestionnaireModal = props => {
           <p className={styles.subtext}>
             What type of provider are you looking for?
           </p>
-          <p className={styles.skipQuestion}>
-            Not sure? Skip to the next question >
-          </p>
+          <Link to="/">
+            <p className={styles.skipQuestion}>
+              Not sure? Skip to the next question
+            </p>
+          </Link>
         </div>
         <div className={styles.cardContainer}>
           {providerTypes.map(provider => (
             <Card
+              key={provider.providerType}
               providerType={provider.providerType}
               providerDescription={provider.providerDescription}
             />
@@ -47,4 +51,4 @@ const QuestionnaireModal = props => {
   )
 }
 
-export default QuestionnaireModal
+export default ProviderModal

@@ -7,15 +7,24 @@
   justify-content: center;
   width: 225px;
   height: 200px;
-  border: 2px solid rgb(160, 160, 160);
+  box-shadow: 0 4px 6px hsla(0, 0%, 0%, 0.2);
+  border: 2px solid rgb(198, 203, 219);
   margin: var(--mt-7) var(--mr-2) var(--mb-0) var(--ml-2);
+  transition: all 400ms ease;
+}
+
+.container:hover {
+  cursor: pointer;
+  background-color: rgb(247, 247, 247);
+  box-shadow: 0 15px 35px hsla(0, 0%, 0%, 0.2);
+  transform: translateY(-2px);
 }
 
 .icon {
   align-self: center;
   width: 65px;
   height: 60px;
-  background-color: gray;
+  background-color: rgb(198, 203, 219);
 }
 
 .textContainer {

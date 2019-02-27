@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 const Card = props => {
   return (
-    <div className={styles.container}>
+    <button className={styles.container}>
       <div className={styles.icon} />
       <div className={styles.textContainer}>
         <p className={styles.providerType}>{props.providerType}</p>
@@ -12,7 +12,7 @@ const Card = props => {
           {props.providerDescription}
         </p>
       </div>
-    </div>
+    </button>
   )
 }
 

@@ -12,7 +12,7 @@
 .modal {
   width: 80%;
   background-color: rgb(255, 255, 255);
-  border: 1px solid black;
+  border: 2px solid rgb(198, 203, 219);
   color: black;
   padding: var(--p-5);
 }
@@ -20,7 +20,7 @@
 .title {
   font-size: var(--fs-6);
   font-weight: var(--fw-3);
-  margin: var(--mb-0) var(--mb-0) var(--mb-4) var(--mb-0);
+  margin: var(--mt-5) var(--mr-0) var(--mb-4) var(--ml-0);
 }
 
 .supportingTextContainer {
