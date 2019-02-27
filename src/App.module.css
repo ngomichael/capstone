@@ -3,6 +3,19 @@
 .app {
   margin: var(--m-5);
   font-size: var(--fs-7);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Open Sans, Helvetica, sans-serif;
   color: purple;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Lato';
+}
+
+span,
+p {
+  font-family: 'Open Sans';
+  letter-spacing: 0.05em;
 }

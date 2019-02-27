@@ -1,0 +1,39 @@
+@import '../common/variables.css';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.modal {
+  width: 80%;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid black;
+  color: black;
+  padding: var(--p-5);
+}
+
+.title {
+  font-size: var(--fs-6);
+  font-weight: var(--fw-3);
+  margin: var(--mb-0) var(--mb-0) var(--mb-4) var(--mb-0);
+}
+
+.supportingTextContainer {
+}
+
+.subtext {
+  font-size: var(--fs-4);
+  font-weight: var(--fw-3);
+  margin: var(--mb-0) var(--mb-0) var(--mb-0) var(--mb-0);
+}
+
+.skipQuestion {
+  font-size: var(--fs-3);
+  font-weight: var(--fw-3);
+  margin-top: var(--mt-0);
+}

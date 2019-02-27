@@ -4,6 +4,7 @@ import { Router } from '@reach/router'
 import styles from './App.module.css'
 import SignUp from './signUp/SignUp'
 import SignIn from './signIn/SignIn'
+import QuestionnaireModal from './questionnaire/QuestionnaireModal'
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
       <Router className={styles.app}>
         <SignIn path="/" />
         <SignUp path="signup" />
+        <QuestionnaireModal path="questionnaire-illness" />
       </Router>
     )
   }
