@@ -35,5 +35,12 @@
 .skipQuestion {
   font-size: var(--fs-3);
   font-weight: var(--fw-3);
-  margin-top: var(--mt-0);
+  margin-top: var(--mt-1);
+}
+
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: var(--mt-0) var(--mr-0) var(--mb-8) var(--ml-0);
 }

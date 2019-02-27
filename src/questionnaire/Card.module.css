@@ -7,40 +7,30 @@
   justify-content: center;
   width: 225px;
   height: 200px;
-  /* background-color: blue; */
-  border: 2px solid gray;
+  border: 2px solid rgb(160, 160, 160);
+  margin: var(--mt-7) var(--mr-2) var(--mb-0) var(--ml-2);
 }
-
-/* .img {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 50%;
-  background-color: antiquewhite;
-} */
 
 .icon {
   align-self: center;
   width: 65px;
-  height: 65px;
+  height: 60px;
   background-color: gray;
 }
 
 .textContainer {
   display: flex;
   flex-direction: column;
-  /* width: 100%;
-  height: 50%; */
 }
 
-.therapistType {
+.providerType {
   display: inline-block;
   font-size: var(--fs-4);
   font-weight: var(--fw-4);
   margin: var(--m-4) var(--m-0) var(--m-1) var(--m-2);
 }
 
-.therapistDescription {
+.providerDescription {
   display: inline-block;
   font-size: var(--fs-3);
   margin: var(--m-0);
