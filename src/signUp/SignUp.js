@@ -97,7 +97,7 @@ const SignUp = props => {
         >
           Create Account
         </button>
-      {createdAccount ? <Redirect noThrow to='/' /> : null}
+      {createdAccount ? <Redirect noThrow from='signup' to='confirmation' /> : null}
       <Link to="/">Sign In</Link>
     </div>
   )

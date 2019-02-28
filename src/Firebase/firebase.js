@@ -20,23 +20,34 @@ class Firebase {
 
   async register(name, email, password) {
     await this.auth.createUserWithEmailAndPassword(email, password)
-    return this.auth.currentUser.updateProfile({
-      displayName: name
-    })
+    // return this.auth.currentUser.updateProfile({
+    //   displayName: name
+    // })
   }
 
   addInformation(firstName, lastName, password, email, zipcode) {
     if (!this.auth.currentUser) {
       return alert('Not Authorized')
-    }
+    } 
     return this.db.collection('users_pearcare').add({
       first_name: firstName,
       last_name: lastName, 
-      email_address:email, 
-      pass_word: password, 
+      email :email, 
+      password: password, 
       zip_code: zipcode
 
-    }).catch(err => console.log(err))
+    })
+    .then(((docRef) => {
+      console.log(firstName)
+      console.log(docRef.id)
+      this.auth.currentUser.updateProfile({
+        id: docRef.id,
+        displayName: firstName,
+        password: password,
+        email:email
+      })
+    }))
+    .catch(err => console.log(err))
   }
 
   isInitialized() {
@@ -48,6 +59,11 @@ class Firebase {
   getCurrentUsername() {
     return this.auth.currentUser && this.auth.currentUser.displayName
   }
+
+  getCurrentEmail() {
+    return this.auth.currentUser && this.auth.currentUser.email
+  }
+
 }
 
 export default new Firebase()

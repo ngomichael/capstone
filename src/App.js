@@ -4,6 +4,7 @@ import { Router } from '@reach/router'
 import styles from './App.module.css'
 import SignUp from './signUp/SignUp'
 import SignIn from './signIn/SignIn'
+import Confirmation from './confirmation/Confirmation'
 import firebase from './Firebase/firebase'
 
 
@@ -20,6 +21,7 @@ export default function App() {
       <Router className={styles.app}>
         <SignIn path="/"  />
         <SignUp path="signup" />
+        <Confirmation path='confirmation' email={firebase.getCurrentEmail()}/>
       </Router>
     ) : <div id='loader'> LOADING </div>
  
