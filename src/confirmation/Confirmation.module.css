@@ -8,14 +8,16 @@
   text-align: center;
   justify-content: center;
   box-shadow: var(--bs-5);
-  margin-left: auto;
-  margin-right: auto;
   width: 700px;
   height: 400px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .text_content {
-  padding: var(--p-5);
+  padding-bottom: var(--p-5);
 }
 
 .button {
