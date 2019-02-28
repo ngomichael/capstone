@@ -21,7 +21,7 @@ export default function App() {
       <Router className={styles.app}>
         <SignIn path="/"  />
         <SignUp path="signup" />
-        <Confirmation path='confirmation' email={firebase.getCurrentEmail()}/>
+        <Confirmation path='confirmation' email={firebase.getCurrentEmail()} displayName={firebase.getCurrentUsername()}/>
       </Router>
     ) : <div id='loader'> LOADING </div>
  
