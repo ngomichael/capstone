@@ -6,7 +6,7 @@ import SignUp from './signUp/SignUp'
 import SignIn from './signIn/SignIn'
 import Confirmation from './confirmation/Confirmation'
 import firebase from './Firebase/firebase'
-import QPageOne from './qpageone/QPageOne'
+import HomePage from './homePage/HomePage';
 
 
 
@@ -21,10 +21,10 @@ export default function App() {
   
     return firebaseInitialized !== false ? (
       <Router className={styles.app}>
-        <SignIn path="/"  />
+        <HomePage path='/' />
+        <SignIn path="signin"  />
         <SignUp path="signup" />
         <Confirmation path='confirmation' email={firebase.getCurrentEmail()} displayName={firebase.getCurrentUsername()}/>
-        <QPageOne path='questionnaire' />
       </Router>
     ) : ( <div className={styles.load_container}> <div className={styles.loader}></div> </div>)
  

@@ -1,0 +1,64 @@
+.container {
+  margin-bottom: 55px;
+}
+
+.icon {
+  width: 75px;
+  min-width: 75px;
+  margin-right: 25px;
+  margin-bottom: 15px;
+  color: #71da71;
+}
+
+.valuePropContainer {
+  width: 255px;
+}
+
+.valuePropName {
+  font-size: 20px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.valuePropDescription {
+  font-size: 16px;
+  line-height: 1.45;
+  letter-spacing: 0.05em;
+  font-weight: 400;
+}
+
+@media (max-width: 1040px) {
+  .valuePropContainer {
+    width: 190px;
+  }
+}
+
+@media (min-width: 380px) and (max-width: 768px) {
+  .valuePropContainer {
+    width: 295px;
+  }
+
+  .valuePropName {
+    font-size: 24px;
+  }
+
+  .valuePropDescription {
+    font-size: 16px;
+  }
+
+  .icon {
+    width: 75px;
+    min-width: 75px;
+  }
+}
+
+@media (max-width: 379px) {
+  .valuePropContainer {
+    width: 190px;
+  }
+
+  .icon {
+    width: 65px;
+    min-width: 65px;
+  }
+}

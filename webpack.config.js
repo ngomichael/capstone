@@ -17,6 +17,9 @@ module.exports = {
         loader:
           'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
       },
+      {
+      test: /\.(jpe?g|png|gif|woff|woff2|eot|ttf|svg)(\?[a-z0-9=.]+)?$/,
+      loader: 'url-loader?limit=100000' }
     ],
   },
   resolve: { extensions: ['*', '.js', '.jsx'] },

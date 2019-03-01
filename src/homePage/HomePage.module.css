@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hero {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 1400px;
+  }
+  
+  .features {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 1400px;
+  }
+  
+  .valueProps {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 1400px;
+  }
+  
+  .teamMembers {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 1400px;
+  }
+  

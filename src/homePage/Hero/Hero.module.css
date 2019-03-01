@@ -1,0 +1,58 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 80%;
+  height: 80vh;
+  margin: 125px 0 100px 0;
+}
+
+.image {
+  background-color: hsl(228, 14%, 79%);
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+}
+
+.sloganContainer {
+  width: 50%;
+  text-align: center;
+}
+
+.slogan {
+  font-size: 45px;
+  font-weight: 700;
+}
+
+@media (max-width: 1040px) {
+  .container {
+    justify-content: center;
+  }
+
+  .sloganContainer {
+    width: 80%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 100px 0 100px 0;
+  }
+
+  .image {
+    width: 250px;
+    height: 250px;
+  }
+
+  .slogan {
+    font-size: 35px;
+  }
+}
+
+@media (max-width: 390px) {
+  .slogan {
+    font-size: 30px;
+  }
+}
