@@ -18,7 +18,7 @@ const illnesses = [
 const IllnessModal = props => {
   const [searchValue, setSearchValue] = useState('')
 
-  function handleFirstValueChange(e) {
+  function handleSearchValueChange(e) {
     setSearchValue(e.target.value)
   }
   console.log(searchValue)
@@ -41,7 +41,7 @@ const IllnessModal = props => {
             <input
               className={styles.input}
               input={searchValue}
-              onChange={handleFirstValueChange}
+              onChange={handleSearchValueChange}
               placeholder="e.g. PTSD"
             />
             <OptionButton>Search</OptionButton>

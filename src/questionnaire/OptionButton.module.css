@@ -9,10 +9,15 @@
   color: rgb(100, 9, 153);
   background-color: white;
   letter-spacing: 0.05em;
-  transition: background-color 400ms ease;
+  transition: background-color 200ms ease;
 }
 
 .button:hover {
   cursor: pointer;
-  background-color: rgb(241, 241, 241);
+  /* background-color: rgb(241, 241, 241); */
+}
+
+.activeButton {
+  background-color: rgb(168, 75, 245);
+  color: white;
 }
