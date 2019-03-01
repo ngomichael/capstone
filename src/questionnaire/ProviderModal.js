@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './ProviderModal.module.css'
 import Card from './Card'
+import OptionButton from './OptionButton'
 import { Link } from '@reach/router'
 
 const providerTypes = [
@@ -46,6 +47,7 @@ const ProviderModal = props => {
             />
           ))}
         </div>
+        <OptionButton />
       </div>
     </div>
   )

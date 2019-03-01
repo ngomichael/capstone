@@ -1,0 +1,66 @@
+@import '../common/variables.css';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.modal {
+  width: 60%;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid rgb(198, 203, 219);
+  color: black;
+  padding: var(--p-5);
+}
+
+.title {
+  font-size: var(--fs-6);
+  font-weight: var(--fw-3);
+  margin: var(--mt-5) var(--mr-0) var(--mb-4) var(--ml-0);
+}
+
+.subtext {
+  font-size: var(--fs-4);
+  font-weight: var(--fw-3);
+  margin: var(--mb-0) var(--mb-0) var(--mb-0) var(--mb-0);
+}
+
+.skipQuestion {
+  font-size: var(--fs-3);
+  font-weight: var(--fw-3);
+  margin-top: var(--mt-1);
+}
+
+.searchIllnessContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.input {
+  height: 35px;
+  width: 200px;
+  border-radius: 4px;
+  margin: var(--mt-0) var(--mr-0) var(--mb-7) var(--ml-3);
+}
+
+.illnessSections {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: var(--mt-0) var(--mr-2) var(--mb-0) var(--ml-2);
+}
+
+.illnessSectionName {
+  font-size: var(--fs-4);
+  margin: var(--mt-3) var(--mr-0) var(--mb-0) var(--ml-1);
+}
+
+.illnesses {
+  display: flex;
+  flex-wrap: wrap;
+}

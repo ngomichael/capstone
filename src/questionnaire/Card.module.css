@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 225px;
+  width: 230px;
   height: 200px;
   box-shadow: 0 4px 6px hsla(0, 0%, 0%, 0.2);
   border: 2px solid rgb(198, 203, 219);
@@ -15,9 +15,9 @@
 
 .container:hover {
   cursor: pointer;
-  background-color: rgb(247, 247, 247);
+  border: 3px solid rgb(97, 218, 103);
   box-shadow: 0 15px 35px hsla(0, 0%, 0%, 0.2);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .icon {

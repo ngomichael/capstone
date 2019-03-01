@@ -1,11 +1,12 @@
 import React from 'react'
 import styles from './Questionnaire.module.css'
-import ProviderModel from './ProviderModal'
+import ProviderModal from './ProviderModal'
+import IllnessModal from './IllnessModal'
 
 const Questionnaire = props => {
   return (
     <div className={styles.container}>
-      <ProviderModel />
+      <IllnessModal />
     </div>
   )
 }
