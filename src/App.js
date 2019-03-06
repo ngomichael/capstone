@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react'
-import { hot } from 'react-hot-loader'
 import { Router } from '@reach/router'
 import styles from './App.module.css'
 import SignUp from './signUp/SignUp'
