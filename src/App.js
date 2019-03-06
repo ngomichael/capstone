@@ -4,12 +4,13 @@ import { Router } from '@reach/router'
 import styles from './App.module.css'
 import SignUp from './signUp/SignUp'
 import SignIn from './signIn/SignIn'
+import HomePage from './homePage/HomePage'
 
 class App extends Component {
   render() {
     return (
-      <Router className={styles.app}>
-        <SignIn path="/" />
+      <Router>
+        <HomePage path="/" />
         <SignUp path="signup" />
       </Router>
     )

@@ -1,8 +1,20 @@
 @import './common/variables.css';
 
-.app {
-  margin: var(--m-5);
-  font-size: var(--fs-7);
-  font-family: Arial, Helvetica, sans-serif;
-  color: purple;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Lato';
+}
+
+span,
+p,
+li {
+  font-family: 'Open Sans';
+  letter-spacing: 0.05em;
 }
