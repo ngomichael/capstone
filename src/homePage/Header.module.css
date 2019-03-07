@@ -71,6 +71,7 @@
   letter-spacing: 1px;
   background-color: #1aae9f;
   outline: none;
+  border: none;
   color: white;
   transition: background-color 300ms ease;
 }

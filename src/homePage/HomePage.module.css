@@ -40,6 +40,8 @@
   background-color: #1aae9f;
   color: white;
   outline: none;
+  border: none;
+  box-shadow: var(--bs-1);
   transition: background-color 300ms ease;
 }
 
