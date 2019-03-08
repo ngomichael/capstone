@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './header.module.css'
+import styles from './SignedOutHeader.module.css'
 import { Link, animateScroll as scroll } from 'react-scroll'
 
 const navLinks = [
@@ -17,7 +17,7 @@ const scrollToTop = () => {
   scroll.scrollToTop()
 }
 
-const Header = () => (
+const SignedOutHeader = () => (
   <header className={styles.container}>
     <div className={styles.nameAndNavContainer}>
       <div className={styles.imageNameContainer}>
@@ -42,4 +42,4 @@ const Header = () => (
   </header>
 )
 
-export default Header
+export default SignedOutHeader

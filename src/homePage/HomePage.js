@@ -1,13 +1,13 @@
 import React from 'react'
 // import { Link } from '@reach/router'
 import styles from './HomePage.module.css'
-import Header from './Header'
+import SignedOutHeader from './SignedOutHeader'
 import pears from '../images/pairOfPears.png'
 
 const HomePage = props => {
   return (
     <div className={styles.container}>
-      <Header />
+      <SignedOutHeader />
       <div className={styles.introContainer}>
         <h1 className={styles.tagline}>
           Better patient-provider pairs, better mental healthcare
