@@ -11,8 +11,9 @@ const QuestionnaireHeader = props => {
           <h1 className={styles.productName}>PearCare</h1>
         </div>
         <div className={styles.progressTracker}>
-          <ProgressTracker />
+          <ProgressTracker step={3} />
         </div>
+        {/* <div className={styles.questionsContainer}>Hello</div> */}
       </div>
     </header>
   )

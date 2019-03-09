@@ -12,6 +12,7 @@ class App extends Component {
     return (
       <Router>
         <Questionnaire path="/" />
+        {/* <HomePage path="/" /> */}
         <SignUp path="signup" />
       </Router>
     )
