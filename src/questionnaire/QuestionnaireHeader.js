@@ -13,7 +13,6 @@ const QuestionnaireHeader = props => {
         <div className={styles.progressTracker}>
           <ProgressTracker step={3} />
         </div>
-        {/* <div className={styles.questionsContainer}>Hello</div> */}
       </div>
     </header>
   )
