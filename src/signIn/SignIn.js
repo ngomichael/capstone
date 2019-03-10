@@ -29,7 +29,11 @@ const SignIn = props => {
 
   return (
     <div className={styles.container}>
-    { (loggedIn) ? <Redirect noThrow to='confirmation' from='/' /> : null}
+    <div className={styles.image}>
+    Image Placeholder
+    </div>
+    <div className={styles.content}>
+    { (loggedIn) ? <Redirect noThrow to='/confirmation' from='/' /> : null}
       <p className={styles.title}>Log into your PearCare Account</p>
       <form className={styles.form}>
         <input
@@ -49,6 +53,7 @@ const SignIn = props => {
         <button type='button' className={styles.button} onClick={login} >Log In</button>
       </form>
       <Link to="signup">Sign Up</Link>
+      </div>
     </div>
   )
 
