@@ -5,7 +5,6 @@ import SignUp from './signUp/SignUp'
 import SignIn from './signIn/SignIn'
 import Confirmation from './confirmation/Confirmation'
 import firebase from './Firebase/firebase'
-import HomePage from './homePage/HomePage';
 
 
 
@@ -20,7 +19,6 @@ export default function App() {
   
     return firebaseInitialized !== false ? (
       <Router className={styles.app}>
-        <HomePage path='/' />
         <SignIn path="signin"  />
         <SignUp path="signup" />
         <Confirmation path='confirmation' email={firebase.getCurrentEmail()} displayName={firebase.getCurrentUsername()}/>
