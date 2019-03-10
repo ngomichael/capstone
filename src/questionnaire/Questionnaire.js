@@ -2,16 +2,64 @@ import React from 'react'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import styles from './Questionnaire.module.css'
 import QuestionnaireHeader from './QuestionnaireHeader'
+import InputField from './InputField'
+
+const questionnaireQuestions = [
+  {
+    question: "What's the city of zipcode you're seeking care in?*",
+    supplementaryText: 'This will help us find providers closest to you',
+    name: 'zipcode',
+    type: 'text',
+    isLongInput: false,
+  },
+  {
+    question: 'What are you struggling with and seeking help for?*',
+    supplementaryText: 'I.e. depression, life transition challenges',
+    name: 'illnesses',
+    type: 'text',
+    isLongInput: true,
+  },
+  {
+    question: 'What insurance(s) do you have, if any?',
+    supplementaryText: 'I.e. Apple Health',
+    name: 'insurance',
+    type: 'text',
+    isLongInput: false,
+  },
+  {
+    question: 'Are you looking for someone with certain credentials?',
+    supplementaryText: 'I.e. PhD, LICSW',
+    name: 'credentials',
+    type: 'text',
+    isLongInput: false,
+  },
+  {
+    question:
+      'Are you looking for someone with certain personality traits or treatment approaches?',
+    supplementaryText: 'I.e. Integrative, non-directive',
+    name: 'traits',
+    type: 'text',
+    isLongInput: true,
+  },
+  {
+    question:
+      'Are you looking for someone that specializes in working with a certain client population or shares an identity trait?',
+    supplementaryText: 'This will help us find providers closest to you',
+    name: 'population',
+    type: 'text',
+    isLongInput: true,
+  },
+]
 
 const initialValues = {
-  cityOrZip: '',
+  zipcode: '',
   // careType: '',
-  struggles: [],
-  insurances: [],
+  illnesses: [],
+  insurance: [],
   // ageGroup: [],
   credentials: [],
-  personalityTraits: [],
-  clientPopulartion: [],
+  traits: [],
+  population: [],
 }
 
 const Questionnaire = props => {
@@ -19,7 +67,7 @@ const Questionnaire = props => {
     <div className={styles.container}>
       <QuestionnaireHeader />
       <div className={styles.questionsContainer}>
-        <h1>Questionnaire</h1>
+        <h1 className={styles.title}>Questionnaire</h1>
         <Formik
           initialValues={initialValues}
           onSubmit={(values, { setSubmitting }) => {
@@ -31,98 +79,24 @@ const Questionnaire = props => {
         >
           {({ isSubmitting }) => (
             <Form>
-              <div>
-                {/* TODO: Create component for input field */}
-                <p className={styles.question}>
-                  What's the city of zipcode you're seeking care in?
-                </p>
-                <div>
-                  <p className={styles.exampleAnswers}>
-                    This will help us find providers closest to you
-                  </p>
-                  <Field name="zipcode" type="text" className={styles.input} />
-                </div>
-              </div>
-              <div>
-                <p className={styles.question}>
-                  What are you struggling with and seeking help for?
-                </p>
-                <div>
-                  <p className={styles.exampleAnswers}>
-                    I.e. depression, life transition challenges
-                  </p>
-                  <Field
-                    name="illnesses"
-                    type="text"
-                    className={styles.longInput}
-                  />
-                </div>
-              </div>
-              <div>
-                <p className={styles.question}>
-                  What insurance(s) do you have, if any?
-                </p>
-                <div>
-                  <p className={styles.exampleAnswers}>I.e. Apple Health</p>
-                  <Field
-                    name="insurance"
-                    type="text"
-                    className={styles.input}
-                  />
-                </div>
-              </div>
-              <div>
-                <p className={styles.question}>
-                  Are you looking for someone with certain credentials?
-                </p>
-                <div>
-                  <p className={styles.exampleAnswers}>I.e. PhD, LICSW</p>
-                  <Field
-                    name="credentials"
-                    type="text"
-                    className={styles.input}
-                  />
-                </div>
-              </div>
-              <div>
-                <p className={styles.question}>
-                  Are you looking for someone with certain personality traits or
-                  treatment approaches?
-                </p>
-                <div>
-                  <p className={styles.exampleAnswers}>
-                    I.e. Integrative, non-directive
-                  </p>
-                  <Field
-                    name="traits"
-                    type="text"
-                    className={styles.longInput}
-                  />
-                </div>
-              </div>
-              <div>
-                <p className={styles.question}>
-                  Are you looking for someone that specializes in working with a
-                  certain client population or shares an identity trait??
-                </p>
-                <div>
-                  <p className={styles.exampleAnswers}>
-                    I.e. gender, race/ethnicity, religion/spirituality, sexual
-                    orientation, language
-                  </p>
-                  <Field
-                    name="population"
-                    type="text"
-                    className={styles.longInput}
-                  />
-                </div>
-              </div>
+              {questionnaireQuestions.map((question, index) => (
+                <InputField
+                  question={question.question}
+                  supplementaryText={question.supplementaryText}
+                  name={question.name}
+                  type={question.type}
+                  isLongInput={question.isLongInput}
+                  questionNumber={index}
+                  key={question.question}
+                />
+              ))}
+
               <button
                 type="submit"
                 className={styles.submitButton}
                 disabled={isSubmitting}
               >
-                Submit
+                Finish
               </button>
             </Form>
           )}

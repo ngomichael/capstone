@@ -1,0 +1,44 @@
+@import '../common/variables.css';
+
+.container {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: var(--mb-6);
+}
+
+.questionNumber {
+  display: flex;
+  align-items: center;
+  color: #979fa5;
+  margin: var(--mt-0) var(--mr-3) var(--mb-0) var(--ml-0);
+}
+
+.question {
+  font-size: var(--fs-4);
+  margin: var(--mt-0) var(--mr-0) var(--mb-1) var(--ml-0);
+}
+
+.supplementaryText {
+  font-size: var(--fs-2);
+  margin-bottom: var(--mb-1);
+}
+
+.input {
+  width: 500px;
+  height: 35px;
+  font-size: var(--fs-2);
+  border: 2px solid #c2cfd9;
+  border-radius: 4px;
+  background-color: #f7f9fa;
+  padding: var(--pt-0) var(--pr-0) var(--pb-0) var(--pl-2);
+}
+
+.longInput {
+  composes: input;
+  width: 800px;
+}
+
+.input:focus {
+  border: 2px solid #6558f5;
+  outline: none;
+}
