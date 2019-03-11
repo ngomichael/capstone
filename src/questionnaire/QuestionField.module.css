@@ -23,6 +23,30 @@
   margin-bottom: var(--mb-1);
 }
 
+.careTypeContainer {
+  height: 125px;
+  width: 175px;
+  border: 2px solid #d6dfe5;
+  padding: var(--pt-4) var(--pr-0) var(--pb-0) var(--pl-4);
+  margin: var(--mt-3) var(--mr-3) var(--mb-3) var(--ml-0);
+  transition: box-shadow 300ms ease;
+}
+
+.careTypeContainer:hover {
+  cursor: pointer;
+  box-shadow: var(--bs-2);
+}
+
+.careTypeName {
+  font-size: var(--fs-3);
+  font-weight: 600;
+}
+
+.careTypeDescription {
+  font-size: var(--fs-2);
+  line-height: 1.5;
+}
+
 .input {
   width: 500px;
   height: 35px;
