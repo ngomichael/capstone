@@ -4,7 +4,7 @@ import { Router } from '@reach/router'
 import styles from './App.module.css'
 import SignUp from './signUp/SignUp'
 import SignIn from './signIn/SignIn'
-import HomePage from './homePage/HomePage'
+import Home from './home/Home'
 import Questionnaire from './questionnaire/Questionnaire'
 
 class App extends Component {
@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <Router>
         <Questionnaire path="/" />
-        {/* <HomePage path="/" /> */}
+        {/* <Home path="/" /> */}
         <SignUp path="signup" />
       </Router>
     )

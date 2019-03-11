@@ -1,10 +1,10 @@
 import React from 'react'
 // import { Link } from '@reach/router'
-import styles from './HomePage.module.css'
+import styles from './Home.module.css'
 import SignedOutHeader from './SignedOutHeader'
 import pears from '../images/pairOfPears.png'
 
-const HomePage = props => {
+const Home = props => {
   return (
     <div className={styles.container}>
       <SignedOutHeader />
@@ -37,4 +37,4 @@ const HomePage = props => {
   )
 }
 
-export default HomePage
+export default Home
