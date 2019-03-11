@@ -40,5 +40,5 @@
 
 .lineActive {
   composes: line;
-  border-top: 3px dotted #1aae9f;
+  border-top: 2px solid #1aae9f;
 }
