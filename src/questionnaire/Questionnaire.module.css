@@ -52,10 +52,20 @@
   box-shadow: var(--bs-2);
 }
 
+.activeCareTypeCard {
+  composes: careTypeCardContainer;
+  border: 2px solid #a2ded8;
+}
+
 .careTypeCardName {
   font-size: var(--fs-3);
   font-weight: 600;
   margin-bottom: var(--mb-1);
+}
+
+.activeCareTypeName {
+  composes: careTypeCardName;
+  color: #93c9c3;
 }
 
 .careTypeCardDescription {
@@ -66,12 +76,13 @@
 .checkboxesContainer {
   display: flex;
   flex-direction: column;
+  margin-top: var(--mt-3);
 }
 
 .submitButton {
-  height: 40px;
-  width: 140px;
-  font-size: var(--fs-3);
+  height: 50px;
+  width: 180px;
+  font-size: var(--fs-4);
   font-weight: var(--fw-1);
   border-radius: 5px;
   letter-spacing: 1px;
@@ -80,6 +91,7 @@
   outline: none;
   border: none;
   box-shadow: var(--bs-1);
+  margin: var(--mt-3) var(--mr-3) var(--mb-7) var(--ml-7);
   transition: background-color 300ms ease;
 }
 

@@ -8,18 +8,18 @@
 
 input[type='checkbox'] {
   -webkit-appearance: none;
+  outline: none;
   width: 20px;
   height: 20px;
-  background: white;
   border-radius: var(--br-1);
   border: 2px solid #c2cfd8;
 }
 input[type='checkbox']:checked {
-  background: #abd;
+  background: #3b88fd;
 }
 
 .optionName {
   display: inline;
-  font-size: var(--fs-4);
+  font-size: var(--fs-3);
   margin-left: var(--ml-3);
 }

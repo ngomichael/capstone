@@ -26,8 +26,6 @@ const Checkbox = props => {
             className={styles.checkbox}
           />
           <p className={styles.optionName}>{props.value}</p>
-          {console.log(field)}
-          {/* {console.log(field.value.includes('Hello'))} */}
         </label>
       )}
     </Field>

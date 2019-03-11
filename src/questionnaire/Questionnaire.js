@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import styles from './Questionnaire.module.css'
 import QuestionnaireHeader from './QuestionnaireHeader'
@@ -87,7 +87,8 @@ const questionnaireQuestions = [
     questionType: 'input',
     question:
       'Are you looking for someone that specializes in working with a certain client population or shares an identity trait?',
-    supplementaryText: 'This will help us find providers closest to you',
+    supplementaryText:
+      'I.e gender, race/ethnicity, religion/spirituality, sexual orientation, language',
     name: 'population',
     type: 'text',
     isLongInput: true,
@@ -96,19 +97,35 @@ const questionnaireQuestions = [
 
 const initialValues = {
   zipcode: '',
-  // careType: '',
+  careType: '',
   illnesses: [],
   insurance: [],
-  ageGroup: ['Hello'],
+  ageGroup: [],
   credentials: [],
   traits: [],
   population: [],
 }
 
 const CareTypeCard = ({ name, description }) => {
+  const [isCardClicked, setIsCardClicked] = useState(false)
+
+  function handleCardClicked() {
+    setIsCardClicked(!isCardClicked)
+  }
   return (
-    <div className={styles.careTypeCardContainer}>
-      <p className={styles.careTypeCardName}>{name}</p>
+    <div
+      className={
+        isCardClicked ? styles.activeCareTypeCard : styles.careTypeCardContainer
+      }
+      onClick={handleCardClicked}
+    >
+      <p
+        className={
+          isCardClicked ? styles.activeCareTypeName : styles.careTypeCardName
+        }
+      >
+        {name}
+      </p>
       <p className={styles.careTypeCardDescription}>{description}</p>
     </div>
   )
@@ -194,16 +211,20 @@ const Questionnaire = props => {
           {({ isSubmitting }) => (
             <Form>
               {renderQuestions()}
-              <button
+              {/* <button
                 type="submit"
                 className={styles.submitButton}
                 disabled={isSubmitting}
               >
                 Finish
-              </button>
+              </button> */}
             </Form>
           )}
         </Formik>
+        {/* For demo */}
+        <button type="submit" className={styles.submitButton}>
+          Finish
+        </button>
       </div>
     </div>
   )
