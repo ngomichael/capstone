@@ -7,7 +7,7 @@ const Checkbox = props => {
   return (
     <Field name={props.name}>
       {({ field, form }) => (
-        <label>
+        <label className={styles.container}>
           <input
             type="checkbox"
             {...props}
@@ -23,8 +23,9 @@ const Checkbox = props => {
                 form.setFieldValue(props.name, nextValue)
               }
             }}
+            className={styles.checkbox}
           />
-          {props.value}
+          <p className={styles.optionName}>{props.value}</p>
           {console.log(field)}
           {/* {console.log(field.value.includes('Hello'))} */}
         </label>
