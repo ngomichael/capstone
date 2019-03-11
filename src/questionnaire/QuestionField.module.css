@@ -1,52 +1,5 @@
 @import '../common/variables.css';
 
-.container {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: var(--mb-6);
-}
-
-.questionNumber {
-  display: flex;
-  align-items: center;
-  color: #979fa5;
-  margin: var(--mt-0) var(--mr-3) var(--mb-0) var(--ml-0);
-}
-
-.question {
-  font-size: var(--fs-4);
-  margin: var(--mt-0) var(--mr-0) var(--mb-1) var(--ml-0);
-}
-
-.supplementaryText {
-  font-size: var(--fs-2);
-  margin-bottom: var(--mb-1);
-}
-
-.careTypeContainer {
-  height: 125px;
-  width: 175px;
-  border: 2px solid #d6dfe5;
-  padding: var(--pt-4) var(--pr-0) var(--pb-0) var(--pl-4);
-  margin: var(--mt-3) var(--mr-3) var(--mb-3) var(--ml-0);
-  transition: box-shadow 300ms ease;
-}
-
-.careTypeContainer:hover {
-  cursor: pointer;
-  box-shadow: var(--bs-2);
-}
-
-.careTypeName {
-  font-size: var(--fs-3);
-  font-weight: 600;
-}
-
-.careTypeDescription {
-  font-size: var(--fs-2);
-  line-height: 1.5;
-}
-
 .input {
   width: 500px;
   height: 35px;
@@ -55,6 +8,11 @@
   border-radius: 4px;
   background-color: #f7f9fa;
   padding: var(--pt-0) var(--pr-0) var(--pb-0) var(--pl-2);
+}
+
+.supplementaryText {
+  font-size: var(--fs-2);
+  margin-bottom: var(--mb-2);
 }
 
 .longInput {
