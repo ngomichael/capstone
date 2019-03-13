@@ -1,0 +1,48 @@
+@import '../common/variables.css';
+
+.container {
+  display: flex;
+  position: relative;
+  border-bottom: 2px solid #c9d4dd;
+  align-items: center;
+  /* width: 100%; */
+  padding: var(--pt-4) var(--pr-0) var(--pb-4) var(--pl-4);
+  /* margin-right: var(--mr-5); */
+  /* margin: var(--mt-4) var(--mr-0) var(--mb-4) var(--ml-0); */
+}
+
+.providerPhoto {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: bisque;
+  margin: var(--mt-0) var(--mr-8) var(--mb-0) var(--ml-0);
+}
+
+.providerInfo {
+  /* width: 400px; */
+  width: 100%;
+  font-size: var(--fs-2);
+  /* padding: var(--pt-0) var(--pr-0) var(--pb-0) var(--pl-5); */
+}
+
+.name {
+  font-size: var(--fs-3);
+  font-weight: var(--fw-5);
+}
+
+.specialization {
+  font-style: italic;
+  margin-bottom: var(--mb-2);
+}
+
+.summary {
+}
+
+.actionsContianer {
+  display: flex;
+  margin-right: var(--mb-6);
+}
+
+.action {
+}

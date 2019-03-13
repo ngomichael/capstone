@@ -10,6 +10,11 @@
   padding: var(--pt-0) var(--pr-0) var(--pb-0) var(--pl-2);
 }
 
+.input:focus {
+  border: 2px solid #6558f5;
+  outline: none;
+}
+
 .supplementaryText {
   font-size: var(--fs-2);
   margin-bottom: var(--mb-2);
@@ -18,9 +23,4 @@
 .longInput {
   composes: input;
   width: 800px;
-}
-
-.input:focus {
-  border: 2px solid #6558f5;
-  outline: none;
 }

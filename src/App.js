@@ -6,12 +6,14 @@ import SignUp from './signUp/SignUp'
 import SignIn from './signIn/SignIn'
 import Home from './home/Home'
 import Questionnaire from './questionnaire/Questionnaire'
+import Results from './results/Results'
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <Questionnaire path="/" />
+        <Results path="/" />
+        <Questionnaire path="/questionnaire" />
         {/* <Home path="/" /> */}
         <SignUp path="signup" />
       </Router>

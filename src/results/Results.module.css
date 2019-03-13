@@ -1,0 +1,28 @@
+@import '../common/variables.css';
+
+.container {
+  margin: var(--mt-5) var(--mr-5) var(--mb-5) var(--ml-5);
+}
+
+.searchInput {
+  width: 60%;
+  height: 40px;
+  font-size: var(--fs-3);
+  border: 2px solid #c2cfd9;
+  border-radius: 4px;
+  background-color: #f7f9fa;
+  padding: var(--pt-0) var(--pr-0) var(--pb-0) var(--pl-2);
+  margin: var(--mt-2) var(--mr-0) var(--mb-6) var(--ml-0);
+}
+
+.searchInput:focus {
+  border: 2px solid #6558f5;
+  outline: none;
+}
+
+.providersContainer {
+  width: 80%;
+  border-top: 2px solid #c9d4dd;
+  border-right: 2px solid #c9d4dd;
+  border-left: 2px solid #c9d4dd;
+}
