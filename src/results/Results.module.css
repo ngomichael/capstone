@@ -9,6 +9,30 @@
   margin: var(--mt-10) var(--mr-5) var(--mb-5) var(--ml-5);
 }
 
+.alertContainer {
+  position: relative;
+  width: 80%;
+  background-color: #a3ded8;
+  font-size: var(--fs-2);
+  padding: var(--p-6);
+  margin-bottom: var(--mb-6);
+}
+
+.alertHeader {
+  font-size: var(--fs-5);
+  margin-bottom: var(--mb-3);
+}
+
+.closeButton {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.closeButton:hover {
+  cursor: pointer;
+}
+
 .titleAndSearchContainer {
   width: 80%;
   /* margin: var(--mt-0) var(--mr-0) var(--mb-5) var(--ml-12); */

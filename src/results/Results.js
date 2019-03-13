@@ -26,12 +26,48 @@ const providers = [
 
 const Results = () => {
   const [searchVal, setSearchVal] = useState('')
+  const [isOpen, setIsOpen] = useState(true)
+
   function handleSearchValChange(e) {
     setSearchVal(e.target.value)
+  }
+
+  function handleClose() {
+    setIsOpen(false)
   }
   return (
     <div className={styles.container}>
       <QuestionnaireHeader step={3} />
+      {isOpen && (
+        <div className={styles.alertContainer}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className={styles.closeButton}
+            onClick={handleClose}
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+
+          <h1 className={styles.alertHeader}>
+            Here are providers you might like. View their pages to find out the
+            best ways to contact them
+          </h1>
+          <p>
+            You can make an account and favorite providers to save for later,
+            and adjust filters if needed. Once you feel that you found a
+            provider you want to work with, we'll help you contact them.
+          </p>
+        </div>
+      )}
       <div className={styles.titleAndSearchContainer}>
         <h1>Providers for you</h1>
         <input
