@@ -1,7 +1,17 @@
 @import '../common/variables.css';
 
 .container {
-  margin: var(--mt-5) var(--mr-5) var(--mb-5) var(--ml-5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  /* width: 100%; */
+  margin: var(--mt-10) var(--mr-5) var(--mb-5) var(--ml-5);
+}
+
+.titleAndSearchContainer {
+  width: 80%;
+  /* margin: var(--mt-0) var(--mr-0) var(--mb-5) var(--ml-12); */
 }
 
 .searchInput {
@@ -20,9 +30,40 @@
   outline: none;
 }
 
+.searchResults {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .providersContainer {
   width: 80%;
   border-top: 2px solid #c9d4dd;
   border-right: 2px solid #c9d4dd;
   border-left: 2px solid #c9d4dd;
+}
+
+.pageInfo {
+  font-size: var(--fs-3);
+  margin: var(--mt-6) var(--mr-0) var(--mb-3) var(--ml-0);
+}
+
+.viewMoreButton {
+  height: 50px;
+  width: 200px;
+  font-size: var(--fs-3);
+  font-weight: var(--fw-1);
+  border-radius: 5px;
+  letter-spacing: 1px;
+  background-color: #1aae9f;
+  color: white;
+  outline: none;
+  border: none;
+  box-shadow: var(--bs-1);
+  transition: background-color 300ms ease;
+}
+
+.viewMoreButton:hover {
+  cursor: pointer;
+  background-color: rgb(0, 100, 100);
 }

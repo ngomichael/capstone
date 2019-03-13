@@ -11,6 +11,10 @@
   /* margin: var(--mt-4) var(--mr-0) var(--mb-4) var(--ml-0); */
 }
 
+.container:hover {
+  cursor: pointer;
+}
+
 .providerPhoto {
   width: 80px;
   height: 80px;
@@ -44,5 +48,11 @@
   margin-right: var(--mb-6);
 }
 
-.action {
+.chevron {
+  transition: all 300ms ease;
+}
+
+.chevronActive {
+  composes: chevron;
+  transform: translateX(10px);
 }

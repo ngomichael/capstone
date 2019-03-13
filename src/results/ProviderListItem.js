@@ -1,10 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import styles from './ProviderListItem.module.css'
 
 const ProviderListItem = ({ provider }) => {
+  const [isHovered, setIsHovered] = useState(false)
+
+  function handleMouseEnter() {
+    setIsHovered(!isHovered)
+  }
+
+  function handleMouseLeave() {
+    setIsHovered(!isHovered)
+  }
+
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className={styles.providerPhoto} />
       <div className={styles.providerInfo}>
         <p className={styles.name}>{provider.name}</p>
@@ -37,7 +51,7 @@ const ProviderListItem = ({ provider }) => {
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className={styles.action}
+          className={isHovered ? styles.chevronActive : styles.chevron}
         >
           <polyline points="9 18 15 12 9 6" />
         </svg>
