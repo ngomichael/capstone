@@ -1,0 +1,63 @@
+@import '../common/variables.css';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+  line-height: 1.5;
+  margin-top: var(--mt-10);
+}
+
+.providerCardContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.providerPhoto {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  background-color: bisque;
+  margin-right: var(--mr-3);
+}
+
+.name {
+  font-size: var(--fs-5);
+  font-weight: var(--fw-5);
+}
+
+.contactInfo {
+  text-align: right;
+}
+
+.sectionsContainer {
+  width: 80%;
+}
+
+.sectionContainer {
+  margin: var(--mt-7) var(--mr-0) var(--mb-7) var(--ml-0);
+  width: 100%;
+}
+
+.sectionHeader {
+  font-size: var(--fs-4);
+  font-weight: var(--fw-5);
+  margin-bottom: var(--mb-3);
+}
+
+.sectionDescription {
+  font-size: var(--fs-2);
+  font-style: italic;
+  margin: var(--mt-0) var(--mr-0) var(--mb-4) var(--ml-0);
+}
+
+.sectionContent {
+  font-size: var(--fs-2);
+}
+
+.videoSection {
+  display: flex;
+  align-items: center;
+}

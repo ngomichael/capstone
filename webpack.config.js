@@ -18,7 +18,7 @@ module.exports = {
           'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
       },
       {
-        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        test: /\.(mp4|png|woff|woff2|eot|ttf|svg)$/,
         loader: 'url-loader?limit=100000',
       },
     ],
