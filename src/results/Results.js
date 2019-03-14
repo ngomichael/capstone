@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styles from './Results.module.css'
 import ProviderListItem from './ProviderListItem'
 import QuestionnaireHeader from '../questionnaire/QuestionnaireHeader'
+import Button from '../common/Button'
 
 const providers = [
   {
@@ -21,6 +22,37 @@ const providers = [
     specialization: 'Specialization',
     summary:
       '"I specialize in the areas of depression and axiety. I like to help my clients analyze their past behavior, set goals, and work towards them  areas of depression and axiety. I like to help my clients analyze their past behavior, set goals, and work towards them"',
+  },
+]
+
+const filters = [
+  {
+    name: 'Therapy, Depression, anxiety',
+    isClicked: true,
+  },
+  {
+    name: 'Apple Health',
+    isClicked: true,
+  },
+  {
+    name: 'Young adult',
+    isClicked: true,
+  },
+  {
+    name: 'Credentials',
+    isClicked: false,
+  },
+  {
+    name: 'Approach',
+    isClicked: false,
+  },
+  {
+    name: 'Personality',
+    isClicked: false,
+  },
+  {
+    name: 'Identity/Population',
+    isClicked: false,
   },
 ]
 
@@ -76,6 +108,11 @@ const Results = () => {
           placeholder="Search for a location or keyword"
           className={styles.searchInput}
         />
+      </div>
+      <div className={styles.filtersContainer}>
+        {filters.map(filter => (
+          <Button isClicked={filter.isClicked}>{filter.name}</Button>
+        ))}
       </div>
       <div className={styles.providersContainer}>
         {providers.map(provider => (

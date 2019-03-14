@@ -1,0 +1,23 @@
+@import '../common/variables.css';
+
+.button {
+  border: 2px solid #a3ded8;
+  border-radius: 4px;
+  padding: var(--pt-2) var(--pr-4) var(--pb-2) var(--pl-4);
+  margin: var(--mt-1) var(--mr-1) var(--mb-2) var(--ml-1);
+  font-size: var(--fs-3);
+  color: #1aae9f;
+  background-color: white;
+  letter-spacing: 0.05em;
+  transition: background-color 200ms ease;
+}
+
+.button:hover {
+  cursor: pointer;
+  /* background-color: rgb(241, 241, 241); */
+}
+
+.activeButton {
+  background-color: #1aae9f;
+  color: white;
+}

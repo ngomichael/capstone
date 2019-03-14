@@ -54,6 +54,10 @@
   outline: none;
 }
 
+.filtersContainer {
+  width: 80%;
+}
+
 .searchResults {
   display: flex;
   flex-direction: column;
