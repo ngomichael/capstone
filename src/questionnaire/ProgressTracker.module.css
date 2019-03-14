@@ -13,7 +13,7 @@
 
 .circle {
   text-align: center;
-  line-height: 30px;
+  line-height: 26px;
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -27,6 +27,7 @@
   composes: circle;
   border: none;
   background-color: #a3ded8;
+  line-height: 30px;
 }
 
 .line {

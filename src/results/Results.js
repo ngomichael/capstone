@@ -69,7 +69,7 @@ const Results = () => {
   }
   return (
     <div className={styles.container}>
-      <QuestionnaireHeader step={3} />
+      <QuestionnaireHeader step={2} />
       {isOpen && (
         <div className={styles.alertContainer}>
           <svg

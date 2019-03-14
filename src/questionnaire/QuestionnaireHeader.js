@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './QuestionnaireHeader.module.css'
 import ProgressTracker from './ProgressTracker'
 
-const QuestionnaireHeader = props => {
+const QuestionnaireHeader = ({ step }) => {
   return (
     <header className={styles.container}>
       <div className={styles.nameAndNavContainer}>
@@ -11,7 +11,7 @@ const QuestionnaireHeader = props => {
           <h1 className={styles.productName}>PearCare</h1>
         </div>
         <div className={styles.progressTracker}>
-          <ProgressTracker step={3} />
+          <ProgressTracker step={step} />
         </div>
       </div>
     </header>

@@ -7,7 +7,7 @@ const ProgressTracker = ({ step }) => {
     <div className={styles.container}>
       <div className={styles.step}>
         <div className={styles.circleActive}>1</div>
-        <p>Create an account</p>
+        <p>Tell us about you</p>
       </div>
       <hr
         className={
@@ -24,7 +24,7 @@ const ProgressTracker = ({ step }) => {
         >
           2
         </div>
-        <p>Tell us about you</p>
+        <p>View Providers</p>
       </div>
 
       <hr
@@ -42,7 +42,7 @@ const ProgressTracker = ({ step }) => {
         >
           3
         </div>
-        <p>View providers</p>
+        <p>Connect with providers</p>
       </div>
     </div>
   )

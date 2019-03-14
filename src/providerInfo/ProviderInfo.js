@@ -6,7 +6,7 @@ import Video from './Video'
 const ProviderInfo = () => {
   return (
     <div className={styles.container}>
-      <QuesionnaireHeader />
+      <QuesionnaireHeader step={2} />
       <div className={styles.providerCardContainer}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <div className={styles.providerPhoto} />

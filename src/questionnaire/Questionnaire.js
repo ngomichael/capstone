@@ -196,7 +196,7 @@ const renderQuestions = () => {
 const Questionnaire = props => {
   return (
     <div className={styles.container}>
-      <QuestionnaireHeader />
+      <QuestionnaireHeader step={1} />
       <div className={styles.questionsTitleContainer}>
         <h1 className={styles.title}>Questionnaire</h1>
         <Formik
