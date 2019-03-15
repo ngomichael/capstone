@@ -1,0 +1,83 @@
+@import '../common/variables.css';
+
+.container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* z-index: 8; */
+  bottom: var(--mb-);
+}
+
+.modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  /* width: 600px;
+  height: 350px; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: var(--p-7);
+}
+
+.header {
+  font-size: var(--fs-4);
+  font-weight: var(--fw-5);
+}
+
+.subheader {
+  font-size: var(--fs-3);
+  font-weight: var(--fw-5);
+  margin-top: var(--mt-4);
+}
+
+.actionItems {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-bottom: 50px;
+}
+
+.contactButtons {
+  position: absolute;
+  right: 40px;
+  bottom: 20px;
+}
+
+.contactButton {
+  border-radius: 4px;
+  padding: var(--pt-3) var(--pr-5) var(--pb-3) var(--pl-5);
+  margin: var(--mt-1) var(--mr-1) var(--mb-2) var(--ml-1);
+  font-size: var(--fs-2);
+  font-weight: var(--fw-2);
+  color: white;
+  background-color: #1aae9f;
+  letter-spacing: 0.05em;
+  transition: background-color 200ms ease;
+}
+
+.contactButton:hover {
+  cursor: pointer;
+  background-color: #149184;
+
+  /* background-color: rgb(241, 241, 241); */
+}
+
+.closeButton {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.closeButton:hover {
+  cursor: pointer;
+}

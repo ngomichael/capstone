@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './ProviderInfo.module.css'
 import QuesionnaireHeader from '../questionnaire/QuestionnaireHeader'
 import Video from './Video'
+import ContactModal from './ContactModal'
 
 const ProviderInfo = () => {
+  const [isOpen, setIsOpen] = useState(true)
+
+  function handleClose() {
+    setIsOpen(false)
+  }
+
   return (
     <div className={styles.container}>
+      {isOpen && <ContactModal handleClose={handleClose} />}
       <QuesionnaireHeader step={2} />
       <div className={styles.providerCardContainer}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
