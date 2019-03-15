@@ -4,6 +4,7 @@ import QuesionnaireHeader from '../questionnaire/QuestionnaireHeader'
 import Video from './Video'
 import ContactModal from './ContactModal'
 import MorganMcCreaPhoto from '../images/morganmccrea.jpeg'
+import StacyAdamsPhoto from '../images/Jen+Adams.jpeg'
 
 const ProviderInfo = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -21,7 +22,7 @@ const ProviderInfo = () => {
       {isOpen && <ContactModal handleClose={handleClose} />}
       <QuesionnaireHeader step={2} />
       {/* Needs to be a link here to go back */}
-      <div className={styles.backButton}>
+      {/* <div className={styles.backButton}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -29,20 +30,19 @@ const ProviderInfo = () => {
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="feather feather-chevron-left"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         >
           <polyline points="15 18 9 12 15 6" />
         </svg>
         <p>Back</p>
-      </div>
+      </div> */}
       <div className={styles.providerCardContainer}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <img src={MorganMcCreaPhoto} className={styles.providerPhoto} />
+          <img src={StacyAdamsPhoto} className={styles.providerPhoto} />
           <div>
-            <p className={styles.name}>Morgan McCrea</p>
+            <p className={styles.name}>Stacy Adams</p>
             <p>ARNP, PMHNP-BC</p>
             <div className={styles.acceptingClientsTag}>
               {' '}
@@ -52,7 +52,7 @@ const ProviderInfo = () => {
         </div>
         <div className={styles.contactInfo}>
           <p>(206) 382 1928</p>
-          <p>morganmccrea@mail.com</p>
+          <p>stacyadams@mail.com</p>
           <a
             href="https://shipshapementalhealth.com"
             style={{ color: '#1aae9f' }}
@@ -95,13 +95,15 @@ const ProviderInfo = () => {
             the quality of your care.
           </p>
           <p className={styles.sectionContent}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ex
-            nibh, dapibus eget commodo vitae, dictum vitae urna. Aenean eu nunc
-            ac leo dictum vehicula. Nam quis viverra dui, in elementum dui.
-            Phasellus posuere erat ante. Pellentesque quis eros vel nisi
-            tincidunt consequat nec et ante. Vivamus interdum efficitur nunc,
-            eget consequat nunc feugiat at. Pellentesque at turpis in neque
-            elementum ultrices. In posuere justo a porta condimentum.
+            <p className={styles.sectionContent}>
+              <b>Issues</b>: Trauma, PTSD, ADHD, Depression, Anxiety
+            </p>
+            <p className={styles.sectionContent}>
+              <b>Identity/population focus</b>: Bisexual, Lesbian, Gay
+            </p>
+            <p className={styles.sectionContent}>
+              <b>Client focus</b>: Adults, Young Adults
+            </p>
           </p>
         </div>
         <div className={styles.sectionContainer}>
@@ -112,13 +114,11 @@ const ProviderInfo = () => {
             are a good fit for you.
           </p>
           <p className={styles.sectionContent}>
-            <b>Issues</b>: Trauma, PTSD, ADHD, Depression, Anxiety
-          </p>
-          <p className={styles.sectionContent}>
-            <b>Identity/population focus</b>: Bisexual, Lesbian, Gay
-          </p>
-          <p className={styles.sectionContent}>
-            <b>Client focus</b>: Adults, Young Adults
+            During our sessions we will work together to understand what is
+            working in your life through an evaluation and proceed to therapy
+            when desired. Additionally, my approach also includes medication
+            management so if that is a better solution to your needs, we will go
+            that route.
           </p>
         </div>
         <div className={styles.sectionContainer}>

@@ -23,13 +23,13 @@ const ContactModal = ({ handleClose }) => {
         </svg>
         <div className={styles.actionItems}>
           <p className={styles.header}>
-            Here's how you get in touch with Morgan
+            Here's how you get in touch with Stacy
           </p>
           <p className={styles.subheader}>What you'll need to do</p>
-          <p>Send Morgan an email or fill out the intake form on his website</p>
-          <p className={styles.subheader}>What to expect from Morgan</p>
+          <p>Send Stacy an email or fill out the intake form on his website</p>
+          <p className={styles.subheader}>What to expect from Stacy</p>
           <p>
-            Morgan hopes to respond to all potential new clients within 3-5
+            Stacy hopes to respond to all potential new clients within 3-5
             business days. If he agrees you'd be a good fit, he'll ask for your
             availability to set up an in- person consultation. If not, he'll let
             you know why and attempt to refer you to providers he knows that may

@@ -19,6 +19,10 @@
   flex-shrink: 0;
   width: 80px;
   height: 80px;
+  /* background-image: url('../images/Jen+Adams.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%; */
   border-radius: 50%;
   background-color: bisque;
   margin: var(--mt-0) var(--mr-5) var(--mb-0) var(--ml-0);

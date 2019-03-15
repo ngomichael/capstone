@@ -6,11 +6,12 @@ import Button from '../common/Button'
 import MorganMcCreaPhoto from '../images/morganmccrea.jpeg'
 import Therapist1 from '../images/Therapist1.jpeg'
 import Therapist2 from '../images/Therapist2.jpeg'
+import JenAdamsPhoto from '../images/Jen+Adams.jpeg'
 
 const providers = [
   {
-    name: 'Morgan McCrea',
-    photo: MorganMcCreaPhoto,
+    name: 'Stacy Adams',
+    photo: JenAdamsPhoto,
     specialization: 'ARNP, PMHNP-BC',
     summary:
       '"We will work together to understand what is working in your life through an evaluation and proceed to therapy when desired,"',

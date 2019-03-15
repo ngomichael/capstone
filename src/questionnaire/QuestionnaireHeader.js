@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './QuestionnaireHeader.module.css'
 import ProgressTracker from './ProgressTracker'
-import PearCareLogo from '../images/PearCareLogo.png'
+import PearCareLogo from '../images/logo.png'
 
 const QuestionnaireHeader = ({ step }) => {
   return (
