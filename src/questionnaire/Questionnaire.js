@@ -197,6 +197,23 @@ const Questionnaire = props => {
   return (
     <div className={styles.container}>
       <QuestionnaireHeader step={1} />
+      <div className={styles.backButton}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-chevron-left"
+        >
+          <polyline points="15 18 9 12 15 6" />
+        </svg>
+        <p>Back</p>
+      </div>
       <div className={styles.questionsTitleContainer}>
         <h1 className={styles.title}>Questionnaire</h1>
         <Formik
@@ -211,21 +228,49 @@ const Questionnaire = props => {
           {({ isSubmitting }) => (
             <Form>
               {renderQuestions()}
-              {/* <button
+              <button
                 type="submit"
                 className={styles.submitButton}
                 disabled={isSubmitting}
               >
                 Finish
-              </button> */}
+              </button>
             </Form>
           )}
         </Formik>
-        {/* For demo */}
+        {/* For demo
         <button type="submit" className={styles.submitButton}>
           Finish
-        </button>
+        </button> */}
       </div>
+      {/* <div className={styles.footer}>
+        <div className={styles.leftSideActions}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#1AAE9F"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            style={{ marginRight: '20px', marginLeft: '20px' }}
+            className={styles.favorite}
+          >
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+          </svg>
+          <a
+            href="https://www.google.com"
+            rel="noreferrer noopener"
+            target="_blank"
+            style={{ color: '#149184' }}
+          >
+            Get Directions
+          </a>
+        </div>
+        <button className={styles.interestedButton}>Finish</button>
+      </div> */}
     </div>
   )
 }

@@ -94,9 +94,11 @@ const Results = () => {
             best ways to contact them
           </h1>
           <p>
-            You can make an account and favorite providers to save for later,
+            Below are a list of providers curated to fit your needs. Read their
+            bios to get to know them better, favorite them for to save later,
             and adjust filters if needed. Once you feel that you found a
-            provider you want to work with, we'll help you contact them.
+            provider you want to work with, contact them via the phone, email,
+            or intake form they specified in their bio.
           </p>
         </div>
       )}
