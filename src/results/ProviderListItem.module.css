@@ -16,11 +16,12 @@
 }
 
 .providerPhoto {
+  flex-shrink: 0;
   width: 80px;
   height: 80px;
   border-radius: 50%;
   background-color: bisque;
-  margin: var(--mt-0) var(--mr-8) var(--mb-0) var(--ml-0);
+  margin: var(--mt-0) var(--mr-5) var(--mb-0) var(--ml-0);
 }
 
 .providerInfo {

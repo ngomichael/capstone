@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from '@reach/router'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import styles from './Questionnaire.module.css'
 import QuestionnaireHeader from './QuestionnaireHeader'
@@ -197,7 +198,7 @@ const Questionnaire = props => {
   return (
     <div className={styles.container}>
       <QuestionnaireHeader step={1} />
-      <div className={styles.backButton}>
+      <Link to="/" className={styles.backButton}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -213,7 +214,7 @@ const Questionnaire = props => {
           <polyline points="15 18 9 12 15 6" />
         </svg>
         <p>Back</p>
-      </div>
+      </Link>
       <div className={styles.questionsTitleContainer}>
         <h1 className={styles.title}>Questionnaire</h1>
         <Formik
@@ -228,13 +229,15 @@ const Questionnaire = props => {
           {({ isSubmitting }) => (
             <Form>
               {renderQuestions()}
-              <button
-                type="submit"
-                className={styles.submitButton}
-                disabled={isSubmitting}
-              >
-                Finish
-              </button>
+              <Link to="/questionnaireCompleted">
+                <button
+                  type="submit"
+                  className={styles.submitButton}
+                  disabled={isSubmitting}
+                >
+                  Finish
+                </button>
+              </Link>
             </Form>
           )}
         </Formik>

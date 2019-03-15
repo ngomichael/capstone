@@ -17,10 +17,11 @@
 }
 
 .textContainer {
+  font-size: var(--fs-4);
 }
 
 .title {
-  font-size: var(--fs-5);
+  font-size: var(--fs-6);
   font-weight: var(--fw-5);
   margin-bottom: var(--mb-2);
 }
@@ -68,4 +69,5 @@
   margin-left: 100px;
   margin-bottom: 50px;
   color: #1aae9f;
+  text-decoration: none;
 }

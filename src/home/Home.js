@@ -1,5 +1,5 @@
 import React from 'react'
-// import { Link } from '@reach/router'
+import { Link } from '@reach/router'
 import styles from './Home.module.css'
 import SignedOutHeader from './SignedOutHeader'
 import pears from '../images/pairOfPears.png'
@@ -18,9 +18,11 @@ const Home = props => {
           process. PearCare's matching algorithm intends to personalize every
           individual’s experience when searching for a provider.
         </p>
-        <button className={styles.findProviderButton}>Find a provider</button>
+        <Link to="getStarted">
+          <button className={styles.findProviderButton}>Find a provider</button>
+        </Link>
       </div>
-      {/* <Link>Learn more about how it works</Link> */}
+      {/* <Link to="/">Learn more about how it works</Link> */}
       {/* This button should be inside of a Link tag */}
       <div className={styles.pearImagesContainer}>
         <img

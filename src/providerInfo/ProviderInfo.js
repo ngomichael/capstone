@@ -5,15 +5,19 @@ import Video from './Video'
 import ContactModal from './ContactModal'
 
 const ProviderInfo = () => {
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
 
   function handleClose() {
     setIsOpen(false)
   }
 
+  function handleShowModal() {
+    setIsOpen(true)
+  }
+
   return (
     <div className={styles.container}>
-      {/* {isOpen && <ContactModal handleClose={handleClose} />} */}
+      {isOpen && <ContactModal handleClose={handleClose} />}
       <QuesionnaireHeader step={2} />
       {/* Needs to be a link here to go back */}
       <div className={styles.backButton}>
@@ -156,7 +160,7 @@ const ProviderInfo = () => {
             Get Directions
           </a>
         </div>
-        <button className={styles.interestedButton}>
+        <button className={styles.interestedButton} onClick={handleShowModal}>
           I'm interested in reaching out
         </button>
       </div>
