@@ -3,31 +3,41 @@ import styles from './Results.module.css'
 import ProviderListItem from './ProviderListItem'
 import QuestionnaireHeader from '../questionnaire/QuestionnaireHeader'
 import Button from '../common/Button'
+import MorganMcCreaPhoto from '../images/morganmccrea.jpeg'
+import Therapist1 from '../images/Therapist1.jpeg'
+import Therapist2 from '../images/Therapist2.jpeg'
 
 const providers = [
   {
-    name: 'John Doe',
-    specialization: 'Specialization',
+    name: 'Morgan McCrea',
+    photo: MorganMcCreaPhoto,
+    specialization: 'ARNP, PMHNP-BC',
     summary:
-      '"I specialize in the areas of depression and axiety. I like to help my clients analyze their past behavior, set goals, and work towards them  areas of depression and axiety. I like to help my clients analyze their past behavior, set goals, and work towards them"',
+      '"We will work together to understand what is working in your life through an evaluation and proceed to therapy when desired,"',
   },
   {
-    name: 'John Doe',
-    specialization: 'Specialization',
+    name: 'Regina Aiko',
+    photo: Therapist1,
+    specialization: 'LICSW',
     summary:
-      '"I specialize in the areas of depression and axiety. I like to help my clients analyze their past behavior, set goals, and work towards them  areas of depression and axiety. I like to help my clients analyze their past behavior, set goals, and work towards them"',
+      '"We will go into the depth of your mind and try to originate the feelings you have today and why you have those feelings and thoughts."',
   },
   {
-    name: 'John Doe',
-    specialization: 'Specialization',
+    name: 'Glen Coco',
+    photo: Therapist2,
+    specialization: 'PsyD',
     summary:
-      '"I specialize in the areas of depression and axiety. I like to help my clients analyze their past behavior, set goals, and work towards them  areas of depression and axiety. I like to help my clients analyze their past behavior, set goals, and work towards them"',
+      '"I will guid you to the right direction with a personalized diagnoses. We will always understand what you are struggling with and how you want to seek solutions."',
   },
 ]
 
 const filters = [
   {
-    name: 'Therapy, Depression, anxiety',
+    name: 'Depression, anxiety',
+    isClicked: true,
+  },
+  {
+    name: 'Therapy',
     isClicked: true,
   },
   {

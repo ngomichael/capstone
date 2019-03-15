@@ -7,7 +7,7 @@ import pears from '../images/pairOfPears.png'
 const ConfirmationDetails = props => {
   return (
     <div className={styles.container}>
-      <QuestionnaireHeader step={1} />
+      <QuestionnaireHeader step={props.step} />
 
       <div className={styles.mainContentContainer}>
         <div>

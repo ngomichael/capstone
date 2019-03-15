@@ -33,11 +33,17 @@ const ContactModal = ({ handleClose }) => {
             business days. If he agrees you'd be a good fit, he'll ask for your
             availability to set up an in- person consultation. If not, he'll let
             you know why and attempt to refer you to providers he knows that may
-            be a better fit.{' '}
+            be a better fit.
           </p>
         </div>
         <div className={styles.contactButtons}>
-          <button className={styles.contactButton}>Website</button>
+          <a
+            href="https://www.shipshapementalhealth.com/"
+            rel="noreferrer noopener"
+            target="_blank"
+          >
+            <button className={styles.contactButton}>Website</button>
+          </a>
           <button className={styles.contactButton}>Email</button>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './SignedOutHeader.module.css'
 import { Link, animateScroll as scroll } from 'react-scroll'
+import PearCareLogo from '../images/PearCareLogo.png'
 
 const navLinks = [
   {
@@ -21,7 +22,7 @@ const SignedOutHeader = () => (
   <header className={styles.container}>
     <div className={styles.nameAndNavContainer}>
       <div className={styles.imageNameContainer}>
-        <div className={styles.productImage} />
+        <img src={PearCareLogo} className={styles.productImage} />
         <h1 className={styles.productName} onClick={scrollToTop}>
           PearCare
         </h1>

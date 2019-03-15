@@ -3,6 +3,7 @@ import styles from './ProviderInfo.module.css'
 import QuesionnaireHeader from '../questionnaire/QuestionnaireHeader'
 import Video from './Video'
 import ContactModal from './ContactModal'
+import MorganMcCreaPhoto from '../images/morganmccrea.jpeg'
 
 const ProviderInfo = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -39,17 +40,25 @@ const ProviderInfo = () => {
       </div>
       <div className={styles.providerCardContainer}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <div className={styles.providerPhoto} />
+          <img src={MorganMcCreaPhoto} className={styles.providerPhoto} />
           <div>
-            <p className={styles.name}>Captain Marvel</p>
-            <p>Therapy, PhD, LICSW</p>
-            <div> Accepting new Clients</div>
+            <p className={styles.name}>Morgan McCrea</p>
+            <p>ARNP, PMHNP-BC</p>
+            <div className={styles.acceptingClientsTag}>
+              {' '}
+              Accepting new Clients
+            </div>
           </div>
         </div>
         <div className={styles.contactInfo}>
           <p>(206) 382 1928</p>
-          <p>firstnamelastname@mail.com</p>
-          <p>website.com</p>
+          <p>morganmccrea@mail.com</p>
+          <a
+            href="https://shipshapementalhealth.com"
+            style={{ color: '#1aae9f' }}
+          >
+            https://shipshapementalhealth.com
+          </a>
           <p>87384 NE 475th St, Seattle, WA 98472</p>
         </div>
       </div>
@@ -58,19 +67,22 @@ const ProviderInfo = () => {
           <p className={styles.sectionHeader}>
             Biography: Background and Education
           </p>
-          <p className={styles.sectionDescription}>
+          {/* <p className={styles.sectionDescription}>
             Description of why this is important and would help a patient make a
             choice about wanting to work with this provider. Lorem ipsum dolor
             sit amet, consectetur adipiscing elit. Mauris ex nibh,
-          </p>
+          </p> */}
           <p className={styles.sectionContent}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ex
-            nibh, dapibus eget commodo vitae, dictum vitae urna. Aenean eu nunc
-            ac leo dictum vehicula. Nam quis viverra dui, in elementum dui.
-            Phasellus posuere erat ante. Pellentesque quis eros vel nisi
-            tincidunt consequat nec et ante. Vivamus interdum efficitur nunc,
-            eget consequat nunc feugiat at. Pellentesque at turpis in neque
-            elementum ultrices. In posuere justo a porta condimentum.
+            I am a clinician located in the heart of Ballard. I grew up in rural
+            Ohio as a shy and awkward kid, filling time with reading, gaming,
+            and spending time with my family's golden retrievers. I attended The
+            Ohio State University for both my undergraduate and graduate
+            education. I moved to Seattle after graduate school where I met my
+            wife Olivia out of a genuine love for the Pacific Northwest. These
+            days, I can still be found reading (mostly Sci-Fi) and gaming
+            (Board, Card, Computer, Console). I’ve also taken up kayaking around
+            the city with my foldable kayak, and I find biking to be my
+            preferred method of transportation.
           </p>
         </div>
         <div className={styles.sectionContainer}>
@@ -78,9 +90,9 @@ const ProviderInfo = () => {
             Specialties: Issues, Client Focus, and Identity/Population
           </p>
           <p className={styles.sectionDescription}>
-            Description of why this is important and would help a patient make a
-            choice about wanting to work with this provider. Lorem ipsum dolor
-            sit amet, consectetur adipiscing elit. Mauris ex nibh,
+            Providers often have different areas of expertise. Having a provider
+            who has experience with what you're struggling with could enhance
+            the quality of your care.
           </p>
           <p className={styles.sectionContent}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ex
@@ -95,18 +107,18 @@ const ProviderInfo = () => {
         <div className={styles.sectionContainer}>
           <p className={styles.sectionHeader}>Treatment Approach</p>
           <p className={styles.sectionDescription}>
-            Description of why this is important and would help a patient make a
-            choice about wanting to work with this provider. Lorem ipsum dolor
-            sit amet, consectetur adipiscing elit. Mauris ex nibh,
+            Providers can use a wide range of approaches. If you're looking for
+            a particular approach, that can narrow down the providers we think
+            are a good fit for you.
           </p>
           <p className={styles.sectionContent}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ex
-            nibh, dapibus eget commodo vitae, dictum vitae urna. Aenean eu nunc
-            ac leo dictum vehicula. Nam quis viverra dui, in elementum dui.
-            Phasellus posuere erat ante. Pellentesque quis eros vel nisi
-            tincidunt consequat nec et ante. Vivamus interdum efficitur nunc,
-            eget consequat nunc feugiat at. Pellentesque at turpis in neque
-            elementum ultrices. In posuere justo a porta condimentum.
+            <b>Issues</b>: Trauma, PTSD, ADHD, Depression, Anxiety
+          </p>
+          <p className={styles.sectionContent}>
+            <b>Identity/population focus</b>: Bisexual, Lesbian, Gay
+          </p>
+          <p className={styles.sectionContent}>
+            <b>Client focus</b>: Adults, Young Adults
           </p>
         </div>
         <div className={styles.sectionContainer}>
@@ -115,12 +127,12 @@ const ProviderInfo = () => {
             <Video />
             <div style={{ marginLeft: '50px' }}>
               <p className={styles.sectionDescription}>
-                Description of why this is important and would help a patient
-                make a choice about wanting to work with this provider. Lorem
-                ipsum dolor sit amet, consectetur adipiscing elit. Mauris ex
-                nibh,
+                Part of being able to form a successful working relationship
+                with your provider is finding a provider who is a good fit with
+                your personality and needs. Watch this video to see if you can
+                envision yourself working with this provider.
               </p>
-              <p className={styles.sectionContent}>
+              {/* <p className={styles.sectionContent}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
                 ex nibh, dapibus eget commodo vitae, dictum vitae urna. Aenean
                 eu nunc ac leo dictum vehicula. Nam quis viverra dui, in
@@ -129,7 +141,7 @@ const ProviderInfo = () => {
                 efficitur nunc, eget consequat nunc feugiat at. Pellentesque at
                 turpis in neque elementum ultrices. In posuere justo a porta
                 condimentum.
-              </p>
+              </p> */}
             </div>
           </div>
         </div>

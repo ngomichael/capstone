@@ -25,10 +25,9 @@
 }
 
 .productImage {
-  width: 50px;
+  width: 43px;
   height: 50px;
   border-radius: 50%;
-  background-color: gray;
 }
 
 .productName {

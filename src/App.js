@@ -25,6 +25,7 @@ class App extends Component {
           p2="Don't worry, answering these questions will only take a few minutes"
           buttonText="Start Questionnaire"
           to="/questionnaire"
+          step={1}
         />
         <ConfirmationDetails
           path="questionnaireCompleted"
@@ -33,6 +34,7 @@ class App extends Component {
           p2="You can also continue adjusting what you're looking for by adding or removing filters, using the search bar, or editing your answers to the questionnaire."
           buttonText="View Results"
           to="/results"
+          step={2}
         />
         <SignUp path="signup" />
       </Router>

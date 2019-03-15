@@ -21,7 +21,7 @@ const ProviderListItem = ({ provider }) => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <div className={styles.providerPhoto} />
+        <img src={provider.photo} className={styles.providerPhoto} />
         <div className={styles.providerInfo}>
           <p className={styles.name}>{provider.name}</p>
           <p className={styles.specialization}>{provider.specialization}</p>
