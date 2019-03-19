@@ -21,19 +21,19 @@ const questionnaireQuestions = [
     options: [
       {
         name: 'Therapy',
-        description: 'A description about what therapy is lorem ipsum dat way.',
+        description: 'Talking with a professional to work through challenges.',
       },
       {
         name: 'Medication',
-        description: 'A description about what therapy is lorem ipsum dat way.',
+        description: 'Services relating to prescription medication',
       },
       {
         name: 'Testing',
-        description: 'A description about what therapy is lorem ipsum dat way.',
+        description: 'Evaluations to help make a diagnosis.',
       },
       {
         name: 'Not Sure',
-        description: 'A description about what therapy is lorem ipsum dat way.',
+        description: 'Types of care not covered by other options',
       },
     ],
   },
