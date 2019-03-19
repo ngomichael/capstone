@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Field, ErrorMessage } from 'formik'
 
-import styles from './QuestionField.module.css'
+import styles from './question-field.module.css'
 
 const QuestionField = ({ supplementaryText, type, name, isLongInput }) => {
   return (

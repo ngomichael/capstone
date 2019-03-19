@@ -1,7 +1,7 @@
 import React from 'react'
 import { Field, ErrorMessage } from 'formik'
 
-import styles from './Checkbox.module.css'
+import styles from './checkbox.module.css'
 
 const Checkbox = props => {
   return (

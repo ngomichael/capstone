@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styles from './ProgressTracker.module.css'
+import styles from './progress-tracker.module.css'
 
 const ProgressTracker = ({ step }) => {
   return (

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import styles from './OptionButton.module.css'
+import styles from './option-button.module.css'
 
 const OptionButton = ({ children, isClicked = false }) => {
   const [clicked, changeClickedStatus] = useState(isClicked)

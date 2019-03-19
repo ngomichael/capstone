@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import styles from './Video.module.css'
+import styles from './video.module.css'
 import ProviderVideo from '../videos/ProviderVideo.mp4'
 import JenAdams from '../videos/JenAdamsVideo.mp4'
 

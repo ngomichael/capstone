@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from '@reach/router'
 import PropTypes from 'prop-types'
-import styles from './ProviderListItem.module.css'
+import styles from './provider-list-item.module.css'
 
 const ProviderListItem = ({ provider }) => {
   const [isHovered, setIsHovered] = useState(false)

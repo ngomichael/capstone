@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import { hot } from 'react-hot-loader'
 import { Router } from '@reach/router'
-import styles from './App.module.css'
-import SignUp from './signUp/SignUp'
-import SignIn from './signIn/SignIn'
-import Home from './home/Home'
-import Questionnaire from './questionnaire/Questionnaire'
-import Results from './results/Results'
-import ProviderInfo from './providerInfo/ProviderInfo'
-import ConfirmationDetails from './confirmationDetails/ConfirmationDetails'
+import styles from './app.module.css'
+import SignUp from './sign-up/sign-up'
+import SignIn from './sign-in/sign-in'
+import Home from './home/home'
+import Questionnaire from './questionnaire/questionnaire'
+import Results from './results/results'
+import ProviderInfo from './provider-info/provider-info'
+import ConfirmationDetails from './confirmation-details/confirmation-details'
 
 class App extends Component {
   render() {

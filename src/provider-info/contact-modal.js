@@ -1,6 +1,6 @@
 import React from 'react'
-import styles from './ContactModal.module.css'
-import { Button, TYPES, SIZES } from '../common/Button'
+import styles from './contact-modal.module.css'
+import { Button, TYPES, SIZES } from '../common/button'
 
 const ContactModal = ({ handleClose }) => {
   return (

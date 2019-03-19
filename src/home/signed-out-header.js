@@ -1,9 +1,9 @@
 import React from 'react'
-import styles from './SignedOutHeader.module.css'
+import styles from './signed-out-header.module.css'
 import { Link, animateScroll as scroll } from 'react-scroll'
 // import PearCareLogo from '../images/PearCareLogo.png'
 import PearCareLogo from '../images/logo.png'
-import { Button, TYPES, SIZES } from '../common/Button'
+import { Button, TYPES, SIZES } from '../common/button'
 
 const navLinks = [
   {

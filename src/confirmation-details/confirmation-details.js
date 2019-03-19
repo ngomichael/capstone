@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from '@reach/router'
-import styles from './ConfirmationDetails.module.css'
-import QuestionnaireHeader from '../questionnaire/QuestionnaireHeader'
+import styles from './confirmation-details.module.css'
+import QuestionnaireHeader from '../questionnaire/questionnaire-header'
 import pears from '../images/pairOfPears.png'
-import { Button, TYPES, SIZES } from '../common/Button'
+import { Button, TYPES, SIZES } from '../common/button'
 
 const ConfirmationDetails = props => {
   return (

@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Link } from '@reach/router'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
-import styles from './Questionnaire.module.css'
-import QuestionnaireHeader from './QuestionnaireHeader'
-import QuestionField from './QuestionField'
-import Checkbox from './Checkbox'
-import { Button, TYPES, SIZES } from '../common/Button'
+import styles from './questionnaire.module.css'
+import QuestionnaireHeader from './questionnaire-header'
+import QuestionField from './question-field'
+import Checkbox from './checkbox'
+import { Button, TYPES, SIZES } from '../common/button'
 
 const questionnaireQuestions = [
   {

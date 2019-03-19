@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
-import styles from './Results.module.css'
-import ProviderListItem from './ProviderListItem'
-import QuestionnaireHeader from '../questionnaire/QuestionnaireHeader'
-import OptionButton from '../common/OptionButton'
+import styles from './results.module.css'
+import ProviderListItem from './provider-list-item'
+import QuestionnaireHeader from '../questionnaire/questionnaire-header'
+import OptionButton from '../common/option-button'
 import MorganMcCreaPhoto from '../images/morganmccrea.jpeg'
 import Therapist1 from '../images/Therapist1.jpeg'
 import Therapist2 from '../images/Therapist2.jpeg'
 import JenAdamsPhoto from '../images/Jen+Adams.jpeg'
-import { Button, TYPES, SIZES } from '../common/Button'
+import { Button, TYPES, SIZES } from '../common/button'
 
 const providers = [
   {

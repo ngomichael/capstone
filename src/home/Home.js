@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from '@reach/router'
-import styles from './Home.module.css'
-import SignedOutHeader from './SignedOutHeader'
+import styles from './home.module.css'
+import SignedOutHeader from './signed-out-header'
 import pears from '../images/pairOfPears.png'
-import { Button, TYPES, SIZES } from '../common/Button'
+import { Button, TYPES, SIZES } from '../common/button'
 
 const Home = props => {
   return (

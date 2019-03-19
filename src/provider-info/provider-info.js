@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import styles from './ProviderInfo.module.css'
-import QuesionnaireHeader from '../questionnaire/QuestionnaireHeader'
-import Video from './Video'
-import ContactModal from './ContactModal'
+import styles from './provider-info.module.css'
+import QuesionnaireHeader from '../questionnaire/questionnaire-header'
+import Video from './video'
+import ContactModal from './contact-modal'
 import MorganMcCreaPhoto from '../images/morganmccrea.jpeg'
 import StacyAdamsPhoto from '../images/Jen+Adams.jpeg'
-import { Button, TYPES, SIZES } from '../common/Button'
+import { Button, TYPES, SIZES } from '../common/button'
 
 const ProviderInfo = () => {
   const [isOpen, setIsOpen] = useState(false)

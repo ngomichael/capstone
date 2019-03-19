@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from '@reach/router'
 
-import styles from './SignUp.module.css'
-import { Button, TYPES, SIZES } from '../common/Button'
+import styles from './sign-up.module.css'
+import { Button, TYPES, SIZES } from '../common/button'
 
 const SignUp = props => {
   // These are state hooks - https://reactjs.org/docs/hooks-state.html
