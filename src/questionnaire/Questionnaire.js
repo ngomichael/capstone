@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import { Link } from '@reach/router'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import styles from './questionnaire.module.css'
@@ -131,6 +132,11 @@ const CareTypeCard = ({ name, description }) => {
       <p className={styles.careTypeCardDescription}>{description}</p>
     </div>
   )
+}
+
+CareTypeCard.propTypes = {
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
 }
 
 const returnCorrectQuestionFormat = question => {

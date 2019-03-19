@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './progress-tracker.module.css'
 
-export const ProgressTracker = ({ step }) => {
+export const ProgressTracker = ({ step = 1 }) => {
   return (
     <div className={styles.container}>
       <div className={styles.step}>

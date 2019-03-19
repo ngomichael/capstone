@@ -23,8 +23,8 @@ export const QuestionField = ({
 }
 
 QuestionField.propTypes = {
-  supplementaryText: PropTypes.string,
-  type: PropTypes.string,
-  name: PropTypes.string,
-  isLongInput: PropTypes.bool,
+  supplementaryText: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  isLongInput: PropTypes.bool.isRequired,
 }

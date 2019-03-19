@@ -68,9 +68,9 @@ export const ProviderListItem = ({ provider }) => {
 
 ProviderListItem.propTypes = {
   provider: PropTypes.shape({
-    name: PropTypes.string,
+    name: PropTypes.string.isRequired,
     photo: PropTypes.node.isRequired,
-    specialization: PropTypes.string,
-    summary: PropTypes.string,
+    specialization: PropTypes.string.isRequired,
+    summary: PropTypes.string.isRequired,
   }),
 }
