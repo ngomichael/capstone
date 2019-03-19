@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import { Link } from '@reach/router'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import styles from './questionnaire.module.css'
-import QuestionnaireHeader from './questionnaire-header'
-import QuestionField from './question-field'
-import Checkbox from './checkbox'
+import { QuestionnaireHeader } from './questionnaire-header'
+import { QuestionField } from './question-field'
+import { Checkbox } from './checkbox'
 import { Button, TYPES, SIZES } from '../common/button'
 
-const questionnaireQuestions = [
+export const questionnaireQuestions = [
   {
     questionType: 'input',
     question: "What's the city of zipcode you're seeking care in?*",
@@ -195,7 +195,7 @@ const renderQuestions = () => {
   })
 }
 
-const Questionnaire = props => {
+export const Questionnaire = props => {
   return (
     <div className={styles.container}>
       <QuestionnaireHeader step={1} />
@@ -278,5 +278,3 @@ const Questionnaire = props => {
     </div>
   )
 }
-
-export default Questionnaire

@@ -20,7 +20,7 @@ const scrollToTop = () => {
   scroll.scrollToTop()
 }
 
-const SignedOutHeader = () => (
+export const SignedOutHeader = () => (
   <header className={styles.container}>
     <div className={styles.nameAndNavContainer}>
       <div className={styles.imageNameContainer}>
@@ -50,5 +50,3 @@ const SignedOutHeader = () => (
     </div>
   </header>
 )
-
-export default SignedOutHeader

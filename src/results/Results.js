@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import styles from './results.module.css'
-import ProviderListItem from './provider-list-item'
-import QuestionnaireHeader from '../questionnaire/questionnaire-header'
-import OptionButton from '../common/option-button'
+import { ProviderListItem } from './provider-list-item'
+import { QuestionnaireHeader } from '../questionnaire/questionnaire-header'
+import { OptionButton } from '../common/option-button'
 import MorganMcCreaPhoto from '../images/morganmccrea.jpeg'
 import Therapist1 from '../images/Therapist1.jpeg'
 import Therapist2 from '../images/Therapist2.jpeg'
@@ -68,7 +68,7 @@ const filters = [
   },
 ]
 
-const Results = () => {
+export const Results = () => {
   const [searchVal, setSearchVal] = useState('')
   const [isOpen, setIsOpen] = useState(true)
 
@@ -146,5 +146,3 @@ const Results = () => {
     </div>
   )
 }
-
-export default Results

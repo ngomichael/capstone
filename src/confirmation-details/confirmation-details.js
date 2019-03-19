@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from '@reach/router'
 import styles from './confirmation-details.module.css'
-import QuestionnaireHeader from '../questionnaire/questionnaire-header'
+import { QuestionnaireHeader } from '../questionnaire/questionnaire-header'
 import pears from '../images/pairOfPears.png'
 import { Button, TYPES, SIZES } from '../common/button'
 
-const ConfirmationDetails = props => {
+export const ConfirmationDetails = props => {
   return (
     <div className={styles.container}>
       <QuestionnaireHeader step={props.step} />
@@ -49,5 +49,3 @@ const ConfirmationDetails = props => {
     </div>
   )
 }
-
-export default ConfirmationDetails

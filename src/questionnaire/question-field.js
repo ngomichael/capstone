@@ -4,7 +4,12 @@ import { Field, ErrorMessage } from 'formik'
 
 import styles from './question-field.module.css'
 
-const QuestionField = ({ supplementaryText, type, name, isLongInput }) => {
+export const QuestionField = ({
+  supplementaryText,
+  type,
+  name,
+  isLongInput,
+}) => {
   return (
     <div>
       <p className={styles.supplementaryText}>{supplementaryText}</p>
@@ -23,5 +28,3 @@ QuestionField.propTypes = {
   name: PropTypes.string,
   isLongInput: PropTypes.bool,
 }
-
-export default QuestionField

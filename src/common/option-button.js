@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import styles from './option-button.module.css'
 
-const OptionButton = ({ children, isClicked = false }) => {
+export const OptionButton = ({ children, isClicked = false }) => {
   const [clicked, changeClickedStatus] = useState(isClicked)
 
   function handleClickedStatusChange() {
@@ -24,5 +24,3 @@ const OptionButton = ({ children, isClicked = false }) => {
 OptionButton.propTypes = {
   isClicked: PropTypes.bool,
 }
-
-export default OptionButton

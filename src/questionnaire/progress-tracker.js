@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './progress-tracker.module.css'
 
-const ProgressTracker = ({ step }) => {
+export const ProgressTracker = ({ step }) => {
   return (
     <div className={styles.container}>
       <div className={styles.step}>
@@ -51,5 +51,3 @@ const ProgressTracker = ({ step }) => {
 ProgressTracker.propTypes = {
   step: PropTypes.number,
 }
-
-export default ProgressTracker

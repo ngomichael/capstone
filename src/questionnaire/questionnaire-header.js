@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from './questionnaire-header.module.css'
-import ProgressTracker from './progress-tracker'
+import { ProgressTracker } from './progress-tracker'
 import PearCareLogo from '../images/logo.png'
 
-const QuestionnaireHeader = ({ step }) => {
+export const QuestionnaireHeader = ({ step }) => {
   return (
     <header className={styles.container}>
       <div className={styles.nameAndNavContainer}>
@@ -18,5 +18,3 @@ const QuestionnaireHeader = ({ step }) => {
     </header>
   )
 }
-
-export default QuestionnaireHeader

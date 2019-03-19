@@ -3,7 +3,7 @@ import { Field, ErrorMessage } from 'formik'
 
 import styles from './checkbox.module.css'
 
-const Checkbox = props => {
+export const Checkbox = props => {
   return (
     <Field name={props.name}>
       {({ field, form }) => (
@@ -31,5 +31,3 @@ const Checkbox = props => {
     </Field>
   )
 }
-
-export default Checkbox

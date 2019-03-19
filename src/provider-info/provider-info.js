@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import styles from './provider-info.module.css'
 import QuesionnaireHeader from '../questionnaire/questionnaire-header'
-import Video from './video'
-import ContactModal from './contact-modal'
+import { Video } from './video'
+import { ContactModal } from './contact-modal'
 import MorganMcCreaPhoto from '../images/morganmccrea.jpeg'
 import StacyAdamsPhoto from '../images/Jen+Adams.jpeg'
 import { Button, TYPES, SIZES } from '../common/button'
 
-const ProviderInfo = () => {
+export const ProviderInfo = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   function handleClose() {
@@ -186,5 +186,3 @@ const ProviderInfo = () => {
     </div>
   )
 }
-
-export default ProviderInfo

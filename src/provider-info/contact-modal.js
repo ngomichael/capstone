@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './contact-modal.module.css'
 import { Button, TYPES, SIZES } from '../common/button'
 
-const ContactModal = ({ handleClose }) => {
+export const ContactModal = ({ handleClose }) => {
   return (
     <div className={styles.container}>
       <div className={styles.modal}>
@@ -64,5 +64,3 @@ const ContactModal = ({ handleClose }) => {
     </div>
   )
 }
-
-export default ContactModal

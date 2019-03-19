@@ -3,7 +3,7 @@ import { Link } from '@reach/router'
 import PropTypes from 'prop-types'
 import styles from './provider-list-item.module.css'
 
-const ProviderListItem = ({ provider }) => {
+export const ProviderListItem = ({ provider }) => {
   const [isHovered, setIsHovered] = useState(false)
 
   function handleMouseEnter() {
@@ -69,5 +69,3 @@ ProviderListItem.propTypes = {
   specialization: PropTypes.string,
   summaary: PropTypes.string,
 }
-
-export default ProviderListItem

@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from '@reach/router'
 import styles from './home.module.css'
-import SignedOutHeader from './signed-out-header'
+import { SignedOutHeader } from './signed-out-header'
 import pears from '../images/pairOfPears.png'
 import { Button, TYPES, SIZES } from '../common/button'
 
-const Home = props => {
+export const Home = props => {
   return (
     <div className={styles.container}>
       <SignedOutHeader />
@@ -45,5 +45,3 @@ const Home = props => {
     </div>
   )
 }
-
-export default Home

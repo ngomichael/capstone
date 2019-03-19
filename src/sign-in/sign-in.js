@@ -3,7 +3,7 @@ import { Link } from '@reach/router'
 import styles from './sign-in.module.css'
 import { Button, TYPES, SIZES } from '../common/button'
 
-const SignIn = props => {
+export const SignIn = props => {
   // These are state hooks - https://reactjs.org/docs/hooks-state.html
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -46,5 +46,3 @@ const SignIn = props => {
     </div>
   )
 }
-
-export default SignIn
