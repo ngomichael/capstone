@@ -3,6 +3,7 @@ import { Link } from '@reach/router'
 import styles from './ConfirmationDetails.module.css'
 import QuestionnaireHeader from '../questionnaire/QuestionnaireHeader'
 import pears from '../images/pairOfPears.png'
+import { Button, TYPES, SIZES } from '../common/Button'
 
 const ConfirmationDetails = props => {
   return (
@@ -35,7 +36,13 @@ const ConfirmationDetails = props => {
           <p className={styles.p1}>{props.p1}</p>
           <p className={styles.p2}>{props.p2}</p>
           <Link to={props.to}>
-            <button className={styles.startButton}>{props.buttonText}</button>
+            <Button
+              type="button"
+              buttonType={TYPES.PRIMARY}
+              buttonSize={SIZES.MEDIUM}
+            >
+              {props.buttonText}
+            </Button>
           </Link>
         </div>
       </div>

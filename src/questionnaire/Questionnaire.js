@@ -5,6 +5,7 @@ import styles from './Questionnaire.module.css'
 import QuestionnaireHeader from './QuestionnaireHeader'
 import QuestionField from './QuestionField'
 import Checkbox from './Checkbox'
+import { Button, TYPES, SIZES } from '../common/Button'
 
 const questionnaireQuestions = [
   {
@@ -230,13 +231,13 @@ const Questionnaire = props => {
             <Form>
               {renderQuestions()}
               <Link to="/questionnaireCompleted">
-                <button
-                  type="submit"
-                  className={styles.submitButton}
-                  disabled={isSubmitting}
+                <Button
+                  type="button"
+                  buttonType={TYPES.PRIMARY}
+                  buttonSize={SIZES.MEDIUM}
                 >
                   Finish
-                </button>
+                </Button>
               </Link>
             </Form>
           )}

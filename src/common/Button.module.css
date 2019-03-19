@@ -1,23 +1,50 @@
 @import '../common/variables.css';
 
 .button {
-  border: 2px solid #a3ded8;
-  border-radius: 4px;
-  padding: var(--s-2) var(--s-4) var(--s-2) var(--s-4);
-  margin: var(--s-1) var(--s-1) var(--s-2) var(--s-1);
   font-size: var(--fs-3);
-  color: #1aae9f;
-  background-color: white;
-  letter-spacing: 0.05em;
-  transition: background-color 200ms ease;
+  font-weight: var(--fw-1);
+  border-radius: 5px;
+  letter-spacing: 1px;
+  color: white;
+  outline: none;
+  border: none;
+  box-shadow: var(--bs-1);
+  /* padding: var(--s-3); */
+  transition: background-color 300ms ease;
 }
 
 .button:hover {
   cursor: pointer;
-  /* background-color: rgb(241, 241, 241); */
 }
 
-.activeButton {
-  background-color: #1aae9f;
-  color: white;
+.primary {
+  background-color: hsl(174, 74%, 39%);
+}
+
+.primary:hover {
+  background-color: hsl(180, 100%, 20%);
+}
+
+.warning {
+}
+
+.danger {
+}
+
+.success {
+}
+
+.small {
+  height: 36px;
+  width: 95px;
+}
+
+.medium {
+  height: 50px;
+  width: 180px;
+}
+
+.large {
+  height: 50px;
+  width: 270px;
 }

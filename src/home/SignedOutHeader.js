@@ -3,6 +3,7 @@ import styles from './SignedOutHeader.module.css'
 import { Link, animateScroll as scroll } from 'react-scroll'
 // import PearCareLogo from '../images/PearCareLogo.png'
 import PearCareLogo from '../images/logo.png'
+import { Button, TYPES, SIZES } from '../common/Button'
 
 const navLinks = [
   {
@@ -37,7 +38,13 @@ const SignedOutHeader = () => (
           </li>
         ))}
         <li className={styles.navButton}>
-          <button className={styles.signInButton}>Sign In</button>
+          <Button
+            type="button"
+            buttonType={TYPES.PRIMARY}
+            buttonSize={SIZES.SMALL}
+          >
+            Sign In
+          </Button>
         </li>
       </ul>
     </div>

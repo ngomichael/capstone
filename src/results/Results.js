@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import styles from './Results.module.css'
 import ProviderListItem from './ProviderListItem'
 import QuestionnaireHeader from '../questionnaire/QuestionnaireHeader'
-import Button from '../common/Button'
+import OptionButton from '../common/OptionButton'
 import MorganMcCreaPhoto from '../images/morganmccrea.jpeg'
 import Therapist1 from '../images/Therapist1.jpeg'
 import Therapist2 from '../images/Therapist2.jpeg'
 import JenAdamsPhoto from '../images/Jen+Adams.jpeg'
+import { Button, TYPES, SIZES } from '../common/Button'
 
 const providers = [
   {
@@ -124,7 +125,9 @@ const Results = () => {
       </div>
       <div className={styles.filtersContainer}>
         {filters.map(filter => (
-          <Button isClicked={filter.isClicked}>{filter.name}</Button>
+          <OptionButton isClicked={filter.isClicked}>
+            {filter.name}
+          </OptionButton>
         ))}
       </div>
       <div className={styles.providersContainer}>
@@ -133,7 +136,13 @@ const Results = () => {
         ))}
       </div>
       <p className={styles.pageInfo}>1-3 of 18 results</p>
-      <button className={styles.viewMoreButton}>View more matches</button>
+      <Button
+        type="button"
+        buttonType={TYPES.PRIMARY}
+        buttonSize={SIZES.MEDIUM}
+      >
+        View more matches
+      </Button>
     </div>
   )
 }

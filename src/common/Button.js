@@ -1,28 +1,35 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
+import classNames from 'classnames'
 import styles from './Button.module.css'
 
-const OptionButton = ({ children, isClicked = false }) => {
-  const [clicked, changeClickedStatus] = useState(isClicked)
+export const TYPES = {
+  PRIMARY: 'primary',
+  WARNING: 'warning',
+  DANGER: 'danger',
+  SUCCESS: 'success',
+}
 
-  function handleClickedStatusChange() {
-    changeClickedStatus(!clicked)
-  }
+export const SIZES = {
+  SMALL: 'small',
+  MEDIUM: 'medium',
+  LARGE: 'large',
+}
 
+export const Button = ({
+  type,
+  buttonType,
+  buttonSize,
+  onClick = () => {},
+  children,
+}) => {
+  const btnClass = classNames(
+    styles.button,
+    styles[buttonType || TYPES.PRIMARY],
+    styles[buttonSize || SIZES.MEDIUM]
+  )
   return (
-    <button
-      onClick={handleClickedStatusChange}
-      className={
-        clicked ? `${styles.button} ${styles.activeButton}` : styles.button
-      }
-    >
+    <button type={type} onClick={onClick} className={btnClass}>
       {children}
     </button>
   )
 }
-
-OptionButton.propTypes = {
-  isClicked: PropTypes.bool,
-}
-
-export default OptionButton

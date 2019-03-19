@@ -68,6 +68,10 @@
   /* background-color: rgb(241, 241, 241); */
 }
 
+.websiteLink {
+  margin: var(--s-3);
+}
+
 .closeButton {
   position: absolute;
   right: 20px;

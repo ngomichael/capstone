@@ -5,6 +5,7 @@ import Video from './Video'
 import ContactModal from './ContactModal'
 import MorganMcCreaPhoto from '../images/morganmccrea.jpeg'
 import StacyAdamsPhoto from '../images/Jen+Adams.jpeg'
+import { Button, TYPES, SIZES } from '../common/Button'
 
 const ProviderInfo = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -172,9 +173,15 @@ const ProviderInfo = () => {
             Get Directions
           </a>
         </div>
-        <button className={styles.interestedButton} onClick={handleShowModal}>
+
+        <Button
+          type="button"
+          onClick={handleShowModal}
+          buttonType={TYPES.PRIMARY}
+          buttonSize={SIZES.LARGE}
+        >
           I'm interested in reaching out
-        </button>
+        </Button>
       </div>
     </div>
   )

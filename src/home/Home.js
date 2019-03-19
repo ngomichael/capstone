@@ -3,6 +3,7 @@ import { Link } from '@reach/router'
 import styles from './Home.module.css'
 import SignedOutHeader from './SignedOutHeader'
 import pears from '../images/pairOfPears.png'
+import { Button, TYPES, SIZES } from '../common/Button'
 
 const Home = props => {
   return (
@@ -19,7 +20,13 @@ const Home = props => {
           individual’s experience when searching for a provider.
         </p>
         <Link to="getStarted">
-          <button className={styles.findProviderButton}>Find a provider</button>
+          <Button
+            type="button"
+            buttonType={TYPES.PRIMARY}
+            buttonSize={SIZES.MEDIUM}
+          >
+            Find a Provider
+          </Button>
         </Link>
       </div>
       {/* <Link to="/">Learn more about how it works</Link> */}

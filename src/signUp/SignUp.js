@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from '@reach/router'
 
 import styles from './SignUp.module.css'
+import { Button, TYPES, SIZES } from '../common/Button'
 
 const SignUp = props => {
   // These are state hooks - https://reactjs.org/docs/hooks-state.html
@@ -74,7 +75,13 @@ const SignUp = props => {
           placeholder="Zipcode"
           onChange={handleZipcodeChange}
         />
-        <button className={styles.button}>Create Account</button>
+        <Button
+          type="button"
+          buttonType={TYPES.PRIMARY}
+          buttonSize={SIZES.MEDIUM}
+        >
+          Create Account
+        </Button>
       </form>
       <Link to="/">Sign In</Link>
     </div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from '@reach/router'
 import styles from './SignIn.module.css'
+import { Button, TYPES, SIZES } from '../common/Button'
 
 const SignIn = props => {
   // These are state hooks - https://reactjs.org/docs/hooks-state.html
@@ -33,7 +34,13 @@ const SignIn = props => {
           placeholder="Password"
           onChange={handlePasswordChange}
         />
-        <button className={styles.button}>Log In</button>
+        <Button
+          type="button"
+          buttonType={TYPES.PRIMARY}
+          buttonSize={SIZES.MEDIUM}
+        >
+          Log In
+        </Button>
       </form>
       <Link to="signup">Sign Up</Link>
     </div>

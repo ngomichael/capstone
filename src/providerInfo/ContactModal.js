@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './ContactModal.module.css'
+import { Button, TYPES, SIZES } from '../common/Button'
 
 const ContactModal = ({ handleClose }) => {
   return (
@@ -41,10 +42,23 @@ const ContactModal = ({ handleClose }) => {
             href="https://www.shipshapementalhealth.com/"
             rel="noreferrer noopener"
             target="_blank"
+            className={styles.websiteLink}
           >
-            <button className={styles.contactButton}>Website</button>
+            <Button
+              type="button"
+              buttonType={TYPES.PRIMARY}
+              buttonSize={SIZES.MEDIUM}
+            >
+              Webiste
+            </Button>
           </a>
-          <button className={styles.contactButton}>Email</button>
+          <Button
+            type="button"
+            buttonType={TYPES.PRIMARY}
+            buttonSize={SIZES.MEDIUM}
+          >
+            Email
+          </Button>
         </div>
       </div>
     </div>

@@ -61,25 +61,6 @@
   cursor: pointer;
 }
 
-.signInButton {
-  height: 36px;
-  width: 95px;
-  border-radius: 5px;
-  font-size: var(--fs-3);
-  font-weight: var(--fw-1);
-  letter-spacing: 1px;
-  background-color: #1aae9f;
-  outline: none;
-  border: none;
-  color: white;
-  transition: background-color 300ms ease;
-}
-
-.signInButton:hover {
-  cursor: pointer;
-  background-color: rgb(0, 100, 100);
-}
-
 @media (max-width: 768px) {
   .imageNameContainer {
     display: flex;
@@ -103,12 +84,6 @@
   }
 
   .navButton {
-    font-size: var(--fs-2);
-  }
-
-  .signInButton {
-    height: 32px;
-    width: 85px;
     font-size: var(--fs-2);
   }
 }
