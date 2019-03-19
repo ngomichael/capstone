@@ -9,12 +9,12 @@
 html,
 body {
   position: relative;
+  margin: 0 auto;
   font-family: 'Open Sans';
   background-color: white;
-  width: 100%;
+  max-width: 1300px;
   height: 100%;
   min-height: 100%;
-  max-width: 100%;
 }
 
 h1,

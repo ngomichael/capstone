@@ -9,7 +9,6 @@
   outline: none;
   border: none;
   box-shadow: var(--bs-1);
-  /* padding: var(--s-3); */
   transition: background-color 300ms ease;
 }
 

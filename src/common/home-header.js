@@ -1,40 +1,21 @@
 import React from 'react'
-import styles from './signed-out-header.module.css'
-import { Link, animateScroll as scroll } from 'react-scroll'
-// import PearCareLogo from '../images/PearCareLogo.png'
+import styles from './home-header.module.css'
 import PearCareLogo from '../images/logo.png'
 import { Button, TYPES, SIZES } from './button'
 
-const navLinks = [
-  {
-    title: 'How it Works',
-    name: 'Works',
-  },
-  {
-    title: 'For Providers',
-    name: 'Providers',
-  },
-]
-
-const scrollToTop = () => {
-  scroll.scrollToTop()
-}
+const navLinks = ['How it Works', 'For Providers']
 
 export const HomeHeader = () => (
   <header className={styles.container}>
     <div className={styles.nameAndNavContainer}>
       <div className={styles.imageNameContainer}>
         <img src={PearCareLogo} className={styles.productImage} />
-        <h1 className={styles.productName} onClick={scrollToTop}>
-          PearCare
-        </h1>
+        <h1 className={styles.productName}>PearCare</h1>
       </div>
       <ul className={styles.navContainer}>
         {navLinks.map(link => (
           <li className={styles.navButton} key={link.title}>
-            <Link to={link.name} smooth={true} duration={1000} delay={0}>
-              {link.title}
-            </Link>
+            {link}
           </li>
         ))}
         <li className={styles.navButton}>
