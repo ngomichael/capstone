@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styles from './contact-modal.module.css'
 import { Button, TYPES, SIZES } from '../common/button'
 
@@ -63,4 +64,8 @@ export const ContactModal = ({ handleClose }) => {
       </div>
     </div>
   )
+}
+
+ContactModal.propTypes = {
+  handleClose: PropTypes.func.isRequired,
 }

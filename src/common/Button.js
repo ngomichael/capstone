@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import styles from './button.module.css'
 
@@ -32,4 +33,12 @@ export const Button = ({
       {children}
     </button>
   )
+}
+
+Button.propTypes = {
+  type: PropTypes.string.isRequired,
+  buttonType: PropTypes.string,
+  buttonSize: PropTypes.string,
+  onClick: PropTypes.func,
+  children: PropTypes.node.isRequired,
 }

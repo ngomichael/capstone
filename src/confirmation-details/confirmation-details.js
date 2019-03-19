@@ -1,14 +1,22 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from '@reach/router'
 import styles from './confirmation-details.module.css'
 import { QuestionnaireHeader } from '../questionnaire/questionnaire-header'
 import pears from '../images/pairOfPears.png'
 import { Button, TYPES, SIZES } from '../common/button'
 
-export const ConfirmationDetails = props => {
+export const ConfirmationDetails = ({
+  step,
+  title,
+  p1,
+  p2,
+  to,
+  buttonText,
+}) => {
   return (
     <div className={styles.container}>
-      <QuestionnaireHeader step={props.step} />
+      <QuestionnaireHeader step={step} />
 
       <div className={styles.mainContentContainer}>
         <div>
@@ -32,20 +40,29 @@ export const ConfirmationDetails = props => {
           <img src={pears} className={styles.pearImage} />
         </div>
         <div className={styles.textContainer}>
-          <h1 className={styles.title}>{props.title}</h1>
-          <p className={styles.p1}>{props.p1}</p>
-          <p className={styles.p2}>{props.p2}</p>
-          <Link to={props.to}>
+          <h1 className={styles.title}>{title}</h1>
+          <p className={styles.p1}>{p1}</p>
+          <p className={styles.p2}>{p2}</p>
+          <Link to={to}>
             <Button
               type="button"
               buttonType={TYPES.PRIMARY}
               buttonSize={SIZES.MEDIUM}
             >
-              {props.buttonText}
+              {buttonText}
             </Button>
           </Link>
         </div>
       </div>
     </div>
   )
+}
+
+ConfirmationDetails.propTypes = {
+  step: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  p1: PropTypes.string.isRequired,
+  p2: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired,
+  buttonText: PropTypes.string.isRequired,
 }

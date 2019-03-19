@@ -23,4 +23,5 @@ export const OptionButton = ({ children, isClicked = false }) => {
 
 OptionButton.propTypes = {
   isClicked: PropTypes.bool,
+  children: PropTypes.node.isRequired,
 }

@@ -5,7 +5,7 @@ import { SignedOutHeader } from './signed-out-header'
 import pears from '../images/pairOfPears.png'
 import { Button, TYPES, SIZES } from '../common/button'
 
-export const Home = props => {
+export const Home = () => {
   return (
     <div className={styles.container}>
       <SignedOutHeader />

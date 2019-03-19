@@ -195,7 +195,7 @@ const renderQuestions = () => {
   })
 }
 
-export const Questionnaire = props => {
+export const Questionnaire = () => {
   return (
     <div className={styles.container}>
       <QuestionnaireHeader step={1} />

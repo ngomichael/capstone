@@ -4,7 +4,7 @@ import { Link } from '@reach/router'
 import styles from './sign-up.module.css'
 import { Button, TYPES, SIZES } from '../common/button'
 
-export const SignUp = props => {
+export const SignUp = () => {
   // These are state hooks - https://reactjs.org/docs/hooks-state.html
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')

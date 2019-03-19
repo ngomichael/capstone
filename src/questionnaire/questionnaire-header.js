@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styles from './questionnaire-header.module.css'
 import { ProgressTracker } from './progress-tracker'
 import PearCareLogo from '../images/logo.png'
@@ -17,4 +18,8 @@ export const QuestionnaireHeader = ({ step }) => {
       </div>
     </header>
   )
+}
+
+QuestionnaireHeader.propTypes = {
+  step: PropTypes.number.isRequired,
 }

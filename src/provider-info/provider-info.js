@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from './provider-info.module.css'
-import QuesionnaireHeader from '../questionnaire/questionnaire-header'
+import { QuesionnaireHeader } from '../questionnaire/questionnaire-header'
 import { Video } from './video'
 import { ContactModal } from './contact-modal'
 import MorganMcCreaPhoto from '../images/morganmccrea.jpeg'

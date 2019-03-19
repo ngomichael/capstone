@@ -14,6 +14,8 @@ export const ProviderListItem = ({ provider }) => {
     setIsHovered(!isHovered)
   }
 
+  const { name, photo, specialization, summary } = provider
+
   return (
     <Link to="/providerInfo" style={{ textDecoration: 'none', color: 'black' }}>
       <div
@@ -21,12 +23,12 @@ export const ProviderListItem = ({ provider }) => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <img src={provider.photo} className={styles.providerPhoto} />
+        <img src={photo} className={styles.providerPhoto} />
         {/* <div className={styles.providerPhoto} /> */}
         <div className={styles.providerInfo}>
-          <p className={styles.name}>{provider.name}</p>
-          <p className={styles.specialization}>{provider.specialization}</p>
-          <p className={styles.summaary}>{provider.summary}</p>
+          <p className={styles.name}>{name}</p>
+          <p className={styles.specialization}>{specialization}</p>
+          <p className={styles.summaary}>{summary}</p>
         </div>
         <div className={styles.actionsContianer}>
           <svg
@@ -65,7 +67,10 @@ export const ProviderListItem = ({ provider }) => {
 }
 
 ProviderListItem.propTypes = {
-  name: PropTypes.string,
-  specialization: PropTypes.string,
-  summaary: PropTypes.string,
+  provider: PropTypes.shape({
+    name: PropTypes.string,
+    photo: PropTypes.node.isRequired,
+    specialization: PropTypes.string,
+    summary: PropTypes.string,
+  }),
 }
