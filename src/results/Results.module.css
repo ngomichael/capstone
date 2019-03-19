@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: var(--mt-10) var(--mr-5) var(--mb-5) var(--ml-5);
+  margin: var(--s-10) var(--s-5) var(--s-5) var(--s-5);
 }
 
 .alertContainer {
@@ -12,13 +12,13 @@
   width: 80%;
   background-color: #a3ded8;
   font-size: var(--fs-2);
-  padding: var(--p-6);
-  margin-bottom: var(--mb-6);
+  padding: var(--s-6);
+  margin-bottom: var(--s-6);
 }
 
 .alertHeader {
   font-size: var(--fs-5);
-  margin-bottom: var(--mb-3);
+  margin-bottom: var(--s-3);
 }
 
 .closeButton {
@@ -42,8 +42,8 @@
   border: 2px solid #c2cfd9;
   border-radius: 4px;
   background-color: #f7f9fa;
-  padding: var(--pt-0) var(--pr-0) var(--pb-0) var(--pl-2);
-  margin: var(--mt-2) var(--mr-0) var(--mb-2) var(--ml-0);
+  padding: var(--s-0) var(--s-0) var(--s-0) var(--s-2);
+  margin: var(--s-2) var(--s-0) var(--s-2) var(--s-0);
 }
 
 .searchInput:focus {
@@ -53,7 +53,7 @@
 
 .filtersContainer {
   width: 80%;
-  margin-bottom: var(--mb-2);
+  margin-bottom: var(--s-2);
 }
 
 .searchResults {
@@ -71,7 +71,7 @@
 
 .pageInfo {
   font-size: var(--fs-3);
-  margin: var(--mt-6) var(--mr-0) var(--mb-3) var(--ml-0);
+  margin: var(--s-6) var(--s-0) var(--s-3) var(--s-0);
 }
 
 .viewMoreButton {

@@ -20,7 +20,7 @@
 .input {
   width: 300px;
   height: 30px;
-  margin: var(--m-2);
+  margin: var(--s-2);
 }
 
 .button {

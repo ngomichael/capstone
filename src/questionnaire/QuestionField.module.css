@@ -7,7 +7,7 @@
   border: 2px solid #c2cfd9;
   border-radius: 4px;
   background-color: #f7f9fa;
-  padding: var(--pt-0) var(--pr-0) var(--pb-0) var(--pl-2);
+  padding: var(--s-0) var(--s-0) var(--s-0) var(--s-2);
 }
 
 .input:focus {
@@ -17,7 +17,7 @@
 
 .supplementaryText {
   font-size: var(--fs-2);
-  margin-bottom: var(--mb-2);
+  margin-bottom: var(--s-2);
 }
 
 .longInput {

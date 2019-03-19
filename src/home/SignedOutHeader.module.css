@@ -21,7 +21,7 @@
 .imageNameContainer {
   display: flex;
   align-items: center;
-  margin-left: var(--ml-8);
+  margin-left: var(--s-8);
 }
 
 .productImage {
@@ -33,7 +33,7 @@
 .productName {
   color: hsl(228, 21%, 31%);
   font-size: var(--fs-5);
-  margin-left: var(--ml-3);
+  margin-left: var(--s-3);
 }
 
 .productName:hover {
@@ -45,7 +45,7 @@
   justify-content: space-between;
   align-items: center;
   width: 400px;
-  margin-right: var(--mr-8);
+  margin-right: var(--s-8);
   list-style: none;
 }
 
@@ -84,7 +84,7 @@
   .imageNameContainer {
     display: flex;
     align-items: center;
-    margin-left: var(--ml-5);
+    margin-left: var(--s-5);
   }
 
   .productImage {
@@ -99,7 +99,7 @@
 
   .navContainer {
     width: 325px;
-    margin-right: var(--mr-5);
+    margin-right: var(--s-5);
   }
 
   .navButton {

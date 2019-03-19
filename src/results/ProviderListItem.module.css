@@ -5,10 +5,7 @@
   position: relative;
   border-bottom: 2px solid #c9d4dd;
   align-items: center;
-  /* width: 100%; */
-  padding: var(--pt-4) var(--pr-0) var(--pb-4) var(--pl-4);
-  /* margin-right: var(--mr-5); */
-  /* margin: var(--mt-4) var(--mr-0) var(--mb-4) var(--ml-0); */
+  padding: var(--s-4) var(--s-0) var(--s-4) var(--s-4);
 }
 
 .container:hover {
@@ -25,14 +22,12 @@
   background-position: 50% 50%; */
   border-radius: 50%;
   background-color: bisque;
-  margin: var(--mt-0) var(--mr-5) var(--mb-0) var(--ml-0);
+  margin: var(--s-0) var(--s-5) var(--s-0) var(--s-0);
 }
 
 .providerInfo {
-  /* width: 400px; */
   width: 100%;
   font-size: var(--fs-2);
-  /* padding: var(--pt-0) var(--pr-0) var(--pb-0) var(--pl-5); */
 }
 
 .name {
@@ -42,7 +37,7 @@
 
 .specialization {
   font-style: italic;
-  margin-bottom: var(--mb-2);
+  margin-bottom: var(--s-2);
 }
 
 .summary {
@@ -50,7 +45,7 @@
 
 .actionsContianer {
   display: flex;
-  margin-right: var(--mb-6);
+  margin-right: var(--s-6);
 }
 
 .chevron {

@@ -8,8 +8,6 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  /* z-index: 8; */
-  bottom: var(--mb-);
 }
 
 .modal {
@@ -19,13 +17,11 @@
   justify-content: center;
   align-items: center;
   position: fixed;
-  /* width: 600px;
-  height: 350px; */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  padding: var(--p-7);
+  padding: var(--s-7);
 }
 
 .header {
@@ -36,7 +32,7 @@
 .subheader {
   font-size: var(--fs-3);
   font-weight: var(--fw-5);
-  margin-top: var(--mt-4);
+  margin-top: var(--s-4);
 }
 
 .actionItems {
@@ -55,8 +51,8 @@
 
 .contactButton {
   border-radius: 4px;
-  padding: var(--pt-3) var(--pr-5) var(--pb-3) var(--pl-5);
-  margin: var(--mt-1) var(--mr-1) var(--mb-2) var(--ml-1);
+  padding: var(--s-3) var(--s-5) var(--s-3) var(--s-5);
+  margin: var(--s-1) var(--s-1) var(--s-2) var(--s-1);
   font-size: var(--fs-2);
   font-weight: var(--fw-2);
   color: white;

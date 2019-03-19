@@ -3,7 +3,7 @@
 .container {
   display: flex;
   align-items: center;
-  margin: var(--mt-0) var(--mr-0) var(--mb-3) var(--ml-0);
+  margin: var(--s-0) var(--s-0) var(--s-3) var(--s-0);
 }
 
 input[type='checkbox'] {
@@ -21,5 +21,5 @@ input[type='checkbox']:checked {
 .optionName {
   display: inline;
   font-size: var(--fs-3);
-  margin-left: var(--ml-3);
+  margin-left: var(--s-3);
 }
