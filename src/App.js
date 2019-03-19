@@ -6,9 +6,9 @@ import { SignUp } from './sign-up/sign-up'
 import { SignIn } from './sign-in/sign-in'
 import { Home } from './home/home'
 import { Questionnaire } from './questionnaire/questionnaire'
-import { Results } from './results/results'
+import { MatchedProviders } from './matched-providers/matched-providers'
 import { ProviderInfo } from './provider-info/provider-info'
-import { ConfirmationDetails } from './confirmation-details/confirmation-details'
+import { Prompt } from './prompt/prompt'
 
 class App extends Component {
   render() {
@@ -16,9 +16,9 @@ class App extends Component {
       <Router>
         <Home path="/" />
         <Questionnaire path="questionnaire" />
-        <Results path="results" />
+        <MatchedProviders path="results" />
         <ProviderInfo path="providerInfo" />
-        <ConfirmationDetails
+        <Prompt
           path="getStarted"
           title="Welcome to PearCare"
           p1="We're just going to ask you a few questions about what you're looking for. This will help us match you with the providers best suited for you."
@@ -27,7 +27,7 @@ class App extends Component {
           to="/questionnaire"
           step={1}
         />
-        <ConfirmationDetails
+        <Prompt
           path="questionnaireCompleted"
           title="Way to go! We pear-reviewed providers just for you."
           p1="We used your answers on the last page to find providers who may be a good fit for you."

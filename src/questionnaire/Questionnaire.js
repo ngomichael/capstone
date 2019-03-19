@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { Link } from '@reach/router'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import styles from './questionnaire.module.css'
-import { QuestionnaireHeader } from './questionnaire-header'
+import { OnboardingHeader } from '../common/onboarding-header'
 import { QuestionField } from './question-field'
-import { Checkbox } from './checkbox'
+import { Checkbox } from '../common/checkbox'
 import { Button, TYPES, SIZES } from '../common/button'
 
 export const questionnaireQuestions = [
@@ -204,7 +204,7 @@ const renderQuestions = () => {
 export const Questionnaire = () => {
   return (
     <div className={styles.container}>
-      <QuestionnaireHeader step={1} />
+      <OnboardingHeader step={1} />
       <Link to="/" className={styles.backButton}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -213,10 +213,9 @@ export const Questionnaire = () => {
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="feather feather-chevron-left"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         >
           <polyline points="15 18 9 12 15 6" />
         </svg>

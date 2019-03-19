@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styles from './questionnaire-header.module.css'
-import { ProgressTracker } from './progress-tracker'
+import styles from './onboarding-header.module.css'
+import { OnboardingTracker } from './onboarding-tracker'
 import PearCareLogo from '../images/logo.png'
 
-export const QuestionnaireHeader = ({ step }) => {
+export const OnboardingHeader = ({ step }) => {
   return (
     <header className={styles.container}>
       <div className={styles.nameAndNavContainer}>
@@ -13,13 +13,13 @@ export const QuestionnaireHeader = ({ step }) => {
           <h1 className={styles.productName}>PearCare</h1>
         </div>
         <div className={styles.progressTracker}>
-          <ProgressTracker step={step} />
+          <OnboardingTracker step={step} />
         </div>
       </div>
     </header>
   )
 }
 
-QuestionnaireHeader.propTypes = {
+OnboardingHeader.propTypes = {
   step: PropTypes.number.isRequired,
 }

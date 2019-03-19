@@ -3,7 +3,7 @@ import styles from './signed-out-header.module.css'
 import { Link, animateScroll as scroll } from 'react-scroll'
 // import PearCareLogo from '../images/PearCareLogo.png'
 import PearCareLogo from '../images/logo.png'
-import { Button, TYPES, SIZES } from '../common/button'
+import { Button, TYPES, SIZES } from './button'
 
 const navLinks = [
   {
@@ -20,7 +20,7 @@ const scrollToTop = () => {
   scroll.scrollToTop()
 }
 
-export const SignedOutHeader = () => (
+export const HomeHeader = () => (
   <header className={styles.container}>
     <div className={styles.nameAndNavContainer}>
       <div className={styles.imageNameContainer}>

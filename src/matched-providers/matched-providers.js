@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import styles from './results.module.css'
-import { ProviderListItem } from './provider-list-item'
-import { QuestionnaireHeader } from '../questionnaire/questionnaire-header'
+import styles from './matched-providers.module.css'
+import { ProviderCard } from './provider-card'
+import { OnboardingHeader } from '../common/onboarding-header'
 import { OptionButton } from '../common/option-button'
 import MorganMcCreaPhoto from '../images/morganmccrea.jpeg'
 import Therapist1 from '../images/Therapist1.jpeg'
@@ -68,7 +68,7 @@ const filters = [
   },
 ]
 
-export const Results = () => {
+export const MatchedProviders = () => {
   const [searchVal, setSearchVal] = useState('')
   const [isOpen, setIsOpen] = useState(true)
 
@@ -81,7 +81,7 @@ export const Results = () => {
   }
   return (
     <div className={styles.container}>
-      <QuestionnaireHeader step={2} />
+      <OnboardingHeader step={2} />
       {isOpen && (
         <div className={styles.alertContainer}>
           <svg
@@ -132,7 +132,7 @@ export const Results = () => {
       </div>
       <div className={styles.providersContainer}>
         {providers.map(provider => (
-          <ProviderListItem provider={provider} />
+          <ProviderCard provider={provider} />
         ))}
       </div>
       <p className={styles.pageInfo}>1-3 of 18 results</p>

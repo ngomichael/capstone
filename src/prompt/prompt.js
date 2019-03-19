@@ -1,22 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from '@reach/router'
-import styles from './confirmation-details.module.css'
-import { QuestionnaireHeader } from '../questionnaire/questionnaire-header'
+import styles from './prompt.module.css'
+import { OnboardingHeader } from '../common/onboarding-header'
 import pears from '../images/pairOfPears.png'
 import { Button, TYPES, SIZES } from '../common/button'
 
-export const ConfirmationDetails = ({
-  step,
-  title,
-  p1,
-  p2,
-  to,
-  buttonText,
-}) => {
+export const Prompt = ({ step, title, p1, p2, to, buttonText }) => {
   return (
     <div className={styles.container}>
-      <QuestionnaireHeader step={step} />
+      <OnboardingHeader step={step} />
 
       <div className={styles.mainContentContainer}>
         <div>
@@ -28,10 +21,9 @@ export const ConfirmationDetails = ({
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="feather feather-chevron-left"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
               <polyline points="15 18 9 12 15 6" />
             </svg>
@@ -58,7 +50,7 @@ export const ConfirmationDetails = ({
   )
 }
 
-ConfirmationDetails.propTypes = {
+Prompt.propTypes = {
   step: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   p1: PropTypes.string.isRequired,

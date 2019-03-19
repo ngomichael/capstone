@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Link } from '@reach/router'
 import PropTypes from 'prop-types'
-import styles from './provider-list-item.module.css'
+import styles from './provider-card.module.css'
 
-export const ProviderListItem = ({ provider }) => {
+export const ProviderCard = ({ provider }) => {
   const [isHovered, setIsHovered] = useState(false)
 
   function handleMouseEnter() {
@@ -66,7 +66,7 @@ export const ProviderListItem = ({ provider }) => {
   )
 }
 
-ProviderListItem.propTypes = {
+ProviderCard.propTypes = {
   provider: PropTypes.shape({
     name: PropTypes.string.isRequired,
     photo: PropTypes.node.isRequired,

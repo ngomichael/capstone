@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styles from './progress-tracker.module.css'
+import styles from './onboarding-tracker.module.css'
 
-export const ProgressTracker = ({ step = 1 }) => {
+export const OnboardingTracker = ({ step = 1 }) => {
   return (
     <div className={styles.container}>
       <div className={styles.step}>
@@ -48,6 +48,6 @@ export const ProgressTracker = ({ step = 1 }) => {
   )
 }
 
-ProgressTracker.propTypes = {
+OnboardingTracker.propTypes = {
   step: PropTypes.number,
 }
