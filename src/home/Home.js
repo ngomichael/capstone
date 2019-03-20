@@ -9,7 +9,7 @@ export const Home = () => {
   return (
     <div className={styles.container}>
       <HomeHeader />
-      <div className={styles.introContainer}>
+      {/* <div className={styles.introContainer}>
         <h1 className={styles.tagline}>
           Better patient-provider pairs, better mental healthcare
         </h1>
@@ -29,8 +29,7 @@ export const Home = () => {
           </Button>
         </Link>
       </div>
-      {/* <Link to="/">Learn more about how it works</Link> */}
-      {/* This button should be inside of a Link tag */}
+      <Link to="/">Learn more about how it works</Link>
       <div className={styles.pearImagesContainer}>
         <img
           src={pears}
@@ -41,7 +40,7 @@ export const Home = () => {
           src={pears}
           className={`${styles.pearImage} ${styles.pearImageThree}`}
         />
-      </div>
+      </div> */}
     </div>
   )
 }
