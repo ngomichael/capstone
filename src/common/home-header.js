@@ -33,7 +33,6 @@ export const HomeHeader = () => {
         <img src={PearCareLogo} className={styles.logo} />
         <p className={styles.productName}>PearCare</p>
       </div>
-      {/* <ul className={styles.navContainer}>{renderNavLinks()}</ul> */}
 
       {displayMenu ? (
         <svg
@@ -72,23 +71,13 @@ export const HomeHeader = () => {
         </svg>
       )}
 
-      <div
-        className={
-          displayMenu
-            ? styles.dropdownContainer
-            : styles.dropdownContainerHidden
-        }
-      >
-        <ul
-          className={
-            displayMenu
-              ? styles.dropdownNavContainer
-              : styles.dropdownNavContainerHidden
-          }
-        >
-          {renderDropdownNavLinks()}
-        </ul>
-      </div>
+      {displayMenu ? (
+        <div className={styles.dropdownContainer}>
+          <ul className={styles.dropdownNav}>{renderDropdownNavLinks()}</ul>
+        </div>
+      ) : (
+        <ul className={styles.navContainer}>{renderNavLinks()}</ul>
+      )}
     </header>
   )
 }
