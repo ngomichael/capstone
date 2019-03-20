@@ -9,7 +9,7 @@ export const Home = () => {
   return (
     <div className={styles.container}>
       <HomeHeader />
-      {/* <div className={styles.introContainer}>
+      <div className={styles.introContainer}>
         <h1 className={styles.tagline}>
           Better patient-provider pairs, better mental healthcare
         </h1>
@@ -19,6 +19,9 @@ export const Home = () => {
           process. PearCare's matching algorithm intends to personalize every
           individual’s experience when searching for a provider.
         </p>
+        <Link to="/">
+          <p className={styles.learnMoreLink}>Learn more about how it works</p>
+        </Link>
         <Link to="getStarted">
           <Button
             type="button"
@@ -29,18 +32,11 @@ export const Home = () => {
           </Button>
         </Link>
       </div>
-      <Link to="/">Learn more about how it works</Link>
       <div className={styles.pearImagesContainer}>
-        <img
-          src={pears}
-          className={`${styles.pearImage} ${styles.pearImageOne}`}
-        />
         <img src={pears} className={styles.pearImage} />
-        <img
-          src={pears}
-          className={`${styles.pearImage} ${styles.pearImageThree}`}
-        />
-      </div> */}
+        <img src={pears} className={styles.pearImage} />
+        <img src={pears} className={styles.pearImage} />
+      </div>
     </div>
   )
 }
