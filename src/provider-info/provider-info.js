@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from './provider-info.module.css'
-import { QuesionnaireHeader } from '../common/onboarding-header'
+import { OnboardingHeader } from '../common/onboarding-header'
 import { Video } from './video'
 import { ContactModal } from './contact-modal'
 import MorganMcCreaPhoto from '../images/morganmccrea.jpeg'
@@ -21,7 +21,7 @@ export const ProviderInfo = () => {
   return (
     <div className={styles.container}>
       {isOpen && <ContactModal handleClose={handleClose} />}
-      <QuesionnaireHeader step={2} />
+      <OnboardingHeader step={2} />
       {/* Needs to be a link here to go back */}
       {/* <div className={styles.backButton}>
         <svg

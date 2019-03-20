@@ -2,7 +2,7 @@
 
 .button {
   font-size: var(--fs-3);
-  font-weight: var(--fw-1);
+  font-weight: var(--fw-4);
   border-radius: 5px;
   letter-spacing: 1px;
   color: white;
@@ -34,13 +34,13 @@
 }
 
 .small {
-  height: 36px;
-  width: 95px;
+  height: 38px;
+  width: 100px;
 }
 
 .medium {
   height: 50px;
-  width: 180px;
+  width: 185px;
 }
 
 .large {
