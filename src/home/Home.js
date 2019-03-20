@@ -1,9 +1,9 @@
 import React from 'react'
-import { Link } from '@reach/router'
 import styles from './home.module.css'
+import { Link } from '@reach/router'
 import { HomeHeader } from '../common/home-header'
-import pears from '../images/pairOfPears.png'
 import { Button, TYPES, SIZES } from '../common/button'
+import pears from '../images/pairOfPears.png'
 
 export const Home = () => {
   return (
@@ -33,10 +33,12 @@ export const Home = () => {
         </Link>
       </div>
       <div className={styles.pearImagesContainer}>
-        <img src={pears} className={styles.pearImage} />
+        {/* <img src={pears} className={styles.pearImage} /> */}
         <img src={pears} className={styles.pearImage} />
         <img src={pears} className={styles.pearImage} />
       </div>
+      {/* <div className={styles.pearImagesContainer}>
+      </div> */}
     </div>
   )
 }
