@@ -12,10 +12,10 @@ input[type='checkbox'] {
   width: 20px;
   height: 20px;
   border-radius: var(--br-1);
-  border: 2px solid #c2cfd8;
+  border: 2px solid var(--light-gray);
 }
 input[type='checkbox']:checked {
-  background: #3b88fd;
+  background: var(--primary);
 }
 
 .optionName {

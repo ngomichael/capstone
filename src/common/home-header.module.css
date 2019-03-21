@@ -39,11 +39,12 @@
   display: flex;
   align-items: center;
   list-style: none;
+  color: var(--darkest-gray);
 }
 
 .dropdownContainer {
   position: absolute;
-  background-color: hsl(34, 100%, 81%);
+  background-color: var(--peach);
   height: 190px;
   width: 100%;
   top: 80px;
@@ -60,7 +61,6 @@
 }
 
 .navLink {
-  color: hsl(228, 21%, 31%);
   font-size: var(--fs-4);
   font-weight: var(--fw-5);
   margin: var(--s-0) var(--s-4) var(--s-0) var(--s-4);

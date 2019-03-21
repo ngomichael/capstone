@@ -2,6 +2,13 @@
   /* Colors */
   --primary: hsl(174, 74%, 39%);
   --primary-light: hsl(174, 47%, 75%);
+  --primary-dark: hsl(180, 100%, 20%);
+  --darkest-gray: hsl(220, 27%, 22%);
+  --dark-gray: hsl(228, 21%, 31%);
+  --gray: hsl(228, 14%, 58%);
+  --light-gray: hsl(206, 23%, 81%);
+  --lightest-gray: hsl(200, 23%, 97%);
+  --peach: hsl(34, 100%, 81%);
 
   /* Opacity */
   --opacity-0: 0;

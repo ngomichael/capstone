@@ -17,7 +17,7 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  border: solid 2px #c3cfd9;
+  border: solid 2px var(--light-gray);
   background-color: white;
   font-size: var(--fs-2);
   margin-bottom: var(--s-2);
@@ -26,20 +26,20 @@
 .circleActive {
   composes: circle;
   border: none;
-  background-color: #a3ded8;
+  background-color: var(--primary-light);
   line-height: 30px;
 }
 
 .line {
   width: 75px;
   height: 3px;
-  background-color: #fff;
+  background-color: white;
   border: none;
-  border-top: 3px dotted #c3cfd9;
+  border-top: 3px dotted var(--light-gray);
   margin: var(--s-0) var(--s-0) var(--s-5) var(--s-0);
 }
 
 .lineActive {
   composes: line;
-  border-top: 2px solid #1aae9f;
+  border-top: 2px solid var(--primary);
 }

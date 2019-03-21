@@ -4,14 +4,15 @@
   width: 500px;
   height: 35px;
   font-size: var(--fs-2);
-  border: 2px solid #c2cfd9;
+  border: 2px solid var(--light-gray);
   border-radius: 4px;
-  background-color: #f7f9fa;
+  background-color: var(--lightest-gray);
   padding: var(--s-0) var(--s-0) var(--s-0) var(--s-2);
 }
 
 .input:focus {
   border: 2px solid #6558f5;
+  background-color: white;
   outline: none;
 }
 

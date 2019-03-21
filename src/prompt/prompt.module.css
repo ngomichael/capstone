@@ -36,38 +36,13 @@
 .pearImage {
   align-self: center;
   width: 400px;
-  /* height: 324px; */
   margin: var(--s-0) var(--s-8) var(--s-0) var(--s-8);
-}
-
-.startButton {
-  /* height: 50px;
-  width: 170px; */
-  position: absolute;
-  font-size: var(--fs-3);
-  font-weight: var(--fw-1);
-  border-radius: 5px;
-  letter-spacing: 1px;
-  background-color: #1aae9f;
-  color: white;
-  outline: none;
-  border: none;
-  box-shadow: var(--bs-1);
-  padding: var(--s-4);
-  margin-top: var(--s-6);
-  transition: background-color 300ms ease;
-}
-
-.startButton:hover {
-  cursor: pointer;
-  background-color: rgb(0, 100, 100);
 }
 
 .backButton {
   display: flex;
-  /* position: absolute; */
   margin-left: 100px;
   margin-bottom: 50px;
-  color: #1aae9f;
+  color: var(--primary);
   text-decoration: none;
 }

@@ -10,7 +10,7 @@
 .alertContainer {
   position: relative;
   width: 80%;
-  background-color: #a3ded8;
+  background-color: var(--primary-light);
   font-size: var(--fs-2);
   padding: var(--s-6);
   margin-bottom: var(--s-6);
@@ -39,15 +39,16 @@
   width: 60%;
   height: 40px;
   font-size: var(--fs-3);
-  border: 2px solid #c2cfd9;
+  border: 2px solid var(--light-gray);
   border-radius: 4px;
-  background-color: #f7f9fa;
+  background-color: var(--lightest-gray);
   padding: var(--s-0) var(--s-0) var(--s-0) var(--s-2);
   margin: var(--s-2) var(--s-0) var(--s-2) var(--s-0);
 }
 
 .searchInput:focus {
   border: 2px solid #6558f5;
+  background-color: white;
   outline: none;
 }
 
@@ -64,32 +65,12 @@
 
 .providersContainer {
   width: 80%;
-  border-top: 2px solid #c9d4dd;
-  border-right: 2px solid #c9d4dd;
-  border-left: 2px solid #c9d4dd;
+  border-top: 2px solid var(--light-gray);
+  border-right: 2px solid var(--light-gray);
+  border-left: 2px solid var(--light-gray);
 }
 
 .pageInfo {
   font-size: var(--fs-3);
   margin: var(--s-6) var(--s-0) var(--s-3) var(--s-0);
-}
-
-.viewMoreButton {
-  height: 50px;
-  width: 200px;
-  font-size: var(--fs-3);
-  font-weight: var(--fw-1);
-  border-radius: 5px;
-  letter-spacing: 1px;
-  background-color: #1aae9f;
-  color: white;
-  outline: none;
-  border: none;
-  box-shadow: var(--bs-1);
-  transition: background-color 300ms ease;
-}
-
-.viewMoreButton:hover {
-  cursor: pointer;
-  background-color: rgb(0, 100, 100);
 }

@@ -17,11 +17,11 @@
 }
 
 .primary {
-  background-color: hsl(174, 74%, 39%);
+  background-color: var(--primary);
 }
 
 .primary:hover {
-  background-color: hsl(180, 100%, 20%);
+  background-color: var(--primary-dark);
 }
 
 .warning {
