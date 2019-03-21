@@ -11,7 +11,7 @@ export const Prompt = ({ step, title, p1, p2, to, buttonText }) => {
     <div className={styles.container}>
       <OnboardingHeader step={step} />
 
-      <div className={styles.mainContentContainer}>
+      {/* <div className={styles.mainContentContainer}>
         <div>
           <Link to="/" className={styles.backButton}>
             <svg
@@ -45,7 +45,7 @@ export const Prompt = ({ step, title, p1, p2, to, buttonText }) => {
             </Button>
           </Link>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

@@ -7,7 +7,7 @@ export const OnboardingTracker = ({ step = 1 }) => {
     <div className={styles.container}>
       <div className={styles.step}>
         <div className={styles.circleActive}>1</div>
-        <p>Tell us about you</p>
+        <p className={styles.stepName}>Tell us about you</p>
       </div>
       <hr
         className={
@@ -24,7 +24,7 @@ export const OnboardingTracker = ({ step = 1 }) => {
         >
           2
         </div>
-        <p>View Providers</p>
+        <p className={styles.stepName}>View Providers</p>
       </div>
 
       <hr
@@ -42,7 +42,7 @@ export const OnboardingTracker = ({ step = 1 }) => {
         >
           3
         </div>
-        <p>Connect with providers</p>
+        <p className={styles.stepName}>Connect with providers</p>
       </div>
     </div>
   )
