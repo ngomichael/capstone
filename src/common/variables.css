@@ -1,4 +1,8 @@
 :root {
+  /* Colors */
+  --primary: hsl(174, 74%, 39%);
+  --primary-light: hsl(174, 47%, 75%);
+
   /* Opacity */
   --opacity-0: 0;
   --opacity-1: 0.2;

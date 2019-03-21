@@ -19,8 +19,8 @@ export const Home = () => {
           process. PearCare's matching algorithm intends to personalize every
           individual’s experience when searching for a provider.
         </p>
-        <Link to="/">
-          <p className={styles.learnMoreLink}>Learn more about how it works</p>
+        <Link to="/" className={styles.learnMoreLink}>
+          <p>Learn more about how it works</p>
         </Link>
         <Link to="getStarted">
           <Button
