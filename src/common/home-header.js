@@ -35,6 +35,7 @@ export const HomeHeader = () => {
         <p className={styles.productName}>PearCare</p>
       </div>
 
+      {/* Display the X or Hamburger Menu Icon  */}
       {displayMenu ? (
         <SVG
           width="24"

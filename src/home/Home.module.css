@@ -30,14 +30,6 @@
   margin: var(--s-3) var(--s-0) var(--s-7) var(--s-0);
 }
 
-/* .pearImagesContainer {
-  position: absolute;
-  display: flex;
-  justify-content: space-around;
-  top: 50%;
-  width: 100%;
-} */
-
 .pearImagesContainer {
   position: absolute;
   display: flex;
@@ -50,9 +42,6 @@
   align-self: center;
   width: 325px;
   height: 292px;
-  /* opacity: 0.5; */
-  /* margin: var(--s-0) var(--s-5) var(--s-12) var(--s-5); */
-  /* margin-bottom: var(--s-11); */
 }
 
 @media (max-width: 768px) {
@@ -70,10 +59,6 @@
   .supplementaryText {
     font-size: var(--fs-3);
     line-height: 1.5;
-  }
-
-  .pearImagesContainer {
-    top: 60%;
   }
 
   .pearImage:nth-child(odd) {

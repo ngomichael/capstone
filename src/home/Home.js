@@ -33,12 +33,9 @@ export const Home = () => {
         </Link>
       </div>
       <div className={styles.pearImagesContainer}>
-        {/* <img src={pears} className={styles.pearImage} /> */}
         <img src={pears} className={styles.pearImage} />
         <img src={pears} className={styles.pearImage} />
       </div>
-      {/* <div className={styles.pearImagesContainer}>
-      </div> */}
     </div>
   )
 }
