@@ -18,7 +18,7 @@
   height: 30px;
   border-radius: 50%;
   border: solid 2px var(--light-gray);
-  background-color: white;
+  background-color: var(--white);
   font-size: var(--fs-2);
   margin-bottom: var(--s-2);
 }
@@ -33,7 +33,7 @@
 .line {
   width: 75px;
   height: 3px;
-  background-color: white;
+  background-color: var(--white);
   border: none;
   border-top: 3px dotted var(--light-gray);
   margin: var(--s-0) var(--s-0) var(--s-5) var(--s-0);

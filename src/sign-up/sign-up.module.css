@@ -33,6 +33,6 @@
   width: 275px;
   height: 35px;
   border-radius: var(--br-2);
-  background-color: rgb(0, 140, 255);
-  color: white;
+  background-color: var(--primary);
+  color: var(--white);
 }

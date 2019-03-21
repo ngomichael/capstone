@@ -12,6 +12,11 @@
   cursor: pointer;
 }
 
+.link {
+  text-decoration: none;
+  color: var(--darkest-gray);
+}
+
 .providerPhoto {
   flex-shrink: 0;
   width: 80px;

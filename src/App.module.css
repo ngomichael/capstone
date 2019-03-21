@@ -11,7 +11,7 @@ body {
   position: relative;
   margin: 0 auto;
   font-family: 'Open Sans';
-  background-color: white;
+  background-color: var(--white);
   max-width: 1200px;
   height: 100%;
   min-height: 100%;

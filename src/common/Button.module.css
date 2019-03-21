@@ -5,7 +5,7 @@
   font-weight: var(--fw-4);
   border-radius: 5px;
   letter-spacing: 1px;
-  color: white;
+  color: var(--white);
   outline: none;
   border: none;
   box-shadow: var(--bs-1);

@@ -17,7 +17,7 @@ export const ProviderCard = ({ provider }) => {
   const { name, photo, specialization, summary } = provider
 
   return (
-    <Link to="/providerInfo" style={{ textDecoration: 'none', color: 'black' }}>
+    <Link to="/providerInfo" className={styles.link}>
       <div
         className={styles.container}
         onMouseEnter={handleMouseEnter}

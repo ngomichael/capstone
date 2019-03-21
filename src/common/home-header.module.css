@@ -68,7 +68,7 @@
 }
 
 .navLink:hover {
-  color: #1aae9f;
+  color: var(--primary);
   cursor: pointer;
 }
 

@@ -56,7 +56,7 @@ export const ProviderInfo = () => {
           <p>stacyadams@mail.com</p>
           <a
             href="https://shipshapementalhealth.com"
-            style={{ color: '#1aae9f' }}
+            className={styles.websiteLink}
           >
             https://shipshapementalhealth.com
           </a>
@@ -168,7 +168,7 @@ export const ProviderInfo = () => {
             href="https://www.google.com"
             rel="noreferrer noopener"
             target="_blank"
-            style={{ color: '#149184' }}
+            className={styles.directionsLink}
           >
             Get Directions
           </a>

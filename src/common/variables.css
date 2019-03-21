@@ -9,6 +9,9 @@
   --light-gray: hsl(206, 23%, 81%);
   --lightest-gray: hsl(200, 23%, 97%);
   --peach: hsl(34, 100%, 81%);
+  --white: hsl(0, 0%, 100%);
+  --black: hsl(0, 0%, 0%);
+  --faded-black: hsl(0, 0%, 0%, 0.5);
 
   /* Opacity */
   --opacity-0: 0;
