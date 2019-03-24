@@ -5,8 +5,9 @@ import styles from './prompt.module.css'
 import { OnboardingHeader } from '../common/onboarding-header'
 import pears from '../images/pairOfPears.png'
 import { Button, TYPES, SIZES } from '../common/button'
+import { UndrawAboutMe } from 'react-undraw'
 
-export const Prompt = ({ step, title, p1, p2, to, buttonText }) => {
+export const Prompt = ({ step, title, p1, p2, to, buttonText, image }) => {
   return (
     <div className={styles.container}>
       <OnboardingHeader step={step} />
@@ -30,7 +31,17 @@ export const Prompt = ({ step, title, p1, p2, to, buttonText }) => {
             <p>Back</p>
           </Link> */}
         {/* </div> */}
-        <img src={pears} className={styles.pearImage} />
+        {/* <SVG width="24" height="24" viewBox="0 0 24 24">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </SVG>
+        <img src={pears} className={styles.pearImage} /> */}
+        {/* <UndrawAboutMe
+          primaryColor="hsl(174, 74%, 39%)"
+          className={styles.aboutMe}
+          style={{ width: '325px' }}
+        /> */}
+        {image}
         <div className={styles.textContainer}>
           <h1 className={styles.title}>{title}</h1>
           <p className={styles.p1}>{p1}</p>

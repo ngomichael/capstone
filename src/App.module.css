@@ -31,3 +31,15 @@ li {
   font-family: 'Open Sans';
   letter-spacing: 0.05em;
 }
+
+.image {
+  flex-shrink: 0;
+  /* flex-grow: 2; */
+  margin: var(--s-0) var(--s-7) var(--s-0) var(--s-0);
+}
+
+@media (max-width: 768px) {
+  .image {
+    margin: var(--s-0) var(--s-0) var(--s-2) var(--s-0);
+  }
+}
