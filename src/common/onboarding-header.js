@@ -11,7 +11,7 @@ export const OnboardingHeader = ({ step }) => {
         <img src={PearCareLogo} className={styles.logo} />
         <p className={styles.productName}>PearCare</p>
       </div>
-      <div className={styles.progressTracker}>
+      <div className={styles.onboardingTracker}>
         <OnboardingTracker step={step} />
       </div>
     </header>

@@ -11,9 +11,9 @@ export const Prompt = ({ step, title, p1, p2, to, buttonText }) => {
     <div className={styles.container}>
       <OnboardingHeader step={step} />
 
-      {/* <div className={styles.mainContentContainer}>
-        <div>
-          <Link to="/" className={styles.backButton}>
+      <div className={styles.mainContentContainer}>
+        {/* <div> */}
+        {/* <Link to="/" className={styles.backButton}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -28,9 +28,9 @@ export const Prompt = ({ step, title, p1, p2, to, buttonText }) => {
               <polyline points="15 18 9 12 15 6" />
             </svg>
             <p>Back</p>
-          </Link>
-          <img src={pears} className={styles.pearImage} />
-        </div>
+          </Link> */}
+        {/* </div> */}
+        <img src={pears} className={styles.pearImage} />
         <div className={styles.textContainer}>
           <h1 className={styles.title}>{title}</h1>
           <p className={styles.p1}>{p1}</p>
@@ -45,7 +45,7 @@ export const Prompt = ({ step, title, p1, p2, to, buttonText }) => {
             </Button>
           </Link>
         </div>
-      </div> */}
+      </div>
     </div>
   )
 }
