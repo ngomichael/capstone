@@ -34,7 +34,6 @@ li {
 
 .image {
   flex-shrink: 0;
-  /* flex-grow: 2; */
   margin: var(--s-0) var(--s-7) var(--s-0) var(--s-0);
 }
 
