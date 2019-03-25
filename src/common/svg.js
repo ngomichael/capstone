@@ -8,24 +8,29 @@ export const SVG = ({
   onClick = () => {},
   className = '',
   children,
-}) => (
-  <svg
-    width={width}
-    height={height}
-    viewBox={viewBox}
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    xmlns="http://www.w3.org/2000/svg"
-    xmlnsXlink="http://www.w3.org/1999/xlink"
-    className={className}
-    onClick={onClick}
-  >
-    {children}
-  </svg>
-)
+}) => {
+  console.log(children[0])
+  console.log(children[1])
+  return (
+    <svg
+      width={width}
+      height={height}
+      viewBox={viewBox}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      className={className}
+      onClick={onClick}
+    >
+      {children[0]}
+      {children[1]}
+    </svg>
+  )
+}
 
 SVG.propTypes = {
   width: PropTypes.string.isRequired,

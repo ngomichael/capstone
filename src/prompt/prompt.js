@@ -3,9 +3,8 @@ import PropTypes from 'prop-types'
 import { Link } from '@reach/router'
 import styles from './prompt.module.css'
 import { OnboardingHeader } from '../common/onboarding-header'
-import pears from '../images/pairOfPears.png'
 import { Button, TYPES, SIZES } from '../common/button'
-import { SVG } from '../common/svg'
+import { BackButton } from '../common/back-button'
 
 export const Prompt = ({ step, title, p1, p2, to, buttonText, image }) => {
   return (
@@ -13,31 +12,9 @@ export const Prompt = ({ step, title, p1, p2, to, buttonText, image }) => {
       <OnboardingHeader step={step} />
 
       <div className={styles.mainContentContainer}>
-        {/* <div> */}
-        {/* <Link to="/" className={styles.backButton}> */}
-        {/* <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <polyline points="15 18 9 12 15 6" />
-          </svg>
-          <p>Back</p> */}
-        {/* <SVG width="24" height="24" viewBox="0 0 24 24">
-            <polyline points="15 18 9 12 15 6" />
-            <p>Back</p>
-          </SVG> */}
-        {/* </Link> */}
-        {/* </div> */}
-
         {image}
         <div className={styles.textContainer}>
+          <BackButton />
           <h1 className={styles.title}>{title}</h1>
           <p className={styles.p1}>{p1}</p>
           <p className={styles.p2}>{p2}</p>
