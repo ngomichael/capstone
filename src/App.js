@@ -25,7 +25,7 @@ class App extends Component {
             <UndrawAboutMe
               primaryColor="hsl(174, 74%, 39%)"
               className={styles.image}
-              style={{ width: '300px' }}
+              style={{ width: '350px' }}
             />
           }
           title="Welcome to PearCare"
@@ -42,7 +42,7 @@ class App extends Component {
             <UndrawHire
               primaryColor="hsl(174, 74%, 39%)"
               className={styles.image}
-              style={{ width: '300px' }}
+              style={{ width: '350px' }}
             />
           }
           title="Way to go! We pear-reviewed providers just for you."

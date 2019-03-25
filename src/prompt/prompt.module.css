@@ -13,13 +13,14 @@
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
-  margin: var(--s-10) var(--s-6) var(--s-0) var(--s-6);
+  margin: var(--s-10) var(--s-3) var(--s-0) var(--s-3);
 }
 
 .textContainer {
   position: relative;
   width: 50%;
   font-size: var(--fs-4);
+  margin-bottom: var(--s-5);
 }
 
 .title {
@@ -35,33 +36,33 @@
   margin: var(--s-4) var(--s-0) var(--s-4) var(--s-0);
 }
 
-.pearImage {
+/* .pearImage {
   align-self: center;
   width: 250px;
   margin: var(--s-0) var(--s-7) var(--s-0) var(--s-0);
-}
+} */
 
-/* .backButton {
+.backButton {
   display: flex;
   margin-left: 100px;
   margin-bottom: 50px;
   color: var(--primary);
   text-decoration: none;
-} */
+}
 
 @media (max-width: 768px) {
   .mainContentContainer {
     justify-content: center;
-    margin: var(--s-5) var(--s-0) var(--s-0) var(--s-0);
+    margin: var(--s-4) var(--s-3) var(--s-0) var(--s-3);
   }
 
   .textContainer {
-    width: 90%;
-    font-size: var(--fs-3);
+    width: 80%;
+    font-size: var(--fs-4);
   }
 
   .title {
-    font-size: var(--fs-5);
+    font-size: var(--fs-6);
     font-weight: var(--fw-5);
     margin-bottom: var(--s-2);
   }

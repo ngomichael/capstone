@@ -34,11 +34,11 @@ li {
 
 .image {
   flex-shrink: 0;
-  margin: var(--s-0) var(--s-7) var(--s-0) var(--s-0);
+  margin: var(--s-0) var(--s-3) var(--s-6) var(--s-0);
 }
 
 @media (max-width: 768px) {
   .image {
-    margin: var(--s-0) var(--s-0) var(--s-2) var(--s-0);
+    margin: var(--s-0) var(--s-0) var(--s-6) var(--s-0);
   }
 }
