@@ -6,7 +6,16 @@ import { OnboardingHeader } from '../common/onboarding-header'
 import { Button, TYPES, SIZES } from '../common/button'
 import { BackButton } from '../common/back-button'
 
-export const Prompt = ({ step, title, p1, p2, to, buttonText, image }) => {
+export const Prompt = ({
+  step,
+  title,
+  p1,
+  p2,
+  buttonText,
+  image,
+  nextPath,
+  prevPath,
+}) => {
   return (
     <div className={styles.container}>
       <OnboardingHeader step={step} />
@@ -14,11 +23,11 @@ export const Prompt = ({ step, title, p1, p2, to, buttonText, image }) => {
       <div className={styles.mainContentContainer}>
         {image}
         <div className={styles.textContainer}>
-          <BackButton />
+          <BackButton path={prevPath} />
           <h1 className={styles.title}>{title}</h1>
           <p className={styles.p1}>{p1}</p>
           <p className={styles.p2}>{p2}</p>
-          <Link to={to}>
+          <Link to={nextPath}>
             <Button
               type="button"
               buttonType={TYPES.PRIMARY}
@@ -38,6 +47,8 @@ Prompt.propTypes = {
   title: PropTypes.string.isRequired,
   p1: PropTypes.string.isRequired,
   p2: PropTypes.string.isRequired,
-  to: PropTypes.string.isRequired,
   buttonText: PropTypes.string.isRequired,
+  img: PropTypes.node,
+  nextPath: PropTypes.string.isRequired,
+  prevPath: PropTypes.string.isRequired,
 }

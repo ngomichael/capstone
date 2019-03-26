@@ -2,10 +2,10 @@
 
 .container {
   display: flex;
-  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
   border-bottom: 2px solid var(--light-gray);
-  align-items: center;
-  padding: var(--s-4) var(--s-0) var(--s-4) var(--s-4);
+  padding: var(--s-4) var(--s-4) var(--s-4) var(--s-4);
 }
 
 .container:hover {
@@ -17,14 +17,23 @@
   color: var(--darkest-gray);
 }
 
+.contactInfo {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.photoandInfoContainer {
+  display: flex;
+  align-items: center;
+}
+
 .providerPhoto {
   flex-shrink: 0;
   width: 80px;
   height: 80px;
-  /* background-image: url('../images/Jen+Adams.jpeg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50% 50%; */
+  object-fit: cover;
+  background-size: contain;
   border-radius: 50%;
   margin: var(--s-0) var(--s-5) var(--s-0) var(--s-0);
 }
@@ -35,16 +44,54 @@
 }
 
 .name {
-  font-size: var(--fs-3);
+  color: var(--primary);
+  font-size: var(--fs-4);
   font-weight: var(--fw-5);
 }
 
-.specialization {
-  font-style: italic;
-  margin-bottom: var(--s-2);
+.contactAction {
+  height: 32px;
+  width: 32px;
+  color: var(--primary);
+  border: 2px solid var(--primary-light);
+  padding: var(--s-1);
+  margin: var(--s-0) var(--s-1) var(--s-0) var(--s-1);
 }
 
-.summary {
+.contactAction:hover {
+  border: 2px solid var(--primary);
+  background-color: var(--lightest-gray);
+}
+
+.overview {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  font-size: var(--fs-2);
+  margin-top: var(--s-3);
+}
+
+.itemContainer {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin-top: var(--s-3);
+}
+
+.itemContainer:nth-child(odd) {
+  margin-right: var(--s-3);
+}
+
+.itemContainer:last-child {
+  width: 100%;
+}
+
+.label {
+  font-weight: 700;
+  margin-right: var(--s-3);
+}
+
+/* .summary {
 }
 
 .actionsContianer {
@@ -59,4 +106,4 @@
 .chevronActive {
   composes: chevron;
   transform: translateX(10px);
-}
+} */

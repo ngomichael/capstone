@@ -7,32 +7,9 @@
   /* margin: var(--s-0) var(--s-0) var(--s-0) var(--s-0); */
 }
 
-.alertContainer {
-  position: relative;
-  width: 80%;
-  background-color: var(--primary-light);
-  font-size: var(--fs-2);
-  padding: var(--s-6);
-  margin-bottom: var(--s-6);
-}
-
-.alertHeader {
-  font-size: var(--fs-5);
-  margin-bottom: var(--s-3);
-}
-
-.closeButton {
-  position: absolute;
-  right: 20px;
-  top: 20px;
-}
-
-.closeButton:hover {
-  cursor: pointer;
-}
-
 .titleAndSearchContainer {
   width: 80%;
+  margin-top: var(--s-6);
 }
 
 .searchInput {

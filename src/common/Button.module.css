@@ -47,3 +47,19 @@
   height: 50px;
   width: 270px;
 }
+
+@media (max-width: 768px) {
+  .button {
+    font-size: var(--fs-2);
+  }
+
+  .medium {
+    height: 45px;
+    width: 170px;
+  }
+
+  .large {
+    height: 45px;
+    width: 250px;
+  }
+}

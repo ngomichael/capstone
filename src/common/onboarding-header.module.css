@@ -1,7 +1,7 @@
 @import '../common/variables.css';
 
 .container {
-  position: sticky;
+  /* position: sticky; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -41,12 +41,6 @@
 }
 
 @media (max-width: 768px) {
-  /* .logoAndNameContainer {
-    display: flex;
-    align-items: center;
-    margin-left: var(--s-5);
-  } */
-
   .logo {
     width: 33px;
     height: 40px;
@@ -54,7 +48,6 @@
 
   .productName {
     font-size: var(--fs-4);
-    /* margin-right: 15px; */
   }
 }
 

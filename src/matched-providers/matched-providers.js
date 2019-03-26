@@ -24,8 +24,6 @@ const providers = [
       "Providers often have different areas of expertise. Having a provider who has experience with what you're struggling with could enhance the quality of your care.",
     approach:
       'During our sessions we will work together to understand what is working in your life through an evaluation and proceed to therapy when desired. Additionally, my approach also includes medication management so if that is a better solution to your needs, we will go that route.',
-    summary:
-      '"We will work together to understand what is working in your life through an evaluation and proceed to therapy when desired,"',
   },
   {
     name: 'Regina Aiko',
@@ -42,8 +40,6 @@ const providers = [
       "Providers often have different areas of expertise. Having a provider who has experience with what you're struggling with could enhance the quality of your care.",
     approach:
       'During our sessions we will work together to understand what is working in your life through an evaluation and proceed to therapy when desired. Additionally, my approach also includes medication management so if that is a better solution to your needs, we will go that route.',
-    summary:
-      '"We will go into the depth of your mind and try to originate the feelings you have today and why you have those feelings and thoughts."',
   },
   {
     name: 'Glen Coco',
@@ -60,8 +56,6 @@ const providers = [
       "Providers often have different areas of expertise. Having a provider who has experience with what you're struggling with could enhance the quality of your care.",
     approach:
       'During our sessions we will work together to understand what is working in your life through an evaluation and proceed to therapy when desired. Additionally, my approach also includes medication management so if that is a better solution to your needs, we will go that route.',
-    summary:
-      '"I will guid you to the right direction with a personalized diagnoses. We will always understand what you are struggling with and how you want to seek solutions."',
   },
 ]
 
@@ -102,50 +96,14 @@ const filters = [
 
 export const MatchedProviders = () => {
   const [searchVal, setSearchVal] = useState('')
-  const [isOpen, setIsOpen] = useState(true)
 
   function handleSearchValChange(e) {
     setSearchVal(e.target.value)
   }
 
-  function handleClose() {
-    setIsOpen(false)
-  }
   return (
     <div className={styles.container}>
       <OnboardingHeader step={2} />
-      {isOpen && (
-        <div className={styles.alertContainer}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className={styles.closeButton}
-            onClick={handleClose}
-          >
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-          </svg>
-
-          <h1 className={styles.alertHeader}>
-            Here are providers you might like. View their pages to find out the
-            best ways to contact them
-          </h1>
-          <p>
-            Below are a list of providers curated to fit your needs. Read their
-            bios to get to know them better, favorite them for to save later,
-            and adjust filters if needed. Once you feel that you found a
-            provider you want to work with, contact them via the phone, email,
-            or intake form they specified in their bio.
-          </p>
-        </div>
-      )}
       <div className={styles.titleAndSearchContainer}>
         <h1>Providers for you</h1>
         <input
@@ -155,16 +113,16 @@ export const MatchedProviders = () => {
           className={styles.searchInput}
         />
       </div>
-      <div className={styles.filtersContainer}>
+      {/* <div className={styles.filtersContainer}>
         {filters.map(filter => (
-          <OptionButton isClicked={filter.isClicked}>
+          <OptionButton isClicked={filter.isClicked} key={filter.name}>
             {filter.name}
           </OptionButton>
         ))}
-      </div>
+      </div> */}
       <div className={styles.providersContainer}>
         {providers.map(provider => (
-          <ProviderCard provider={provider} />
+          <ProviderCard provider={provider} key={provider.name} />
         ))}
       </div>
       <p className={styles.pageInfo}>1-3 of 18 results</p>

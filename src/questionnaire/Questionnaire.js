@@ -7,6 +7,7 @@ import { OnboardingHeader } from '../common/onboarding-header'
 import { QuestionField } from './question-field'
 import { Checkbox } from '../common/checkbox'
 import { Button, TYPES, SIZES } from '../common/button'
+import { BackButton } from '../common/back-button'
 
 export const questionnaireQuestions = [
   {
@@ -216,23 +217,8 @@ export const Questionnaire = () => {
   return (
     <div className={styles.container}>
       <OnboardingHeader step={1} />
-      <Link to="/" className={styles.backButton}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <polyline points="15 18 9 12 15 6" />
-        </svg>
-        <p>Back</p>
-      </Link>
       <div className={styles.questionsTitleContainer}>
+        <BackButton path="/getStarted" />
         <h1 className={styles.title}>First, let's figure out the essentials</h1>
         <Formik
           initialValues={initialValues}
@@ -258,10 +244,6 @@ export const Questionnaire = () => {
             </Form>
           )}
         </Formik>
-        {/* For demo
-        <button type="submit" className={styles.submitButton}>
-          Finish
-        </button> */}
       </div>
     </div>
   )
