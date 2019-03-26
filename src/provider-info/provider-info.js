@@ -3,64 +3,60 @@ import styles from './provider-info.module.css'
 import { OnboardingHeader } from '../common/onboarding-header'
 import { Video } from './video'
 import { ContactModal } from './contact-modal'
-import MorganMcCreaPhoto from '../images/morganmccrea.jpeg'
 import StacyAdamsPhoto from '../images/Jen+Adams.jpeg'
 import { Button, TYPES, SIZES } from '../common/button'
 
-export const ProviderInfo = () => {
-  const [isOpen, setIsOpen] = useState(false)
+export const ProviderInfo = ({
+  name,
+  photo,
+  credentials,
+  isAcceptingClients,
+  phone,
+  email,
+  website,
+  address,
+  specialties,
+  approach,
+}) => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   function handleClose() {
-    setIsOpen(false)
+    setIsModalOpen(false)
   }
 
   function handleShowModal() {
-    setIsOpen(true)
+    setIsModalOpen(true)
   }
 
   return (
     <div className={styles.container}>
-      {isOpen && <ContactModal handleClose={handleClose} />}
+      {isModalOpen && <ContactModal handleClose={handleClose} />}
       <OnboardingHeader step={2} />
       {/* Needs to be a link here to go back */}
-      {/* <div className={styles.backButton}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <polyline points="15 18 9 12 15 6" />
-        </svg>
-        <p>Back</p>
-      </div> */}
-      <div className={styles.providerCardContainer}>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+      <div className={styles.providerOverview}>
+        <div className={styles.basicInfo}>
           <img src={StacyAdamsPhoto} className={styles.providerPhoto} />
           <div>
             <p className={styles.name}>Stacy Adams</p>
             <p>ARNP, PMHNP-BC</p>
             <div className={styles.acceptingClientsTag}>
-              {' '}
-              Accepting new Clients
+              Accepting new clients
             </div>
           </div>
         </div>
         <div className={styles.contactInfo}>
-          <p>(206) 382 1928</p>
-          <p>stacyadams@mail.com</p>
-          <a
-            href="https://shipshapementalhealth.com"
-            className={styles.websiteLink}
-          >
-            https://shipshapementalhealth.com
-          </a>
-          <p>87384 NE 475th St, Seattle, WA 98472</p>
+          <p className={styles.sectionHeader}>Contact Information</p>
+          <div>
+            <p>(206) 382 1928</p>
+            <p>stacyadams@mail.com</p>
+            <a
+              href="https://shipshapementalhealth.com"
+              className={styles.websiteLink}
+            >
+              https://shipshapementalhealth.com
+            </a>
+            <p>87384 NE 475th St, Seattle, WA 98472</p>
+          </div>
         </div>
       </div>
       <div className={styles.sectionsContainer}>
@@ -68,11 +64,11 @@ export const ProviderInfo = () => {
           <p className={styles.sectionHeader}>
             Biography: Background and Education
           </p>
-          {/* <p className={styles.sectionDescription}>
+          <p className={styles.sectionDescription}>
             Description of why this is important and would help a patient make a
             choice about wanting to work with this provider. Lorem ipsum dolor
             sit amet, consectetur adipiscing elit. Mauris ex nibh,
-          </p> */}
+          </p>
           <p className={styles.sectionContent}>
             I am a clinician located in the heart of Ballard. I grew up in rural
             Ohio as a shy and awkward kid, filling time with reading, gaming,
@@ -96,15 +92,11 @@ export const ProviderInfo = () => {
             the quality of your care.
           </p>
           <p className={styles.sectionContent}>
-            <p className={styles.sectionContent}>
-              <b>Issues</b>: Trauma, PTSD, ADHD, Depression, Anxiety
-            </p>
-            <p className={styles.sectionContent}>
-              <b>Identity/population focus</b>: Bisexual, Lesbian, Gay
-            </p>
-            <p className={styles.sectionContent}>
-              <b>Client focus</b>: Adults, Young Adults
-            </p>
+            During our sessions we will work together to understand what is
+            working in your life through an evaluation and proceed to therapy
+            when desired. Additionally, my approach also includes medication
+            management so if that is a better solution to your needs, we will go
+            that route.
           </p>
         </div>
         <div className={styles.sectionContainer}>
@@ -124,30 +116,16 @@ export const ProviderInfo = () => {
         </div>
         <div className={styles.sectionContainer}>
           <p className={styles.sectionHeader}>Video</p>
-          <div className={styles.videoSection}>
-            <Video />
-            <div style={{ marginLeft: '50px' }}>
-              <p className={styles.sectionDescription}>
-                Part of being able to form a successful working relationship
-                with your provider is finding a provider who is a good fit with
-                your personality and needs. Watch this video to see if you can
-                envision yourself working with this provider.
-              </p>
-              {/* <p className={styles.sectionContent}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-                ex nibh, dapibus eget commodo vitae, dictum vitae urna. Aenean
-                eu nunc ac leo dictum vehicula. Nam quis viverra dui, in
-                elementum dui. Phasellus posuere erat ante. Pellentesque quis
-                eros vel nisi tincidunt consequat nec et ante. Vivamus interdum
-                efficitur nunc, eget consequat nunc feugiat at. Pellentesque at
-                turpis in neque elementum ultrices. In posuere justo a porta
-                condimentum.
-              </p> */}
-            </div>
-          </div>
+          <p className={styles.sectionDescription}>
+            Part of being able to form a successful working relationship with
+            your provider is finding a provider who is a good fit with your
+            personality and needs. Watch this video to see if you can envision
+            yourself working with this provider.
+          </p>
+          <Video />
         </div>
       </div>
-      <div className={styles.footer}>
+      {/* <div className={styles.footer}>
         <div className={styles.leftSideActions}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -182,7 +160,7 @@ export const ProviderInfo = () => {
         >
           I'm interested in reaching out
         </Button>
-      </div>
+      </div> */}
     </div>
   )
 }

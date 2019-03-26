@@ -3,7 +3,6 @@ import styles from './matched-providers.module.css'
 import { ProviderCard } from './provider-card'
 import { OnboardingHeader } from '../common/onboarding-header'
 import { OptionButton } from '../common/option-button'
-import MorganMcCreaPhoto from '../images/morganmccrea.jpeg'
 import Therapist1 from '../images/Therapist1.jpeg'
 import Therapist2 from '../images/Therapist2.jpeg'
 import JenAdamsPhoto from '../images/Jen+Adams.jpeg'
@@ -13,21 +12,54 @@ const providers = [
   {
     name: 'Stacy Adams',
     photo: JenAdamsPhoto,
-    specialization: 'ARNP, PMHNP-BC',
+    credentials: 'ARNP, PMHNP-BC',
+    isAcceptingClients: true,
+    phone: '(206) 382 1928',
+    email: 'stacyadams@mail.com',
+    website: 'https://shipshapementalhealth.com',
+    address: '87384 NE 475th St, Seattle, WA 98472',
+    biography:
+      "I am a clinician located in the heart of Ballard. I grew up in rural Ohio as a shy and awkward kid, filling time with reading, gaming, and spending time with my family's golden retrievers. I attended The Ohio State University for both my undergraduate and graduate education. I moved to Seattle after graduate school where I met my wife Olivia out of a genuine love for the Pacific Northwest. These days, I can still be found reading (mostly Sci-Fi) and gaming (Board, Card, Computer, Console). I’ve also taken up kayaking around the city with my foldable kayak, and I find biking to be my preferred method of transportation.",
+    specialties:
+      "Providers often have different areas of expertise. Having a provider who has experience with what you're struggling with could enhance the quality of your care.",
+    approach:
+      'During our sessions we will work together to understand what is working in your life through an evaluation and proceed to therapy when desired. Additionally, my approach also includes medication management so if that is a better solution to your needs, we will go that route.',
     summary:
       '"We will work together to understand what is working in your life through an evaluation and proceed to therapy when desired,"',
   },
   {
     name: 'Regina Aiko',
     photo: Therapist1,
-    specialization: 'LICSW',
+    credentials: 'LICSW',
+    isAcceptingClients: true,
+    phone: '(206) 382 1928',
+    email: 'stacyadams@mail.com',
+    website: 'https://shipshapementalhealth.com',
+    address: '87384 NE 475th St, Seattle, WA 98472',
+    biography:
+      "I am a clinician located in the heart of Ballard. I grew up in rural Ohio as a shy and awkward kid, filling time with reading, gaming, and spending time with my family's golden retrievers. I attended The Ohio State University for both my undergraduate and graduate education. I moved to Seattle after graduate school where I met my wife Olivia out of a genuine love for the Pacific Northwest. These days, I can still be found reading (mostly Sci-Fi) and gaming (Board, Card, Computer, Console). I’ve also taken up kayaking around the city with my foldable kayak, and I find biking to be my preferred method of transportation.",
+    specialties:
+      "Providers often have different areas of expertise. Having a provider who has experience with what you're struggling with could enhance the quality of your care.",
+    approach:
+      'During our sessions we will work together to understand what is working in your life through an evaluation and proceed to therapy when desired. Additionally, my approach also includes medication management so if that is a better solution to your needs, we will go that route.',
     summary:
       '"We will go into the depth of your mind and try to originate the feelings you have today and why you have those feelings and thoughts."',
   },
   {
     name: 'Glen Coco',
     photo: Therapist2,
-    specialization: 'PsyD',
+    credentials: 'PsyD',
+    isAcceptingClients: true,
+    phone: '(206) 382 1928',
+    email: 'stacyadams@mail.com',
+    website: 'https://shipshapementalhealth.com',
+    address: '87384 NE 475th St, Seattle, WA 98472',
+    biography:
+      "I am a clinician located in the heart of Ballard. I grew up in rural Ohio as a shy and awkward kid, filling time with reading, gaming, and spending time with my family's golden retrievers. I attended The Ohio State University for both my undergraduate and graduate education. I moved to Seattle after graduate school where I met my wife Olivia out of a genuine love for the Pacific Northwest. These days, I can still be found reading (mostly Sci-Fi) and gaming (Board, Card, Computer, Console). I’ve also taken up kayaking around the city with my foldable kayak, and I find biking to be my preferred method of transportation.",
+    specialties:
+      "Providers often have different areas of expertise. Having a provider who has experience with what you're struggling with could enhance the quality of your care.",
+    approach:
+      'During our sessions we will work together to understand what is working in your life through an evaluation and proceed to therapy when desired. Additionally, my approach also includes medication management so if that is a better solution to your needs, we will go that route.',
     summary:
       '"I will guid you to the right direction with a personalized diagnoses. We will always understand what you are struggling with and how you want to seek solutions."',
   },

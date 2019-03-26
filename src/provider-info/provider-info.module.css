@@ -8,14 +8,20 @@
   width: 100%;
   height: 100%;
   line-height: 1.5;
-  margin-top: var(--s-8);
 }
 
-.providerCardContainer {
+.providerOverview {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   width: 80%;
-  margin-top: var(--s-7);
+  margin: var(--s-7) var(--s-0) var(--s-5) var(--s-0);
+}
+
+.basicInfo {
+  display: flex;
+  align-items: center;
+  margin: var(--s-0) var(--s-3) var(--s-4) var(--s-0);
 }
 
 .providerPhoto {
@@ -37,6 +43,10 @@
   color: var(--primary);
   padding: var(--s-2);
   margin-top: var(--s-2);
+}
+
+.hideAcceptingClientsTag {
+  display: none;
 }
 
 .contactInfo {
@@ -72,12 +82,6 @@
   font-size: var(--fs-2);
 }
 
-.videoSection {
-  display: flex;
-  align-items: flex-start;
-  height: 400px;
-}
-
 .footer {
   position: fixed;
   display: flex;
@@ -108,4 +112,15 @@
   position: absolute;
   bottom: 150px;
   color: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .name {
+    font-size: var(--fs-4);
+  }
+
+  .contactInfo {
+    text-align: left;
+    margin-top: var(--s-5);
+  }
 }
