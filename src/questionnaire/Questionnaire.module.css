@@ -6,9 +6,7 @@
 }
 
 .questionsTitleContainer {
-  /* margin-top: 150px; */
-  margin-left: 100px;
-  /* height: 1400px; */
+  margin: var(--s-5) var(--s-10) var(--s-0) var(--s-10);
 }
 
 .title {
@@ -109,4 +107,10 @@
   left: 100px;
   color: var(--primary);
   text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .questionsTitleContainer {
+    margin: var(--s-5) var(--s-6) var(--s-0) var(--s-6);
+  }
 }

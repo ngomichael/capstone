@@ -1,7 +1,7 @@
 @import '../common/variables.css';
 
 .input {
-  width: 500px;
+  width: 70%;
   height: 35px;
   font-size: var(--fs-2);
   border: 2px solid var(--light-gray);
@@ -18,10 +18,11 @@
 
 .supplementaryText {
   font-size: var(--fs-2);
-  margin-bottom: var(--s-2);
+  margin-bottom: var(--s-3);
+  font-style: italic;
 }
 
 .longInput {
   composes: input;
-  width: 800px;
+  width: 100%;
 }

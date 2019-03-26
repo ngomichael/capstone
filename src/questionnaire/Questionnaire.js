@@ -11,8 +11,9 @@ import { Button, TYPES, SIZES } from '../common/button'
 export const questionnaireQuestions = [
   {
     questionType: 'input',
-    question: "What's the city of zipcode you're seeking care in?*",
-    supplementaryText: 'This will help us find providers closest to you',
+    question: "What's the city or zipcode you're seeking care in?*",
+    supplementaryText:
+      'Getting to a provider can be a big barrier in receiving care. This information helps us find providers close to you.',
     name: 'zipcode',
     type: 'text',
     isLongInput: false,
@@ -20,6 +21,8 @@ export const questionnaireQuestions = [
   {
     questionType: 'cards',
     question: 'What kind of care are you looking for?',
+    supplementaryText:
+      "There are a wide variety of mental health services available - let's narrow them down!.",
     options: [
       {
         name: 'Therapy',
@@ -41,16 +44,19 @@ export const questionnaireQuestions = [
   },
   {
     questionType: 'input',
-    question: 'What are you struggling with and seeking help for?*',
-    supplementaryText: 'I.e. depression, life transition challenges',
+    question:
+      'What are you struggling with and seeking help for? (I.e depression, life transition challenges)',
+    supplementaryText:
+      "Providers often have different areas of expertise. Having a provider who has experience with what you're struggling with could enhance the quality of your care.",
     name: 'illnesses',
     type: 'text',
     isLongInput: true,
   },
   {
     questionType: 'input',
-    question: 'What insurance(s) do you have, if any?',
-    supplementaryText: 'I.e. Apple Health',
+    question: 'What insurance(s) do you have, if any? (I.e Apple Health)',
+    supplementaryText:
+      'Finding a provider that your insurance covers will make seeing a provider more affordable to you.',
     name: 'insurance',
     type: 'text',
     isLongInput: false,
@@ -59,6 +65,8 @@ export const questionnaireQuestions = [
     questionType: 'checkboxes',
     question:
       'Are you looking for someone who specializes with a specific age group?',
+    supplementaryText:
+      'Providers may have more experience with certain age groups. Having a provider who has experience with your age could enhance the quality of your care.',
     options: [
       'Toddlers/preschoolers (ages 0 to 6)',
       'Children (ages 6 to 10)',
@@ -71,8 +79,10 @@ export const questionnaireQuestions = [
   },
   {
     questionType: 'input',
-    question: 'Are you looking for someone with certain credentials?',
-    supplementaryText: 'I.e. PhD, LICSW',
+    question:
+      'Are you looking for someone with certain credentials? (I.e. PhD, LICSW)',
+    supplementaryText:
+      'Some patients prefer their providers have completed a certain degree or certificate program.',
     name: 'credentials',
     type: 'text',
     isLongInput: false,
@@ -80,8 +90,9 @@ export const questionnaireQuestions = [
   {
     questionType: 'input',
     question:
-      'Are you looking for someone with certain personality traits or treatment approaches?',
-    supplementaryText: 'I.e. Integrative, non-directive',
+      'Are you looking for someone with certain personality traits or treatment approaches? (I.e. Integrative, non-directive)',
+    supplementaryText:
+      "Providers can use a wide range of approaches. If you're looking for a particular approach, that can narrow down the providers we think are a good fit for you.",
     name: 'traits',
     type: 'text',
     isLongInput: true,
@@ -89,9 +100,9 @@ export const questionnaireQuestions = [
   {
     questionType: 'input',
     question:
-      'Are you looking for someone that specializes in working with a certain client population or shares an identity trait?',
+      'Are you looking for someone that specializes in working with a certain client population or shares an identity trait? (I.e gender, race/ethnicity, religion/spirituality, sexual orientation, language)',
     supplementaryText:
-      'I.e gender, race/ethnicity, religion/spirituality, sexual orientation, language',
+      'Providers may have more experience with certain groups of the general population. Having a provider who has experience with challenges faced by particular demographics could enhance the quality of your care.',
     name: 'population',
     type: 'text',
     isLongInput: true,
@@ -222,7 +233,7 @@ export const Questionnaire = () => {
         <p>Back</p>
       </Link>
       <div className={styles.questionsTitleContainer}>
-        <h1 className={styles.title}>Questionnaire</h1>
+        <h1 className={styles.title}>First, let's figure out the essentials</h1>
         <Formik
           initialValues={initialValues}
           onSubmit={(values, { setSubmitting }) => {
@@ -252,34 +263,6 @@ export const Questionnaire = () => {
           Finish
         </button> */}
       </div>
-      {/* <div className={styles.footer}>
-        <div className={styles.leftSideActions}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#1AAE9F"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            style={{ marginRight: '20px', marginLeft: '20px' }}
-            className={styles.favorite}
-          >
-            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-          </svg>
-          <a
-            href="https://www.google.com"
-            rel="noreferrer noopener"
-            target="_blank"
-            style={{ color: '#149184' }}
-          >
-            Get Directions
-          </a>
-        </div>
-        <button className={styles.interestedButton}>Finish</button>
-      </div> */}
     </div>
   )
 }
