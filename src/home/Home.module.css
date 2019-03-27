@@ -4,6 +4,13 @@
   align-items: center;
 }
 
+.maxWidthContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: var(--mw);
+}
+
 .introContainer {
   position: absolute;
   display: flex;

@@ -104,35 +104,37 @@ export const MatchedProviders = () => {
   return (
     <div className={styles.container}>
       <OnboardingHeader step={2} />
-      <div className={styles.titleAndSearchContainer}>
-        <h1>Providers for you</h1>
-        <input
-          value={searchVal}
-          onChange={handleSearchValChange}
-          placeholder="Search for a location or keyword"
-          className={styles.searchInput}
-        />
-      </div>
-      {/* <div className={styles.filtersContainer}>
+      <div className={styles.maxWidthContainer}>
+        <div className={styles.titleAndSearchContainer}>
+          <h1>Providers for you</h1>
+          <input
+            value={searchVal}
+            onChange={handleSearchValChange}
+            placeholder="Search for a location or keyword"
+            className={styles.searchInput}
+          />
+        </div>
+        {/* <div className={styles.filtersContainer}>
         {filters.map(filter => (
           <OptionButton isClicked={filter.isClicked} key={filter.name}>
-            {filter.name}
+          {filter.name}
           </OptionButton>
-        ))}
-      </div> */}
-      <div className={styles.providersContainer}>
-        {providers.map(provider => (
-          <ProviderCard provider={provider} key={provider.name} />
-        ))}
+          ))}
+        </div> */}
+        <div className={styles.providersContainer}>
+          {providers.map(provider => (
+            <ProviderCard provider={provider} key={provider.name} />
+          ))}
+        </div>
+        <p className={styles.pageInfo}>1-3 of 18 results</p>
+        <Button
+          type="button"
+          buttonType={TYPES.PRIMARY}
+          buttonSize={SIZES.MEDIUM}
+        >
+          View more matches
+        </Button>
       </div>
-      <p className={styles.pageInfo}>1-3 of 18 results</p>
-      <Button
-        type="button"
-        buttonType={TYPES.PRIMARY}
-        buttonSize={SIZES.MEDIUM}
-      >
-        View more matches
-      </Button>
     </div>
   )
 }

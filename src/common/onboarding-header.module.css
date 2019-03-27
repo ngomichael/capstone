@@ -7,6 +7,7 @@
   align-items: center;
   background-color: var(--white);
   width: 100%;
+  max-width: var(--mw);
   height: 80px;
   top: 0;
   z-index: 2;

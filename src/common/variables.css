@@ -78,4 +78,7 @@
   --bs-3: 0 5px 15px hsla(0, 0%, 0%, 0.2);
   --bs-4: 0 10px 24px hsla(0, 0%, 0%, 0.2);
   --bs-5: 0 15px 35px hsla(0, 0%, 0%, 0.2);
+
+  /* Max Width Wrapper */
+  --mw: 1200px;
 }

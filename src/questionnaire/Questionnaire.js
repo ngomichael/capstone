@@ -217,33 +217,37 @@ export const Questionnaire = () => {
   return (
     <div className={styles.container}>
       <OnboardingHeader step={1} />
-      <div className={styles.questionsTitleContainer}>
-        <BackButton path="/getStarted" />
-        <h1 className={styles.title}>First, let's figure out the essentials</h1>
-        <Formik
-          initialValues={initialValues}
-          onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2))
-              setSubmitting(false)
-            }, 400)
-          }}
-        >
-          {({ isSubmitting }) => (
-            <Form>
-              {renderQuestions()}
-              <Link to="/questionnaireCompleted">
-                <Button
-                  type="button"
-                  buttonType={TYPES.PRIMARY}
-                  buttonSize={SIZES.MEDIUM}
-                >
-                  Finish
-                </Button>
-              </Link>
-            </Form>
-          )}
-        </Formik>
+      <div className={styles.maxWidthContainer}>
+        <div className={styles.questionsTitleContainer}>
+          <BackButton path="/getStarted" />
+          <h1 className={styles.title}>
+            First, let's figure out the essentials
+          </h1>
+          <Formik
+            initialValues={initialValues}
+            onSubmit={(values, { setSubmitting }) => {
+              setTimeout(() => {
+                alert(JSON.stringify(values, null, 2))
+                setSubmitting(false)
+              }, 400)
+            }}
+          >
+            {({ isSubmitting }) => (
+              <Form>
+                {renderQuestions()}
+                <Link to="/questionnaireCompleted">
+                  <Button
+                    type="button"
+                    buttonType={TYPES.PRIMARY}
+                    buttonSize={SIZES.MEDIUM}
+                  >
+                    Finish
+                  </Button>
+                </Link>
+              </Form>
+            )}
+          </Formik>
+        </div>
       </div>
     </div>
   )

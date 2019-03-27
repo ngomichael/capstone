@@ -8,6 +8,10 @@
   width: 100%;
 }
 
+.maxWidthContainer {
+  max-width: var(--mw);
+}
+
 .mainContentContainer {
   display: flex;
   justify-content: space-evenly;

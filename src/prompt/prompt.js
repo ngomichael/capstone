@@ -19,23 +19,24 @@ export const Prompt = ({
   return (
     <div className={styles.container}>
       <OnboardingHeader step={step} />
-
-      <div className={styles.mainContentContainer}>
-        {image}
-        <div className={styles.textContainer}>
-          <BackButton path={prevPath} />
-          <h1 className={styles.title}>{title}</h1>
-          <p className={styles.p1}>{p1}</p>
-          <p className={styles.p2}>{p2}</p>
-          <Link to={nextPath}>
-            <Button
-              type="button"
-              buttonType={TYPES.PRIMARY}
-              buttonSize={SIZES.MEDIUM}
-            >
-              {buttonText}
-            </Button>
-          </Link>
+      <div className={styles.maxWidthContainer}>
+        <div className={styles.mainContentContainer}>
+          {image}
+          <div className={styles.textContainer}>
+            <BackButton path={prevPath} />
+            <h1 className={styles.title}>{title}</h1>
+            <p className={styles.p1}>{p1}</p>
+            <p className={styles.p2}>{p2}</p>
+            <Link to={nextPath}>
+              <Button
+                type="button"
+                buttonType={TYPES.PRIMARY}
+                buttonSize={SIZES.MEDIUM}
+              >
+                {buttonText}
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
