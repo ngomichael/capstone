@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styles from './home-header.module.css'
 import PearCareLogo from '../images/logo.png'
-import { SVG } from '../common/svg'
+import { X, Menu } from 'react-feather'
 
 const navLinksText = ['How it Works', 'For Providers', 'Log in', 'Sign up']
 
@@ -37,28 +37,9 @@ export const HomeHeader = () => {
 
       {/* Display the X or Hamburger Menu Icon  */}
       {displayMenu ? (
-        <SVG
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          className={styles.menuIcon}
-          onClick={handleMenuClick}
-        >
-          <line x1="18" y1="6" x2="6" y2="18" />
-          <line x1="6" y1="6" x2="18" y2="18" />
-        </SVG>
+        <X className={styles.menuIcon} onClick={handleMenuClick} />
       ) : (
-        <SVG
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          className={styles.menuIcon}
-          onClick={handleMenuClick}
-        >
-          <line x1="3" y1="14" x2="21" y2="14" />
-          <line x1="3" y1="7" x2="21" y2="7" />
-          <line x1="3" y1="21" x2="21" y2="21" />
-        </SVG>
+        <Menu className={styles.menuIcon} onClick={handleMenuClick} />
       )}
 
       {displayMenu ? (

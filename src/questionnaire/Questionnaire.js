@@ -8,6 +8,7 @@ import { QuestionField } from './question-field'
 import { Checkbox } from '../common/checkbox'
 import { Button, TYPES, SIZES } from '../common/button'
 import { BackButton } from '../common/back-button'
+import { ArrowRight } from 'react-feather'
 
 export const questionnaireQuestions = [
   {
@@ -187,23 +188,8 @@ const renderQuestions = () => {
   return questionnaireQuestions.map((question, index) => {
     return (
       <div className={styles.questionsContainer}>
-        <p className={styles.questionNumber}>
-          {index + 1}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="28"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <line x1="5" y1="12" x2="19" y2="12" />
-            <polyline points="12 5 19 12 12 19" />
-          </svg>
-        </p>
+        <p className={styles.questionNumber}>{index + 1}</p>
+        <ArrowRight size={18} className={styles.arrow} />
         <div>
           <p className={styles.question}>{question.question}</p>
           {returnCorrectQuestionFormat(question)}

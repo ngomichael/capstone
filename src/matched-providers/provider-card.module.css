@@ -90,20 +90,3 @@
   font-weight: 700;
   margin-right: var(--s-3);
 }
-
-/* .summary {
-}
-
-.actionsContianer {
-  display: flex;
-  margin-right: var(--s-6);
-}
-
-.chevron {
-  transition: all 300ms ease;
-}
-
-.chevronActive {
-  composes: chevron;
-  transform: translateX(10px);
-} */

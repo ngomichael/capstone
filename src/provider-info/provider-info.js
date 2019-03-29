@@ -5,7 +5,7 @@ import { Video } from './video'
 import { ContactModal } from './contact-modal'
 import StacyAdamsPhoto from '../images/Jen+Adams.jpeg'
 import { Button, TYPES, SIZES } from '../common/button'
-import { SVG } from '../common/svg'
+import { Heart } from 'react-feather'
 
 export const ProviderInfo = ({
   name,
@@ -129,16 +129,8 @@ export const ProviderInfo = ({
         </div>
         <div className={styles.footer}>
           <div className={styles.leftSideActions}>
-            <SVG
-              width="30"
-              height="30"
-              viewBox="0 0 24 24"
-              className={styles.favorite}
-            >
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-            </SVG>
+            <Heart size={30} className={styles.favorite} />
           </div>
-
           <Button
             type="button"
             onClick={handleShowModal}

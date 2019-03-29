@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from '@reach/router'
 import PropTypes from 'prop-types'
 import styles from './provider-card.module.css'
-import { SVG } from '../common/svg'
+import { Mail, Heart, ExternalLink } from 'react-feather'
 
 const overviewItems = [
   {
@@ -59,34 +59,10 @@ export const ProviderCard = ({ provider }) => {
             </div>
           </div>
           <div className={styles.contactActions}>
-            <SVG
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              className={styles.contactAction}
-            >
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-              <polyline points="22,6 12,13 2,6" />
-            </SVG>
-            <SVG
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              className={styles.contactAction}
-            >
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-            </SVG>
+            <Mail className={styles.contactAction} />
+            <Heart className={styles.contactAction} />
             <a href="https://google.com">
-              <SVG
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                className={styles.contactAction}
-              >
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                <polyline points="15 3 21 3 21 9" />
-                <line x1="10" y1="14" x2="21" y2="3" />
-              </SVG>
+              <ExternalLink className={styles.contactAction} />
             </a>
           </div>
         </div>
@@ -101,37 +77,6 @@ export const ProviderCard = ({ provider }) => {
             )
           })}
         </div>
-        {/* <div className={styles.actionsContianer}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#1AAE9F"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            style={{ marginRight: '20px', marginLeft: '20px' }}
-            className={styles.action}
-          >
-            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-          </svg>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#1AAE9F"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className={isHovered ? styles.chevronActive : styles.chevron}
-          >
-            <polyline points="9 18 15 12 9 6" />
-          </svg>
-        </div> */}
       </div>
     </Link>
   )

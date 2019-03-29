@@ -2,27 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './contact-modal.module.css'
 import { Button, TYPES, SIZES } from '../common/button'
+import { X } from 'react-feather'
 
 export const ContactModal = ({ handleClose }) => {
   return (
     <div className={styles.container}>
       <div className={styles.modal}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#149184"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className={styles.closeButton}
-          onClick={handleClose}
-        >
-          <line x1="18" y1="6" x2="6" y2="18" />
-          <line x1="6" y1="6" x2="18" y2="18" />
-        </svg>
+        <X className={styles.closeButton} onClick={handleClose} />
         <div className={styles.actionItems}>
           <p className={styles.header}>
             Here's how you get in touch with Stacy
