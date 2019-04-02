@@ -10,6 +10,7 @@ class Firebase {
     this.db = app.firestore()
   }
 
+  // Login and logout should both be async
   login(email, password) {
     this.auth.signInWithEmailAndPassword(email, password)
   }
@@ -28,29 +29,31 @@ class Firebase {
   addInformation(firstName, lastName, password, email, zipcode) {
     if (!this.auth.currentUser) {
       return alert('Not Authorized')
-    } 
-    return this.db.collection('users_pearcare').add({
-      first_name: firstName,
-      last_name: lastName, 
-      email :email, 
-      password: password, 
-      zip_code: zipcode
-
-    })
-    .then(((docRef) => {
-      console.log(firstName)
-      console.log(docRef.id)
-      this.auth.currentUser.updateProfile({
-        id: docRef.id,
-        displayName: firstName,
+    }
+    return this.db
+      .collection('users_pearcare')
+      .add({
+        first_name: firstName,
+        last_name: lastName,
+        email: email,
         password: password,
-        email:email
+        zip_code: zipcode,
       })
-    }))
-    .catch(err => console.log(err))
+      .then(docRef => {
+        console.log(firstName)
+        console.log(docRef.id)
+        this.auth.currentUser.updateProfile({
+          id: docRef.id,
+          displayName: firstName,
+          password: password,
+          email: email,
+        })
+      })
+      .catch(err => console.log(err))
   }
 
   isInitialized() {
+    // Could this be async and await?
     return new Promise(resolve => {
       this.auth.onAuthStateChanged(resolve)
     })
@@ -63,7 +66,6 @@ class Firebase {
   getCurrentEmail() {
     return this.auth.currentUser && this.auth.currentUser.email
   }
-
 }
 
 export default new Firebase()

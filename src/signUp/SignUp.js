@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
-import { Link, Redirect} from '@reach/router'
+import { Link, Redirect } from '@reach/router'
 import styles from './SignUp.module.css'
 import firebase from '../Firebase/firebase'
 
-
-
+// Change this to use type for input instead of having so many handleFuncs
 const SignUp = props => {
-  // These are state hooks - https://reactjs.org/docs/hooks-state.html
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
@@ -33,18 +31,23 @@ const SignUp = props => {
   function handleZipcodeChange(e) {
     setZipcode(e.target.value)
   }
-  
-    //Method for someone signing up
-    async function handleSignUp() {
-      try {
-        await firebase.register(name, email, password)
-        await firebase.addInformation(firstName, lastName, password, email, zipcode)
-        setCreatedAccount(true)
-      } catch(error) {
-        alert(error.message)
-      }
-  
+
+  //Method for someone signing up
+  async function handleSignUp() {
+    try {
+      await firebase.register(name, email, password)
+      await firebase.addInformation(
+        firstName,
+        lastName,
+        password,
+        email,
+        zipcode
+      )
+      setCreatedAccount(true)
+    } catch (error) {
+      alert(error.message)
     }
+  }
 
   return (
     <div className={styles.container}>
@@ -59,7 +62,7 @@ const SignUp = props => {
           value={firstName}
           type="text"
           placeholder="First Name"
-          onChange={(e) => handleFirstNameChange(e)}
+          onChange={e => handleFirstNameChange(e)}
         />
         <input
           className={styles.input}
@@ -73,36 +76,32 @@ const SignUp = props => {
           value={email}
           type="text"
           placeholder="Email"
-          onChange={(e) => handleEmailChange(e)}
+          onChange={e => handleEmailChange(e)}
         />
         <input
           className={styles.input}
           value={password}
           type="password"
           placeholder="Password"
-          onChange={(e) => handlePasswordChange(e)}
+          onChange={e => handlePasswordChange(e)}
         />
         <input
           className={styles.input}
           value={zipcode}
           type="text"
           placeholder="Zipcode"
-          onChange={(e) => handleZipcodeChange(e)}
+          onChange={e => handleZipcodeChange(e)}
         />
-        
       </form>
-      <button
-          className={styles.button}
-          onClick={ handleSignUp }
-        >
-          Create Account
-        </button>
-      {createdAccount ? <Redirect noThrow from='signup' to='confirmation' /> : null}
+      <button className={styles.button} onClick={handleSignUp}>
+        Create Account
+      </button>
+      {createdAccount ? (
+        <Redirect noThrow from="signup" to="confirmation" />
+      ) : null}
       <Link to="/">Sign In</Link>
     </div>
   )
-
-
 }
 
 export default SignUp
