@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
-import { Link } from '@reach/router'
-
+import { Link, Redirect } from '@reach/router'
+import firebase from '../firebase/firebase'
 import styles from './sign-up.module.css'
 import { Button, TYPES, SIZES } from '../common/button'
 
 export const SignUp = () => {
-  // These are state hooks - https://reactjs.org/docs/hooks-state.html
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [zipcode, setZipcode] = useState('')
+  const [createdAccount, setCreatedAccount] = useState(false)
 
   function handleFirstNameChange(e) {
     setFirstName(e.target.value)
@@ -30,6 +30,22 @@ export const SignUp = () => {
 
   function handleZipcodeChange(e) {
     setZipcode(e.target.value)
+  }
+
+  async function handleSignUp() {
+    try {
+      await firebase.register(name, email, password)
+      await firebase.addInformation(
+        firstName,
+        lastName,
+        password,
+        email,
+        zipcode
+      )
+      setCreatedAccount(true)
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (
@@ -79,10 +95,12 @@ export const SignUp = () => {
           type="button"
           buttonType={TYPES.PRIMARY}
           buttonSize={SIZES.MEDIUM}
+          onClick={handleSignUp}
         >
           Create Account
         </Button>
       </form>
+      {createdAccount ? <Redirect noThrow to="/getStarted" /> : null}
       <Link to="/">Sign In</Link>
     </div>
   )

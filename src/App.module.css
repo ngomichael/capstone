@@ -37,6 +37,32 @@ li {
   margin: var(--s-0) var(--s-3) var(--s-6) var(--s-0);
 }
 
+.loadContainer {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+}
+
+.loader {
+  animation-name: example;
+  animation-duration: 1s;
+  width: 100px;
+  height: 100px;
+}
+
+@keyframes example {
+  0% {
+    background-color: rgb(204, 125, 204);
+  }
+  50% {
+    background-color: rgb(155, 233, 155);
+  }
+  100% {
+    background-color: rgb(204, 125, 204);
+  }
+}
+
 @media (max-width: 768px) {
   .image {
     margin: var(--s-0) var(--s-0) var(--s-6) var(--s-0);

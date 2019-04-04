@@ -10,10 +10,26 @@ import { MatchedProviders } from './matched-providers/matched-providers'
 import { ProviderInfo } from './provider-info/provider-info'
 import { Prompt } from './prompt/prompt'
 import { UndrawAboutMe, UndrawHire } from 'react-undraw'
+import firebase from './firebase/firebase'
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      firebaseInitialized: false,
+    }
+  }
+
+  componentDidMount() {
+    firebase.isInitialized().then(val => {
+      this.setState({
+        firebaseInitialized: val,
+      })
+    })
+  }
+
   render() {
-    return (
+    return this.state.firebaseInitialized ? (
       <Router>
         <Home path="/" />
         <Questionnaire path="questionnaire" />
@@ -57,6 +73,10 @@ class App extends Component {
 
         <SignUp path="signup" />
       </Router>
+    ) : (
+      <div className={styles.loadContainer}>
+        <div className={styles.loader} />
+      </div>
     )
   }
 }
