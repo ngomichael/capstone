@@ -66,6 +66,16 @@ class Firebase {
     })
   }
 
+  getSignedInUser() {
+    this.auth.onAuthStateChanged(user => {
+      if (user) {
+        console.log(user)
+      } else {
+        console.log('No user is signed in')
+      }
+    })
+  }
+
   getCurrentUsername() {
     return this.auth.currentUser && this.auth.currentUser.displayName
   }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from '@reach/router'
 import styles from './prompt.module.css'
@@ -16,6 +16,10 @@ export const Prompt = ({
   nextPath,
   prevPath,
 }) => {
+  // useEffect(() => {
+
+  // })
+
   return (
     <div className={styles.container}>
       <OnboardingHeader step={step} />
