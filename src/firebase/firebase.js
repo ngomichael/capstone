@@ -20,11 +20,11 @@ class Firebase {
   }
 
   signIn(email, password) {
-    this.auth.signInWithEmailAndPassword(email, password)
+    return this.auth.signInWithEmailAndPassword(email, password)
   }
 
   signOut() {
-    this.auth.signOut()
+    return this.auth.signOut()
   }
 
   async register(name, email, password) {
@@ -68,6 +68,7 @@ class Firebase {
 
   getSignedInUser() {
     this.auth.onAuthStateChanged(user => {
+      console.log(this.auth.currentUser)
       if (user) {
         console.log(user)
       } else {

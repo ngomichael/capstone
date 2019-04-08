@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { Link } from '@reach/router'
+import { Link, Redirect } from '@reach/router'
 import styles from './sign-in.module.css'
 import { Button, TYPES, SIZES } from '../common/button'
+import firebase from '../firebase/firebase'
 
 export const SignIn = () => {
   const [email, setEmail] = useState('')
@@ -13,6 +14,15 @@ export const SignIn = () => {
 
   function handlePasswordChange(e) {
     setPassword(e.target.value)
+  }
+
+  async function handleSignIn() {
+    try {
+      await firebase.signIn(email, password)
+      return <Redirect noThrow to="/getStarted" />
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   return (
