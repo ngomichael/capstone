@@ -18,6 +18,7 @@ class App extends Component {
     this.state = {
       firebaseInitialized: false,
     }
+    this.getProfile = this.getProfile.bind(this)
   }
 
   componentDidMount() {
@@ -26,12 +27,18 @@ class App extends Component {
         firebaseInitialized: val,
       })
     })
+  }
 
-    firebase.getSignedInUser()
+  async getProfile() {
+    const user = await firebase.getUserProfile()
+    console.log(user)
   }
 
   render() {
-    return this.state.firebaseInitialized ? (
+    this.getProfile()
+    // console.log(firebase.addUserQuestionnaire(firebase.getSignedInUser().uid,['Therapy']))
+    // this.state.firebaseInitialized ?
+    return (
       <Router>
         <Home path="/" />
         <Questionnaire path="questionnaire" />
@@ -74,12 +81,14 @@ class App extends Component {
         />
 
         <SignUp path="signup" />
+        <SignIn path="signin" />
       </Router>
-    ) : (
-      <div className={styles.loadContainer}>
-        <div className={styles.loader} />
-      </div>
     )
+    // : (
+    //   <div className={styles.loadContainer}>
+    //     <div className={styles.loader} />
+    //   </div>
+    // )
   }
 }
 

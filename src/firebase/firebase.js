@@ -14,7 +14,6 @@ const config = {
 class Firebase {
   constructor() {
     app.initializeApp(config)
-    this.app = app.auth()
     this.db = app.firestore()
     this.auth = app.auth()
   }
@@ -35,7 +34,30 @@ class Firebase {
     }
   }
 
-  addInformation(firstName, lastName, password, email, zipcode) {
+  addUserQuestionnaire(uid, care_types) {
+    if (!this.auth.currentUser) {
+      return alert('Not Authorized')
+    }
+
+    return this.db
+      .collection('users_pearcare')
+      .doc(uid)
+      .set(
+        {
+          // zip_code: zip_code,
+          care_types: care_types,
+          // issues: issues,
+          // insurances: insurances,
+          // age_groups: age_groups,
+          // credentials: credentials,
+          // approaches: approaches,
+          // populations: populations,
+        },
+        { merge: true }
+      )
+  }
+
+  addUserInformation(firstName, lastName, password, email, zipcode) {
     if (!this.auth.currentUser) {
       return alert('Not Authorized')
     }
@@ -60,6 +82,7 @@ class Firebase {
       .catch(err => console.log(err))
   }
 
+  // returning null
   isInitialized() {
     return new Promise(resolve => {
       this.auth.onAuthStateChanged(resolve)
@@ -68,13 +91,18 @@ class Firebase {
 
   getSignedInUser() {
     this.auth.onAuthStateChanged(user => {
-      console.log(this.auth.currentUser)
+      // console.log(this.auth.currentUser)
       if (user) {
-        console.log(user)
+        // console.log(user.uid)
+        return user
       } else {
         console.log('No user is signed in')
       }
     })
+  }
+
+  getUserProfile() {
+    return this.auth.currentUser
   }
 
   getCurrentUsername() {

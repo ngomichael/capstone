@@ -35,7 +35,7 @@ export const SignUp = () => {
   async function handleSignUp() {
     try {
       await firebase.register(name, email, password)
-      await firebase.addInformation(
+      await firebase.addUserInformation(
         firstName,
         lastName,
         password,
