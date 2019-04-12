@@ -9,6 +9,9 @@ import { Checkbox } from '../common/checkbox'
 import { Button, TYPES, SIZES } from '../common/button'
 import { BackButton } from '../common/back-button'
 import { ArrowRight } from 'react-feather'
+import { withAuth } from '../auth-context'
+import firebase from '../firebase/firebase'
+import { UndrawServerStatus } from 'react-undraw'
 
 export const questionnaireQuestions = [
   {
@@ -200,6 +203,20 @@ const renderQuestions = () => {
 }
 
 export const Questionnaire = () => {
+  const [userUid, setUserUid] = useState()
+  async function getProfile() {
+    const user = await firebase.getUserProfile()
+    // console.log(user)
+    setUserUid(user.uid)
+    return user
+  }
+  getProfile()
+  console.log(userUid)
+
+  async function handleSubmit() {
+    await firebase.addUserQuestionnaire(userUid, ['Okay'])
+  }
+
   return (
     <div className={styles.container}>
       <OnboardingHeader step={1} />
@@ -234,6 +251,14 @@ export const Questionnaire = () => {
             )}
           </Formik>
         </div>
+        <Button
+          type="button"
+          buttonType={TYPES.PRIMARY}
+          buttonSize={SIZES.MEDIUM}
+          onClick={handleSubmit}
+        >
+          Add to db
+        </Button>
       </div>
     </div>
   )

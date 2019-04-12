@@ -39,6 +39,8 @@ class Firebase {
       return alert('Not Authorized')
     }
 
+    console.log(this.db.collection('users_pearcare').doc(uid))
+
     return this.db
       .collection('users_pearcare')
       .doc(uid)
