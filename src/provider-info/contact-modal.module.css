@@ -1,0 +1,94 @@
+@import '../common/variables.css';
+
+.container {
+  /* position: absolute; */
+  position: fixed;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: var(--faded-black);
+  z-index: 4;
+}
+
+.modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 490px;
+  max-width: 675px;
+  transform: translate(-50%, -50%);
+  background-color: var(--white);
+  padding: var(--s-7);
+}
+
+.header {
+  font-size: var(--fs-4);
+  font-weight: var(--fw-5);
+}
+
+.subheader {
+  font-size: var(--fs-3);
+  font-weight: var(--fw-5);
+  margin-top: var(--s-4);
+}
+
+.actionItems {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-bottom: 50px;
+}
+
+.contactButtons {
+  position: absolute;
+  right: 40px;
+  bottom: 20px;
+}
+
+.websiteLink {
+  margin: var(--s-1);
+}
+
+.closeButton {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.closeButton:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 678px) {
+  .modal {
+    font-size: var(--fs-2);
+    min-width: 350px;
+  }
+
+  .header {
+    font-size: var(--fs-3);
+  }
+
+  .subheader {
+    font-size: var(--fs-2);
+  }
+
+  .contactButtons {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    right: 0px;
+    bottom: 20px;
+  }
+}

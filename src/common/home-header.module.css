@@ -1,0 +1,123 @@
+@import '../common/variables.css';
+
+.container {
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: var(--mw);
+  height: 80px;
+  top: 0;
+  z-index: 2;
+}
+
+.logoAndNameContainer {
+  display: flex;
+  align-items: center;
+  margin: var(--s-0) var(--s-0) var(--s-0) var(--s-5);
+}
+
+.logo {
+  width: 43px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.productName {
+  font-family: Lato;
+  font-weight: var(--fw-5);
+  font-size: var(--fs-5);
+  letter-spacing: 0.5px;
+  margin-left: var(--s-3);
+}
+
+.productName:hover {
+  cursor: pointer;
+}
+
+.navContainer {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  color: var(--darkest-gray);
+}
+
+.dropdownContainer {
+  position: absolute;
+  background-color: var(--peach);
+  height: 190px;
+  width: 100%;
+  top: 80px;
+}
+
+.dropdownNav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  list-style: none;
+  height: 100%;
+  margin-left: var(--s-5);
+}
+
+.navLink {
+  font-size: var(--fs-4);
+  font-weight: var(--fw-5);
+  margin: var(--s-0) var(--s-4) var(--s-0) var(--s-4);
+  transition: color 300ms ease;
+}
+
+.navLink:hover {
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.dropdownNavLink {
+  composes: navLink;
+  margin: var(--s-1) var(--s-0) var(--s-1) var(--s-0);
+}
+
+.menuIcon {
+  display: none;
+  margin: var(--s-0) var(--s-5) var(--s-0) var(--s-0);
+}
+
+.menuIcon:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    width: 40px;
+    height: 45px;
+  }
+
+  .productName {
+    font-size: 22px;
+    margin-right: 15px;
+  }
+
+  .navContainer {
+    display: none;
+  }
+
+  .dropdownContainer {
+    display: block;
+  }
+
+  .menuIcon {
+    display: block;
+  }
+}
+
+@media (max-width: 378px) {
+  .logo {
+    width: 40px;
+    height: 45px;
+  }
+
+  .productName {
+    display: none;
+  }
+}

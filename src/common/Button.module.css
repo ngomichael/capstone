@@ -1,0 +1,65 @@
+@import '../common/variables.css';
+
+.button {
+  font-size: var(--fs-3);
+  font-weight: var(--fw-4);
+  border-radius: 5px;
+  letter-spacing: 1px;
+  color: var(--white);
+  outline: none;
+  border: none;
+  box-shadow: var(--bs-1);
+  transition: background-color 300ms ease;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.primary {
+  background-color: var(--primary);
+}
+
+.primary:hover {
+  background-color: var(--primary-dark);
+}
+
+.warning {
+}
+
+.danger {
+}
+
+.success {
+}
+
+.small {
+  height: 38px;
+  width: 100px;
+}
+
+.medium {
+  height: 50px;
+  width: 200px;
+}
+
+.large {
+  height: 50px;
+  width: 270px;
+}
+
+@media (max-width: 768px) {
+  .button {
+    font-size: var(--fs-2);
+  }
+
+  .medium {
+    height: 45px;
+    width: 160px;
+  }
+
+  .large {
+    height: 45px;
+    width: 250px;
+  }
+}

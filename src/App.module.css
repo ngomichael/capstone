@@ -1,8 +1,70 @@
 @import './common/variables.css';
 
-.app {
-  margin: var(--m-5);
-  font-size: var(--fs-7);
-  font-family: Arial, Helvetica, sans-serif;
-  color: purple;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  position: relative;
+  margin: 0 auto;
+  font-family: 'Open Sans';
+  background-color: var(--white);
+  /* max-width: var(--mw); */
+  height: 100%;
+  min-height: 100%;
+  color: var(--darkest-gray);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Lato';
+}
+
+span,
+p,
+li {
+  font-family: 'Open Sans';
+  letter-spacing: 0.05em;
+}
+
+.image {
+  flex-shrink: 0;
+  margin: var(--s-0) var(--s-3) var(--s-6) var(--s-0);
+}
+
+.loadContainer {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+}
+
+.loader {
+  animation-name: example;
+  animation-duration: 1s;
+  width: 100px;
+  height: 100px;
+}
+
+@keyframes example {
+  0% {
+    background-color: rgb(204, 125, 204);
+  }
+  50% {
+    background-color: rgb(155, 233, 155);
+  }
+  100% {
+    background-color: rgb(204, 125, 204);
+  }
+}
+
+@media (max-width: 768px) {
+  .image {
+    margin: var(--s-0) var(--s-0) var(--s-6) var(--s-0);
+  }
 }

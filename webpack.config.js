@@ -17,12 +17,16 @@ module.exports = {
         loader:
           'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
       },
+      {
+        test: /\.(jpeg|mp4|png|woff|woff2|eot|ttf|svg)$/,
+        loader: 'url-loader?limit=100000',
+      },
     ],
   },
   resolve: { extensions: ['*', '.js', '.jsx'] },
   output: {
     path: path.resolve(__dirname, 'dist/'),
-    publicPath: '/',
+    publicPath: '/dist/',
     filename: 'bundle.js',
   },
   devServer: {

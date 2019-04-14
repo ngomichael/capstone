@@ -1,0 +1,25 @@
+@import '../common/variables.css';
+
+.container {
+  display: flex;
+  align-items: center;
+  margin: var(--s-0) var(--s-0) var(--s-3) var(--s-0);
+}
+
+input[type='checkbox'] {
+  -webkit-appearance: none;
+  outline: none;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--br-1);
+  border: 2px solid var(--light-gray);
+}
+input[type='checkbox']:checked {
+  background: var(--primary);
+}
+
+.optionName {
+  display: inline;
+  font-size: var(--fs-3);
+  margin-left: var(--s-3);
+}
