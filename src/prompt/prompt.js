@@ -31,14 +31,14 @@ export const Prompt = ({
   return (
     <div className={styles.container}>
       <OnboardingHeader step={step} />
-      <Button
+      {/* <Button
         type="button"
         buttonType={TYPES.PRIMARY}
         buttonSize={SIZES.MEDIUM}
         onClick={handleSignOut}
       >
         Sign out
-      </Button>
+      </Button> */}
       <div className={styles.maxWidthContainer}>
         <div className={styles.mainContentContainer}>
           {image}

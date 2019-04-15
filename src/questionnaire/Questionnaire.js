@@ -128,8 +128,12 @@ const returnCorrectQuestionFormat = question => {
   } else if (questionType === 'cards') {
     return (
       <div className={styles.careTypeCardsContainer}>
-        {question.options.map(option => (
-          <CareTypeCard name={option.name} description={option.description} />
+        {question.options.map((option, index) => (
+          <CareTypeCard
+            name={option.name}
+            description={option.description}
+            key={index}
+          />
         ))}
       </div>
     )
@@ -137,7 +141,11 @@ const returnCorrectQuestionFormat = question => {
     return (
       <div className={styles.checkboxesContainer}>
         {question.options.map((option, index) => (
-          <Checkbox name="ageGroup" value={question.options[index]} />
+          <Checkbox
+            name="ageGroup"
+            value={question.options[index]}
+            key={index}
+          />
         ))}
       </div>
     )
@@ -147,7 +155,7 @@ const returnCorrectQuestionFormat = question => {
 const renderQuestions = () => {
   return questionnaireQuestions.map((question, index) => {
     return (
-      <div className={styles.questionsContainer}>
+      <div className={styles.questionsContainer} key={index}>
         <p className={styles.questionNumber}>{index + 1}</p>
         <ArrowRight size={18} className={styles.arrow} />
         <div>

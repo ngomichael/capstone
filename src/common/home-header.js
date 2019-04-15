@@ -13,7 +13,7 @@ const navLinksText = [
 
 function renderNavLinks() {
   return navLinksText.map(link => (
-    <Link to={link.path} className={styles.navLink}>
+    <Link to={link.path} className={styles.navLink} key={link.text}>
       <li key={link.title}>{link.text}</li>
     </Link>
   ))
