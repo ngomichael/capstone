@@ -22,7 +22,6 @@ export const Prompt = ({
     try {
       await firebase.signOut()
       setIsSignedOut(true)
-      console.log(setIsSignedOut)
       return <Redirect noThrow to="/" />
     } catch (err) {
       console.error(err)

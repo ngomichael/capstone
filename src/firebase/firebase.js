@@ -37,15 +37,21 @@ class Firebase {
   addUserQuestionnaire(answers) {
     // Take this out for ppl who aren't signed in can do the questionnaire
     if (!this.auth.currentUser) {
+      this.db.collection('questionnaire_answers').add({
+        zip_code: answers.zip_code,
+        // care_types: answers.care_types,
+        issues: answers.issues,
+        insurances: answers.insurances,
+        // age_groups: answers.age_groups,
+        credentials: answers.credentials,
+        approaches: answers.approaches,
+        populations: answers.populations,
+      })
       return alert('Not Authorized')
     }
 
-    // console.log(answers)
-    console.log(answers)
-    console.log(this.auth.currentUser)
-
     return this.db
-      .collection('users_pearcare')
+      .collection('questionnaire_answers')
       .doc(this.auth.currentUser.uid)
       .set(
         {
@@ -95,6 +101,7 @@ class Firebase {
         return user
       } else {
         console.log('No user is signed in')
+        console.log(this.auth.currentUser)
       }
     })
   }

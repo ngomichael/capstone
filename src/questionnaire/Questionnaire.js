@@ -161,6 +161,7 @@ const renderQuestions = () => {
 
 export const Questionnaire = () => {
   async function handleSubmit(answers) {
+    await firebase.getUserProfile()
     await firebase.addUserQuestionnaire(answers)
   }
 
@@ -190,16 +191,16 @@ export const Questionnaire = () => {
             {({ isSubmitting }) => (
               <Form>
                 {renderQuestions()}
-                <Link to="/questionnaireCompleted">
-                  <Button
-                    type="submit"
-                    buttonType={TYPES.PRIMARY}
-                    buttonSize={SIZES.MEDIUM}
-                    disabled={isSubmitting}
-                  >
-                    Finish
-                  </Button>
-                </Link>
+                {/* <Link to="/questionnaireCompleted"> */}
+                <Button
+                  type="submit"
+                  buttonType={TYPES.PRIMARY}
+                  buttonSize={SIZES.MEDIUM}
+                  disabled={isSubmitting}
+                >
+                  Finish
+                </Button>
+                {/* </Link> */}
               </Form>
             )}
           </Formik>

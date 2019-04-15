@@ -19,7 +19,6 @@ class App extends Component {
     this.state = {
       firebaseInitialized: false,
     }
-    this.getProfile = this.getProfile.bind(this)
   }
 
   componentDidMount() {
@@ -32,17 +31,8 @@ class App extends Component {
     firebase.getSignedInUser()
   }
 
-  async getProfile() {
-    const user = await firebase.getUserProfile()
-    // console.log(user)
-  }
-
   render() {
-    // this.getProfile()
-    // console.log(firebase.addUserQuestionnaire(firebase.getSignedInUser().uid,['Therapy']))
-    // this.state.firebaseInitialized ?
     return (
-      // <AuthContext.Provider value={{ user: this.getProfile() }}>
       <Router>
         <Home path="/" />
         <Questionnaire path="questionnaire" />
@@ -87,7 +77,6 @@ class App extends Component {
         <SignUp path="signup" />
         <SignIn path="signin" />
       </Router>
-      // </AuthContext.Provider>
     )
     // : (
     //   <div className={styles.loadContainer}>
