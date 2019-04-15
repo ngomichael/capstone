@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
 import { Link } from '@reach/router'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import styles from './questionnaire.module.css'
@@ -11,7 +10,7 @@ import { BackButton } from '../common/back-button'
 import { ArrowRight } from 'react-feather'
 import { withAuth } from '../auth-context'
 import firebase from '../firebase/firebase'
-import { UndrawServerStatus } from 'react-undraw'
+import { CareTypeCard } from './care-type-card'
 
 export const questionnaireQuestions = [
   {
@@ -19,41 +18,41 @@ export const questionnaireQuestions = [
     question: "What's the city or zipcode you're seeking care in?*",
     supplementaryText:
       'Getting to a provider can be a big barrier in receiving care. This information helps us find providers close to you.',
-    name: 'zipcode',
+    name: 'zip_code',
     type: 'text',
     isLongInput: false,
   },
-  {
-    questionType: 'cards',
-    question: 'What kind of care are you looking for?',
-    supplementaryText:
-      "There are a wide variety of mental health services available - let's narrow them down!.",
-    options: [
-      {
-        name: 'Therapy',
-        description: 'Talking with a professional to work through challenges.',
-      },
-      {
-        name: 'Medication',
-        description: 'Services relating to prescription medication',
-      },
-      {
-        name: 'Testing',
-        description: 'Evaluations to help make a diagnosis.',
-      },
-      {
-        name: 'Not Sure',
-        description: 'Types of care not covered by other options',
-      },
-    ],
-  },
+  // {
+  //   questionType: 'cards',
+  //   question: 'What kind of care are you looking for?',
+  //   supplementaryText:
+  //     "There are a wide variety of mental health services available - let's narrow them down!.",
+  //   options: [
+  //     {
+  //       name: 'Therapy',
+  //       description: 'Talking with a professional to work through challenges.',
+  //     },
+  //     {
+  //       name: 'Medication',
+  //       description: 'Services relating to prescription medication',
+  //     },
+  //     {
+  //       name: 'Testing',
+  //       description: 'Evaluations to help make a diagnosis.',
+  //     },
+  //     {
+  //       name: 'Not Sure',
+  //       description: 'Types of care not covered by other options',
+  //     },
+  //   ],
+  // },
   {
     questionType: 'input',
     question:
       'What are you struggling with and seeking help for? (I.e depression, life transition challenges)',
     supplementaryText:
       "Providers often have different areas of expertise. Having a provider who has experience with what you're struggling with could enhance the quality of your care.",
-    name: 'illnesses',
+    name: 'issues',
     type: 'text',
     isLongInput: true,
   },
@@ -62,26 +61,26 @@ export const questionnaireQuestions = [
     question: 'What insurance(s) do you have, if any? (I.e Apple Health)',
     supplementaryText:
       'Finding a provider that your insurance covers will make seeing a provider more affordable to you.',
-    name: 'insurance',
+    name: 'insurances',
     type: 'text',
     isLongInput: false,
   },
-  {
-    questionType: 'checkboxes',
-    question:
-      'Are you looking for someone who specializes with a specific age group?',
-    supplementaryText:
-      'Providers may have more experience with certain age groups. Having a provider who has experience with your age could enhance the quality of your care.',
-    options: [
-      'Toddlers/preschoolers (ages 0 to 6)',
-      'Children (ages 6 to 10)',
-      'Preteens/tweens (ages 11 to 13)',
-      'Adolescents (ages 14 to 19)',
-      'Young Adults',
-      'Adults',
-      'Elderly (ages 65+)',
-    ],
-  },
+  // {
+  //   questionType: 'checkboxes',
+  //   question:
+  //     'Are you looking for someone who specializes with a specific age group?',
+  //   supplementaryText:
+  //     'Providers may have more experience with certain age groups. Having a provider who has experience with your age could enhance the quality of your care.',
+  //   options: [
+  //     'Toddlers/preschoolers (ages 0 to 6)',
+  //     'Children (ages 6 to 10)',
+  //     'Preteens/tweens (ages 11 to 13)',
+  //     'Adolescents (ages 14 to 19)',
+  //     'Young Adults',
+  //     'Adults',
+  //     'Elderly (ages 65+)',
+  //   ],
+  // },
   {
     questionType: 'input',
     question:
@@ -98,7 +97,7 @@ export const questionnaireQuestions = [
       'Are you looking for someone with certain personality traits or treatment approaches? (I.e. Integrative, non-directive)',
     supplementaryText:
       "Providers can use a wide range of approaches. If you're looking for a particular approach, that can narrow down the providers we think are a good fit for you.",
-    name: 'traits',
+    name: 'approaches',
     type: 'text',
     isLongInput: true,
   },
@@ -108,59 +107,17 @@ export const questionnaireQuestions = [
       'Are you looking for someone that specializes in working with a certain client population or shares an identity trait? (I.e gender, race/ethnicity, religion/spirituality, sexual orientation, language)',
     supplementaryText:
       'Providers may have more experience with certain groups of the general population. Having a provider who has experience with challenges faced by particular demographics could enhance the quality of your care.',
-    name: 'population',
+    name: 'populations',
     type: 'text',
     isLongInput: true,
   },
 ]
-
-const initialValues = {
-  zipcode: '',
-  careType: '',
-  illnesses: [],
-  insurance: [],
-  ageGroup: [],
-  credentials: [],
-  traits: [],
-  population: [],
-}
-
-const CareTypeCard = ({ name, description }) => {
-  const [isCardClicked, setIsCardClicked] = useState(false)
-
-  function handleCardClicked() {
-    setIsCardClicked(!isCardClicked)
-  }
-  return (
-    <div
-      className={
-        isCardClicked ? styles.activeCareTypeCard : styles.careTypeCardContainer
-      }
-      onClick={handleCardClicked}
-    >
-      <p
-        className={
-          isCardClicked ? styles.activeCareTypeName : styles.careTypeCardName
-        }
-      >
-        {name}
-      </p>
-      <p className={styles.careTypeCardDescription}>{description}</p>
-    </div>
-  )
-}
-
-CareTypeCard.propTypes = {
-  name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-}
 
 const returnCorrectQuestionFormat = question => {
   const questionType = question.questionType
   if (questionType === 'input') {
     return (
       <QuestionField
-        question={question.question}
         supplementaryText={question.supplementaryText}
         name={question.name}
         type={question.type}
@@ -203,21 +160,8 @@ const renderQuestions = () => {
 }
 
 export const Questionnaire = () => {
-  // const [uid, setUid] = useState()
-  // const [user, setUser] = useState()
-
-  // async function setUserAndUid() {
-  //   const user = await firebase.getUserProfile()
-  //   setUid(user.uid)
-  //   setUser(user)
-  // }
-
-  // useEffect(() => {
-  //   setUserAndUid()
-  // })
-
-  async function handleSubmit() {
-    await firebase.addUserQuestionnaire(['Premera Blue Cross'])
+  async function handleSubmit(answers) {
+    await firebase.addUserQuestionnaire(answers)
   }
 
   return (
@@ -230,12 +174,17 @@ export const Questionnaire = () => {
             First, let's figure out the essentials
           </h1>
           <Formik
-            initialValues={initialValues}
+            initialValues={{
+              zip_code: '',
+              issues: '',
+              insurances: '',
+              credentials: '',
+              approaches: '',
+              populations: '',
+            }}
             onSubmit={(values, { setSubmitting }) => {
-              setTimeout(() => {
-                alert(JSON.stringify(values, null, 2))
-                setSubmitting(false)
-              }, 400)
+              handleSubmit(values)
+              setSubmitting(false)
             }}
           >
             {({ isSubmitting }) => (
@@ -243,9 +192,10 @@ export const Questionnaire = () => {
                 {renderQuestions()}
                 <Link to="/questionnaireCompleted">
                   <Button
-                    type="button"
+                    type="submit"
                     buttonType={TYPES.PRIMARY}
                     buttonSize={SIZES.MEDIUM}
+                    disabled={isSubmitting}
                   >
                     Finish
                   </Button>
@@ -254,14 +204,6 @@ export const Questionnaire = () => {
             )}
           </Formik>
         </div>
-        <Button
-          type="button"
-          buttonType={TYPES.PRIMARY}
-          buttonSize={SIZES.MEDIUM}
-          onClick={handleSubmit}
-        >
-          Add to db
-        </Button>
       </div>
     </div>
   )
