@@ -203,31 +203,21 @@ const renderQuestions = () => {
 }
 
 export const Questionnaire = () => {
-  const [uid, setUid] = useState()
+  // const [uid, setUid] = useState()
+  // const [user, setUser] = useState()
 
-  async function getUser() {
-    const user = await firebase.getUserProfile()
-    setUid(user.uid)
-    return user
-  }
-
-  useEffect(() => {
-    getUser()
-  })
-
-  // getUser()
-  console.log(uid)
+  // async function setUserAndUid() {
+  //   const user = await firebase.getUserProfile()
+  //   setUid(user.uid)
+  //   setUser(user)
+  // }
 
   // useEffect(() => {
-  //   console.log(getUser())
-  //   setUid(getUser().uid)
+  //   setUserAndUid()
   // })
 
-  // getUid()
-  // console.log(uid)
-
   async function handleSubmit() {
-    await firebase.addUserQuestionnaire(userUid, ['Premera Blue Cross'])
+    await firebase.addUserQuestionnaire(['Premera Blue Cross'])
   }
 
   return (

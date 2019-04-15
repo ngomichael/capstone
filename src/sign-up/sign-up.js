@@ -9,7 +9,6 @@ export const SignUp = () => {
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [zipcode, setZipcode] = useState('')
   const [createdAccount, setCreatedAccount] = useState(false)
 
   function handleFirstNameChange(e) {
@@ -26,10 +25,6 @@ export const SignUp = () => {
 
   function handlePasswordChange(e) {
     setPassword(e.target.value)
-  }
-
-  function handleZipcodeChange(e) {
-    setZipcode(e.target.value)
   }
 
   async function handleSignUp() {
@@ -85,13 +80,7 @@ export const SignUp = () => {
           placeholder="Password"
           onChange={handlePasswordChange}
         />
-        <input
-          className={styles.input}
-          value={zipcode}
-          type="text"
-          placeholder="Zipcode"
-          onChange={handleZipcodeChange}
-        />
+
         <Button
           type="button"
           buttonType={TYPES.PRIMARY}
