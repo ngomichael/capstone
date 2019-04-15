@@ -43,6 +43,7 @@ export const SignUp = () => {
         zipcode
       )
       setCreatedAccount(true)
+      return <Redirect noThrow to="/getStarted" />
     } catch (err) {
       console.log(err)
     }

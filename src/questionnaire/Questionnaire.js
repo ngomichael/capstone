@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from '@reach/router'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
@@ -203,18 +203,31 @@ const renderQuestions = () => {
 }
 
 export const Questionnaire = () => {
-  const [userUid, setUserUid] = useState()
-  async function getProfile() {
+  const [uid, setUid] = useState()
+
+  async function getUser() {
     const user = await firebase.getUserProfile()
-    // console.log(user)
-    setUserUid(user.uid)
+    setUid(user.uid)
     return user
   }
-  getProfile()
-  console.log(userUid)
+
+  useEffect(() => {
+    getUser()
+  })
+
+  // getUser()
+  console.log(uid)
+
+  // useEffect(() => {
+  //   console.log(getUser())
+  //   setUid(getUser().uid)
+  // })
+
+  // getUid()
+  // console.log(uid)
 
   async function handleSubmit() {
-    await firebase.addUserQuestionnaire(userUid, ['Okay'])
+    await firebase.addUserQuestionnaire(userUid, ['Premera Blue Cross'])
   }
 
   return (

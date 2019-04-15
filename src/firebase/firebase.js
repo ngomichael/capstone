@@ -34,22 +34,23 @@ class Firebase {
     }
   }
 
-  addUserQuestionnaire(uid, care_types) {
+  addUserQuestionnaire(insurances) {
+    // Take this out for ppl who aren't signed in can do the questionnaire
     if (!this.auth.currentUser) {
       return alert('Not Authorized')
     }
 
-    console.log(this.db.collection('users_pearcare').doc(uid))
-
+    // console.log(this.db.collection('users_pearcare').doc(uid))
+    // console.log(this.auth.currentUser.uid)
     return this.db
       .collection('users_pearcare')
-      .doc(uid)
+      .doc(this.auth.currentUser.uid)
       .set(
         {
           // zip_code: zip_code,
-          care_types: care_types,
+          // care_types: care_types,
           // issues: issues,
-          // insurances: insurances,
+          insurances: insurances,
           // age_groups: age_groups,
           // credentials: credentials,
           // approaches: approaches,
@@ -64,24 +65,28 @@ class Firebase {
       return alert('Not Authorized')
     }
 
-    return this.db
-      .collection('users_pearcare')
-      .add({
-        first_name: firstName,
-        last_name: lastName,
-        email: email,
-        password: password,
-        zip_code: zipcode,
-      })
-      .then(docRef => {
-        this.auth.currentUser.updateProfile({
-          id: docRef.id,
-          displayName: firstName,
-          password: password,
+    return (
+      this.db
+        .collection('users_pearcare')
+        .doc(this.auth.currentUser.uid)
+        .set({
+          first_name: firstName,
+          last_name: lastName,
           email: email,
+          password: password,
+          zip_code: zipcode,
         })
-      })
-      .catch(err => console.log(err))
+        // .then(docRef => {
+        //   console.log(docRef.id)
+        //   this.auth.currentUser.updateProfile({
+        //     docRefId: docRef.id,
+        //     displayName: firstName,
+        //     password: password,
+        //     email: email,
+        //   })
+        // })
+        .catch(err => console.log(err))
+    )
   }
 
   // returning null
@@ -95,7 +100,7 @@ class Firebase {
     this.auth.onAuthStateChanged(user => {
       // console.log(this.auth.currentUser)
       if (user) {
-        // console.log(user.uid)
+        console.log(user)
         return user
       } else {
         console.log('No user is signed in')

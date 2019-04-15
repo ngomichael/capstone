@@ -28,6 +28,8 @@ class App extends Component {
         firebaseInitialized: val,
       })
     })
+
+    firebase.getSignedInUser()
   }
 
   async getProfile() {
