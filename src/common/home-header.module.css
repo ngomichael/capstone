@@ -63,6 +63,8 @@
 }
 
 .navLink {
+  color: var(--darkest-gray);
+  text-decoration: none;
   font-size: var(--fs-4);
   font-weight: var(--fw-5);
   margin: var(--s-0) var(--s-4) var(--s-0) var(--s-4);

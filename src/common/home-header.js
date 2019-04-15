@@ -1,23 +1,29 @@
 import React, { useState } from 'react'
 import styles from './home-header.module.css'
+import { Link } from '@reach/router'
 import PearCareLogo from '../images/logo.png'
 import { X, Menu } from 'react-feather'
 
-const navLinksText = ['How it Works', 'For Providers', 'Log in', 'Sign up']
+const navLinksText = [
+  { text: 'How it Works', path: '' },
+  { text: 'For Providers', path: '' },
+  { text: 'Sign In', path: '/signin' },
+  { text: 'Sign up', path: '/signup' },
+]
 
 function renderNavLinks() {
   return navLinksText.map(link => (
-    <li className={styles.navLink} key={link.title}>
-      {link}
-    </li>
+    <Link to={link.path} className={styles.navLink}>
+      <li key={link.title}>{link.text}</li>
+    </Link>
   ))
 }
 
 function renderDropdownNavLinks() {
   return navLinksText.map(link => (
-    <li className={styles.dropdownNavLink} key={link.title}>
-      {link}
-    </li>
+    <Link to={link.path} className={styles.dropdownNavLink}>
+      <li key={link.title}>{link.text}</li>
+    </Link>
   ))
 }
 
