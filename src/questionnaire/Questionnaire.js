@@ -11,6 +11,7 @@ import { ArrowRight } from 'react-feather'
 import { withAuth } from '../auth-context'
 import firebase from '../firebase/firebase'
 import { CareTypeCard } from './care-type-card'
+import { AutocompleteField } from './autocomplete-field'
 
 export const questionnaireQuestions = [
   {
@@ -47,20 +48,40 @@ export const questionnaireQuestions = [
   //   ],
   // },
   {
-    questionType: 'input',
+    questionType: 'autocomplete',
     question:
       'What are you struggling with and seeking help for? (I.e depression, life transition challenges)',
     supplementaryText:
       "Providers often have different areas of expertise. Having a provider who has experience with what you're struggling with could enhance the quality of your care.",
+    terms: [
+      { id: 'Hello', label: 'Hello' },
+      { id: 'Michael', label: 'Michael' },
+      { id: 'Jessica', label: 'Jessica' },
+      { id: 'Benny', label: 'Benny' },
+      { id: 'Chris', label: 'Chris' },
+      { id: 'Justin', label: 'Justin' },
+      { id: 'JJ', label: 'JJ' },
+      { id: 'Ngo', label: 'Ngo' },
+    ],
     name: 'issues',
     type: 'text',
     isLongInput: true,
   },
   {
-    questionType: 'input',
+    questionType: 'autocomplete',
     question: 'What insurance(s) do you have, if any? (I.e Apple Health)',
     supplementaryText:
       'Finding a provider that your insurance covers will make seeing a provider more affordable to you.',
+    terms: [
+      { id: 'Hello', label: 'Hello' },
+      { id: 'Michael', label: 'Michael' },
+      { id: 'Jessica', label: 'Jessica' },
+      { id: 'Benny', label: 'Benny' },
+      { id: 'Chris', label: 'Chris' },
+      { id: 'Justin', label: 'Justin' },
+      { id: 'JJ', label: 'JJ' },
+      { id: 'Ngo', label: 'Ngo' },
+    ],
     name: 'insurances',
     type: 'text',
     isLongInput: false,
@@ -82,38 +103,69 @@ export const questionnaireQuestions = [
   //   ],
   // },
   {
-    questionType: 'input',
+    questionType: 'autocomplete',
     question:
       'Are you looking for someone with certain credentials? (I.e. PhD, LICSW)',
     supplementaryText:
       'Some patients prefer their providers have completed a certain degree or certificate program.',
+    terms: [
+      { id: 'Hello', label: 'Hello' },
+      { id: 'Michael', label: 'Michael' },
+      { id: 'Jessica', label: 'Jessica' },
+      { id: 'Benny', label: 'Benny' },
+      { id: 'Chris', label: 'Chris' },
+      { id: 'Justin', label: 'Justin' },
+      { id: 'JJ', label: 'JJ' },
+      { id: 'Ngo', label: 'Ngo' },
+    ],
     name: 'credentials',
     type: 'text',
     isLongInput: false,
   },
   {
-    questionType: 'input',
+    questionType: 'autocomplete',
     question:
       'Are you looking for someone with certain personality traits or treatment approaches? (I.e. Integrative, non-directive)',
     supplementaryText:
       "Providers can use a wide range of approaches. If you're looking for a particular approach, that can narrow down the providers we think are a good fit for you.",
+    terms: [
+      { id: 'Hello', label: 'Hello' },
+      { id: 'Michael', label: 'Michael' },
+      { id: 'Jessica', label: 'Jessica' },
+      { id: 'Benny', label: 'Benny' },
+      { id: 'Chris', label: 'Chris' },
+      { id: 'Justin', label: 'Justin' },
+      { id: 'JJ', label: 'JJ' },
+      { id: 'Ngo', label: 'Ngo' },
+    ],
     name: 'approaches',
     type: 'text',
     isLongInput: true,
   },
   {
-    questionType: 'input',
+    questionType: 'autocomplete',
     question:
       'Are you looking for someone that specializes in working with a certain client population or shares an identity trait? (I.e gender, race/ethnicity, religion/spirituality, sexual orientation, language)',
     supplementaryText:
       'Providers may have more experience with certain groups of the general population. Having a provider who has experience with challenges faced by particular demographics could enhance the quality of your care.',
+    terms: [
+      { id: 'Hello', label: 'Hello' },
+      { id: 'Michael', label: 'Michael' },
+      { id: 'Jessica', label: 'Jessica' },
+      { id: 'Benny', label: 'Benny' },
+      { id: 'Chris', label: 'Chris' },
+      { id: 'Justin', label: 'Justin' },
+      { id: 'JJ', label: 'JJ' },
+      { id: 'Ngo', label: 'Ngo' },
+    ],
     name: 'populations',
     type: 'text',
     isLongInput: true,
   },
 ]
 
-const returnCorrectQuestionFormat = question => {
+// Create autocomplete
+const returnCorrectQuestionFormat = (question, setFieldValue, values) => {
   const questionType = question.questionType
   if (questionType === 'input') {
     return (
@@ -122,6 +174,19 @@ const returnCorrectQuestionFormat = question => {
         name={question.name}
         type={question.type}
         isLongInput={question.isLongInput}
+        key={question.question}
+      />
+    )
+  } else if (questionType === 'autocomplete') {
+    return (
+      <AutocompleteField
+        supplementaryText={question.supplementaryText}
+        terms={question.terms}
+        name={question.name}
+        type={question.type}
+        isLongInput={question.isLongInput}
+        setFieldValue={setFieldValue}
+        values={values}
         key={question.question}
       />
     )
@@ -152,7 +217,8 @@ const returnCorrectQuestionFormat = question => {
   }
 }
 
-const renderQuestions = () => {
+const renderQuestions = (setFieldValue, values) => {
+  console.log(values)
   return questionnaireQuestions.map((question, index) => {
     return (
       <div className={styles.questionsContainer} key={index}>
@@ -160,7 +226,7 @@ const renderQuestions = () => {
         <ArrowRight size={18} className={styles.arrow} />
         <div>
           <p className={styles.question}>{question.question}</p>
-          {returnCorrectQuestionFormat(question)}
+          {returnCorrectQuestionFormat(question, setFieldValue, values)}
         </div>
       </div>
     )
@@ -185,20 +251,27 @@ export const Questionnaire = () => {
           <Formik
             initialValues={{
               zip_code: '',
-              issues: '',
+              issues: 'fsd',
               insurances: '',
               credentials: '',
               approaches: '',
               populations: '',
             }}
-            onSubmit={(values, { setSubmitting }) => {
-              handleSubmit(values)
-              setSubmitting(false)
+            // onSubmit={(values, { setSubmitting }) => {
+            //   handleSubmit(values)
+            //   setSubmitting(false)
+            // }}
+            onSubmit={(values, actions) => {
+              setTimeout(() => {
+                alert(JSON.stringify(values, null, 2))
+                actions.setSubmitting(false)
+              }, 1000)
             }}
           >
-            {({ isSubmitting }) => (
+            {({ isSubmitting, setFieldValue, values }) => (
               <Form>
-                {renderQuestions()}
+                {renderQuestions(setFieldValue, values)}
+                <div>{`${values.issues} + HIII`}</div>
                 {/* <Link to="/questionnaireCompleted"> */}
                 <Button
                   type="submit"

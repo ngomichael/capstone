@@ -1,0 +1,57 @@
+@import '../common/variables.css';
+
+.list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  box-shadow: 3px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e6e6e6;
+  border-radius: 4px;
+  width: 350px;
+  height: auto;
+  padding: 0;
+  bottom: 15px;
+  animation: bounceEntrance 0.15s ease forwards;
+}
+
+.listHidden {
+  visibility: hidden;
+}
+
+.listItem {
+  position: relative;
+  background-color: white;
+  text-align: left;
+  border-bottom: 1px solid rgba(191, 191, 191, 0.3);
+  list-style: none;
+  padding: var(--s-4);
+  width: 100%;
+}
+
+.listItem:hover,
+.listItem:focus {
+  cursor: pointer;
+  background-color: rgb(242, 242, 242, 1);
+  transition: background-color 0.25s ease;
+  outline: 0;
+}
+
+.term {
+  padding-left: 20px;
+}
+
+@keyframes bounceEntrance {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  95% {
+    transform: translate(0px, 32px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0px, 25px);
+  }
+}
