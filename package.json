@@ -37,6 +37,7 @@
     "react-feather": "^1.1.6",
     "react-hot-loader": "^4.6.5",
     "react-scroll": "^1.7.11",
+    "react-select": "^2.4.3",
     "react-undraw": "^1.14.0"
   }
 }

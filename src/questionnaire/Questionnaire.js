@@ -54,14 +54,14 @@ export const questionnaireQuestions = [
     supplementaryText:
       "Providers often have different areas of expertise. Having a provider who has experience with what you're struggling with could enhance the quality of your care.",
     terms: [
-      { id: 'Hello', label: 'Hello' },
-      { id: 'Michael', label: 'Michael' },
-      { id: 'Jessica', label: 'Jessica' },
-      { id: 'Benny', label: 'Benny' },
-      { id: 'Chris', label: 'Chris' },
-      { id: 'Justin', label: 'Justin' },
-      { id: 'JJ', label: 'JJ' },
-      { id: 'Ngo', label: 'Ngo' },
+      { id: 'Hello', value: 'Hello', label: 'Hello' },
+      { id: 'Michael', value: 'Michael', label: 'Michael' },
+      { id: 'Jessica', value: 'Jessica', label: 'Jessica' },
+      { id: 'Benny', value: 'Benny', label: 'Benny' },
+      { id: 'Chris', value: 'Chris', label: 'Chris' },
+      { id: 'Justin', value: 'Justin', label: 'Justin' },
+      { id: 'JJ', value: 'JJ', label: 'JJ' },
+      { id: 'Ngo', value: 'Ngo', label: 'Ngo' },
     ],
     name: 'issues',
     type: 'text',
@@ -73,14 +73,14 @@ export const questionnaireQuestions = [
     supplementaryText:
       'Finding a provider that your insurance covers will make seeing a provider more affordable to you.',
     terms: [
-      { id: 'Hello', label: 'Hello' },
-      { id: 'Michael', label: 'Michael' },
-      { id: 'Jessica', label: 'Jessica' },
-      { id: 'Benny', label: 'Benny' },
-      { id: 'Chris', label: 'Chris' },
-      { id: 'Justin', label: 'Justin' },
-      { id: 'JJ', label: 'JJ' },
-      { id: 'Ngo', label: 'Ngo' },
+      { id: 'Hello', value: 'Hello', label: 'Hello' },
+      { id: 'Michael', value: 'Michael', label: 'Michael' },
+      { id: 'Jessica', value: 'Jessica', label: 'Jessica' },
+      { id: 'Benny', value: 'Benny', label: 'Benny' },
+      { id: 'Chris', value: 'Chris', label: 'Chris' },
+      { id: 'Justin', value: 'Justin', label: 'Justin' },
+      { id: 'JJ', value: 'JJ', label: 'JJ' },
+      { id: 'Ngo', value: 'Ngo', label: 'Ngo' },
     ],
     name: 'insurances',
     type: 'text',
@@ -109,14 +109,14 @@ export const questionnaireQuestions = [
     supplementaryText:
       'Some patients prefer their providers have completed a certain degree or certificate program.',
     terms: [
-      { id: 'Hello', label: 'Hello' },
-      { id: 'Michael', label: 'Michael' },
-      { id: 'Jessica', label: 'Jessica' },
-      { id: 'Benny', label: 'Benny' },
-      { id: 'Chris', label: 'Chris' },
-      { id: 'Justin', label: 'Justin' },
-      { id: 'JJ', label: 'JJ' },
-      { id: 'Ngo', label: 'Ngo' },
+      { id: 'Hello', value: 'Hello', label: 'Hello' },
+      { id: 'Michael', value: 'Michael', label: 'Michael' },
+      { id: 'Jessica', value: 'Jessica', label: 'Jessica' },
+      { id: 'Benny', value: 'Benny', label: 'Benny' },
+      { id: 'Chris', value: 'Chris', label: 'Chris' },
+      { id: 'Justin', value: 'Justin', label: 'Justin' },
+      { id: 'JJ', value: 'JJ', label: 'JJ' },
+      { id: 'Ngo', value: 'Ngo', label: 'Ngo' },
     ],
     name: 'credentials',
     type: 'text',
@@ -129,14 +129,14 @@ export const questionnaireQuestions = [
     supplementaryText:
       "Providers can use a wide range of approaches. If you're looking for a particular approach, that can narrow down the providers we think are a good fit for you.",
     terms: [
-      { id: 'Hello', label: 'Hello' },
-      { id: 'Michael', label: 'Michael' },
-      { id: 'Jessica', label: 'Jessica' },
-      { id: 'Benny', label: 'Benny' },
-      { id: 'Chris', label: 'Chris' },
-      { id: 'Justin', label: 'Justin' },
-      { id: 'JJ', label: 'JJ' },
-      { id: 'Ngo', label: 'Ngo' },
+      { id: 'Hello', value: 'Hello', label: 'Hello' },
+      { id: 'Michael', value: 'Michael', label: 'Michael' },
+      { id: 'Jessica', value: 'Jessica', label: 'Jessica' },
+      { id: 'Benny', value: 'Benny', label: 'Benny' },
+      { id: 'Chris', value: 'Chris', label: 'Chris' },
+      { id: 'Justin', value: 'Justin', label: 'Justin' },
+      { id: 'JJ', value: 'JJ', label: 'JJ' },
+      { id: 'Ngo', value: 'Ngo', label: 'Ngo' },
     ],
     name: 'approaches',
     type: 'text',
@@ -149,14 +149,14 @@ export const questionnaireQuestions = [
     supplementaryText:
       'Providers may have more experience with certain groups of the general population. Having a provider who has experience with challenges faced by particular demographics could enhance the quality of your care.',
     terms: [
-      { id: 'Hello', label: 'Hello' },
-      { id: 'Michael', label: 'Michael' },
-      { id: 'Jessica', label: 'Jessica' },
-      { id: 'Benny', label: 'Benny' },
-      { id: 'Chris', label: 'Chris' },
-      { id: 'Justin', label: 'Justin' },
-      { id: 'JJ', label: 'JJ' },
-      { id: 'Ngo', label: 'Ngo' },
+      { id: 'Hello', value: 'Hello', label: 'Hello' },
+      { id: 'Michael', value: 'Michael', label: 'Michael' },
+      { id: 'Jessica', value: 'Jessica', label: 'Jessica' },
+      { id: 'Benny', value: 'Benny', label: 'Benny' },
+      { id: 'Chris', value: 'Chris', label: 'Chris' },
+      { id: 'Justin', value: 'Justin', label: 'Justin' },
+      { id: 'JJ', value: 'JJ', label: 'JJ' },
+      { id: 'Ngo', value: 'Ngo', label: 'Ngo' },
     ],
     name: 'populations',
     type: 'text',
@@ -251,11 +251,11 @@ export const Questionnaire = () => {
           <Formik
             initialValues={{
               zip_code: '',
-              issues: 'fsd',
-              insurances: '',
-              credentials: '',
-              approaches: '',
-              populations: '',
+              issues: [],
+              insurances: [],
+              credentials: [],
+              approaches: [],
+              populations: [],
             }}
             // onSubmit={(values, { setSubmitting }) => {
             //   handleSubmit(values)
@@ -271,7 +271,6 @@ export const Questionnaire = () => {
             {({ isSubmitting, setFieldValue, values }) => (
               <Form>
                 {renderQuestions(setFieldValue, values)}
-                <div>{`${values.issues} + HIII`}</div>
                 {/* <Link to="/questionnaireCompleted"> */}
                 <Button
                   type="submit"
