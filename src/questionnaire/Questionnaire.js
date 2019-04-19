@@ -4,13 +4,10 @@ import { Formik, Field, Form, ErrorMessage } from 'formik'
 import styles from './questionnaire.module.css'
 import { OnboardingHeader } from '../common/onboarding-header'
 import { QuestionField } from './question-field'
-import { Checkbox } from '../common/checkbox'
 import { Button, TYPES, SIZES } from '../common/button'
 import { BackButton } from '../common/back-button'
 import { ArrowRight } from 'react-feather'
-import { withAuth } from '../auth-context'
 import firebase from '../firebase/firebase'
-import { CareTypeCard } from './care-type-card'
 import { AutocompleteField } from './autocomplete-field'
 
 export const questionnaireQuestions = [
@@ -23,30 +20,23 @@ export const questionnaireQuestions = [
     type: 'text',
     isLongInput: false,
   },
-  // {
-  //   questionType: 'cards',
-  //   question: 'What kind of care are you looking for?',
-  //   supplementaryText:
-  //     "There are a wide variety of mental health services available - let's narrow them down!.",
-  //   options: [
-  //     {
-  //       name: 'Therapy',
-  //       description: 'Talking with a professional to work through challenges.',
-  //     },
-  //     {
-  //       name: 'Medication',
-  //       description: 'Services relating to prescription medication',
-  //     },
-  //     {
-  //       name: 'Testing',
-  //       description: 'Evaluations to help make a diagnosis.',
-  //     },
-  //     {
-  //       name: 'Not Sure',
-  //       description: 'Types of care not covered by other options',
-  //     },
-  //   ],
-  // },
+  {
+    questionType: 'autocomplete',
+    question: 'What kind of care are you looking for',
+    supplementaryText:
+      'Getting to a provider can be a big barrier in receiving care. This information helps us find providers close to you.',
+    terms: [
+      { id: 'Hello', value: 'Hello', label: 'Hello' },
+      { id: 'Michael', value: 'Michael', label: 'Michael' },
+      { id: 'Jessica', value: 'Jessica', label: 'Jessica' },
+      { id: 'Benny', value: 'Benny', label: 'Benny' },
+      { id: 'Chris', value: 'Chris', label: 'Chris' },
+      { id: 'Justin', value: 'Justin', label: 'Justin' },
+      { id: 'JJ', value: 'JJ', label: 'JJ' },
+      { id: 'Ngo', value: 'Ngo', label: 'Ngo' },
+    ],
+    name: 'careType',
+  },
   {
     questionType: 'autocomplete',
     question:
@@ -64,8 +54,6 @@ export const questionnaireQuestions = [
       { id: 'Ngo', value: 'Ngo', label: 'Ngo' },
     ],
     name: 'issues',
-    type: 'text',
-    isLongInput: true,
   },
   {
     questionType: 'autocomplete',
@@ -83,25 +71,7 @@ export const questionnaireQuestions = [
       { id: 'Ngo', value: 'Ngo', label: 'Ngo' },
     ],
     name: 'insurances',
-    type: 'text',
-    isLongInput: false,
   },
-  // {
-  //   questionType: 'checkboxes',
-  //   question:
-  //     'Are you looking for someone who specializes with a specific age group?',
-  //   supplementaryText:
-  //     'Providers may have more experience with certain age groups. Having a provider who has experience with your age could enhance the quality of your care.',
-  //   options: [
-  //     'Toddlers/preschoolers (ages 0 to 6)',
-  //     'Children (ages 6 to 10)',
-  //     'Preteens/tweens (ages 11 to 13)',
-  //     'Adolescents (ages 14 to 19)',
-  //     'Young Adults',
-  //     'Adults',
-  //     'Elderly (ages 65+)',
-  //   ],
-  // },
   {
     questionType: 'autocomplete',
     question:
@@ -119,8 +89,6 @@ export const questionnaireQuestions = [
       { id: 'Ngo', value: 'Ngo', label: 'Ngo' },
     ],
     name: 'credentials',
-    type: 'text',
-    isLongInput: false,
   },
   {
     questionType: 'autocomplete',
@@ -139,8 +107,6 @@ export const questionnaireQuestions = [
       { id: 'Ngo', value: 'Ngo', label: 'Ngo' },
     ],
     name: 'approaches',
-    type: 'text',
-    isLongInput: true,
   },
   {
     questionType: 'autocomplete',
@@ -159,15 +125,25 @@ export const questionnaireQuestions = [
       { id: 'Ngo', value: 'Ngo', label: 'Ngo' },
     ],
     name: 'populations',
-    type: 'text',
-    isLongInput: true,
   },
 ]
 
 // Create autocomplete
-const returnCorrectQuestionFormat = (question, setFieldValue, values) => {
+const returnCorrectQuestionFormat = (question, setFieldValue) => {
   const questionType = question.questionType
-  if (questionType === 'input') {
+  if (questionType === 'autocomplete') {
+    return (
+      <AutocompleteField
+        supplementaryText={question.supplementaryText}
+        terms={question.terms}
+        name={question.name}
+        type={question.type}
+        isLongInput={question.isLongInput}
+        setFieldValue={setFieldValue}
+        key={question.question}
+      />
+    )
+  } else {
     return (
       <QuestionField
         supplementaryText={question.supplementaryText}
@@ -177,48 +153,10 @@ const returnCorrectQuestionFormat = (question, setFieldValue, values) => {
         key={question.question}
       />
     )
-  } else if (questionType === 'autocomplete') {
-    return (
-      <AutocompleteField
-        supplementaryText={question.supplementaryText}
-        terms={question.terms}
-        name={question.name}
-        type={question.type}
-        isLongInput={question.isLongInput}
-        setFieldValue={setFieldValue}
-        values={values}
-        key={question.question}
-      />
-    )
-  } else if (questionType === 'cards') {
-    return (
-      <div className={styles.careTypeCardsContainer}>
-        {question.options.map((option, index) => (
-          <CareTypeCard
-            name={option.name}
-            description={option.description}
-            key={index}
-          />
-        ))}
-      </div>
-    )
-  } else {
-    return (
-      <div className={styles.checkboxesContainer}>
-        {question.options.map((option, index) => (
-          <Checkbox
-            name="ageGroup"
-            value={question.options[index]}
-            key={index}
-          />
-        ))}
-      </div>
-    )
   }
 }
 
-const renderQuestions = (setFieldValue, values) => {
-  console.log(values)
+const renderQuestions = setFieldValue => {
   return questionnaireQuestions.map((question, index) => {
     return (
       <div className={styles.questionsContainer} key={index}>
@@ -226,7 +164,7 @@ const renderQuestions = (setFieldValue, values) => {
         <ArrowRight size={18} className={styles.arrow} />
         <div>
           <p className={styles.question}>{question.question}</p>
-          {returnCorrectQuestionFormat(question, setFieldValue, values)}
+          {returnCorrectQuestionFormat(question, setFieldValue)}
         </div>
       </div>
     )
@@ -252,25 +190,20 @@ export const Questionnaire = () => {
             initialValues={{
               zip_code: '',
               issues: [],
+              careType: [],
               insurances: [],
               credentials: [],
               approaches: [],
               populations: [],
             }}
-            // onSubmit={(values, { setSubmitting }) => {
-            //   handleSubmit(values)
-            //   setSubmitting(false)
-            // }}
-            onSubmit={(values, actions) => {
-              setTimeout(() => {
-                alert(JSON.stringify(values, null, 2))
-                actions.setSubmitting(false)
-              }, 1000)
+            onSubmit={(values, { setSubmitting }) => {
+              handleSubmit(values)
+              setSubmitting(false)
             }}
           >
-            {({ isSubmitting, setFieldValue, values }) => (
+            {({ isSubmitting, setFieldValue }) => (
               <Form>
-                {renderQuestions(setFieldValue, values)}
+                {renderQuestions(setFieldValue)}
                 {/* <Link to="/questionnaireCompleted"> */}
                 <Button
                   type="submit"
