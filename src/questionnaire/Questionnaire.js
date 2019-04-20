@@ -17,6 +17,7 @@ export const questionnaireQuestions = [
     supplementaryText:
       'Getting to a provider can be a big barrier in receiving care. This information helps us find providers close to you.',
     name: 'zip_code',
+    pageNum: 1,
     type: 'text',
     isLongInput: false,
   },
@@ -36,6 +37,7 @@ export const questionnaireQuestions = [
       { id: 'Ngo', value: 'Ngo', label: 'Ngo' },
     ],
     name: 'careType',
+    pageNum: 1,
   },
   {
     questionType: 'autocomplete',
@@ -54,6 +56,7 @@ export const questionnaireQuestions = [
       { id: 'Ngo', value: 'Ngo', label: 'Ngo' },
     ],
     name: 'issues',
+    pageNum: 1,
   },
   {
     questionType: 'autocomplete',
@@ -71,6 +74,26 @@ export const questionnaireQuestions = [
       { id: 'Ngo', value: 'Ngo', label: 'Ngo' },
     ],
     name: 'insurances',
+    pageNum: 1,
+  },
+  {
+    questionType: 'autocomplete',
+    question:
+      'Are you looking for someone who specializes with a specific age group?',
+    supplementaryText:
+      'Providers may have more experience with certain age groups. Having a provider who has experience with your age group could enhance the quality of your care.',
+    terms: [
+      { id: 'Hello', value: 'Hello', label: 'Hello' },
+      { id: 'Michael', value: 'Michael', label: 'Michael' },
+      { id: 'Jessica', value: 'Jessica', label: 'Jessica' },
+      { id: 'Benny', value: 'Benny', label: 'Benny' },
+      { id: 'Chris', value: 'Chris', label: 'Chris' },
+      { id: 'Justin', value: 'Justin', label: 'Justin' },
+      { id: 'JJ', value: 'JJ', label: 'JJ' },
+      { id: 'Ngo', value: 'Ngo', label: 'Ngo' },
+    ],
+    name: 'ageGroup',
+    pageNum: 2,
   },
   {
     questionType: 'autocomplete',
@@ -89,6 +112,7 @@ export const questionnaireQuestions = [
       { id: 'Ngo', value: 'Ngo', label: 'Ngo' },
     ],
     name: 'credentials',
+    pageNum: 2,
   },
   {
     questionType: 'autocomplete',
@@ -107,6 +131,7 @@ export const questionnaireQuestions = [
       { id: 'Ngo', value: 'Ngo', label: 'Ngo' },
     ],
     name: 'approaches',
+    pageNum: 2,
   },
   {
     questionType: 'autocomplete',
@@ -125,11 +150,12 @@ export const questionnaireQuestions = [
       { id: 'Ngo', value: 'Ngo', label: 'Ngo' },
     ],
     name: 'populations',
+    pageNum: 2,
   },
 ]
 
 // Create autocomplete
-const returnCorrectQuestionFormat = (question, setFieldValue) => {
+const returnCorrectQuestionFormat = (question, setFieldValue, currPageNum) => {
   const questionType = question.questionType
   if (questionType === 'autocomplete') {
     return (
@@ -141,6 +167,8 @@ const returnCorrectQuestionFormat = (question, setFieldValue) => {
         isLongInput={question.isLongInput}
         setFieldValue={setFieldValue}
         key={question.question}
+        currPageNum={currPageNum}
+        pageNum={question.pageNum}
       />
     )
   } else {
@@ -151,30 +179,40 @@ const returnCorrectQuestionFormat = (question, setFieldValue) => {
         type={question.type}
         isLongInput={question.isLongInput}
         key={question.question}
+        currPageNum={currPageNum}
       />
     )
   }
 }
 
-const renderQuestions = setFieldValue => {
+const renderQuestions = (setFieldValue, currPageNum) => {
   return questionnaireQuestions.map((question, index) => {
-    return (
+    return currPageNum === question.pageNum ? (
       <div className={styles.questionsContainer} key={index}>
         <p className={styles.questionNumber}>{index + 1}</p>
         <ArrowRight size={18} className={styles.arrow} />
         <div>
           <p className={styles.question}>{question.question}</p>
-          {returnCorrectQuestionFormat(question, setFieldValue)}
+          {returnCorrectQuestionFormat(question, setFieldValue, currPageNum)}
         </div>
       </div>
-    )
+    ) : null
   })
 }
 
 export const Questionnaire = () => {
+  const [currPageNum, setCurrPageNum] = useState(1)
   async function handleSubmit(answers) {
     await firebase.getUserProfile()
     await firebase.addUserQuestionnaire(answers)
+  }
+
+  function handleNextPage() {
+    setCurrPageNum(currPageNum + 1)
+  }
+
+  function handlePreviousPage() {
+    setCurrPageNum(currPageNum - 1)
   }
 
   return (
@@ -183,7 +221,7 @@ export const Questionnaire = () => {
       <div className={styles.maxWidthContainer}>
         <div className={styles.questionsTitleContainer}>
           <BackButton path="/getStarted" />
-          <p>Questionnaire: Page 1 of 2</p>
+          <p>{`Questionnaire: Page ${currPageNum} of 2`}</p>
           <h1 className={styles.title}>
             First, let's figure out the essentials
           </h1>
@@ -191,6 +229,7 @@ export const Questionnaire = () => {
             initialValues={{
               zip_code: '',
               issues: [],
+              ageGroup: [],
               careType: [],
               insurances: [],
               credentials: [],
@@ -204,20 +243,47 @@ export const Questionnaire = () => {
           >
             {({ isSubmitting, setFieldValue }) => (
               <Form>
-                {renderQuestions(setFieldValue)}
+                {renderQuestions(setFieldValue, currPageNum)}
                 {/* <Link to="/questionnaireCompleted"> */}
-                <Button
-                  type="submit"
-                  buttonType={TYPES.PRIMARY}
-                  buttonSize={SIZES.MEDIUM}
-                  disabled={isSubmitting}
-                >
-                  Finish
-                </Button>
+                {currPageNum === 2 && (
+                  <div className={styles.submitButton}>
+                    <Button
+                      type="submit"
+                      buttonType={TYPES.PRIMARY}
+                      buttonSize={SIZES.MEDIUM}
+                      disabled={isSubmitting}
+                    >
+                      Finish
+                    </Button>
+                  </div>
+                )}
                 {/* </Link> */}
               </Form>
             )}
           </Formik>
+          <div className={styles.buttonContainer}>
+            {currPageNum === 1 && (
+              <Button
+                type="text"
+                buttonType={TYPES.PRIMARY}
+                buttonSize={SIZES.MEDIUM}
+                onClick={handleNextPage}
+              >
+                Next
+              </Button>
+            )}
+
+            {currPageNum === 2 && (
+              <Button
+                type="text"
+                buttonType={TYPES.PRIMARY}
+                buttonSize={SIZES.MEDIUM}
+                onClick={handlePreviousPage}
+              >
+                Previous
+              </Button>
+            )}
+          </div>
         </div>
       </div>
     </div>

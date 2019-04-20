@@ -10,6 +10,8 @@ export const AutocompleteField = ({
   terms,
   name,
   setFieldValue,
+  pageNum,
+  currPageNum,
 }) => {
   const [multiValue, setMultiValue] = useState([])
 
@@ -17,7 +19,7 @@ export const AutocompleteField = ({
     setMultiValue(option)
     setFieldValue(name, option)
   }
-
+  console.log(pageNum)
   return (
     <div>
       <p className={styles.supplementaryText}>{supplementaryText}</p>

@@ -85,6 +85,15 @@
   text-decoration: none;
 }
 
+.buttonContainer {
+  margin: var(--s-0) var(--s-0) var(--s-10) var(--s-6);
+}
+
+.submitButton {
+  position: absolute;
+  margin: var(--s-0) var(--s-0) var(--s-0) var(--s-12);
+}
+
 @media (max-width: 768px) {
   .questionsTitleContainer {
     margin: var(--s-5) var(--s-6) var(--s-0) var(--s-6);
