@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from '@reach/router'
-import { Formik, Field, Form, ErrorMessage } from 'formik'
+import { Redirect, navigate } from '@reach/router'
+import { Formik, Form } from 'formik'
 import styles from './questionnaire.module.css'
 import { OnboardingHeader } from '../common/onboarding-header'
 import { QuestionField } from './question-field'
@@ -223,7 +223,9 @@ export const Questionnaire = () => {
           <BackButton path="/getStarted" />
           <p>{`Questionnaire: Page ${currPageNum} of 2`}</p>
           <h1 className={styles.title}>
-            First, let's figure out the essentials
+            {currPageNum === 1
+              ? "First, let's figure out the essentials"
+              : "Besides the basics, is there anything else you're looking for in a provider?"}
           </h1>
           <Formik
             initialValues={{
@@ -239,12 +241,12 @@ export const Questionnaire = () => {
             onSubmit={(values, { setSubmitting }) => {
               handleSubmit(values)
               setSubmitting(false)
+              navigate('/questionnaireCompleted')
             }}
           >
             {({ isSubmitting, setFieldValue }) => (
               <Form>
                 {renderQuestions(setFieldValue, currPageNum)}
-                {/* <Link to="/questionnaireCompleted"> */}
                 {currPageNum === 2 && (
                   <div className={styles.submitButton}>
                     <Button
@@ -257,12 +259,11 @@ export const Questionnaire = () => {
                     </Button>
                   </div>
                 )}
-                {/* </Link> */}
               </Form>
             )}
           </Formik>
           <div className={styles.buttonContainer}>
-            {currPageNum === 1 && (
+            {currPageNum === 1 ? (
               <Button
                 type="text"
                 buttonType={TYPES.PRIMARY}
@@ -271,9 +272,7 @@ export const Questionnaire = () => {
               >
                 Next
               </Button>
-            )}
-
-            {currPageNum === 2 && (
+            ) : (
               <Button
                 type="text"
                 buttonType={TYPES.PRIMARY}
