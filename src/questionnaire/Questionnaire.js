@@ -183,6 +183,7 @@ export const Questionnaire = () => {
       <div className={styles.maxWidthContainer}>
         <div className={styles.questionsTitleContainer}>
           <BackButton path="/getStarted" />
+          <p>Questionnaire: Page 1 of 2</p>
           <h1 className={styles.title}>
             First, let's figure out the essentials
           </h1>
