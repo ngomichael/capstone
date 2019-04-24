@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Redirect, navigate } from '@reach/router'
+import { Link, navigate } from '@reach/router'
 import { Formik, Form } from 'formik'
 import styles from './questionnaire.module.css'
 import { OnboardingHeader } from '../common/onboarding-header'
@@ -220,7 +220,12 @@ export const Questionnaire = () => {
       <OnboardingHeader step={1} />
       <div className={styles.maxWidthContainer}>
         <div className={styles.questionsTitleContainer}>
-          <BackButton path="/getStarted" />
+          {currPageNum === 1 ? (
+            <BackButton path="/getStarted" />
+          ) : (
+            <BackButton onClick={handlePreviousPage} />
+          )}
+
           <p>{`Questionnaire: Page ${currPageNum} of 2`}</p>
           <h1 className={styles.title}>
             {currPageNum === 1
@@ -257,30 +262,45 @@ export const Questionnaire = () => {
                     >
                       Finish
                     </Button>
+                    <Link to="/results">
+                      <Button
+                        type="text"
+                        buttonType={TYPES.SECONDARY}
+                        buttonSize={SIZES.LARGE}
+                        onClick={handlePreviousPage}
+                        className={styles.skipButton}
+                      >
+                        Skip to a list of providers
+                      </Button>
+                    </Link>
                   </div>
                 )}
               </Form>
             )}
           </Formik>
           <div className={styles.buttonContainer}>
-            {currPageNum === 1 ? (
-              <Button
-                type="text"
-                buttonType={TYPES.PRIMARY}
-                buttonSize={SIZES.MEDIUM}
-                onClick={handleNextPage}
-              >
-                Next
-              </Button>
-            ) : (
-              <Button
-                type="text"
-                buttonType={TYPES.PRIMARY}
-                buttonSize={SIZES.MEDIUM}
-                onClick={handlePreviousPage}
-              >
-                Previous
-              </Button>
+            {currPageNum === 1 && (
+              <div>
+                <Button
+                  type="text"
+                  buttonType={TYPES.PRIMARY}
+                  buttonSize={SIZES.MEDIUM}
+                  onClick={handleNextPage}
+                >
+                  Next
+                </Button>
+                <Link to="/results">
+                  <Button
+                    type="text"
+                    buttonType={TYPES.SECONDARY}
+                    buttonSize={SIZES.LARGE}
+                    onClick={handlePreviousPage}
+                    className={styles.skipButton}
+                  >
+                    Skip to a list of providers
+                  </Button>
+                </Link>
+              </div>
             )}
           </div>
         </div>

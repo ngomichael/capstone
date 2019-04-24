@@ -2,6 +2,7 @@
 
 .input {
   width: 350px;
+  max-height: 50px;
   font-size: var(--fs-2);
 }
 

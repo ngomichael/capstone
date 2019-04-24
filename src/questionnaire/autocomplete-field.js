@@ -19,7 +19,7 @@ export const AutocompleteField = ({
     setMultiValue(option)
     setFieldValue(name, option)
   }
-  console.log(pageNum)
+
   return (
     <div>
       <p className={styles.supplementaryText}>{supplementaryText}</p>
@@ -31,6 +31,7 @@ export const AutocompleteField = ({
         value={multiValue}
         onChange={handleMultiChange}
         className={styles.input}
+        maxMenuHeight={150}
         // defaultInputValue="Michael"
       />
     </div>

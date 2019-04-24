@@ -24,6 +24,20 @@
   background-color: var(--primary-dark);
 }
 
+.secondary {
+  background-color: var(--white);
+  color: var(--primary);
+  border: 2px solid var(--primary-light);
+  margin: var(--s-0) var(--s-0) var(--s-0) var(--s-4);
+}
+
+.secondary:hover {
+  background-color: var(--primary-light);
+  color: var(--white);
+  border: 2px solid var(--primary-light);
+  margin: var(--s-0) var(--s-0) var(--s-0) var(--s-4);
+}
+
 .warning {
 }
 

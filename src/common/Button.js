@@ -8,6 +8,7 @@ export const TYPES = {
   WARNING: 'warning',
   DANGER: 'danger',
   SUCCESS: 'success',
+  SECONDARY: 'secondary',
 }
 
 export const SIZES = {
