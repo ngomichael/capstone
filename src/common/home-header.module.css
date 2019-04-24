@@ -90,6 +90,20 @@
   cursor: pointer;
 }
 
+/* @media (min-width: 769px) {
+  .navContainer {
+    display: flex;
+  }
+
+  .dropdownContainer {
+    display: none;
+  }
+
+  .menuIcon {
+    display: none;
+  }
+} */
+
 @media (max-width: 768px) {
   .logo {
     width: 40px;

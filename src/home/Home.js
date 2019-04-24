@@ -21,9 +21,14 @@ export const Home = () => {
             personalize every individual’s experience when searching for a
             provider.
           </p>
-          <Link to="/" className={styles.learnMoreLink}>
+          <a
+            href="https://pearcare.netlify.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+            className={styles.learnMoreLink}
+          >
             <p>Learn more about how it works</p>
-          </Link>
+          </a>
           <Link to="getStarted">
             <Button
               type="button"
