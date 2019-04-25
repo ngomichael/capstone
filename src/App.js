@@ -11,7 +11,7 @@ import { ProviderInfo } from './provider-info/provider-info'
 import { Prompt } from './prompt/prompt'
 import { UndrawAboutMe, UndrawHire } from 'react-undraw'
 import firebase from './firebase/firebase'
-
+import { Button, TYPES, SIZES } from './common/button' //get rid of this later
 class App extends Component {
   constructor(props) {
     super(props)
@@ -29,9 +29,25 @@ class App extends Component {
 
     firebase.getSignedInUser()
   }
+  
+   calculateResults() {
+    try {
+    firebase.db.collection("questionnaire_answers").get().then((querySnapshot) => {
+      querySnapshot.forEach( (doc) => {
+        let provider = doc.data()
+        console.log(data, data.approaches);
+          // doc.data() is never undefined for query doc snapshots
+          console.log(doc.id);
+
+      });
+    })} catch (err) {
+      console.log(err);
+    }
+  }
 
   render() {
     return this.state.firebaseInitialized ? (
+      <div>
       <Router>
         <Home path="/" />
         <Questionnaire path="questionnaire" />
@@ -72,9 +88,21 @@ class App extends Component {
           prevPath="/questionnaire"
           step={2}
         />
-
+        
+        
+        
         <SignUp path="signup" />
       </Router>
+      
+       <Button
+       type="button"
+       buttonType={TYPES.PRIMARY}
+       buttonSize={SIZES.MEDIUM}
+       onClick={this.calculateResults}
+     >
+       See all results (TEST)
+     </Button>
+       </div>
     ) : (
       <div className={styles.loadContainer}>
         <div className={styles.loader} />
