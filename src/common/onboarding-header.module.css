@@ -22,7 +22,7 @@
 .logo {
   width: 38px;
   height: 45px;
-  border-radius: 50%;
+  /* border-radius: 50%; */
 }
 
 .productName {
