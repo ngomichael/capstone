@@ -1,7 +1,10 @@
 const path = require('path')
 const webpack = require('webpack')
-
-// const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const htmlWebpackPlugin = new HtmlWebpackPlugin({
+  template: path.join(__dirname, 'dist/index.html'),
+  filename: './index.html',
+})
 
 module.exports = {
   entry: './src/index.js',
@@ -38,5 +41,5 @@ module.exports = {
     hotOnly: true,
     historyApiFallback: true,
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [new webpack.HotModuleReplacementPlugin(), htmlWebpackPlugin],
 }
