@@ -6,7 +6,6 @@ import { X, Menu } from 'react-feather'
 
 const navLinksText = [
   { text: 'How it Works', link: 'https://pearcare.netlify.com/' },
-  { text: 'For Providers', link: '' },
   { text: 'Sign In', path: '/signin' },
   { text: 'Sign up', path: '/signup' },
 ]
@@ -18,7 +17,13 @@ function renderNavLinks() {
         <li key={link.title}>{link.text}</li>
       </Link>
     ) : (
-      <a href={link.link} className={styles.navLink} key={link.text}>
+      <a
+        href={link.link}
+        rel="noopener noreferrer"
+        target="_blank"
+        className={styles.navLink}
+        key={link.text}
+      >
         <li>{link.text}</li>
       </a>
     )
