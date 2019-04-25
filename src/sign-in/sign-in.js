@@ -7,6 +7,7 @@ import firebase from '../firebase/firebase'
 export const SignIn = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [isSignedIn, setIsSignedIn] = useState(false)
 
   function handleEmailChange(e) {
     setEmail(e.target.value)
@@ -19,6 +20,7 @@ export const SignIn = () => {
   async function handleSignIn() {
     try {
       await firebase.signIn(email, password)
+      setIsSignedIn(true)
       return <Redirect noThrow to="/getStarted" />
     } catch (err) {
       console.error(err)
@@ -47,10 +49,13 @@ export const SignIn = () => {
           type="button"
           buttonType={TYPES.PRIMARY}
           buttonSize={SIZES.MEDIUM}
+          onClick={handleSignIn}
         >
-          Log In
+          Sign In
         </Button>
       </form>
+      {isSignedIn ? <Redirect noThrow to="/getStarted" /> : null}
+
       <Link to="signup">Sign Up</Link>
     </div>
   )

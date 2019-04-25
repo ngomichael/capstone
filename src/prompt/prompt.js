@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Link } from '@reach/router'
+import { Link, Redirect } from '@reach/router'
 import styles from './prompt.module.css'
 import { OnboardingHeader } from '../common/onboarding-header'
 import { Button, TYPES, SIZES } from '../common/button'
 import { BackButton } from '../common/back-button'
+import firebase from '../firebase/firebase'
 
 export const Prompt = ({
   step,
@@ -16,13 +17,28 @@ export const Prompt = ({
   nextPath,
   prevPath,
 }) => {
-  // useEffect(() => {
-
-  // })
+  const [isSignedOut, setIsSignedOut] = useState(false)
+  async function handleSignOut() {
+    try {
+      await firebase.signOut()
+      setIsSignedOut(true)
+      return <Redirect noThrow to="/" />
+    } catch (err) {
+      console.error(err)
+    }
+  }
 
   return (
     <div className={styles.container}>
       <OnboardingHeader step={step} />
+      {/* <Button
+        type="button"
+        buttonType={TYPES.PRIMARY}
+        buttonSize={SIZES.MEDIUM}
+        onClick={handleSignOut}
+      >
+        Sign out
+      </Button> */}
       <div className={styles.maxWidthContainer}>
         <div className={styles.mainContentContainer}>
           {image}
@@ -42,6 +58,7 @@ export const Prompt = ({
             </Link>
           </div>
         </div>
+        {isSignedOut ? <Redirect noThrow to="/" /> : null}
       </div>
     </div>
   )

@@ -1,17 +1,17 @@
 @import '../common/variables.css';
 
 .input {
-  width: 70%;
+  width: 200px;
   height: 35px;
   font-size: var(--fs-2);
-  border: 2px solid var(--light-gray);
+  border: 1px solid hsl(0, 0%, 80%);
   border-radius: 4px;
-  background-color: var(--lightest-gray);
+  background-color: var(--white);
   padding: var(--s-0) var(--s-0) var(--s-0) var(--s-2);
 }
 
 .input:focus {
-  border: 2px solid #6558f5;
+  border: 2px solid #2684ff;
   background-color: var(--white);
   outline: none;
 }
@@ -20,9 +20,4 @@
   font-size: var(--fs-2);
   margin-bottom: var(--s-3);
   font-style: italic;
-}
-
-.longInput {
-  composes: input;
-  width: 100%;
 }

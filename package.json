@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode development"
   },
   "keywords": [],
   "author": "",
@@ -32,10 +32,12 @@
     "firebase": "^5.9.2",
     "formik": "^1.5.1",
     "react": "^16.8.1",
+    "react-autocomplete": "^1.8.1",
     "react-dom": "^16.8.1",
     "react-feather": "^1.1.6",
     "react-hot-loader": "^4.6.5",
     "react-scroll": "^1.7.11",
+    "react-select": "^2.4.3",
     "react-undraw": "^1.14.0"
   }
 }

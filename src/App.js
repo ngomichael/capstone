@@ -12,6 +12,8 @@ import { Prompt } from './prompt/prompt'
 import { UndrawAboutMe, UndrawHire } from 'react-undraw'
 import firebase from './firebase/firebase'
 import { Button, TYPES, SIZES } from './common/button' //get rid of this later
+import { AuthContext } from './auth-context'
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -48,6 +50,7 @@ class App extends Component {
   render() {
     return this.state.firebaseInitialized ? (
       <div>
+    return (
       <Router>
         <Home path="/" />
         <Questionnaire path="questionnaire" />
@@ -92,6 +95,7 @@ class App extends Component {
         
         
         <SignUp path="signup" />
+        <SignIn path="signin" />
       </Router>
       
        <Button
@@ -108,6 +112,11 @@ class App extends Component {
         <div className={styles.loader} />
       </div>
     )
+    // : (
+    //   <div className={styles.loadContainer}>
+    //     <div className={styles.loader} />
+    //   </div>
+    // )
   }
 }
 

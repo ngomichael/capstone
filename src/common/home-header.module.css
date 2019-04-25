@@ -4,6 +4,7 @@
   position: sticky;
   display: flex;
   justify-content: space-between;
+  background-color: white;
   align-items: center;
   width: 100%;
   max-width: var(--mw);
@@ -62,6 +63,8 @@
 }
 
 .navLink {
+  color: var(--darkest-gray);
+  text-decoration: none;
   font-size: var(--fs-4);
   font-weight: var(--fw-5);
   margin: var(--s-0) var(--s-4) var(--s-0) var(--s-4);
@@ -86,6 +89,20 @@
 .menuIcon:hover {
   cursor: pointer;
 }
+
+/* @media (min-width: 769px) {
+  .navContainer {
+    display: flex;
+  }
+
+  .dropdownContainer {
+    display: none;
+  }
+
+  .menuIcon {
+    display: none;
+  }
+} */
 
 @media (max-width: 768px) {
   .logo {

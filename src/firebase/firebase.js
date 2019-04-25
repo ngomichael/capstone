@@ -14,7 +14,6 @@ const config = {
 class Firebase {
   constructor() {
     app.initializeApp(config)
-    this.app = app.auth()
     this.db = app.firestore()
     this.auth = app.auth()
   }
@@ -35,31 +34,60 @@ class Firebase {
     }
   }
 
-  addInformation(firstName, lastName, password, email, zipcode) {
+  addUserQuestionnaire(answers) {
+    // Take this out for ppl who aren't signed in can do the questionnaire
+    if (!this.auth.currentUser) {
+      this.db.collection('questionnaire_answers').add({
+        zip_code: answers.zip_code,
+        // care_types: answers.care_types,
+        issues: answers.issues,
+        insurances: answers.insurances,
+        // age_groups: answers.age_groups,
+        credentials: answers.credentials,
+        approaches: answers.approaches,
+        populations: answers.populations,
+      })
+      return alert('Not Authorized')
+    }
+
+    return this.db
+      .collection('questionnaire_answers')
+      .doc(this.auth.currentUser.uid)
+      .set(
+        {
+          zip_code: answers.zip_code,
+          // care_types: answers.care_types,
+          issues: answers.issues,
+          insurances: answers.insurances,
+          // age_groups: answers.age_groups,
+          credentials: answers.credentials,
+          approaches: answers.approaches,
+          populations: answers.populations,
+        },
+        { merge: true }
+      )
+  }
+
+  addUserInformation(firstName, lastName, password, email, zipcode) {
     if (!this.auth.currentUser) {
       return alert('Not Authorized')
     }
 
     return this.db
       .collection('users_pearcare')
-      .add({
+      .doc(this.auth.currentUser.uid)
+      .set({
         first_name: firstName,
         last_name: lastName,
         email: email,
         password: password,
         zip_code: zipcode,
       })
-      .then(docRef => {
-        this.auth.currentUser.updateProfile({
-          id: docRef.id,
-          displayName: firstName,
-          password: password,
-          email: email,
-        })
-      })
+
       .catch(err => console.log(err))
   }
 
+  // returning null
   isInitialized() {
     return new Promise(resolve => {
       this.auth.onAuthStateChanged(resolve)
@@ -68,13 +96,18 @@ class Firebase {
 
   getSignedInUser() {
     this.auth.onAuthStateChanged(user => {
-      console.log(this.auth.currentUser)
       if (user) {
         console.log(user)
+        return user
       } else {
         console.log('No user is signed in')
+        console.log(this.auth.currentUser)
       }
     })
+  }
+
+  getUserProfile() {
+    return this.auth.currentUser
   }
 
   getCurrentUsername() {
