@@ -10,7 +10,7 @@ html,
 body {
   position: relative;
   margin: 0 auto;
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   background-color: var(--white);
   /* max-width: var(--mw); */
   height: 100%;
@@ -22,13 +22,13 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: 'Lato';
+  font-family: 'Lato', sans-serif;
 }
 
 span,
 p,
 li {
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   letter-spacing: 0.05em;
 }
 
