@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styles from './home-header.module.css'
 import { Link } from '@reach/router'
-import PearCareLogo from '../images/logo.png'
+import PearCareIcon from '../icons/pearcare-icon.png'
 import { X, Menu } from 'react-feather'
 
 const navLinksText = [
@@ -54,7 +54,7 @@ export const HomeHeader = () => {
   return (
     <header className={styles.container}>
       <div className={styles.logoAndNameContainer}>
-        <img src={PearCareLogo} className={styles.logo} />
+        <img src={PearCareIcon} className={styles.logo} />
         <p className={styles.productName}>PearCare</p>
       </div>
 

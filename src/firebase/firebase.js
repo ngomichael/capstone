@@ -68,7 +68,7 @@ class Firebase {
       )
   }
 
-  addUserInformation(firstName, lastName, password, email, zipcode) {
+  addUserInformation(firstName, lastName, password, email) {
     if (!this.auth.currentUser) {
       return alert('Not Authorized')
     }
@@ -81,7 +81,6 @@ class Firebase {
         last_name: lastName,
         email: email,
         password: password,
-        zip_code: zipcode,
       })
 
       .catch(err => console.log(err))

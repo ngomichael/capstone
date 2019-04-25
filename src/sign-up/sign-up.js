@@ -30,13 +30,7 @@ export const SignUp = () => {
   async function handleSignUp() {
     try {
       await firebase.register(name, email, password)
-      await firebase.addUserInformation(
-        firstName,
-        lastName,
-        password,
-        email,
-        zipcode
-      )
+      await firebase.addUserInformation(firstName, lastName, password, email)
       setCreatedAccount(true)
       return <Redirect noThrow to="/getStarted" />
     } catch (err) {
