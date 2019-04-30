@@ -154,7 +154,6 @@ export const questionnaireQuestions = [
   },
 ]
 
-// Create autocomplete
 const returnCorrectQuestionFormat = (question, setFieldValue, currPageNum) => {
   const questionType = question.questionType
   if (questionType === 'autocomplete') {

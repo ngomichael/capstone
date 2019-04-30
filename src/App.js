@@ -78,11 +78,6 @@ class App extends Component {
         <SignIn path="signin" />
       </Router>
     )
-    // : (
-    //   <div className={styles.loadContainer}>
-    //     <div className={styles.loader} />
-    //   </div>
-    // )
   }
 }
 

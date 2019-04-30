@@ -35,19 +35,17 @@ class Firebase {
   }
 
   addUserQuestionnaire(answers) {
-    // Take this out for ppl who aren't signed in can do the questionnaire
     if (!this.auth.currentUser) {
       this.db.collection('questionnaire_answers').add({
         zip_code: answers.zip_code,
-        // care_types: answers.care_types,
+        care_types: answers.care_types,
         issues: answers.issues,
         insurances: answers.insurances,
-        // age_groups: answers.age_groups,
+        age_groups: answers.age_groups,
         credentials: answers.credentials,
         approaches: answers.approaches,
         populations: answers.populations,
       })
-      return alert('Not Authorized')
     }
 
     return this.db
@@ -56,10 +54,10 @@ class Firebase {
       .set(
         {
           zip_code: answers.zip_code,
-          // care_types: answers.care_types,
+          care_types: answers.care_types,
           issues: answers.issues,
           insurances: answers.insurances,
-          // age_groups: answers.age_groups,
+          age_groups: answers.age_groups,
           credentials: answers.credentials,
           approaches: answers.approaches,
           populations: answers.populations,
@@ -86,7 +84,6 @@ class Firebase {
       .catch(err => console.log(err))
   }
 
-  // returning null
   isInitialized() {
     return new Promise(resolve => {
       this.auth.onAuthStateChanged(resolve)
