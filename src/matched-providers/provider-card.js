@@ -61,16 +61,14 @@ export const ProviderCard = ({ provider }) => {
           <div className={styles.contactActions}>
             <Mail className={styles.contactAction} />
             <Heart className={styles.contactAction} />
-            <a href="https://google.com">
-              <ExternalLink className={styles.contactAction} />
-            </a>
+            <ExternalLink className={styles.contactAction} />
           </div>
         </div>
 
         <div className={styles.overview}>
           {overviewItems.map(item => {
             return (
-              <div className={styles.itemContainer}>
+              <div className={styles.itemContainer} key={item.label}>
                 <p className={styles.label}>{item.label}</p>
                 <p>{item.values.join(', ')}</p>
               </div>

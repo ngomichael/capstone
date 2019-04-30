@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './matched-providers.module.css'
 import { ProviderCard } from './provider-card'
 import { HomeHeader } from '../common/home-header'
@@ -7,6 +7,7 @@ import Therapist1 from '../images/Therapist1.jpeg'
 import Therapist2 from '../images/Therapist2.jpeg'
 import JenAdamsPhoto from '../images/Jen+Adams.jpeg'
 import { Button, TYPES, SIZES } from '../common/button'
+import firebase from '../firebase/firebase'
 
 const providers = [
   {
@@ -96,9 +97,19 @@ const filters = [
 
 export const MatchedProviders = () => {
   const [searchVal, setSearchVal] = useState('')
+  const [allProviders, setAllProviders] = useState([])
+
+  useEffect(() => {
+    getProviders()
+  }, [])
 
   function handleSearchValChange(e) {
     setSearchVal(e.target.value)
+  }
+
+  async function getProviders() {
+    const snapshot = await firebase.getAllProviders()
+    setAllProviders(snapshot.docs.map(doc => doc.data()))
   }
 
   return (

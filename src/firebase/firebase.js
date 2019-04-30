@@ -34,7 +34,7 @@ class Firebase {
     }
   }
 
-  addUserQuestionnaire(answers) {
+  addUserQuestionnaireAnswers(answers) {
     if (!this.auth.currentUser) {
       this.db.collection('questionnaire_answers').add({
         zip_code: answers.zip_code,
@@ -82,6 +82,10 @@ class Firebase {
       })
 
       .catch(err => console.log(err))
+  }
+
+  getAllProviders() {
+    return this.db.collection('providers').get()
   }
 
   isInitialized() {
