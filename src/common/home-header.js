@@ -1,24 +1,47 @@
 import React, { useState } from 'react'
 import styles from './home-header.module.css'
-import PearCareLogo from '../images/logo.png'
+import { Link } from '@reach/router'
+import PearCareIcon from '../icons/pearcare-icon.png'
 import { X, Menu } from 'react-feather'
 
-const navLinksText = ['How it Works', 'For Providers', 'Log in', 'Sign up']
+const navLinksText = [
+  { text: 'How it Works', link: 'https://pearcare.netlify.com/' },
+  { text: 'Sign In', path: '/signin' },
+  { text: 'Sign up', path: '/signup' },
+]
 
 function renderNavLinks() {
-  return navLinksText.map(link => (
-    <li className={styles.navLink} key={link.title}>
-      {link}
-    </li>
-  ))
+  return navLinksText.map(link =>
+    link.path ? (
+      <Link to={link.path} className={styles.navLink} key={link.text}>
+        <li key={link.title}>{link.text}</li>
+      </Link>
+    ) : (
+      <a
+        href={link.link}
+        rel="noopener noreferrer"
+        target="_blank"
+        className={styles.navLink}
+        key={link.text}
+      >
+        <li>{link.text}</li>
+      </a>
+    )
+  )
 }
 
 function renderDropdownNavLinks() {
-  return navLinksText.map(link => (
-    <li className={styles.dropdownNavLink} key={link.title}>
-      {link}
-    </li>
-  ))
+  return navLinksText.map(link =>
+    link.path ? (
+      <Link to={link.path} className={styles.dropdownNavLink} key={link.text}>
+        <li key={link.title}>{link.text}</li>
+      </Link>
+    ) : (
+      <a href={link.link} className={styles.dropdownNavLink} key={link.text}>
+        <li>{link.text}</li>
+      </a>
+    )
+  )
 }
 
 export const HomeHeader = () => {
@@ -31,7 +54,7 @@ export const HomeHeader = () => {
   return (
     <header className={styles.container}>
       <div className={styles.logoAndNameContainer}>
-        <img src={PearCareLogo} className={styles.logo} />
+        <img src={PearCareIcon} className={styles.logo} />
         <p className={styles.productName}>PearCare</p>
       </div>
 

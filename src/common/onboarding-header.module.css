@@ -22,11 +22,11 @@
 .logo {
   width: 38px;
   height: 45px;
-  border-radius: 50%;
+  /* border-radius: 50%; */
 }
 
 .productName {
-  font-family: Lato;
+  font-family: 'Lato', sans-serif;
   font-weight: var(--fw-5);
   font-size: var(--fs-5);
   letter-spacing: 0.5px;

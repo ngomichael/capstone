@@ -4,8 +4,13 @@ import { Link } from '@reach/router'
 import styles from './back-button.module.css'
 import { ChevronLeft } from 'react-feather'
 
-export const BackButton = ({ path }) => {
-  return (
+export const BackButton = ({ path, onClick }) => {
+  return onClick ? (
+    <div onClick={onClick} className={styles.container}>
+      <ChevronLeft />
+      <p>Back</p>
+    </div>
+  ) : (
     <Link to={path} className={styles.container}>
       <ChevronLeft />
       <p>Back</p>

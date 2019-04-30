@@ -8,6 +8,7 @@ export const TYPES = {
   WARNING: 'warning',
   DANGER: 'danger',
   SUCCESS: 'success',
+  SECONDARY: 'secondary',
 }
 
 export const SIZES = {
@@ -22,6 +23,7 @@ export const Button = ({
   buttonSize,
   onClick = () => {},
   children,
+  disabled = false,
 }) => {
   const btnClass = classNames(
     styles.button,
@@ -29,7 +31,12 @@ export const Button = ({
     styles[buttonSize || SIZES.MEDIUM]
   )
   return (
-    <button type={type} onClick={onClick} className={btnClass}>
+    <button
+      type={type}
+      onClick={onClick}
+      className={btnClass}
+      disabled={disabled}
+    >
       {children}
     </button>
   )

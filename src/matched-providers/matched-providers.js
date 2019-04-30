@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styles from './matched-providers.module.css'
 import { ProviderCard } from './provider-card'
-import { OnboardingHeader } from '../common/onboarding-header'
+import { HomeHeader } from '../common/home-header'
 import { OptionButton } from '../common/option-button'
 import Therapist1 from '../images/Therapist1.jpeg'
 import Therapist2 from '../images/Therapist2.jpeg'
@@ -103,7 +103,7 @@ export const MatchedProviders = () => {
 
   return (
     <div className={styles.container}>
-      <OnboardingHeader step={2} />
+      <HomeHeader />
       <div className={styles.maxWidthContainer}>
         <div className={styles.titleAndSearchContainer}>
           <h1>Providers for you</h1>

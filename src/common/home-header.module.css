@@ -4,6 +4,7 @@
   position: sticky;
   display: flex;
   justify-content: space-between;
+  background-color: white;
   align-items: center;
   width: 100%;
   max-width: var(--mw);
@@ -19,21 +20,17 @@
 }
 
 .logo {
-  width: 43px;
-  height: 50px;
-  border-radius: 50%;
+  width: 38px;
+  height: 45px;
+  /* border-radius: 50%; */
 }
 
 .productName {
-  font-family: Lato;
+  font-family: 'Lato', sans-serif;
   font-weight: var(--fw-5);
   font-size: var(--fs-5);
   letter-spacing: 0.5px;
   margin-left: var(--s-3);
-}
-
-.productName:hover {
-  cursor: pointer;
 }
 
 .navContainer {
@@ -62,6 +59,8 @@
 }
 
 .navLink {
+  color: var(--darkest-gray);
+  text-decoration: none;
   font-size: var(--fs-4);
   font-weight: var(--fw-5);
   margin: var(--s-0) var(--s-4) var(--s-0) var(--s-4);
@@ -86,6 +85,20 @@
 .menuIcon:hover {
   cursor: pointer;
 }
+
+/* @media (min-width: 769px) {
+  .navContainer {
+    display: flex;
+  }
+
+  .dropdownContainer {
+    display: none;
+  }
+
+  .menuIcon {
+    display: none;
+  }
+} */
 
 @media (max-width: 768px) {
   .logo {
