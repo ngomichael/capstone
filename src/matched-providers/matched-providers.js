@@ -62,7 +62,7 @@ const providers = [
 
 const filters = [
   {
-    name: 'Depression, anxiety',
+    name: 'Depression, Anxiety',
     isClicked: true,
   },
   {
@@ -70,11 +70,11 @@ const filters = [
     isClicked: true,
   },
   {
-    name: 'Apple Health',
+    name: 'Aetna',
     isClicked: true,
   },
   {
-    name: 'Young adult',
+    name: 'Young Adult',
     isClicked: true,
   },
   {
@@ -125,15 +125,17 @@ export const MatchedProviders = () => {
             className={styles.searchInput}
           />
         </div>
-        {/* <div className={styles.filtersContainer}>
-        {filters.map(filter => (
-          <OptionButton isClicked={filter.isClicked} key={filter.name}>
-          {filter.name}
-          </OptionButton>
+
+        <div className={styles.filtersContainer}>
+          {filters.map(filter => (
+            <OptionButton isClicked={filter.isClicked} key={filter.name}>
+              {filter.name}
+            </OptionButton>
           ))}
-        </div> */}
+        </div>
+
         <div className={styles.providersContainer}>
-          {providers.map(provider => (
+          {allProviders.map(provider => (
             <ProviderCard provider={provider} key={provider.name} />
           ))}
         </div>

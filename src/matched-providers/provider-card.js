@@ -40,8 +40,8 @@ export const ProviderCard = ({ provider }) => {
     setIsHovered(!isHovered)
   }
 
-  const { name, photo, credentials, summary } = provider
-
+  // const { name, photo, credentials, summary } = provider
+  console.log(provider.questionnaire_answers)
   return (
     <Link to="/providerInfo" className={styles.link}>
       <div
@@ -51,10 +51,10 @@ export const ProviderCard = ({ provider }) => {
       >
         <div className={styles.contactInfo}>
           <div className={styles.photoandInfoContainer}>
-            <img src={photo} className={styles.providerPhoto} />
+            {/* <img src={photo} className={styles.providerPhoto} /> */}
             <div className={styles.providerInfo}>
-              <p className={styles.name}>{name}</p>
-              <p>Seattle, WA 98107</p>
+              <p className={styles.name}>{provider.name}</p>
+              <p>{provider.address}</p>
               <p>100% Match</p>
             </div>
           </div>
@@ -66,11 +66,11 @@ export const ProviderCard = ({ provider }) => {
         </div>
 
         <div className={styles.overview}>
-          {overviewItems.map(item => {
+          {provider.questionnaire_answers.map(item => {
             return (
               <div className={styles.itemContainer} key={item.label}>
                 <p className={styles.label}>{item.label}</p>
-                <p>{item.values.join(', ')}</p>
+                <p>{item.values.slice(0, 3).join(', ')}</p>
               </div>
             )
           })}
@@ -82,8 +82,8 @@ export const ProviderCard = ({ provider }) => {
 
 ProviderCard.propTypes = {
   provider: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    photo: PropTypes.node.isRequired,
-    credentials: PropTypes.string.isRequired,
+    // name: PropTypes.string.isRequired,
+    // photo: PropTypes.node.isRequired,
+    // credentials: PropTypes.string.isRequired,
   }),
 }
