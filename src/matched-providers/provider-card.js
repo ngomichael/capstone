@@ -40,8 +40,6 @@ export const ProviderCard = ({ provider }) => {
     setIsHovered(!isHovered)
   }
 
-  // const { name, photo, credentials, summary } = provider
-  console.log(provider.questionnaire_answers)
   return (
     <Link to="/providerInfo" className={styles.link}>
       <div
@@ -51,11 +49,11 @@ export const ProviderCard = ({ provider }) => {
       >
         <div className={styles.contactInfo}>
           <div className={styles.photoandInfoContainer}>
-            {/* <img src={photo} className={styles.providerPhoto} /> */}
+            <img src={provider.photo} className={styles.providerPhoto} />
             <div className={styles.providerInfo}>
               <p className={styles.name}>{provider.name}</p>
               <p>{provider.address}</p>
-              <p>100% Match</p>
+              <b>100% Match</b>
             </div>
           </div>
           <div className={styles.contactActions}>

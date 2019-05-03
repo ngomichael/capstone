@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styles from './matched-providers.module.css'
 import { ProviderCard } from './provider-card'
-import { HomeHeader } from '../common/home-header'
+import { OnboardingHeader } from '../common/onboarding-header'
 import { OptionButton } from '../common/option-button'
 import Therapist1 from '../images/Therapist1.jpeg'
 import Therapist2 from '../images/Therapist2.jpeg'
@@ -114,7 +114,7 @@ export const MatchedProviders = () => {
 
   return (
     <div className={styles.container}>
-      <HomeHeader />
+      <OnboardingHeader step={2} />
       <div className={styles.maxWidthContainer}>
         <div className={styles.titleAndSearchContainer}>
           <h1>Providers for you</h1>
@@ -147,6 +147,7 @@ export const MatchedProviders = () => {
         >
           View more matches
         </Button>
+        <div style={{ marginBottom: '35px' }} />
       </div>
     </div>
   )
