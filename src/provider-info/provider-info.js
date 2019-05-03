@@ -37,7 +37,10 @@ export const ProviderInfo = ({
       <div className={styles.maxWidthContainer}>
         <div className={styles.providerOverview}>
           <div className={styles.basicInfo}>
-            <img src={StacyAdamsPhoto} className={styles.providerPhoto} />
+            <img
+              src="https://lh3.googleusercontent.com/_FlZrFOOPQjwDlvgmn6yzH8WEgxvs3QhbU0c19aI18Cy3UGZvoSlwnpb7gTwWKRWG_69PHFpXPvZRsOYQNyhD3ezUiI2KDdWa78lHwoJaRYXtAjEM1dPTArArTBYOUZ_njYmpp6x1Xr9H-OsvActk4KvP7TuloDNX4mppnN7_M1hDk2Vx_juLB4O8elM7FeoDIeYhHEa7qKgc4Vq5PSA7_UVBdGrFO2UcFkryaue6CfSXmI3hps0au0nDHi6g5RDIGEmmjDQbkf3Cdy7X3NnVCO8vo6s4Wucp38KUMYH8Qw2eXPOVupZAQ6QL5WOLkNsI75XFu1l_d8JJ_2tgkgVSGDifuHzABF7aYP8fMgxtrCTM2WkF0mdL4HrlAAw51RAJ0zAkb56IfEDVUj2noIg0AJ7aHwQ-k2iHbWWO2ihXRcAQMv0W0Ow9mNp4mV_jlEslkMR0yfiAXsx0kiAVE9tbjjxF7oW_Tt9Ixlee2BNM6NFO37MLZv_rH9KUIS53Qx1gZ3L1xjKYvvoeLYb9fHZO1DWm940IQW-jOfWb8hdfQcnATEKZz0pgmnMaZ6EblYucpWF3yMD1oV685FST_Z6u1nmTANNLTbswzigqRoK1BrdNtV3ZfsQxnhYrfnbjPfUdDOzIIop9ONjby_gV6x_0wfKXgXhO6COkIH6VMsuh8ulAsUc3RoG-wln2K31Z29rVO37Fm_iB_YVWv9K3ZT7xROs=w608-h946-no"
+              className={styles.providerPhoto}
+            />
             <div>
               <p className={styles.name}>Stacy Adams</p>
               <p>ARNP, PMHNP-BC</p>
@@ -67,9 +70,9 @@ export const ProviderInfo = ({
               Biography: Background and Education
             </p>
             <p className={styles.sectionDescription}>
-              Description of why this is important and would help a patient make
-              a choice about wanting to work with this provider. Lorem ipsum
-              dolor sit amet, consectetur adipiscing elit. Mauris ex nibh,
+              Part of finding a provider that will fit you well is about
+              figuring out if you're able to relate and if they are able to
+              fully understand your situation.
             </p>
             <p className={styles.sectionContent}>
               I am a clinician located in the heart of Ballard. I grew up in

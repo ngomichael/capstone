@@ -36,7 +36,7 @@ export const ContactModal = ({ handleClose }) => {
               buttonType={TYPES.PRIMARY}
               buttonSize={SIZES.MEDIUM}
             >
-              Webiste
+              Website
             </Button>
           </a>
           <Button
