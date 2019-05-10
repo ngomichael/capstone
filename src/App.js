@@ -17,6 +17,9 @@ import { AuthContext } from './auth-context'
 class App extends Component {
   constructor(props) {
     super(props)
+    this.getRankingScore = this.getRankingScore.bind(this)
+    this.calculateResults = this.calculateResults.bind(this)
+    this.getDuration = this.getDuration.bind(this)
     this.state = {
       firebaseInitialized: false,
     }
@@ -32,30 +35,32 @@ class App extends Component {
     firebase.getSignedInUser()
   }
 
-   //given an user and a provider, look through their questionnaire responses, and provide a ranking
+  //given an user and a provider, look through their questionnaire responses, and provide a ranking
   // reflecting % match. Returns a provider object with a ranking score field.
-  getRankingScore(user, provider) {
-    console.log('passed in', user, provider);
-    let provider_address = [provider.provider_address];
-    let distance = this.getDuration(user.zip_code, provider_address)
-    console.log('the duration function returned ', distance);
-    return distance;
-}
+  getRankingScore(user, provider) { 
+    let totalRank = 0;
+    // console.log('passed in', user, provider);
+    let provider_address = [provider.address]
 
-// Given the location of the user zipcode as a string called user_zip, and an array of the
+    // console.log('the provider address is', provider_address);
+    // console.log('the user zip is', user.zip_code );
+  }
+
+  // Given the location of the user zipcode as a string called user_zip, and an array of the
   //providers zip codes called providers_zip, return a list of provider objects,
   /// ordered from shortest to longest distance
-  getDuration(user_zip, providers_address) {
+ getDuration(user_zip, providers_address) {
     let final_list = []
-    let prefix = 'Seattle, WA '
+    let prefix = ' Seattle, WA '
     let origin = prefix + user_zip
-    let destinations_list = providers_address.map(provider_address => {
-      return prefix + provider_address;
-    })
-
+    let destinations_list = providers_address.map(address => {
+      return address + prefix
+    }, this)
+    console.log('this is the provider address', destinations_list)
+    console.log('this is the origin ', [origin])
     let service = new google.maps.DistanceMatrixService()
 
-    service.getDistanceMatrix(
+   service.getDistanceMatrix(
       {
         origins: [origin],
         destinations: destinations_list,
@@ -66,7 +71,7 @@ class App extends Component {
       callback
     )
 
-    function callback(response, status) {
+   function callback(response, status) {
       if (status == 'OK') {
         let origins = response.originAddresses
         let destinations = response.destinationAddresses
@@ -74,7 +79,6 @@ class App extends Component {
           let results = response.rows[i].elements
           for (let j = 0; j < results.length; j++) {
             let element = results[j]
-            console.log(element)
             let distance_text = element.distance.text
             let distance_value = element.distance.value
             let destination_result = destinations[j]
@@ -88,20 +92,18 @@ class App extends Component {
               travel_time: duration_value,
               travel_text: duration_text,
             }
-            final_list[j] = result_object
+            final_list.push(result_object);
           }
         }
-        console.log('The final list is...')
-      
-        console.log(final_list)
-        return final_list
+        console.log('The final list is...');
+        console.log(final_list);
+        return final_list;
       }
     }
   }
 
-  calculateResults() {
+  async calculateResults() {
     try {
-      
       // An attempt  to get user data from users_pearcare collection
 
       // let user = firebase.getUserProfile()
@@ -120,46 +122,60 @@ class App extends Component {
 
       // Need to find out how to connect user's name to their answers later on...
 
-      // Get user's questionnaire answers 
-      let questionnaire_id = '0pD8wqMjZtC3e1fNp9wE'; 
-      let questionnaireRef = firebase.db.collection('questionnaire_answers').doc(questionnaire_id);
-      let user_answers = '';
-      questionnaireRef.get()
+      // Get user's questionnaire answers
+      let questionnaire_id = '0pD8wqMjZtC3e1fNp9wE'
+      let questionnaireRef = firebase.db
+        .collection('questionnaire_answers')
+        .doc(questionnaire_id)
+      let user_answers = ''
+      questionnaireRef
+        .get()
         .then(doc => {
           if (doc.exists) {
-            user_answers = doc.data();
-            console.log('the users answers are ' ,  user_answers);
+            user_answers = doc.data()
           } else {
             console.log('No such questionnaire!')
           }
-        }).catch(error => {
+        })
+        .catch(error => {
           console.log('Error getting document:', error)
-        });
-    
+        })
+
       // Look through providers to get ranked list
       let ranked_providers = []
       firebase.db
         .collection('providers')
         .get()
         .then(querySnapshot => {
-          querySnapshot.forEach((provider) => {
-                   let provider_answers = provider.data();
-                   console.log('providers answers are', provider_answers);
-                   console.log('Again, the user answers are', user_answers);
-                   let ranked_provider = this.getRankingScore(user_answers, provider_answers);
-                   ranked_providers.push(ranked_provider);
+          querySnapshot.forEach(provider => {
+            let provider_answers = provider.data()
+            console.log('providers answers are', provider_answers)
+            console.log('Again, the user answers are', user_answers)
+            // Get the distance for each provider and make a new provider object that holds that information 
+            let distance_results = await this.getDuration(user_answers.zip_code, [provider_answers.address]).then((results) => {
+                  console.log('the distance results are ', results);
+            });
+            
 
-          })
-        }).then(() => {
-          duration_results = this.getDuration(user_zip, providers)
+            console.log('the distance function returned ', distance_results);
+            console.log('the result is ', distance_results[0])
+            console.log('heres the string index', distance_results['""0""'])
+            console.log('heres the string index', distance_results['"0"'])
+            let full_provider = provider_answers;
+            full_provider.distance = distance_results[0].distance;
+            full_provider.distance_text = distance_results[0].distance_text;
+            console.log('the full provider is ', full_provider);
+            ranked_providers.push(full_provider);
+          }, this)
+          ranked_providers.forEach(() => {
+
+          }, this)
         })
+    
     } catch (err) {
       console.log(err)
     }
   }
-
- 
-  
 
   render() {
     return this.state.firebaseInitialized ? (
