@@ -45,6 +45,7 @@ class Firebase {
         credentials: answers.credentials,
         approaches: answers.approaches,
         populations: answers.populations,
+        user_type: 'client',
       })
     }
 
@@ -61,8 +62,51 @@ class Firebase {
           credentials: answers.credentials,
           approaches: answers.approaches,
           populations: answers.populations,
+          user_type: 'client',
         },
         { merge: true }
+      )
+  }
+
+  addProviderQuestionnaireAnswers(answers) {
+    const terms = [
+      ...answers.care_types,
+      ...answers.issues,
+      ...answers.insurances,
+      ...answers.age_groups,
+      ...answers.credentials,
+      ...answers.approaches,
+      ...answers.populations,
+    ]
+
+    const termsObject = terms.reduce((object, term) => {
+      const formattedTerm = term
+        .split(' ')
+        .join('_')
+        .toLowerCase()
+
+      object[formattedTerm] = true
+      return object
+    }, {})
+
+    if (!this.auth.currentUser) {
+      this.db.collection('provider_answers').add({
+        terms,
+        termsObject,
+        user_type: 'provider',
+      })
+    }
+
+    return this.db
+      .collection('provider_answers')
+      .doc(this.auth.currentUser.uid)
+      .set(
+        {
+          terms,
+          termsObject,
+          user_type: 'provider',
+        }
+        // { merge: true }
       )
   }
 
@@ -86,6 +130,41 @@ class Firebase {
 
   getAllProviders() {
     return this.db.collection('providers').get()
+  }
+
+  filterProviderName(name) {
+    const providersRef = this.db.collection('providers')
+    const query = providersRef.where('name', '==', name).get()
+    return query
+  }
+
+  // filterProviders(filter, value) {
+  //   // in client send object of filters
+  //   const providersRef = this.db.collection('providers')
+  //   const query = providersRef
+  //     .where(filter, 'array-contains', value)
+  //     // .where('care_types', 'array-contains', 'Couples counselor')
+  //     .get()
+  //   return query
+  // }
+
+  filterProviders(terms) {
+    // in client send object of filters
+    const providersRef = this.db.collection('providers')
+    let ref = providersRef
+
+    const formattedTerms = terms.map(term =>
+      term
+        .split(' ')
+        .join('_')
+        .toLowerCase()
+    )
+
+    formattedTerms.forEach(val => {
+      ref.where(`termsObject.${val}`, '==', true)
+    })
+    const query = ref.get()
+    return query
   }
 
   isInitialized() {

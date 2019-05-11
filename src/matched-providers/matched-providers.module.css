@@ -4,7 +4,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* margin: var(--s-0) var(--s-0) var(--s-0) var(--s-0); */
 }
 
 .maxWidthContainer {
@@ -57,4 +56,21 @@
 .pageInfo {
   font-size: var(--fs-3);
   margin: var(--s-6) var(--s-0) var(--s-3) var(--s-0);
+}
+
+.pagination {
+  display: inline-block;
+  padding-left: 0;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+
+.pagination > li {
+  display: inline;
+}
+
+.activeLink {
+  color: white;
+  background-color: #337ab7;
+  border-color: #337ab7;
 }

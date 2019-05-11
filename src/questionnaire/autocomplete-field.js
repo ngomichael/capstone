@@ -15,9 +15,9 @@ export const AutocompleteField = ({
 }) => {
   const [multiValue, setMultiValue] = useState([])
 
-  const handleMultiChange = option => {
-    setMultiValue(option)
-    setFieldValue(name, option)
+  const handleMultiChange = options => {
+    setMultiValue(options)
+    setFieldValue(name, options.map(option => option.value))
   }
 
   return (

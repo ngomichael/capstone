@@ -4,31 +4,6 @@ import PropTypes from 'prop-types'
 import styles from './provider-card.module.css'
 import { Mail, Heart, ExternalLink } from 'react-feather'
 
-const overviewItems = [
-  {
-    label: 'Type of care',
-    values: ['Therapy', 'Medication management'],
-  },
-  {
-    label: 'Client Focus',
-    values: ['Adults', 'Children'],
-  },
-  {
-    label: 'Experienced with',
-    values: ['Therapy', 'Medication management'],
-  },
-  {
-    label: 'Credentials',
-    values: ['ARNP', 'PMHNP-BC'],
-  },
-  {
-    label: 'Approach to Treatment',
-    values: [
-      'During our sessions we will work together to understand what is working in your life through an evaluation and proceed to therapy when desired. Additionally, my approach also includes medication management and if that is a better solution to your needs, we will go that route',
-    ],
-  },
-]
-
 export const ProviderCard = ({ provider }) => {
   const [isHovered, setIsHovered] = useState(false)
 

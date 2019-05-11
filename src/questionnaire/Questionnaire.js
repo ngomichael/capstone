@@ -71,7 +71,7 @@ export const questionnaireQuestions = [
         label: 'Premarital counselor',
       },
     ],
-    name: 'careType',
+    name: 'care_types',
     pageNum: 1,
   },
   {
@@ -183,7 +183,7 @@ export const questionnaireQuestions = [
       { id: 'Parents', value: 'Parents', label: 'Parents' },
       { id: 'Family', value: 'Family', label: 'Family' },
     ],
-    name: 'ageGroup',
+    name: 'age_groups',
     pageNum: 2,
   },
   {
@@ -532,7 +532,8 @@ export const Questionnaire = () => {
   const [currPageNum, setCurrPageNum] = useState(1)
   async function handleSubmit(answers) {
     await firebase.getUserProfile()
-    await firebase.addUserQuestionnaireAnswers(answers)
+    // await firebase.addUserQuestionnaireAnswers(answers)
+    await firebase.addProviderQuestionnaireAnswers(answers)
   }
 
   function handleNextPage() {
@@ -564,8 +565,8 @@ export const Questionnaire = () => {
             initialValues={{
               zip_code: '',
               issues: [],
-              ageGroup: [],
-              careType: [],
+              age_groups: [],
+              care_types: [],
               insurances: [],
               credentials: [],
               approaches: [],
