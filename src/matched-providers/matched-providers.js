@@ -9,36 +9,48 @@ import firebase from '../firebase/firebase'
 
 const filters = [
   {
-    name: 'Depression, Anxiety',
-    isClicked: true,
+    name: 'Issues',
+    options: [
+      'Depression',
+      'Anxiety',
+      'Anger Management',
+      'Life Transition Challenges',
+    ],
   },
   {
-    name: 'Therapy',
-    isClicked: true,
+    name: 'Care Type',
+    options: ['Therapist', 'Medication', 'Testing'],
   },
   {
-    name: 'Aetna',
-    isClicked: true,
+    name: 'Insurance',
+    options: ['Aetna', 'Blue Cross Blue Shield', 'Medicare'],
   },
   {
-    name: 'Young Adult',
-    isClicked: true,
+    name: 'Age Group',
+    options: [
+      'Toddlers/preschoolers (ages 0 to 6)',
+      'Children (ages 6 to 10)',
+      'Preteens/tweens (ages 11 to 13)',
+      'Adolescents (ages 14 to 19)',
+      'Young Adults',
+      'Adults',
+    ],
   },
   {
     name: 'Credentials',
-    isClicked: false,
+    options: ['PhD', 'MD', 'LGPC'],
   },
   {
     name: 'Approach',
-    isClicked: false,
-  },
-  {
-    name: 'Personality',
-    isClicked: false,
+    options: ['Integrative', 'Non-Directive'],
   },
   {
     name: 'Identity/Population',
-    isClicked: false,
+    options: [
+      'Asian/Asian-American therapists',
+      'Black/African-American therapists',
+      'Latinx therapists',
+    ],
   },
 ]
 
@@ -95,7 +107,7 @@ export const MatchedProviders = () => {
 
         <div className={styles.filtersContainer}>
           {filters.map(filter => (
-            <OptionButton isClicked={filter.isClicked} key={filter.name}>
+            <OptionButton key={filter.name} options={filter.options}>
               {filter.name}
             </OptionButton>
           ))}
