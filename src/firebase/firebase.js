@@ -90,10 +90,9 @@ class Firebase {
     }, {})
 
     if (!this.auth.currentUser) {
-      this.db.collection('provider_answers').add({
+      return this.db.collection('provider_answers').add({
         terms,
         termsObject,
-        user_type: 'provider',
       })
     }
 
@@ -104,7 +103,6 @@ class Firebase {
         {
           terms,
           termsObject,
-          user_type: 'provider',
         }
         // { merge: true }
       )
@@ -138,19 +136,9 @@ class Firebase {
     return query
   }
 
-  // filterProviders(filter, value) {
-  //   // in client send object of filters
-  //   const providersRef = this.db.collection('providers')
-  //   const query = providersRef
-  //     .where(filter, 'array-contains', value)
-  //     // .where('care_types', 'array-contains', 'Couples counselor')
-  //     .get()
-  //   return query
-  // }
-
   filterProviders(terms) {
     // in client send object of filters
-    const providersRef = this.db.collection('providers')
+    const providersRef = this.db.collection('provider_answers')
     let ref = providersRef
 
     const formattedTerms = terms.map(term =>
@@ -161,7 +149,7 @@ class Firebase {
     )
 
     formattedTerms.forEach(val => {
-      ref.where(`termsObject.${val}`, '==', true)
+      ref = ref.where(`termsObject.${val}`, '==', true)
     })
     const query = ref.get()
     return query

@@ -66,21 +66,13 @@ export const MatchedProviders = () => {
   async function getByName(name) {
     const snapshot = await firebase.filterProviderName(name)
     const queriedProvider = snapshot.docs.map(doc => doc.data())
-    // console.log(queriedProvider)
   }
 
   async function filterProviders(terms) {
-    // console.log(terms)
     const snapshot = await firebase.filterProviders(terms)
     const queriedProvider = snapshot.docs.map(doc => doc.data())
     console.log(queriedProvider)
   }
-
-  // async function filter(filter, value) {
-  //   const snapshot = await firebase.filterProviders(filter, value)
-  //   const queriedProvider = snapshot.docs.map(doc => doc.data())
-  //   console.log(queriedProvider)
-  // }
 
   function handlePageChange(pageNumber) {
     console.log(`active page is ${pageNumber}`)
@@ -131,6 +123,11 @@ export const MatchedProviders = () => {
           innerClass={styles.pagination}
           activeLinkClass={styles.activeLink}
         />
+        <div>
+          <button type="button" onClick={() => firebase.signOut()}>
+            Sign Out
+          </button>
+        </div>
         <div style={{ marginBottom: '35px' }} />
       </div>
     </div>
