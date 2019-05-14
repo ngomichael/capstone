@@ -58,8 +58,7 @@ export const MatchedProviders = () => {
   const [searchVal, setSearchVal] = useState('')
   const [allProviders, setAllProviders] = useState([])
   const [activePage, setActivePage] = useState(1)
-  // const [checkedItems, setCheckedItems] = useState(new Map())
-  const [checkedItems, setCheckedItems] = useState([])
+  const [checkedItems, setCheckedItems] = useState(new Map())
 
   useEffect(() => {
     getProviders()
@@ -69,13 +68,15 @@ export const MatchedProviders = () => {
   function handleCheckboxChange(e) {
     const item = e.target.name
     const isChecked = e.target.checked
-    // const newMap = new Map([...checkedItems.set(item, isChecked)])
-    const newCheckedItems = [...checkedItems, isChecked && item]
-    // setCheckedItems(newMap)
-    setCheckedItems(newCheckedItems)
-    // console.log([...checkedItems.keys()])
-    // filterProviders([...checkedItems.keys()])
-    filterProviders(checkedItems)
+    const newMap = new Map([...checkedItems.set(item, isChecked)])
+    setCheckedItems(newMap)
+    let checkedItemsArray = []
+
+    checkedItems.forEach((value, key) => {
+      value === true && checkedItemsArray.push(key)
+    })
+    console.log(checkedItemsArray)
+    filterProviders(checkedItemsArray)
   }
 
   function handleSearchValChange(e) {
