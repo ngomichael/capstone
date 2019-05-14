@@ -11,7 +11,7 @@ export const OptionButton = ({ children, options, onChange, checkedItems }) => {
   }
 
   return (
-    <span className={styles.container}>
+    <div className={styles.container}>
       <button onClick={handleClickedStatusChange} className={styles.button}>
         <p>{children}</p>
       </button>
@@ -22,7 +22,7 @@ export const OptionButton = ({ children, options, onChange, checkedItems }) => {
           checkedItems={checkedItems}
         />
       )}
-    </span>
+    </div>
   )
 }
 
