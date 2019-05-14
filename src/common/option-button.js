@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import CheckboxContainer from '../common/checkbox-container'
 import styles from './option-button.module.css'
 
-export const OptionButton = ({ children, options }) => {
+export const OptionButton = ({ children, options, onChange, checkedItems }) => {
   const [clicked, changeClickedStatus] = useState(false)
 
   function handleClickedStatusChange() {
@@ -11,18 +11,17 @@ export const OptionButton = ({ children, options }) => {
   }
 
   return (
-    <span>
-      <button
-        onClick={handleClickedStatusChange}
-        // className={
-        //   clicked ? `${styles.button} ${styles.activeButton}` : styles.button
-        // }
-        className={styles.button}
-      >
-        {/* <div>{options.map(option => {})}</div> */}
+    <span className={styles.container}>
+      <button onClick={handleClickedStatusChange} className={styles.button}>
         <p>{children}</p>
       </button>
-      {/* <CheckboxContainer options={options} /> */}
+      {clicked && (
+        <CheckboxContainer
+          options={options}
+          onChange={onChange}
+          checkedItems={checkedItems}
+        />
+      )}
     </span>
   )
 }

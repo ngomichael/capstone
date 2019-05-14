@@ -1,5 +1,13 @@
 @import '../common/variables.css';
 
+.container {
+  position: relative;
+}
+
+.checkboxes {
+  position: absolute;
+}
+
 .button {
   border: 2px solid #a3ded8;
   border-radius: 4px;

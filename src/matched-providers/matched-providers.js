@@ -58,13 +58,25 @@ export const MatchedProviders = () => {
   const [searchVal, setSearchVal] = useState('')
   const [allProviders, setAllProviders] = useState([])
   const [activePage, setActivePage] = useState(1)
+  // const [checkedItems, setCheckedItems] = useState(new Map())
+  const [checkedItems, setCheckedItems] = useState([])
 
   useEffect(() => {
     getProviders()
     getByName('Brian Pendergast')
-    // filter('care_types', 'Therapist')
-    filterProviders(['Depression'])
   }, [])
+
+  function handleCheckboxChange(e) {
+    const item = e.target.name
+    const isChecked = e.target.checked
+    // const newMap = new Map([...checkedItems.set(item, isChecked)])
+    const newCheckedItems = [...checkedItems, isChecked && item]
+    // setCheckedItems(newMap)
+    setCheckedItems(newCheckedItems)
+    // console.log([...checkedItems.keys()])
+    // filterProviders([...checkedItems.keys()])
+    filterProviders(checkedItems)
+  }
 
   function handleSearchValChange(e) {
     setSearchVal(e.target.value)
@@ -107,7 +119,12 @@ export const MatchedProviders = () => {
 
         <div className={styles.filtersContainer}>
           {filters.map(filter => (
-            <OptionButton key={filter.name} options={filter.options}>
+            <OptionButton
+              key={filter.name}
+              options={filter.options}
+              onChange={handleCheckboxChange}
+              checkedItems={checkedItems}
+            >
               {filter.name}
             </OptionButton>
           ))}

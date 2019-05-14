@@ -1,0 +1,20 @@
+@import '../common/variables.css';
+
+.container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* width: 400px; */
+  height: 300px;
+  background-color: antiquewhite;
+  padding: var(--s-5);
+}
+
+.checkboxOption {
+  margin-bottom: var(--s-2);
+}
+
+.text {
+  margin-left: var(--s-2);
+}
