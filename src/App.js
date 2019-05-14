@@ -6,6 +6,7 @@ import { SignUp } from './sign-up/sign-up'
 import { SignIn } from './sign-in/sign-in'
 import { Home } from './home/home'
 import { Questionnaire } from './questionnaire/questionnaire'
+import { ProviderQuestionnaire } from './questionnaire/provider-questionnaire'
 import { MatchedProviders } from './matched-providers/matched-providers'
 import { ProviderInfo } from './provider-info/provider-info'
 import { Prompt } from './prompt/prompt'
@@ -36,6 +37,7 @@ class App extends Component {
       <Router>
         <Home path="/" />
         <Questionnaire path="questionnaire" />
+        <ProviderQuestionnaire path="providerQuestionnaire" />
         <MatchedProviders path="results" />
         <ProviderInfo path="providerInfo" />
         <Prompt

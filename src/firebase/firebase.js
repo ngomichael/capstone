@@ -70,6 +70,7 @@ class Firebase {
 
   addProviderQuestionnaireAnswers(answers) {
     const terms = [
+      ...answers.zip_code,
       ...answers.care_types,
       ...answers.issues,
       ...answers.insurances,
@@ -93,6 +94,37 @@ class Firebase {
       return this.db.collection('provider_answers').add({
         terms,
         termsObject,
+        zip_code: answers.zip_code,
+        email: answers.email,
+        phone_number: answers.phone_number,
+        website: answers.website,
+        name: answers.name,
+        contact: answers.contact,
+        reminders: answers.reminders,
+        insurances: answers.insurances,
+        populations: answers.populations,
+        questionnaire_answers: [
+          {
+            label: 'Type of Care',
+            values: answers.care_types,
+          },
+          {
+            label: 'Client Focus',
+            values: answers.age_groups,
+          },
+          {
+            label: 'Experienced with',
+            values: answers.issues,
+          },
+          {
+            label: 'Credentials',
+            values: answers.credentials,
+          },
+          {
+            label: 'Approach to treatment',
+            values: answers.approaches,
+          },
+        ],
       })
     }
 
@@ -103,6 +135,37 @@ class Firebase {
         {
           terms,
           termsObject,
+          zip_code: answers.zip_code,
+          email: answers.email,
+          phone_number: answers.phone_number,
+          website: answers.website,
+          name: answers.name,
+          contact: answers.contact,
+          reminders: answers.reminders,
+          insurances: answers.insurances,
+          populations: answers.populations,
+          questionnaire_answers: [
+            {
+              label: 'Type of Care',
+              values: answers.care_types,
+            },
+            {
+              label: 'Client Focus',
+              values: answers.age_groups,
+            },
+            {
+              label: 'Experienced with',
+              values: answers.issues,
+            },
+            {
+              label: 'Credentials',
+              values: answers.credentials,
+            },
+            {
+              label: 'Approach to treatment',
+              values: answers.approaches,
+            },
+          ],
         }
         // { merge: true }
       )

@@ -14,7 +14,7 @@ export const QuestionField = ({ supplementaryText, type, name }) => {
 }
 
 QuestionField.propTypes = {
-  supplementaryText: PropTypes.string.isRequired,
+  supplementaryText: PropTypes.string,
   type: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
 }

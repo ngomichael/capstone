@@ -39,7 +39,7 @@ export const AutocompleteField = ({
 }
 
 AutocompleteField.propTypes = {
-  supplementaryText: PropTypes.string.isRequired,
+  supplementaryText: PropTypes.string,
   name: PropTypes.string.isRequired,
   terms: PropTypes.arrayOf(
     PropTypes.shape({

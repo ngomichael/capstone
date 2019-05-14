@@ -13,19 +13,18 @@ import { AutocompleteField } from './autocomplete-field'
 export const questionnaireQuestions = [
   {
     questionType: 'input',
-    question: "What's the city or zipcode you're seeking care in?*",
-    supplementaryText:
-      'Getting to a provider can be a big barrier in receiving care. This information helps us find providers close to you.',
-    name: 'zip_code',
+    question:
+      'What is the address of your practice, including the city and zipcode?*',
+
+    name: 'address',
     pageNum: 1,
     type: 'text',
     isLongInput: false,
   },
   {
     questionType: 'autocomplete',
-    question: 'What kind of care are you looking for',
-    supplementaryText:
-      'Getting to a provider can be a big barrier in receiving care. This information helps us find providers close to you.',
+    question: 'What kind of care or services do you provide?',
+
     terms: [
       { id: 'Therapist', value: 'Therapist', label: 'Therapist' },
       {
@@ -46,9 +45,8 @@ export const questionnaireQuestions = [
   {
     questionType: 'autocomplete',
     question:
-      'What are you struggling with and seeking help for? (I.e depression, life transition challenges)',
-    supplementaryText:
-      "Providers often have different areas of expertise. Having a provider who has experience with what you're struggling with could enhance the quality of your care.",
+      'What issues or illnesses do you provide assistance for? I.e depression, life transition challenges',
+
     terms: [
       { id: 'Anxiety', value: 'Anxiety', label: 'Anxiety' },
       { id: 'Depression', value: 'Depression', label: 'Depression' },
@@ -86,9 +84,9 @@ export const questionnaireQuestions = [
   },
   {
     questionType: 'autocomplete',
-    question: 'What insurance(s) do you have, if any? (I.e Apple Health)',
-    supplementaryText:
-      'Finding a provider that your insurance covers will make seeing a provider more affordable to you.',
+    question:
+      'What insurance(s) do you accept, if any? Please input all that apply.',
+
     terms: [
       { id: 'Aetna', value: 'Aetna', label: 'Aetna' },
       {
@@ -130,10 +128,8 @@ export const questionnaireQuestions = [
   },
   {
     questionType: 'autocomplete',
-    question:
-      'Are you looking for someone who specializes with a specific age group?',
-    supplementaryText:
-      'Providers may have more experience with certain age groups. Having a provider who has experience with your age group could enhance the quality of your care.',
+    question: 'Do you specialize with a specific age group?',
+
     terms: [
       {
         id: 'Toddlers/preschoolers (ages 0 to 6)',
@@ -164,14 +160,12 @@ export const questionnaireQuestions = [
       },
     ],
     name: 'age_groups',
-    pageNum: 2,
+    pageNum: 1,
   },
   {
     questionType: 'autocomplete',
-    question:
-      'Are you looking for someone with certain credentials? (I.e. PhD, LICSW)',
-    supplementaryText:
-      'Some patients prefer their providers have completed a certain degree or certificate program.',
+    question: 'What are your credentials? I.e. PhD, LICSW',
+
     terms: [
       {
         id: 'Marriage and Family Therapist (MA, MFT, LMFT, LCMFT)',
@@ -208,14 +202,13 @@ export const questionnaireQuestions = [
       },
     ],
     name: 'credentials',
-    pageNum: 2,
+    pageNum: 1,
   },
   {
     questionType: 'autocomplete',
     question:
-      'Are you looking for someone with certain personality traits or treatment approaches? (I.e. Integrative, non-directive)',
-    supplementaryText:
-      "Providers can use a wide range of approaches. If you're looking for a particular approach, that can narrow down the providers we think are a good fit for you.",
+      'What treatment approaches do you utilize? I.e. cognitive behavioral therapy',
+
     terms: [
       {
         id: 'Accelerated Experiential Dynamic Psychotherapy (AEDP)',
@@ -368,14 +361,13 @@ export const questionnaireQuestions = [
     ],
 
     name: 'approaches',
-    pageNum: 2,
+    pageNum: 1,
   },
   {
     questionType: 'autocomplete',
     question:
-      'Are you looking for someone that specializes in working with a certain client population or shares an identity trait? (I.e gender, race/ethnicity, religion/spirituality, sexual orientation, language)',
-    supplementaryText:
-      'Providers may have more experience with certain groups of the general population. Having a provider who has experience with challenges faced by particular demographics could enhance the quality of your care.',
+      'Do you identify with or specialize in working with a certain client population? I.e gender, race/ethnicity, religion/spirituality, sexual orientation, language',
+
     terms: [
       {
         id: 'Asian/Asian-American therapists',
@@ -459,6 +451,79 @@ export const questionnaireQuestions = [
       },
     ],
     name: 'populations',
+    pageNum: 1,
+  },
+  {
+    questionType: 'input',
+    question: 'What is your email?*',
+
+    name: 'email',
+    pageNum: 2,
+    type: 'text',
+    isLongInput: false,
+  },
+  {
+    questionType: 'input',
+    question: 'What is your phone number?*',
+
+    name: 'phone_number',
+    pageNum: 2,
+    type: 'text',
+    isLongInput: false,
+  },
+  {
+    questionType: 'input',
+    question: "What is your practice's website?*",
+    name: 'website',
+    pageNum: 2,
+    type: 'text',
+    isLongInput: false,
+  },
+  {
+    questionType: 'input',
+    question: 'What is your name?*',
+
+    name: 'name',
+    pageNum: 2,
+    type: 'text',
+    isLongInput: false,
+  },
+  {
+    questionType: 'autocomplete',
+    question:
+      'We will periodically remind you to update your profile to make sure those seeking services have the best experience possible. How would you like to be contacted? Please check all that apply.*',
+
+    terms: [
+      {
+        id: 'Email',
+        value: 'Email',
+        label: 'Email',
+      },
+      {
+        id: 'Phone',
+        value: 'Phone',
+        label: 'Phone',
+      },
+    ],
+    name: 'contact',
+    pageNum: 2,
+  },
+  {
+    questionType: 'autocomplete',
+    question: 'How often would you like to be reminded to update your profile?',
+    terms: [
+      {
+        id: 'Email',
+        value: 'Email',
+        label: 'Email',
+      },
+      {
+        id: 'Phone',
+        value: 'Phone',
+        label: 'Phone',
+      },
+    ],
+    name: 'reminders',
     pageNum: 2,
   },
 ]
@@ -468,7 +533,6 @@ const returnCorrectQuestionFormat = (question, setFieldValue, currPageNum) => {
   if (questionType === 'autocomplete') {
     return (
       <AutocompleteField
-        supplementaryText={question.supplementaryText}
         terms={question.terms}
         name={question.name}
         type={question.type}
@@ -482,7 +546,6 @@ const returnCorrectQuestionFormat = (question, setFieldValue, currPageNum) => {
   } else {
     return (
       <QuestionField
-        supplementaryText={question.supplementaryText}
         name={question.name}
         type={question.type}
         isLongInput={question.isLongInput}
@@ -508,12 +571,11 @@ const renderQuestions = (setFieldValue, currPageNum) => {
   })
 }
 
-export const Questionnaire = () => {
+export const ProviderQuestionnaire = () => {
   const [currPageNum, setCurrPageNum] = useState(1)
   async function handleSubmit(answers) {
     await firebase.getUserProfile()
-    await firebase.addUserQuestionnaireAnswers(answers)
-    // await firebase.addProviderQuestionnaireAnswers(answers)
+    await firebase.addProviderQuestionnaireAnswers(answers)
   }
 
   function handleNextPage() {
@@ -538,12 +600,19 @@ export const Questionnaire = () => {
           <p>{`Questionnaire: Page ${currPageNum} of 2`}</p>
           <h1 className={styles.title}>
             {currPageNum === 1
-              ? "First, let's figure out the essentials"
-              : "Besides the basics, is there anything else you're looking for in a provider?"}
+              ? "First, let's learn more about your practice"
+              : 'Now, let us know how to get in touch with you in the future?'}
           </h1>
           <Formik
             initialValues={{
               zip_code: '',
+              email: '',
+              phone_number: '',
+              website: '',
+              name: '',
+              address: '',
+              contact: [],
+              reminders: [],
               issues: [],
               age_groups: [],
               care_types: [],
@@ -571,17 +640,6 @@ export const Questionnaire = () => {
                     >
                       Finish
                     </Button>
-                    <Link to="/results">
-                      <Button
-                        type="text"
-                        buttonType={TYPES.SECONDARY}
-                        buttonSize={SIZES.LARGE}
-                        onClick={handlePreviousPage}
-                        className={styles.skipButton}
-                      >
-                        Skip to a list of providers
-                      </Button>
-                    </Link>
                   </div>
                 )}
               </Form>
@@ -598,17 +656,6 @@ export const Questionnaire = () => {
                 >
                   Next
                 </Button>
-                <Link to="/results">
-                  <Button
-                    type="text"
-                    buttonType={TYPES.SECONDARY}
-                    buttonSize={SIZES.LARGE}
-                    onClick={handlePreviousPage}
-                    className={styles.skipButton}
-                  >
-                    Skip to a list of providers
-                  </Button>
-                </Link>
               </div>
             )}
           </div>
