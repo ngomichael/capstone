@@ -5,9 +5,12 @@ import PearCareIcon from '../icons/pearcare-icon.png'
 import { X, Menu } from 'react-feather'
 
 const navLinksText = [
-  { text: 'How it Works', link: 'https://pearcare.netlify.com/' },
-  { text: 'Sign In', path: '/signin' },
-  { text: 'Sign up', path: '/signup' },
+  {
+    text: 'How it Works',
+    link: 'https://krystl37.wixsite.com/pearcarelanding',
+  },
+  { text: 'For providers', path: '/signin' },
+  { text: 'Log in/Sign up', path: '/signin' },
 ]
 
 function renderNavLinks() {

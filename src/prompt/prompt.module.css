@@ -57,6 +57,15 @@
   text-decoration: none;
 }
 
+.skipTextContainer {
+  font-size: var(--fs-2);
+  margin-top: var(--s-4);
+}
+
+.skipTextPath {
+  color: var(--primary);
+}
+
 @media (max-width: 768px) {
   .mainContentContainer {
     justify-content: center;

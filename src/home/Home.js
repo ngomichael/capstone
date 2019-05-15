@@ -22,7 +22,7 @@ export const Home = () => {
             provider.
           </p>
           <a
-            href="https://pearcare.netlify.com/"
+            href="https://krystl37.wixsite.com/pearcarelanding"
             rel="noopener noreferrer"
             target="_blank"
             className={styles.learnMoreLink}

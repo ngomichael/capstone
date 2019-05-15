@@ -56,6 +56,9 @@ class App extends Component {
           nextPath="/questionnaire"
           prevPath="/"
           step={1}
+          skipText="Don't have time right now?"
+          skipText2="Skip to a list of providers."
+          skipTextPath="/results"
         />
 
         <Prompt
@@ -74,6 +77,9 @@ class App extends Component {
           nextPath="/results"
           prevPath="/questionnaire"
           step={2}
+          skipText="Want to change your answers?"
+          skipText2="Go back to the questionnaire."
+          skipTextPath="/questionnaire"
         />
 
         <SignUp path="signup" />
