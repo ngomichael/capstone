@@ -17,6 +17,15 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  width: 100%;
+  /* margin: var(--s-7) var(--s-0) var(--s-0) var(--s-0); */
+}
+
+.providerOverviewBack {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  flex-wrap: wrap;
   width: 80%;
   margin: var(--s-7) var(--s-0) var(--s-0) var(--s-0);
 }

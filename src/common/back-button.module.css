@@ -1,5 +1,6 @@
 .container {
-  display: flex;
+  display: inline-flex;
+  width: 65px;
   margin-left: -6px;
   margin-bottom: 25px;
   color: var(--primary);

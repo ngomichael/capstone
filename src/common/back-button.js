@@ -8,12 +8,12 @@ export const BackButton = ({ path, onClick }) => {
   return onClick ? (
     <div onClick={onClick} className={styles.container}>
       <ChevronLeft />
-      <p>Back</p>
+      <span>Back</span>
     </div>
   ) : (
     <Link to={path} className={styles.container}>
       <ChevronLeft />
-      <p>Back</p>
+      <span>Back</span>
     </Link>
   )
 }
