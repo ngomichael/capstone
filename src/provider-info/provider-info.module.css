@@ -90,7 +90,7 @@
 }
 
 .footer {
-  /* position: sticky; */
+  position: sticky;
   display: flex;
   bottom: 0;
   justify-content: space-between;
