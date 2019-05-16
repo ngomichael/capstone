@@ -60,6 +60,7 @@
   align-items: center;
   width: 100%;
   margin-top: var(--s-6);
+  padding: var(--s-4) var(--s-4) var(--s-4) var(--s-4);
 }
 
 .noProvidersText {

@@ -104,6 +104,8 @@ export const MatchedProviders = () => {
     setActivePage(pageNumber)
   }
 
+  console.log(allProviders)
+
   return (
     <div className={styles.container}>
       <OnboardingHeader step={2} />
@@ -139,7 +141,7 @@ export const MatchedProviders = () => {
           </div>
         ) : (
           <div className={styles.noProviders}>
-            <UndrawEmpty />
+            <UndrawEmpty primaryColor="hsl(174, 74%, 39%)" />
             <p className={styles.noProvidersText}>No providers found...</p>
           </div>
         )}
