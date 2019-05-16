@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styles from './matched-providers.module.css'
 import { ProviderCard } from './provider-card'
 import { OnboardingHeader } from '../common/onboarding-header'
+import { UndrawEmpty } from 'react-undraw'
 import { OptionButton } from '../common/option-button'
 import { Button, TYPES, SIZES } from '../common/button'
 import Pagination from 'react-js-pagination'
@@ -130,11 +131,18 @@ export const MatchedProviders = () => {
           ))}
         </div>
 
-        <div className={styles.providersContainer}>
-          {allProviders.map(provider => (
-            <ProviderCard provider={provider} key={provider.name} />
-          ))}
-        </div>
+        {allProviders.length !== 0 ? (
+          <div className={styles.providersContainer}>
+            {allProviders.map(provider => (
+              <ProviderCard provider={provider} key={provider.name} />
+            ))}
+          </div>
+        ) : (
+          <div className={styles.noProviders}>
+            <UndrawEmpty />
+            <p className={styles.noProvidersText}>No providers found...</p>
+          </div>
+        )}
         {/* <p className={styles.pageInfo}>1-3 of 18 results</p>
         <Button
           type="button"

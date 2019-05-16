@@ -20,8 +20,6 @@ export const AutocompleteField = ({
     setFieldValue(name, options.map(option => option.value))
   }
 
-  console.log(terms[0])
-
   return (
     <div>
       <p className={styles.supplementaryText}>{supplementaryText}</p>
