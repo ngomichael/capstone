@@ -9,6 +9,7 @@
   /* height: 300px; */
   border-radius: var(--br-1);
   background-color: antiquewhite;
+  box-shadow: var(--bs-1);
   padding: var(--s-5);
   z-index: 10;
 }

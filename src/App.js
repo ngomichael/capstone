@@ -79,7 +79,7 @@ class App extends Component {
           step={2}
           skipText="Want to change your answers?"
           skipText2="Go back to the questionnaire."
-          skipTextPath="/questionnaire"
+          skipTextPath="/providerQuestionnaire"
         />
 
         <SignUp path="signup" />

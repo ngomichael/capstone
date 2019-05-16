@@ -65,9 +65,7 @@ export const MatchedProviders = () => {
     getByName('Brian Pendergast')
   }, [])
 
-  function handleCheckboxChange(e) {
-    const item = e.target.name
-    const isChecked = e.target.checked
+  function handleCheckboxChange(item, isChecked) {
     const newMap = new Map([...checkedItems.set(item, isChecked)])
     setCheckedItems(newMap)
     let checkedItemsArray = []

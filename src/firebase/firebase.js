@@ -81,17 +81,21 @@ class Firebase {
     ]
 
     const termsObject = terms.reduce((object, term) => {
-      const formattedTerm = term
+      let formattedTerm = term
         .split(' ')
         .join('_')
         .toLowerCase()
+
+      if (formattedTerm.includes('/')) {
+        formattedTerm = formattedTerm.split('/').join('_')
+      }
 
       object[formattedTerm] = true
       return object
     }, {})
 
     if (!this.auth.currentUser) {
-      return this.db.collection('provider_answers').add({
+      return this.db.collection('providers_test').add({
         terms,
         termsObject,
         zip_code: answers.zip_code,
@@ -102,7 +106,10 @@ class Firebase {
         contact: answers.contact,
         reminders: answers.reminders,
         insurances: answers.insurances,
+        care_types: answers.care_types,
+        age_groups: answers.age_groups,
         populations: answers.populations,
+        issues: answers.issues,
         questionnaire_answers: [
           {
             label: 'Type of Care',
@@ -129,7 +136,7 @@ class Firebase {
     }
 
     return this.db
-      .collection('provider_answers')
+      .collection('providers_test')
       .doc(this.auth.currentUser.uid)
       .set(
         {
@@ -143,7 +150,10 @@ class Firebase {
           contact: answers.contact,
           reminders: answers.reminders,
           insurances: answers.insurances,
+          care_types: answers.care_types,
+          age_groups: answers.age_groups,
           populations: answers.populations,
+          issues: answers.issues,
           questionnaire_answers: [
             {
               label: 'Type of Care',
@@ -200,16 +210,19 @@ class Firebase {
   }
 
   filterProviders(terms) {
-    // in client send object of filters
-    const providersRef = this.db.collection('provider_answers')
+    const providersRef = this.db.collection('providers_test')
     let ref = providersRef
 
-    const formattedTerms = terms.map(term =>
-      term
+    const formattedTerms = terms.map(term => {
+      if (term.includes('/')) {
+        term = term.split('/').join('_')
+      }
+
+      return term
         .split(' ')
         .join('_')
         .toLowerCase()
-    )
+    })
 
     formattedTerms.forEach(val => {
       ref = ref.where(`termsObject.${val}`, '==', true)

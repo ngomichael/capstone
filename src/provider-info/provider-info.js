@@ -33,7 +33,6 @@ export const ProviderInfo = ({
     <div className={styles.container}>
       {isModalOpen && <ContactModal handleClose={handleClose} />}
       <OnboardingHeader step={2} />
-      {/* Needs to be a link here to go back */}
       <div className={styles.maxWidthContainer}>
         <div className={styles.providerOverviewBack}>
           <BackButton path="/results" />
