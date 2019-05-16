@@ -15,6 +15,8 @@ export const ProviderCard = ({ provider }) => {
     setIsHovered(!isHovered)
   }
 
+  console.log(provider)
+
   return (
     <Link to="/providerInfo" className={styles.link}>
       <div

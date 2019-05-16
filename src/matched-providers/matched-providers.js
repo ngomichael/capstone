@@ -94,6 +94,7 @@ export const MatchedProviders = () => {
   async function filterProviders(terms) {
     const snapshot = await firebase.filterProviders(terms)
     const queriedProvider = snapshot.docs.map(doc => doc.data())
+    setAllProviders(queriedProvider)
     console.log(queriedProvider)
   }
 
@@ -142,7 +143,7 @@ export const MatchedProviders = () => {
         >
           View more matches
         </Button> */}
-        <Pagination
+        {/* <Pagination
           activePage={activePage}
           itemsCountPerPage={10}
           totalItemsCount={45}
@@ -155,7 +156,7 @@ export const MatchedProviders = () => {
           <button type="button" onClick={() => firebase.signOut()}>
             Sign Out
           </button>
-        </div>
+        </div> */}
         <div style={{ marginBottom: '35px' }} />
       </div>
     </div>

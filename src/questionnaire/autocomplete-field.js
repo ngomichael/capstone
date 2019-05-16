@@ -20,6 +20,8 @@ export const AutocompleteField = ({
     setFieldValue(name, options.map(option => option.value))
   }
 
+  console.log(terms[0])
+
   return (
     <div>
       <p className={styles.supplementaryText}>{supplementaryText}</p>
@@ -32,7 +34,7 @@ export const AutocompleteField = ({
         onChange={handleMultiChange}
         className={styles.input}
         maxMenuHeight={150}
-        // defaultInputValue="Michael"
+        placeholder="Select all that apply"
       />
     </div>
   )

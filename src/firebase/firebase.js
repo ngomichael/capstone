@@ -98,7 +98,7 @@ class Firebase {
       return this.db.collection('providers_test').add({
         terms,
         termsObject,
-        zip_code: answers.zip_code,
+        address: answers.address,
         email: answers.email,
         phone_number: answers.phone_number,
         website: answers.website,
@@ -142,7 +142,7 @@ class Firebase {
         {
           terms,
           termsObject,
-          zip_code: answers.zip_code,
+          address: answers.address,
           email: answers.email,
           phone_number: answers.phone_number,
           website: answers.website,
