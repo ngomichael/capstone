@@ -535,7 +535,7 @@ const returnCorrectQuestionFormat = (question, setFieldValue, currPageNum) => {
       <AutocompleteField
         terms={question.terms}
         name={question.name}
-        type={question.type}
+        // type={question.type}
         isLongInput={question.isLongInput}
         setFieldValue={setFieldValue}
         key={question.question}

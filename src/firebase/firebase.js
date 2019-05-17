@@ -95,7 +95,10 @@ class Firebase {
     }, {})
 
     if (!this.auth.currentUser) {
-      return this.db.collection('providers_test').add({
+      const id = this.db.collection('providers_test2').doc().id
+
+      return this.db.collection('providers_test2').add({
+        id: id,
         terms,
         termsObject,
         address: answers.address,
@@ -136,10 +139,11 @@ class Firebase {
     }
 
     return this.db
-      .collection('providers_test')
+      .collection('providers_test2')
       .doc(this.auth.currentUser.uid)
       .set(
         {
+          id: this.auth.currentUser.uid,
           terms,
           termsObject,
           address: answers.address,
@@ -210,7 +214,7 @@ class Firebase {
   }
 
   filterProviders(terms) {
-    const providersRef = this.db.collection('providers_test')
+    const providersRef = this.db.collection('providers_test2')
     let ref = providersRef
 
     const formattedTerms = terms.map(term => {
