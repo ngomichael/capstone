@@ -39,7 +39,8 @@ class App extends Component {
         <Questionnaire path="questionnaire" />
         <ProviderQuestionnaire path="providerQuestionnaire" />
         <MatchedProviders path="results" />
-        <ProviderInfo path="providerInfo" />
+        <ProviderInfo path="results/:providerId" />
+
         <Prompt
           path="getStarted"
           image={

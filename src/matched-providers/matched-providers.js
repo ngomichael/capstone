@@ -104,7 +104,7 @@ export const MatchedProviders = () => {
     setActivePage(pageNumber)
   }
 
-  console.log(allProviders)
+  // console.log(allProviders)
 
   return (
     <div className={styles.container}>

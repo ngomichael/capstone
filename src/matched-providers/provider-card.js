@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from '@reach/router'
 import PropTypes from 'prop-types'
 import styles from './provider-card.module.css'
@@ -15,8 +15,11 @@ export const ProviderCard = ({ provider }) => {
     setIsHovered(!isHovered)
   }
 
+  // console.log(provider)
+
   return (
-    <Link to="/providerInfo" className={styles.link}>
+    // <Link to={assignment.id}>{assignment.name}</Link>
+    <Link to={provider.id} className={styles.link}>
       <div
         className={styles.container}
         onMouseEnter={handleMouseEnter}

@@ -104,6 +104,7 @@ class Firebase {
         address: answers.address,
         email: answers.email,
         phone_number: answers.phone_number,
+        credentials: answers.credentials,
         website: answers.website,
         name: answers.name,
         contact: answers.contact,
@@ -149,6 +150,7 @@ class Firebase {
           address: answers.address,
           email: answers.email,
           phone_number: answers.phone_number,
+          credentials: answers.credentials,
           website: answers.website,
           name: answers.name,
           contact: answers.contact,
@@ -203,8 +205,15 @@ class Firebase {
       .catch(err => console.log(err))
   }
 
+  getProviderInfo(providerId) {
+    console.log(providerId)
+    const providersRef = this.db.collection('providers_test2')
+    let ref = providersRef.where('id', '==', providerId)
+    return ref.get()
+  }
+
   getAllProviders() {
-    return this.db.collection('providers').get()
+    return this.db.collection('providers_test2').get()
   }
 
   filterProviderName(name) {
