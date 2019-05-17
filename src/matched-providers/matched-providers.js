@@ -96,6 +96,8 @@ export const MatchedProviders = () => {
     filterProviders(checkedItemsArray)
   }
 
+  function handleApplyFilter() {}
+
   function handleSearchValChange(e) {
     setSearchVal(e.target.value)
   }

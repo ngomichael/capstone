@@ -102,6 +102,7 @@
 
 .listContainer {
   margin-left: var(--s-5);
+  margin-right: var(--s-10);
   width: 200px;
 }
 
