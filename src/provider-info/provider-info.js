@@ -118,7 +118,7 @@ export const ProviderInfo = ({
               </p>
 
               <div className={styles.sectionContent}>
-                <ul>
+                <ul className={styles.listContainer}>
                   <p>
                     <b>Issues</b>
                   </p>
@@ -126,7 +126,7 @@ export const ProviderInfo = ({
                     <li>{issue}</li>
                   ))}
                 </ul>
-                <ul>
+                <ul className={styles.listContainer}>
                   <p>
                     <b>Client Focus</b>
                   </p>
@@ -135,7 +135,7 @@ export const ProviderInfo = ({
                   ))}
                 </ul>
 
-                <ul>
+                <ul className={styles.listContainer}>
                   <p>
                     <b>Population</b>
                   </p>
@@ -152,8 +152,8 @@ export const ProviderInfo = ({
                 for a particular approach, that can narrow down the providers we
                 think are a good fit for you.
               </p>
-              <p className={styles.sectionContentOneItem}>
-                <ul>
+              <p className={styles.sectionContent}>
+                <ul className={styles.listContainer}>
                   {provider.approaches.map(approach => (
                     <li>{approach}</li>
                   ))}

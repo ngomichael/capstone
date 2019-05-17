@@ -97,13 +97,12 @@
 
 .sectionContent {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
 
-.sectionContentOneItem {
-  display: flex;
-  justify-content: flex-start;
-  margin-left: var(--s-9);
+.listContainer {
+  margin-left: var(--s-5);
+  width: 200px;
 }
 
 .footer {
