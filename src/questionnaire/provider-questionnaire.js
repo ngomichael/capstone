@@ -188,17 +188,14 @@ export const questionnaireQuestions = [
         label: 'Psychologist: Masters Level (MA, MS, LGPC, LCPC)',
       },
       {
-        id:
-          'Social Worker (MSW, LGSW, LCSW, LMSW, LCSW-C, LISW, LSW and other SW licenses)',
-        value:
-          'Social Worker (MSW, LGSW, LCSW, LMSW, LCSW-C, LISW, LSW and other SW licenses)',
-        label:
-          'Social Worker (MSW, LGSW, LCSW, LMSW, LCSW-C, LISW, LSW and other SW licenses)',
+        id: 'Social Worker (MSW, LGSW, LCSW, LMSW)',
+        value: 'Social Worker (MSW, LGSW, LCSW, LMSW)',
+        label: 'Social Worker (MSW, LGSW, LCSW, LMSW)',
       },
       {
-        id: ' Pastoral Counseling (MA, CCPT, CpastC, NCPC, NCCA)',
-        value: ' Pastoral Counseling (MA, CCPT, CpastC, NCPC, NCCA)',
-        label: ' Pastoral Counseling (MA, CCPT, CpastC, NCPC, NCCA)',
+        id: ' Pastoral Counseling (MA, CCPT, CpastC)',
+        value: ' Pastoral Counseling (MA, CCPT, CpastC)',
+        label: ' Pastoral Counseling (MA, CCPT, CpastC)',
       },
     ],
     name: 'credentials',
@@ -242,122 +239,15 @@ export const questionnaireQuestions = [
         label: 'Dance/Movement Therapy (DMT)',
       },
       {
-        id: 'Dialectical Behavioral Therapy (DBT)',
-        value: 'Dialectical Behavioral Therapy (DBT)',
-        label: 'Dialectical Behavioral Therapy (DBT)',
+        id: 'Integrative',
+        value: 'Integrative',
+        label: 'Integrative',
       },
       {
-        id: 'Emotionally Focused Couples Therapy',
-        value: 'Emotionally Focused Couples Therapy',
-        label: 'Emotionally Focused Couples Therapy',
+        id: 'Non-Directive',
+        value: 'Non-Directive',
+        label: 'Non-Directive',
       },
-      {
-        id: 'Emotional Freedom Technique (Tapping)',
-        value: 'Emotional Freedom Technique (Tapping)',
-        label: 'Emotional Freedom Technique (Tapping)',
-      },
-      {
-        id: 'Existential Therapy',
-        value: 'Existential Therapy',
-        label: 'Existential Therapy',
-      },
-      {
-        id: 'Exposure and Response Prevention',
-        value: 'Exposure and Response Prevention',
-        label: 'Exposure and Response Prevention',
-      },
-      {
-        id: 'Eye Movement Desensitization and Reprocessing (EMDR)',
-        value: 'Eye Movement Desensitization and Reprocessing (EMDR)',
-        label: 'Eye Movement Desensitization and Reprocessing (EMDR)',
-      },
-      {
-        id: 'Gestalt Therapy',
-        value: 'Gestalt Therapy',
-        label: 'Gestalt Therapy',
-      },
-      {
-        id: 'Habit Reversal Therapy',
-        value: 'Habit Reversal Therapy',
-        label: 'Habit Reversal Therapy',
-      },
-      {
-        id: 'Holistic Therapy',
-        value: 'Holistic Therapy',
-        label: 'Holistic Therapy',
-      },
-      {
-        id: 'Internal Family Systems',
-        value: 'Internal Family Systems',
-        label: 'Internal Family Systems',
-      },
-      {
-        id: 'Interpersonal Therapy',
-        value: 'Interpersonal Therapy',
-        label: 'Interpersonal Therapy',
-      },
-      {
-        id: 'Mindfulness Practices',
-        value: 'Mindfulness Practices',
-        label: 'Mindfulness Practices',
-      },
-      {
-        id: 'Mindfulness Based Stress Reduction',
-        value: 'Mindfulness Based Stress Reduction',
-        label: 'Mindfulness Based Stress Reduction',
-      },
-      {
-        id: 'Motivational Interviewing',
-        value: 'Motivational Interviewing',
-        label: 'Motivational Interviewing',
-      },
-      {
-        id: 'Multicultural Therapy',
-        value: 'Multicultural Therapy',
-        label: 'Multicultural Therapy',
-      },
-      {
-        id: 'Narrative Therapy',
-        value: 'Narrative Therapy',
-        label: 'Narrative Therapy',
-      },
-      {
-        id: 'Pastoral Counseling',
-        value: 'Pastoral Counseling',
-        label: 'Pastoral Counseling',
-      },
-      {
-        id: 'Positive Psychology',
-        value: 'Positive Psychology',
-        label: 'Positive Psychology',
-      },
-      {
-        id: 'Psychoanalytic Therapy',
-        value: 'Psychoanalytic Therapy',
-        label: 'Psychoanalytic Therapy',
-      },
-      {
-        id: 'Psychodynamic Therapy',
-        value: 'Psychodynamic Therapy',
-        label: 'Psychodynamic Therapy',
-      },
-      { id: 'Sex therapy', value: 'Sex therapy', label: 'Sex therapy' },
-      {
-        id: 'Solution-focused Therapy',
-        value: 'Solution-focused Therapy',
-        label: 'Solution-focused Therapy',
-      },
-      {
-        id: 'Sports psychology',
-        value: 'Sports psychology',
-        label: 'Sports psychology',
-      },
-      {
-        id: 'Supportive Therapy',
-        value: 'Supportive Therapy',
-        label: 'Supportive Therapy',
-      },
-      { id: 'Yoga', value: 'Yoga', label: 'Yoga' },
     ],
 
     name: 'approaches',

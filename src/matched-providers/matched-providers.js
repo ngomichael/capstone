@@ -39,7 +39,11 @@ const filters = [
   },
   {
     name: 'Credentials',
-    options: ['PhD', 'MD', 'LGPC'],
+    options: [
+      'Psychiatrist (MD, Doctor)',
+      'Social Worker (MSW, LGSW, LCSW, LMSW)',
+      'Pastoral Counseling (MA, CCPT, CpastC)',
+    ],
   },
   {
     name: 'Approach',
@@ -66,7 +70,21 @@ export const MatchedProviders = () => {
     getByName('Brian Pendergast')
   }, [])
 
-  function handleCheckboxChange(item, isChecked) {
+  // function handleCheckboxChange(item, isChecked) {
+  //   const newMap = new Map([...checkedItems.set(item, isChecked)])
+  //   setCheckedItems(newMap)
+  //   let checkedItemsArray = []
+
+  //   checkedItems.forEach((value, key) => {
+  //     value === true && checkedItemsArray.push(key)
+  //   })
+  //   console.log(checkedItemsArray)
+  //   filterProviders(checkedItemsArray)
+  // }
+
+  function handleCheckboxChange(e) {
+    const item = e.target.name
+    const isChecked = e.target.checked
     const newMap = new Map([...checkedItems.set(item, isChecked)])
     setCheckedItems(newMap)
     let checkedItemsArray = []

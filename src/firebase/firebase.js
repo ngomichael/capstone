@@ -113,6 +113,7 @@ class Firebase {
         care_types: answers.care_types,
         age_groups: answers.age_groups,
         populations: answers.populations,
+        approaches: answers.approaches,
         issues: answers.issues,
         questionnaire_answers: [
           {
@@ -159,6 +160,7 @@ class Firebase {
           care_types: answers.care_types,
           age_groups: answers.age_groups,
           populations: answers.populations,
+          approaches: answers.approaches,
           issues: answers.issues,
           questionnaire_answers: [
             {

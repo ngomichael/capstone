@@ -44,7 +44,14 @@ export const ProviderInfo = ({
 
   return (
     <div className={styles.container}>
-      {isModalOpen && <ContactModal handleClose={handleClose} />}
+      {isModalOpen && (
+        <ContactModal
+          website={provider.website}
+          email={provider.email}
+          name={provider.name}
+          handleClose={handleClose}
+        />
+      )}
       <OnboardingHeader step={2} />
       {Object.entries(provider).length !== 0 && (
         <div className={styles.maxWidthContainer}>
@@ -52,10 +59,7 @@ export const ProviderInfo = ({
             <BackButton path="/results" />
             <div className={styles.providerOverview}>
               <div className={styles.basicInfo}>
-                <img
-                  src="https://lh3.googleusercontent.com/_FlZrFOOPQjwDlvgmn6yzH8WEgxvs3QhbU0c19aI18Cy3UGZvoSlwnpb7gTwWKRWG_69PHFpXPvZRsOYQNyhD3ezUiI2KDdWa78lHwoJaRYXtAjEM1dPTArArTBYOUZ_njYmpp6x1Xr9H-OsvActk4KvP7TuloDNX4mppnN7_M1hDk2Vx_juLB4O8elM7FeoDIeYhHEa7qKgc4Vq5PSA7_UVBdGrFO2UcFkryaue6CfSXmI3hps0au0nDHi6g5RDIGEmmjDQbkf3Cdy7X3NnVCO8vo6s4Wucp38KUMYH8Qw2eXPOVupZAQ6QL5WOLkNsI75XFu1l_d8JJ_2tgkgVSGDifuHzABF7aYP8fMgxtrCTM2WkF0mdL4HrlAAw51RAJ0zAkb56IfEDVUj2noIg0AJ7aHwQ-k2iHbWWO2ihXRcAQMv0W0Ow9mNp4mV_jlEslkMR0yfiAXsx0kiAVE9tbjjxF7oW_Tt9Ixlee2BNM6NFO37MLZv_rH9KUIS53Qx1gZ3L1xjKYvvoeLYb9fHZO1DWm940IQW-jOfWb8hdfQcnATEKZz0pgmnMaZ6EblYucpWF3yMD1oV685FST_Z6u1nmTANNLTbswzigqRoK1BrdNtV3ZfsQxnhYrfnbjPfUdDOzIIop9ONjby_gV6x_0wfKXgXhO6COkIH6VMsuh8ulAsUc3RoG-wln2K31Z29rVO37Fm_iB_YVWv9K3ZT7xROs=w608-h946-no"
-                  className={styles.providerPhoto}
-                />
+                <img src={provider.photo} className={styles.providerPhoto} />
                 <div>
                   <p className={styles.name}>{provider.name}</p>
                   <p>{provider.credentials}</p>
@@ -68,10 +72,12 @@ export const ProviderInfo = ({
                 <p className={styles.sectionHeader}>Contact Information</p>
                 <div>
                   <p>{provider.phone_number}</p>
-                  <p>{provider.email}</p>
-                  <a href={provider.website} className={styles.websiteLink}>
-                    {provider.website}
-                  </a>
+                  {provider.email && <p>{provider.email}</p>}
+                  {provider.website && (
+                    <a href={provider.website} className={styles.websiteLink}>
+                      {provider.website}
+                    </a>
+                  )}
                   <p>{provider.address}</p>
                 </div>
               </div>
@@ -110,13 +116,34 @@ export const ProviderInfo = ({
                 provider who has experience with what you're struggling with
                 could enhance the quality of your care.
               </p>
-              <p className={styles.sectionContent}>
-                During our sessions we will work together to understand what is
-                working in your life through an evaluation and proceed to
-                therapy when desired. Additionally, my approach also includes
-                medication management so if that is a better solution to your
-                needs, we will go that route.
-              </p>
+
+              <div className={styles.sectionContent}>
+                <ul>
+                  <p>
+                    <b>Issues</b>
+                  </p>
+                  {provider.issues.map(issue => (
+                    <li>{issue}</li>
+                  ))}
+                </ul>
+                <ul>
+                  <p>
+                    <b>Client Focus</b>
+                  </p>
+                  {provider.age_groups.map(age_group => (
+                    <li>{age_group}</li>
+                  ))}
+                </ul>
+
+                <ul>
+                  <p>
+                    <b>Population</b>
+                  </p>
+                  {provider.populations.map(population => (
+                    <li>{population}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
             <div className={styles.sectionContainer}>
               <p className={styles.sectionHeader}>Treatment Approach</p>
@@ -125,12 +152,12 @@ export const ProviderInfo = ({
                 for a particular approach, that can narrow down the providers we
                 think are a good fit for you.
               </p>
-              <p className={styles.sectionContent}>
-                During our sessions we will work together to understand what is
-                working in your life through an evaluation and proceed to
-                therapy when desired. Additionally, my approach also includes
-                medication management so if that is a better solution to your
-                needs, we will go that route.
+              <p className={styles.sectionContentOneItem}>
+                <ul>
+                  {provider.approaches.map(approach => (
+                    <li>{approach}</li>
+                  ))}
+                </ul>
               </p>
             </div>
             <div className={styles.sectionContainer}>

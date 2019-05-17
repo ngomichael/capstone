@@ -96,7 +96,14 @@
 }
 
 .sectionContent {
-  font-size: var(--fs-2);
+  display: flex;
+  justify-content: space-around;
+}
+
+.sectionContentOneItem {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: var(--s-9);
 }
 
 .footer {
