@@ -190,12 +190,12 @@ export const MatchedProviders = () => {
           onChange={handlePageChange}
           innerClass={styles.pagination}
           activeLinkClass={styles.activeLink}
-        />
+        /> */}
         <div>
           <button type="button" onClick={() => firebase.signOut()}>
             Sign Out
           </button>
-        </div> */}
+        </div>
         <div style={{ marginBottom: '35px' }} />
       </div>
     </div>

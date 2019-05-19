@@ -35,8 +35,35 @@ class Firebase {
   }
 
   addUserQuestionnaireAnswers(answers) {
+    const terms = [
+      ...answers.zip_code,
+      ...answers.care_types,
+      ...answers.issues,
+      ...answers.insurances,
+      ...answers.age_groups,
+      ...answers.credentials,
+      ...answers.approaches,
+      ...answers.populations,
+    ]
+
+    const termsObject = terms.reduce((object, term) => {
+      let formattedTerm = term
+        .split(' ')
+        .join('_')
+        .toLowerCase()
+
+      if (formattedTerm.includes('/')) {
+        formattedTerm = formattedTerm.split('/').join('_')
+      }
+
+      object[formattedTerm] = true
+      return object
+    }, {})
+
     if (!this.auth.currentUser) {
-      this.db.collection('questionnaire_answers').add({
+      this.db.collection('users_test').add({
+        terms,
+        termsObject,
         zip_code: answers.zip_code,
         care_types: answers.care_types,
         issues: answers.issues,
@@ -50,10 +77,12 @@ class Firebase {
     }
 
     return this.db
-      .collection('questionnaire_answers')
+      .collection('users_test')
       .doc(this.auth.currentUser.uid)
       .set(
         {
+          terms,
+          termsObject,
           zip_code: answers.zip_code,
           care_types: answers.care_types,
           issues: answers.issues,
@@ -195,7 +224,7 @@ class Firebase {
     }
 
     return this.db
-      .collection('users_pearcare')
+      .collection('users_test')
       .doc(this.auth.currentUser.uid)
       .set({
         first_name: firstName,
