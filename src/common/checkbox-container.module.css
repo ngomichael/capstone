@@ -14,8 +14,27 @@
   z-index: 10;
 }
 
+.checkboxes {
+  /* position: absolute; */
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+  /* width: 375px; */
+  /* height: 300px; */
+  /* border-radius: var(--br-1);
+  background-color: antiquewhite;
+  box-shadow: var(--bs-1);
+  padding: var(--s-5);
+  z-index: 10; */
+}
+
 .checkboxOption {
   margin-bottom: var(--s-2);
+}
+
+.applyButton {
+  width: 100px;
+  height: 25px;
 }
 
 .text {

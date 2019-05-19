@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './checkbox-container.module.css'
 import PropTypes from 'prop-types'
 import { Checkbox } from './checkbox2'
+import { Button, TYPES, SIZES } from '../common/button'
 
 class CheckboxContainer extends React.Component {
   constructor(props) {
@@ -26,16 +27,33 @@ class CheckboxContainer extends React.Component {
     // console.log(this.state.checkedItems)
     return (
       <div className={styles.container}>
-        {this.props.options.map(item => (
-          <label key={item} className={styles.checkboxOption}>
-            <Checkbox
-              name={item}
-              onChange={this.props.onChange}
-              checked={this.props.checkedItems.get(item)}
-            />
-            <span className={styles.text}>{item}</span>
-          </label>
-        ))}
+        <div className={styles.checkboxes}>
+          {this.props.options.map(item => (
+            <label key={item} className={styles.checkboxOption}>
+              <Checkbox
+                name={item}
+                onChange={this.props.onChange}
+                checked={this.props.checkedItems.get(item)}
+              />
+              <span className={styles.text}>{item}</span>
+            </label>
+          ))}
+        </div>
+        {/* <button
+          className={styles.applyButton}
+          type="button"
+          onChange={this.props.onApplyFilter}
+        >
+          Apply
+        </button> */}
+        <Button
+          type="button"
+          buttonType={TYPES.PRIMARY}
+          buttonSize={SIZES.SMALL}
+          onClick={this.props.onApplyFilter}
+        >
+          Apply
+        </Button>
       </div>
     )
   }

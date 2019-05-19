@@ -93,10 +93,17 @@ export const MatchedProviders = () => {
       value === true && checkedItemsArray.push(key)
     })
     console.log(checkedItemsArray)
-    filterProviders(checkedItemsArray)
+    // filterProviders(checkedItemsArray)
   }
 
-  function handleApplyFilter() {}
+  function handleApplyFilter() {
+    let checkedItemsArray = []
+
+    checkedItems.forEach((value, key) => {
+      value === true && checkedItemsArray.push(key)
+    })
+    filterProviders(checkedItemsArray)
+  }
 
   function handleSearchValChange(e) {
     setSearchVal(e.target.value)
@@ -113,6 +120,7 @@ export const MatchedProviders = () => {
   }
 
   async function filterProviders(terms) {
+    console.log(terms)
     const snapshot = await firebase.filterProviders(terms)
     const queriedProvider = snapshot.docs.map(doc => doc.data())
     setAllProviders(queriedProvider)
@@ -146,6 +154,7 @@ export const MatchedProviders = () => {
               key={filter.name}
               options={filter.options}
               onChange={handleCheckboxChange}
+              onApplyFilter={handleApplyFilter}
               checkedItems={checkedItems}
             >
               {filter.name}
