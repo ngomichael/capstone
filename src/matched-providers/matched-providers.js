@@ -77,18 +77,6 @@ export const MatchedProviders = () => {
     getProviders()
   }, [])
 
-  // function handleCheckboxChange(item, isChecked) {
-  //   const newMap = new Map([...checkedItems.set(item, isChecked)])
-  //   setCheckedItems(newMap)
-  //   let checkedItemsArray = []
-
-  //   checkedItems.forEach((value, key) => {
-  //     value === true && checkedItemsArray.push(key)
-  //   })
-  //   console.log(checkedItemsArray)
-  //   filterProviders(checkedItemsArray)
-  // }
-
   function handleCheckboxChange(e) {
     const item = e.target.name
     const isChecked = e.target.checked
@@ -133,8 +121,6 @@ export const MatchedProviders = () => {
     console.log(`active page is ${pageNumber}`)
     setActivePage(pageNumber)
   }
-
-  // console.log(allProviders)
 
   return (
     <div className={styles.container}>

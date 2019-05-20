@@ -16,6 +16,8 @@
 .logoAndNameContainer {
   display: flex;
   align-items: center;
+  text-decoration: none;
+  color: var(--black);
   margin: var(--s-0) var(--s-0) var(--s-0) var(--s-5);
 }
 
