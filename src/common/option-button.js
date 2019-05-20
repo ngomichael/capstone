@@ -9,11 +9,15 @@ export const OptionButton = ({
   onChange,
   checkedItems,
   onApplyFilter,
+  onClick,
+  id,
+  activeCheckboxContainer,
 }) => {
   const [clicked, changeClickedStatus] = useState(false)
 
   function handleClickedStatusChange() {
     changeClickedStatus(!clicked)
+    onClick()
   }
 
   function handleApplyFilter() {
@@ -26,7 +30,7 @@ export const OptionButton = ({
       <button onClick={handleClickedStatusChange} className={styles.button}>
         <p>{children}</p>
       </button>
-      {clicked && (
+      {activeCheckboxContainer === id && clicked && (
         <CheckboxContainer
           options={options}
           onChange={onChange}

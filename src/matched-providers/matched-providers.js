@@ -10,6 +10,7 @@ import firebase from '../firebase/firebase'
 
 const filters = [
   {
+    id: 1,
     name: 'Issues',
     options: [
       'Depression',
@@ -19,14 +20,17 @@ const filters = [
     ],
   },
   {
+    id: 2,
     name: 'Care Type',
     options: ['Therapist', 'Medication', 'Testing'],
   },
   {
+    id: 3,
     name: 'Insurance',
     options: ['Aetna', 'Blue Cross Blue Shield', 'Medicare'],
   },
   {
+    id: 4,
     name: 'Age Group',
     options: [
       'Toddlers/preschoolers (ages 0 to 6)',
@@ -38,6 +42,7 @@ const filters = [
     ],
   },
   {
+    id: 5,
     name: 'Credentials',
     options: [
       'Psychiatrist (MD, Doctor)',
@@ -46,10 +51,12 @@ const filters = [
     ],
   },
   {
+    id: 6,
     name: 'Approach',
     options: ['Integrative', 'Non-Directive'],
   },
   {
+    id: 7,
     name: 'Identity/Population',
     options: [
       'Asian/Asian-American therapists',
@@ -64,10 +71,10 @@ export const MatchedProviders = () => {
   const [allProviders, setAllProviders] = useState([])
   const [activePage, setActivePage] = useState(1)
   const [checkedItems, setCheckedItems] = useState(new Map())
+  const [activeCheckboxContainer, setActiveCheckboxContainer] = useState()
 
   useEffect(() => {
     getProviders()
-    getByName('Brian Pendergast')
   }, [])
 
   // function handleCheckboxChange(item, isChecked) {
@@ -114,11 +121,6 @@ export const MatchedProviders = () => {
     setAllProviders(snapshot.docs.map(doc => doc.data()))
   }
 
-  async function getByName(name) {
-    const snapshot = await firebase.filterProviderName(name)
-    const queriedProvider = snapshot.docs.map(doc => doc.data())
-  }
-
   async function filterProviders(terms) {
     console.log(terms)
     const snapshot = await firebase.filterProviders(terms)
@@ -151,11 +153,14 @@ export const MatchedProviders = () => {
         <div className={styles.filtersContainer}>
           {filters.map(filter => (
             <OptionButton
-              key={filter.name}
+              key={filter.id}
               options={filter.options}
               onChange={handleCheckboxChange}
+              onClick={() => setActiveCheckboxContainer(filter.id)}
               onApplyFilter={handleApplyFilter}
               checkedItems={checkedItems}
+              id={filter.id}
+              activeCheckboxContainer={activeCheckboxContainer}
             >
               {filter.name}
             </OptionButton>

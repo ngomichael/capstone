@@ -46,14 +46,16 @@ class CheckboxContainer extends React.Component {
         >
           Apply
         </button> */}
-        <Button
-          type="button"
-          buttonType={TYPES.PRIMARY}
-          buttonSize={SIZES.SMALL}
-          onClick={this.props.onApplyFilter}
-        >
-          Apply
-        </Button>
+        <div className={styles.applyButton}>
+          <Button
+            type="button"
+            buttonType={TYPES.PRIMARY}
+            buttonSize={SIZES.SMALL}
+            onClick={this.props.onApplyFilter}
+          >
+            Apply
+          </Button>
+        </div>
       </div>
     )
   }

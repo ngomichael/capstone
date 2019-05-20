@@ -2,7 +2,7 @@
 
 .container {
   position: relative;
-  display: inline;
+  display: block;
 }
 
 .checkboxes {

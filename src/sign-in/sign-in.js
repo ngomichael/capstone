@@ -56,7 +56,7 @@ export const SignIn = () => {
       </form>
       {isSignedIn ? <Redirect noThrow to="/getStarted" /> : null}
 
-      <Link to="signup">Sign Up</Link>
+      <Link to="/signup">Sign Up</Link>
     </div>
   )
 }

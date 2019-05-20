@@ -36,6 +36,7 @@
 }
 
 .filtersContainer {
+  display: flex;
   width: 80%;
   margin-bottom: var(--s-2);
 }
