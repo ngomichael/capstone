@@ -11,7 +11,7 @@ class CheckboxContainer extends React.Component {
     //   checkedItems: new Map(),
     // }
 
-    // this.handleChange = this.handleChange.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   // handleChange(e) {
@@ -23,6 +23,11 @@ class CheckboxContainer extends React.Component {
   //   this.props.onChange(item, isChecked)
   // }
 
+  handleChange(e) {
+    this.props.handleCheckboxChange(e)
+    this.props.onChange(e)
+  }
+
   render() {
     // console.log(this.state.checkedItems)
     return (
@@ -32,8 +37,8 @@ class CheckboxContainer extends React.Component {
             <label key={item} className={styles.checkboxOption}>
               <Checkbox
                 name={item}
-                onChange={this.props.onChange}
-                checked={this.props.checkedItems.get(item)}
+                onChange={this.handleChange}
+                checked={this.props.allCheckedItems.get(item)}
               />
               <span className={styles.text}>{item}</span>
             </label>

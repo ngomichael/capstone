@@ -29,6 +29,7 @@
 }
 
 .activeButton {
+  composes: button;
   background-color: var(--primary);
   color: var(--white);
 }

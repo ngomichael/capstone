@@ -7,13 +7,14 @@ export const OptionButton = ({
   children,
   options,
   onChange,
-  checkedItems,
+  allCheckedItems,
   onApplyFilter,
   onClick,
   id,
   activeCheckboxContainer,
 }) => {
   const [clicked, changeClickedStatus] = useState(false)
+  const [checkedItems, setCheckedItems] = useState(new Map())
 
   function handleClickedStatusChange() {
     changeClickedStatus(!clicked)
@@ -25,9 +26,30 @@ export const OptionButton = ({
     onApplyFilter()
   }
 
+  function handleCheckboxChange(e) {
+    const item = e.target.name
+    const isChecked = e.target.checked
+    const newMap = new Map([...checkedItems.set(item, isChecked)])
+    setCheckedItems(newMap)
+  }
+
+  function findInMap(map, val) {
+    for (let [k, v] of map) {
+      if (v === val) {
+        return true
+      }
+    }
+    return false
+  }
+
   return (
     <div className={styles.container}>
-      <button onClick={handleClickedStatusChange} className={styles.button}>
+      <button
+        onClick={handleClickedStatusChange}
+        className={
+          findInMap(checkedItems, true) ? styles.activeButton : styles.button
+        }
+      >
         <p>{children}</p>
       </button>
       {activeCheckboxContainer === id && clicked && (
@@ -35,7 +57,8 @@ export const OptionButton = ({
           options={options}
           onChange={onChange}
           onApplyFilter={handleApplyFilter}
-          checkedItems={checkedItems}
+          allCheckedItems={allCheckedItems}
+          handleCheckboxChange={handleCheckboxChange}
         />
       )}
     </div>
