@@ -13,10 +13,12 @@ const filters = [
     id: 1,
     name: 'Issues',
     options: [
-      'Depression',
       'Anxiety',
       'Anger Management',
+      'Depression',
       'Life Transition Challenges',
+      'Relationship Issues',
+      'Eating Disorders',
     ],
   },
   {
@@ -27,7 +29,13 @@ const filters = [
   {
     id: 3,
     name: 'Insurance',
-    options: ['Aetna', 'Blue Cross Blue Shield', 'Medicare'],
+    options: [
+      'Aetna',
+      'Beacon Health Options',
+      'Blue Cross Blue Shield',
+      'Harvard Pilgrim Health',
+      'Medicare',
+    ],
   },
   {
     id: 4,
@@ -48,12 +56,13 @@ const filters = [
       'Psychiatrist (MD, Doctor)',
       'Social Worker (MSW, LGSW, LCSW, LMSW)',
       'Pastoral Counseling (MA, CCPT, CpastC)',
+      ' Pastoral Counseling (MA, CCPT, CpastC, NCPC, NCCA)',
     ],
   },
   {
     id: 6,
     name: 'Approach',
-    options: ['Integrative', 'Non-Directive'],
+    options: ['Integrative', 'Non-Directive', 'Career counseling'],
   },
   {
     id: 7,
@@ -62,6 +71,7 @@ const filters = [
       'Asian/Asian-American therapists',
       'Black/African-American therapists',
       'Latinx therapists',
+      'LGBTQ+ therapists',
     ],
   },
 ]
@@ -87,8 +97,6 @@ export const MatchedProviders = () => {
     allCheckedItems.forEach((value, key) => {
       value === true && checkedItemsArray.push(key)
     })
-    console.log(checkedItemsArray)
-    // filterProviders(checkedItemsArray)
   }
 
   function handleApplyFilter() {

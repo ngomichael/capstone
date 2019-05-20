@@ -7,8 +7,12 @@ import { Button, TYPES, SIZES } from '../common/button'
 class CheckboxContainer extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      showMoreFilters: false,
+    }
 
     this.handleChange = this.handleChange.bind(this)
+    this.createCheckboxes = this.createCheckboxes.bind(this)
   }
 
   handleChange(e) {
@@ -16,11 +20,37 @@ class CheckboxContainer extends React.Component {
     this.props.onChange(e)
   }
 
+  createCheckboxes() {
+    const shownFilters = this.props.options.slice(0, 4).map((item, idx) => (
+      <label key={item} className={styles.checkboxOption}>
+        <Checkbox
+          name={item}
+          onChange={this.handleChange}
+          checked={this.props.allCheckedItems.get(item)}
+        />
+        <span className={styles.text}>{item}</span>
+      </label>
+    ))
+
+    const hiddenFilters = this.props.options.slice(4).map((item, idx) => (
+      <label key={item} className={styles.checkboxOption}>
+        <Checkbox
+          name={item}
+          onChange={this.handleChange}
+          checked={this.props.allCheckedItems.get(item)}
+        />
+        <span className={styles.text}>{item}</span>
+      </label>
+    ))
+  }
+
+  handleShowMore() {}
+
   render() {
     return (
       <div className={styles.container}>
         <div className={styles.checkboxes}>
-          {this.props.options.map(item => (
+          {this.props.options.slice(0, 4).map(item => (
             <label key={item} className={styles.checkboxOption}>
               <Checkbox
                 name={item}
@@ -30,8 +60,34 @@ class CheckboxContainer extends React.Component {
               <span className={styles.text}>{item}</span>
             </label>
           ))}
+          {this.props.options.slice(4).map(item => (
+            <label
+              key={item}
+              className={
+                this.state.showMoreFilters
+                  ? styles.checkboxOption
+                  : styles.checkboxOptionHidden
+              }
+            >
+              <Checkbox
+                name={item}
+                onChange={this.handleChange}
+                checked={this.props.allCheckedItems.get(item)}
+              />
+              <span className={styles.text}>{item}</span>
+            </label>
+          ))}
         </div>
-
+        {this.props.options.length > 4 && (
+          <p
+            onClick={() =>
+              this.setState({ showMoreFilters: !this.state.showMoreFilters })
+            }
+            className={styles.showMoreButton}
+          >
+            {this.state.showMoreFilters ? 'Show less -' : 'Show more +'}
+          </p>
+        )}
         <div className={styles.applyButton}>
           <Button
             type="button"

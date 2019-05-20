@@ -37,6 +37,7 @@
 
 .filtersContainer {
   display: flex;
+  flex-wrap: wrap;
   width: 80%;
   margin-bottom: var(--s-2);
 }

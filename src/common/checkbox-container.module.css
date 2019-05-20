@@ -32,6 +32,20 @@
   margin-bottom: var(--s-2);
 }
 
+.checkboxOptionHidden {
+  display: none;
+}
+
+.showMoreButton {
+  position: absolute;
+  bottom: 13%;
+  color: var(--primary);
+}
+
+.showMoreButton:hover {
+  cursor: pointer;
+}
+
 .applyButton {
   /* position: absolute; */
   margin: var(--s-2) var(--s-0) var(--s-2) 70%;
