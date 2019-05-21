@@ -136,6 +136,7 @@ export const MatchedProviders = () => {
     console.log(`active page is ${data.selected}`)
     setCurrentPage(data.selected + 1)
     console.log(pageCount)
+    window.scrollTo(0, 0)
   }
 
   const indexOfLastProvider = currentPage * providersPerPage
@@ -179,7 +180,7 @@ export const MatchedProviders = () => {
           ))}
         </div>
 
-        {allProviders.length !== 0 ? (
+        {currentProviders.length !== 0 ? (
           <div className={styles.providersContainer}>
             {currentProviders.map(provider => (
               <ProviderCard provider={provider} key={provider.name} />
@@ -192,25 +193,27 @@ export const MatchedProviders = () => {
           </div>
         )}
 
-        <ReactPaginate
-          previousLabel={'< Back'}
-          nextLabel={'Next >'}
-          breakLabel={'...'}
-          // breakClassName={'break-me'}
-          pageCount={pageCount}
-          // marginPagesDisplayed={2}
-          pageRangeDisplayed={3}
-          onPageChange={handlePageClick}
-          containerClassName={styles.pagination}
-          previousClassName={styles.paginationButton}
-          nextClassName={styles.paginationButton}
-          previousLinkClassName={styles.paginationLinkButton}
-          nextLinkClassName={styles.paginationLinkButton}
-          pageClassName={styles.pageClassName}
-          pageLinkClassName={styles.pageLinkClassName}
-          // subContainerClassName={'pages pagination'}
-          activeClassName={styles.activeLink}
-        />
+        {currentProviders.length !== 0 && (
+          <ReactPaginate
+            previousLabel={'< Back'}
+            nextLabel={'Next >'}
+            breakLabel={'...'}
+            // breakClassName={'break-me'}
+            pageCount={pageCount}
+            // marginPagesDisplayed={2}
+            pageRangeDisplayed={3}
+            onPageChange={handlePageClick}
+            containerClassName={styles.pagination}
+            previousClassName={styles.paginationButton}
+            nextClassName={styles.paginationButton}
+            previousLinkClassName={styles.paginationLinkButton}
+            nextLinkClassName={styles.paginationLinkButton}
+            pageClassName={styles.pageClassName}
+            pageLinkClassName={styles.pageLinkClassName}
+            activeClassName={styles.activeLink}
+            disabledClassName={styles.disabledClassName}
+          />
+        )}
 
         {/* <p className={styles.pageInfo}>1-3 of 18 results</p>
         <Button
@@ -221,12 +224,12 @@ export const MatchedProviders = () => {
           View more matches
         </Button> */}
 
-        <div>
+        {/* <div>
           <button type="button" onClick={() => firebase.signOut()}>
             Sign Out
           </button>
-        </div>
-        <div style={{ marginBottom: '35px' }} />
+        </div> */}
+        {/* <div style={{ marginBottom: '35px' }} /> */}
       </div>
     </div>
   )
