@@ -165,6 +165,10 @@ class Firebase {
             label: 'Approach to treatment',
             values: answers.approaches,
           },
+          {
+            label: 'Accepted insurances',
+            values: answers.insurances,
+          },
         ],
       })
     }

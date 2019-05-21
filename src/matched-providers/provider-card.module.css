@@ -4,8 +4,15 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  border-bottom: 2px solid var(--light-gray);
+  /* border-bottom: 2px solid var(--light-gray); */
+  border-radius: var(--br-1);
+  box-shadow: var(--bs-3);
   padding: var(--s-4) var(--s-4) var(--s-4) var(--s-4);
+  margin: var(--s-6) var(--s-0) var(--s-6) var(--s-0);
+}
+
+.container:first-child {
+  margin: var(--s-3) var(--s-0) var(--s-6) var(--s-0);
 }
 
 .container:hover {
@@ -36,6 +43,7 @@
   background-size: contain;
   border-radius: 50%;
   margin: var(--s-0) var(--s-5) var(--s-0) var(--s-0);
+  box-shadow: var(--bs-2);
 }
 
 .providerInfo {
@@ -44,9 +52,18 @@
 }
 
 .name {
-  color: var(--primary);
-  font-size: var(--fs-4);
+  /* color: var(--primary); */
+  font-size: var(--fs-5);
   font-weight: var(--fw-5);
+}
+
+.matchPercentage {
+  color: var(--primary);
+  font-size: var(--fs-3);
+}
+
+.address {
+  font-size: var(--fs-3);
 }
 
 .contactAction {
@@ -55,6 +72,7 @@
   color: var(--primary);
   border: 2px solid var(--primary-light);
   padding: var(--s-1);
+  border-radius: var(--br-1);
   margin: var(--s-0) var(--s-1) var(--s-0) var(--s-1);
 }
 
@@ -79,12 +97,12 @@
 }
 
 .itemContainer:nth-child(odd) {
-  margin-right: var(--s-3);
+  margin-right: var(--s-7);
 }
 
-.itemContainer:last-child {
+/* .itemContainer:last-child {
   width: 100%;
-}
+} */
 
 .label {
   font-weight: 700;

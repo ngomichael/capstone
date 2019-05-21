@@ -30,8 +30,8 @@ export const ProviderCard = ({ provider }) => {
             <img src={provider.photo} className={styles.providerPhoto} />
             <div className={styles.providerInfo}>
               <p className={styles.name}>{provider.name}</p>
-              <p>{provider.address}</p>
-              <b>100% Match</b>
+              <b className={styles.matchPercentage}>100% Match</b>
+              <p className={styles.address}>{provider.address}</p>
             </div>
           </div>
           <div className={styles.contactActions}>
