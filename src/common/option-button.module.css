@@ -6,6 +6,8 @@
 }
 
 .checkboxContainer {
+  position: relative;
+  z-index: 1;
   animation: slideDown 250ms ease forwards;
 }
 
@@ -25,7 +27,7 @@
   position: absolute;
 }
 
-.button {
+.filterButton {
   border: 2px solid #a3ded8;
   border-radius: 4px;
   padding: var(--s-2) var(--s-4) var(--s-2) var(--s-4);
@@ -37,15 +39,15 @@
   transition: background-color 200ms ease;
 }
 
-.button:hover {
+.filterButton:hover {
   cursor: pointer;
   border: 2px solid var(--primary);
   background-color: var(--primary);
   color: var(--white);
 }
 
-.activeButton {
-  composes: button;
+.activeFilterButton {
+  composes: filterButton;
   background-color: var(--primary);
   color: var(--white);
 }

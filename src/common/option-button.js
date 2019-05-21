@@ -47,7 +47,9 @@ export const OptionButton = ({
       <button
         onClick={handleClickedStatusChange}
         className={
-          findInMap(checkedItems, true) ? styles.activeButton : styles.button
+          findInMap(checkedItems, true)
+            ? styles.activeFilterButton
+            : styles.filterButton
         }
       >
         <p>{children}</p>

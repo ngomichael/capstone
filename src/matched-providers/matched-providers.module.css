@@ -55,6 +55,10 @@
   border-left: 2px solid var(--light-gray); */
 }
 
+.providersContainer:first-child {
+  margin-top: var(--s-3);
+}
+
 .noProviders {
   display: flex;
   flex-direction: column;

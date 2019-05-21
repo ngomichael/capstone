@@ -10,7 +10,7 @@ import { ProviderQuestionnaire } from './questionnaire/provider-questionnaire'
 import { MatchedProviders } from './matched-providers/matched-providers'
 import { ProviderInfo } from './provider-info/provider-info'
 import { Prompt } from './prompt/prompt'
-import { UndrawAboutMe, UndrawHire } from 'react-undraw'
+import { UndrawAboutMe, UndrawHire, UndrawProfile } from 'react-undraw'
 import firebase from './firebase/firebase'
 import { AuthContext } from './auth-context'
 
@@ -44,13 +44,13 @@ class App extends Component {
         <Prompt
           path="getStarted"
           image={
-            <UndrawAboutMe
+            <UndrawProfile
               primaryColor="hsl(174, 74%, 39%)"
               className={styles.image}
               style={{ width: '350px' }}
             />
           }
-          title="Welcome to PearCare"
+          title="Tell us what matters to you"
           p1="We're just going to ask you a few questions about what you're looking for. This will help us match you with the providers best suited for you."
           p2="Don't worry, answering these questions will only take a few minutes"
           buttonText="Start Questionnaire"

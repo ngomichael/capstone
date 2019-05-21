@@ -35,7 +35,13 @@ export const ProviderCard = ({ provider }) => {
             </div>
           </div>
           <div className={styles.contactActions}>
-            <Mail className={styles.contactAction} />
+            <Mail
+              onClick={e => {
+                e.preventDefault()
+                alert('hello')
+              }}
+              className={styles.contactAction}
+            />
             <Heart className={styles.contactAction} />
             <ExternalLink className={styles.contactAction} />
           </div>
