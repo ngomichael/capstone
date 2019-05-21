@@ -5,7 +5,7 @@ import { OnboardingHeader } from '../common/onboarding-header'
 import { UndrawEmpty } from 'react-undraw'
 import { OptionButton } from '../common/option-button'
 import { Button, TYPES, SIZES } from '../common/button'
-import Pagination from 'react-js-pagination'
+import ReactPaginate from 'react-paginate'
 import firebase from '../firebase/firebase'
 
 const filters = [
@@ -79,7 +79,8 @@ const filters = [
 export const MatchedProviders = () => {
   const [searchVal, setSearchVal] = useState('')
   const [allProviders, setAllProviders] = useState([])
-  const [activePage, setActivePage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [pageCount, setPageCount] = useState(1)
   const [allCheckedItems, setAllCheckedItems] = useState(new Map())
   const [activeCheckboxContainer, setActiveCheckboxContainer] = useState()
 
@@ -112,23 +113,40 @@ export const MatchedProviders = () => {
     setSearchVal(e.target.value)
   }
 
+  const providersPerPage = 4
+
   async function getProviders() {
     const snapshot = await firebase.getAllProviders()
     setAllProviders(snapshot.docs.map(doc => doc.data()))
+    setPageCount(Math.ceil(snapshot.docs.map(doc => doc.data()).length / 4))
   }
 
   async function filterProviders(terms) {
     console.log(terms)
     const snapshot = await firebase.filterProviders(terms)
     const queriedProvider = snapshot.docs.map(doc => doc.data())
+    console.log(queriedProvider)
     setAllProviders(queriedProvider)
     console.log(queriedProvider)
+    setPageCount(Math.ceil(queriedProvider.length / providersPerPage))
   }
 
-  function handlePageChange(pageNumber) {
-    console.log(`active page is ${pageNumber}`)
-    setActivePage(pageNumber)
+  function handlePageClick(data) {
+    // console.log(data)
+    console.log(`active page is ${data.selected}`)
+    setCurrentPage(data.selected + 1)
+    console.log(pageCount)
   }
+
+  const indexOfLastProvider = currentPage * providersPerPage
+  const indexOfFirstProvider = indexOfLastProvider - providersPerPage
+  const currentProviders = allProviders.slice(
+    indexOfFirstProvider,
+    indexOfLastProvider
+  )
+
+  // console.log(allProviders)
+  console.log(currentPage)
 
   return (
     <div className={styles.container}>
@@ -136,12 +154,12 @@ export const MatchedProviders = () => {
       <div className={styles.maxWidthContainer}>
         <div className={styles.titleAndSearchContainer}>
           <h1>Providers for you</h1>
-          <input
+          {/* <input
             value={searchVal}
             onChange={handleSearchValChange}
             placeholder="Search for a location or keyword"
             className={styles.searchInput}
-          />
+          /> */}
         </div>
 
         <div className={styles.filtersContainer}>
@@ -163,7 +181,7 @@ export const MatchedProviders = () => {
 
         {allProviders.length !== 0 ? (
           <div className={styles.providersContainer}>
-            {allProviders.map(provider => (
+            {currentProviders.map(provider => (
               <ProviderCard provider={provider} key={provider.name} />
             ))}
           </div>
@@ -173,6 +191,27 @@ export const MatchedProviders = () => {
             <p className={styles.noProvidersText}>No providers found...</p>
           </div>
         )}
+
+        <ReactPaginate
+          previousLabel={'< Back'}
+          nextLabel={'Next >'}
+          breakLabel={'...'}
+          // breakClassName={'break-me'}
+          pageCount={pageCount}
+          // marginPagesDisplayed={2}
+          pageRangeDisplayed={3}
+          onPageChange={handlePageClick}
+          containerClassName={styles.pagination}
+          previousClassName={styles.paginationButton}
+          nextClassName={styles.paginationButton}
+          previousLinkClassName={styles.paginationLinkButton}
+          nextLinkClassName={styles.paginationLinkButton}
+          pageClassName={styles.pageClassName}
+          pageLinkClassName={styles.pageLinkClassName}
+          // subContainerClassName={'pages pagination'}
+          activeClassName={styles.activeLink}
+        />
+
         {/* <p className={styles.pageInfo}>1-3 of 18 results</p>
         <Button
           type="button"
@@ -181,15 +220,7 @@ export const MatchedProviders = () => {
         >
           View more matches
         </Button> */}
-        {/* <Pagination
-          activePage={activePage}
-          itemsCountPerPage={10}
-          totalItemsCount={45}
-          pageRangeDisplayed={5}
-          onChange={handlePageChange}
-          innerClass={styles.pagination}
-          activeLinkClass={styles.activeLink}
-        /> */}
+
         <div>
           <button type="button" onClick={() => firebase.signOut()}>
             Sign Out

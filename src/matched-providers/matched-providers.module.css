@@ -39,6 +39,7 @@
   display: flex;
   flex-wrap: wrap;
   width: 80%;
+  margin-top: var(--s-2);
   margin-bottom: var(--s-2);
 }
 
@@ -79,18 +80,54 @@
 }
 
 .pagination {
-  display: inline-block;
-  padding-left: 0;
-  margin: 20px 0;
-  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  text-align: center;
+  font-size: var(--fs-3);
 }
 
-.pagination > li {
-  display: inline;
+.pageClassName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--br-1);
+  height: 25px;
+  width: 25px;
+  margin: var(--s-0) var(--s-1) var(--s-0) var(--s-1);
+  background-color: var(--primary-light);
+}
+
+.pageClassName:hover {
+  cursor: pointer;
 }
 
 .activeLink {
   color: white;
-  background-color: #337ab7;
-  border-color: #337ab7;
+  background-color: var(--primary);
+}
+
+.pageLinkClassName {
+  outline: none;
+}
+
+.paginationButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--br-1);
+  letter-spacing: 1px;
+  color: var(--primary);
+  outline: none;
+  border: none;
+  margin: var(--s-0) var(--s-4) var(--s-0) var(--s-4);
+}
+
+.paginationButton:hover {
+  cursor: pointer;
+  color: var(--primary-dark);
+}
+
+.paginationLinkButton {
+  outline: none;
 }
