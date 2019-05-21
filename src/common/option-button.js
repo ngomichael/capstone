@@ -53,13 +53,15 @@ export const OptionButton = ({
         <p>{children}</p>
       </button>
       {activeCheckboxContainer === id && clicked && (
-        <CheckboxContainer
-          options={options}
-          onChange={onChange}
-          onApplyFilter={handleApplyFilter}
-          allCheckedItems={allCheckedItems}
-          handleCheckboxChange={handleCheckboxChange}
-        />
+        <div className={styles.checkboxContainer}>
+          <CheckboxContainer
+            options={options}
+            onChange={onChange}
+            onApplyFilter={handleApplyFilter}
+            allCheckedItems={allCheckedItems}
+            handleCheckboxChange={handleCheckboxChange}
+          />
+        </div>
       )}
     </div>
   )
