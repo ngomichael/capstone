@@ -16,16 +16,16 @@
   transition: box-shadow 200ms ease, transform 200ms ease;
 }
 
-.container:hover {
+.card:hover {
   box-shadow: var(--bs-2);
   transform: translateY(1px);
 }
 
-.container:first-child {
+.card:first-child {
   margin: var(--s-3) var(--s-0) var(--s-6) var(--s-0);
 }
 
-.container:hover {
+.card:hover {
   cursor: pointer;
 }
 

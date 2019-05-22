@@ -15,9 +15,11 @@
 }
 
 .checkboxes {
-  /* position: absolute; */
+  position: relative;
   display: flex;
   flex-direction: column;
+  height: 100px;
+  width: 100%;
   /* flex-wrap: wrap; */
   /* width: 375px; */
   /* height: 300px; */
@@ -28,8 +30,28 @@
   z-index: 10; */
 }
 
+.checkboxesScroll {
+  position: relative;
+  composes: checkboxes;
+  overflow: scroll;
+  border: 2px solid rgba(135, 135, 135, 0.5);
+  border-radius: var(--br-1);
+  padding: var(--s-3) var(--s-3) var(--s-0) var(--s-3);
+  /* background: linear-gradient(transparent, 98%, var(--light-gray)) no-repeat; */
+}
+
+.gradient {
+  position: absolute;
+  height: 100px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  /* background: linear-gradient(0deg, yellow, blue 80%) no-repeat; */
+  background: linear-gradient(transparent, 90%, var(--light-gray)) no-repeat;
+}
+
 .checkboxOption {
-  margin-bottom: var(--s-2);
+  margin-bottom: var(--s-3);
 }
 
 .checkboxOptionHidden {
@@ -48,7 +70,7 @@
 
 .applyButton {
   /* position: absolute; */
-  margin: var(--s-2) var(--s-0) var(--s-2) 70%;
+  margin: var(--s-4) var(--s-0) var(--s-2) 70%;
 
   width: 100px;
   height: 25px;

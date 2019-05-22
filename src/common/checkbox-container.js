@@ -12,7 +12,6 @@ class CheckboxContainer extends React.Component {
     }
 
     this.handleChange = this.handleChange.bind(this)
-    this.createCheckboxes = this.createCheckboxes.bind(this)
   }
 
   handleChange(e) {
@@ -20,37 +19,18 @@ class CheckboxContainer extends React.Component {
     this.props.onChange(e)
   }
 
-  createCheckboxes() {
-    const shownFilters = this.props.options.slice(0, 4).map((item, idx) => (
-      <label key={item} className={styles.checkboxOption}>
-        <Checkbox
-          name={item}
-          onChange={this.handleChange}
-          checked={this.props.allCheckedItems.get(item)}
-        />
-        <span className={styles.text}>{item}</span>
-      </label>
-    ))
-
-    const hiddenFilters = this.props.options.slice(4).map((item, idx) => (
-      <label key={item} className={styles.checkboxOption}>
-        <Checkbox
-          name={item}
-          onChange={this.handleChange}
-          checked={this.props.allCheckedItems.get(item)}
-        />
-        <span className={styles.text}>{item}</span>
-      </label>
-    ))
-  }
-
-  handleShowMore() {}
-
   render() {
     return (
       <div className={styles.container}>
-        <div className={styles.checkboxes}>
-          {this.props.options.slice(0, 4).map(item => (
+        <div
+          className={
+            this.props.options.length > 3
+              ? styles.checkboxesScroll
+              : styles.checkboxes
+          }
+        >
+          {/* <div className={styles.gradient} /> */}
+          {this.props.options.map(item => (
             <label key={item} className={styles.checkboxOption}>
               <Checkbox
                 name={item}
@@ -60,15 +40,8 @@ class CheckboxContainer extends React.Component {
               <span className={styles.text}>{item}</span>
             </label>
           ))}
-          {this.props.options.slice(4).map(item => (
-            <label
-              key={item}
-              className={
-                this.state.showMoreFilters
-                  ? styles.checkboxOption
-                  : styles.checkboxOptionHidden
-              }
-            >
+          {/* {this.props.options.map(item => (
+            <label key={item} className={styles.checkboxOption}>
               <Checkbox
                 name={item}
                 onChange={this.handleChange}
@@ -76,9 +49,9 @@ class CheckboxContainer extends React.Component {
               />
               <span className={styles.text}>{item}</span>
             </label>
-          ))}
+          ))}*/}
         </div>
-        {this.props.options.length > 4 && (
+        {/* {this.props.options.length > 4 && (
           <p
             onClick={() =>
               this.setState({ showMoreFilters: !this.state.showMoreFilters })
@@ -87,7 +60,7 @@ class CheckboxContainer extends React.Component {
           >
             {this.state.showMoreFilters ? 'Show less -' : 'Show more +'}
           </p>
-        )}
+        )} */}
         <div className={styles.applyButton}>
           <Button
             type="button"
