@@ -20,6 +20,16 @@ export const AutocompleteField = ({
     setFieldValue(name, options.map(option => option.value))
   }
 
+  const compare = (a, b) => {
+    if (a.value < b.value) {
+      return -1
+    }
+    if (a.value > b.value) {
+      return 1
+    }
+    return 0
+  }
+
   return (
     <div>
       <p className={styles.supplementaryText}>{supplementaryText}</p>
@@ -27,7 +37,7 @@ export const AutocompleteField = ({
         components={makeAnimated()}
         isMulti
         name={name}
-        options={terms}
+        options={terms.sort(compare)}
         value={multiValue}
         onChange={handleMultiChange}
         className={styles.input}

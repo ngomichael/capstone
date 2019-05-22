@@ -511,10 +511,8 @@ const renderQuestions = (setFieldValue, currPageNum) => {
 export const Questionnaire = () => {
   const [currPageNum, setCurrPageNum] = useState(1)
   async function handleSubmit(answers) {
-    // console.log(answers)
     await firebase.getUserProfile()
     await firebase.addUserQuestionnaireAnswers(answers)
-    // await firebase.addProviderQuestionnaireAnswers(answers)
   }
 
   function handleNextPage() {

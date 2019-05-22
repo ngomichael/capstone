@@ -18,14 +18,19 @@ export const ProviderCard = ({ provider }) => {
   return (
     <div className={styles.container}>
       <div className={styles.contactActions}>
-        <a href={`mailto: ${provider.email}`}>
-          <Mail className={styles.contactAction} />
+        <a className={styles.contactAction} href={`mailto: ${provider.email}`}>
+          <Mail />
         </a>
-        <a>
-          <Heart className={styles.contactAction} />
+        <a className={styles.contactAction}>
+          <Heart />
         </a>
-        <a href={provider.website} rel="noopener noreferrer" target="_blank">
-          <ExternalLink className={styles.contactAction} />
+        <a
+          className={styles.contactAction}
+          href={provider.website}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <ExternalLink />
         </a>
       </div>
       <Link to={provider.id} className={styles.link}>

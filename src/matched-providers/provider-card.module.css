@@ -81,9 +81,13 @@
   position: absolute;
   right: 10px;
   top: 20px;
+  z-index: 1;
 }
 
 .contactAction {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 32px;
   width: 32px;
   color: var(--primary);
@@ -97,6 +101,7 @@
 .contactAction:hover {
   border: 2px solid var(--primary);
   background-color: var(--lightest-gray);
+  cursor: pointer;
 }
 
 .overview {

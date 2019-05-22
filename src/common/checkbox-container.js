@@ -7,9 +7,6 @@ import { Button, TYPES, SIZES } from '../common/button'
 class CheckboxContainer extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      showMoreFilters: false,
-    }
 
     this.handleChange = this.handleChange.bind(this)
   }
@@ -29,7 +26,6 @@ class CheckboxContainer extends React.Component {
               : styles.checkboxes
           }
         >
-          {/* <div className={styles.gradient} /> */}
           {this.props.options.map(item => (
             <label key={item} className={styles.checkboxOption}>
               <Checkbox
@@ -40,27 +36,8 @@ class CheckboxContainer extends React.Component {
               <span className={styles.text}>{item}</span>
             </label>
           ))}
-          {/* {this.props.options.map(item => (
-            <label key={item} className={styles.checkboxOption}>
-              <Checkbox
-                name={item}
-                onChange={this.handleChange}
-                checked={this.props.allCheckedItems.get(item)}
-              />
-              <span className={styles.text}>{item}</span>
-            </label>
-          ))}*/}
         </div>
-        {/* {this.props.options.length > 4 && (
-          <p
-            onClick={() =>
-              this.setState({ showMoreFilters: !this.state.showMoreFilters })
-            }
-            className={styles.showMoreButton}
-          >
-            {this.state.showMoreFilters ? 'Show less -' : 'Show more +'}
-          </p>
-        )} */}
+
         <div className={styles.applyButton}>
           <Button
             type="button"

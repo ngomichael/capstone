@@ -36,6 +36,7 @@
   color: var(--primary);
   background-color: var(--white);
   letter-spacing: 0.05em;
+  outline: none;
   transition: background-color 200ms ease;
 }
 
