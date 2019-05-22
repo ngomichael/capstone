@@ -18,9 +18,21 @@
   margin-top: var(--s-6);
 }
 
+.searchContainer {
+  position: relative;
+}
+
+.searchIcon {
+  position: absolute;
+  top: 18px;
+  left: 10px;
+  color: var(--gray);
+}
+
 .searchInput {
   width: 60%;
   height: 40px;
+  text-indent: 30px;
   font-size: var(--fs-3);
   border: 2px solid var(--light-gray);
   border-radius: 4px;
@@ -33,6 +45,19 @@
   border: 2px solid #6558f5;
   background-color: var(--white);
   outline: none;
+}
+
+.input {
+  width: 60%;
+  height: 40px;
+  font-size: var(--fs-2);
+  margin: var(--s-2) var(--s-0) var(--s-2) var(--s-0);
+}
+
+@media (max-width: 678px) {
+  .input {
+    width: 70%;
+  }
 }
 
 .filtersContainer {

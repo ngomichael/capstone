@@ -5,7 +5,8 @@ import { OnboardingHeader } from '../common/onboarding-header'
 import { UndrawEmpty } from 'react-undraw'
 import { OptionButton } from '../common/option-button'
 import { Button, TYPES, SIZES } from '../common/button'
-import { ChevronDown } from 'react-feather'
+import { ChevronDown, Search } from 'react-feather'
+import Select from 'react-select'
 import ReactPaginate from 'react-paginate'
 import firebase from '../firebase/firebase'
 
@@ -155,12 +156,24 @@ export const MatchedProviders = () => {
       <div className={styles.maxWidthContainer}>
         <div className={styles.titleAndSearchContainer}>
           <h1>Providers for you</h1>
-          <input
-            value={searchVal}
-            onChange={handleSearchValChange}
-            placeholder="Search for a location"
-            className={styles.searchInput}
-          />
+          <div className={styles.searchContainer}>
+            <Search size={20} className={styles.searchIcon} />
+            {/* <input
+              value={searchVal}
+              onChange={handleSearchValChange}
+              placeholder="Search for a location"
+              className={styles.searchInput}
+            /> */}
+            <Select
+              className={styles.input}
+              defaultValue="blue"
+              isClearable={true}
+              isSearchable={true}
+              name="cities"
+              placeholder="City or Zip"
+              // options={colourOptions}
+            />
+          </div>
         </div>
 
         <div className={styles.filtersContainer}>
