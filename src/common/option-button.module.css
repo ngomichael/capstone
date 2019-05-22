@@ -52,3 +52,9 @@
   background-color: var(--primary);
   color: var(--white);
 }
+
+.filterButtonText {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}

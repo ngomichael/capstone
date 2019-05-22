@@ -52,7 +52,7 @@ export const OptionButton = ({
             : styles.filterButton
         }
       >
-        <p>{children}</p>
+        <p className={styles.filterButtonText}>{children}</p>
       </button>
       {activeCheckboxContainer === id && clicked && (
         <div className={styles.checkboxContainer}>

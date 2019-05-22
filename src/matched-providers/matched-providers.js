@@ -5,6 +5,7 @@ import { OnboardingHeader } from '../common/onboarding-header'
 import { UndrawEmpty } from 'react-undraw'
 import { OptionButton } from '../common/option-button'
 import { Button, TYPES, SIZES } from '../common/button'
+import { ChevronDown } from 'react-feather'
 import ReactPaginate from 'react-paginate'
 import firebase from '../firebase/firebase'
 
@@ -167,6 +168,10 @@ export const MatchedProviders = () => {
               activeCheckboxContainer={activeCheckboxContainer}
             >
               {filter.name}
+              <ChevronDown
+                color="hsl(174, 47%, 75%)"
+                className={styles.chevronDown}
+              />
             </OptionButton>
           ))}
         </div>
