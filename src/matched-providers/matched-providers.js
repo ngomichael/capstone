@@ -122,20 +122,14 @@ export const MatchedProviders = () => {
   }
 
   async function filterProviders(terms) {
-    console.log(terms)
     const snapshot = await firebase.filterProviders(terms)
     const queriedProvider = snapshot.docs.map(doc => doc.data())
-    console.log(queriedProvider)
     setAllProviders(queriedProvider)
-    console.log(queriedProvider)
     setPageCount(Math.ceil(queriedProvider.length / providersPerPage))
   }
 
   function handlePageClick(data) {
-    // console.log(data)
-    console.log(`active page is ${data.selected}`)
     setCurrentPage(data.selected + 1)
-    console.log(pageCount)
     window.scrollTo(0, 0)
   }
 
@@ -212,21 +206,11 @@ export const MatchedProviders = () => {
           />
         )}
 
-        {/* <p className={styles.pageInfo}>1-3 of 18 results</p>
-        <Button
-          type="button"
-          buttonType={TYPES.PRIMARY}
-          buttonSize={SIZES.MEDIUM}
-        >
-          View more matches
-        </Button> */}
-
         {/* <div>
           <button type="button" onClick={() => firebase.signOut()}>
             Sign Out
           </button>
         </div> */}
-        {/* <div style={{ marginBottom: '35px' }} /> */}
       </div>
     </div>
   )

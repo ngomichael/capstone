@@ -22,7 +22,6 @@ class AutocompleteItemList extends Component {
   render() {
     const { terms } = this.props
     const noResults = 'No terms found with that name'
-    console.log(terms)
     return (
       <ul className={this.state.showList ? styles.list : styles.listHidden}>
         {terms.length > 0

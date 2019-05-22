@@ -23,7 +23,7 @@ export const questionnaireQuestions = [
   },
   {
     questionType: 'autocomplete',
-    question: 'What kind of care are you looking for',
+    question: 'What kind of care are you looking for?',
     supplementaryText:
       'Getting to a provider can be a big barrier in receiving care. This information helps us find providers close to you.',
     terms: [
@@ -540,6 +540,14 @@ export const Questionnaire = () => {
               ? "First, let's figure out the essentials"
               : "Besides the basics, is there anything else you're looking for in a provider?"}
           </h1>
+          {currPageNum === 1 && (
+            <p className={styles.questionnaireDescription}>
+              Excluding the first question, all questions are optional and you
+              are able to select multiple answers if it better reflects the
+              experiences you are going through. If you don't know how to answer
+              a question or if it does not apply, just leave it blank.
+            </p>
+          )}
           <Formik
             initialValues={{
               zip_code: '',
@@ -552,7 +560,6 @@ export const Questionnaire = () => {
               populations: [],
             }}
             onSubmit={(values, { setSubmitting }) => {
-              console.log(values)
               handleSubmit(values)
               setSubmitting(false)
               navigate('/questionnaireCompleted')

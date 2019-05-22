@@ -17,8 +17,13 @@
 .title {
   font-size: var(--fs-5);
   font-weight: var(--fw-5);
-  margin-bottom: var(--s-4);
-  margin: var(--s-1) var(--s-0) var(--s-7) var(--s-0);
+  margin: var(--s-1) var(--s-0) var(--s-5) var(--s-0);
+}
+
+.questionnaireDescription {
+  font-size: var(--fs-4);
+  margin-bottom: var(--s-6);
+  width: 80%;
 }
 
 .questionsContainer {
