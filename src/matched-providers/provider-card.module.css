@@ -1,6 +1,10 @@
 @import '../common/variables.css';
 
 .container {
+  position: relative;
+}
+
+.card {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -72,6 +76,13 @@
   font-size: var(--fs-3);
 }
 
+.contactActions {
+  display: flex;
+  position: absolute;
+  right: 10px;
+  top: 20px;
+}
+
 .contactAction {
   height: 32px;
   width: 32px;
@@ -114,4 +125,14 @@
 .label {
   font-weight: 700;
   margin-right: var(--s-3);
+}
+
+@media (max-width: 678px) {
+  .contactActions {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
 }

@@ -8,19 +8,7 @@ import { Button, TYPES, SIZES } from '../common/button'
 import { Heart } from 'react-feather'
 import firebase from '../firebase/firebase'
 
-export const ProviderInfo = ({
-  // name,
-  // photo,
-  // credentials,
-  // isAcceptingClients,
-  // phone,
-  // email,
-  // website,
-  // address,
-  // specialties,
-  // approach,
-  providerId,
-}) => {
+export const ProviderInfo = ({ providerId }) => {
   useEffect(() => {
     getProviderInfo()
   }, {})
@@ -39,8 +27,6 @@ export const ProviderInfo = ({
   function handleShowModal() {
     setIsModalOpen(true)
   }
-
-  console.log(provider)
 
   return (
     <div className={styles.container}>
@@ -123,7 +109,7 @@ export const ProviderInfo = ({
                     <b>Issues</b>
                   </p>
                   {provider.issues.map(issue => (
-                    <li>{issue}</li>
+                    <li key={issue}>{issue}</li>
                   ))}
                 </ul>
                 <ul className={styles.listContainer}>
@@ -131,7 +117,7 @@ export const ProviderInfo = ({
                     <b>Client Focus</b>
                   </p>
                   {provider.age_groups.map(age_group => (
-                    <li>{age_group}</li>
+                    <li key={age_group}>{age_group}</li>
                   ))}
                 </ul>
 
@@ -140,7 +126,7 @@ export const ProviderInfo = ({
                     <b>Population</b>
                   </p>
                   {provider.populations.map(population => (
-                    <li>{population}</li>
+                    <li key={population}>{population}</li>
                   ))}
                 </ul>
               </div>
@@ -152,13 +138,13 @@ export const ProviderInfo = ({
                 for a particular approach, that can narrow down the providers we
                 think are a good fit for you.
               </p>
-              <p className={styles.sectionContent}>
+              <div className={styles.sectionContent}>
                 <ul className={styles.listContainer}>
                   {provider.approaches.map(approach => (
-                    <li>{approach}</li>
+                    <li key={approach}>{approach}</li>
                   ))}
                 </ul>
-              </p>
+              </div>
             </div>
             <div className={styles.sectionContainer}>
               <p className={styles.sectionHeader}>Video</p>

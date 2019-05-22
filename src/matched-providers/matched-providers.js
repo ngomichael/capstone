@@ -146,21 +146,18 @@ export const MatchedProviders = () => {
     indexOfLastProvider
   )
 
-  // console.log(allProviders)
-  console.log(currentPage)
-
   return (
     <div className={styles.container}>
       <OnboardingHeader step={2} />
       <div className={styles.maxWidthContainer}>
         <div className={styles.titleAndSearchContainer}>
           <h1>Providers for you</h1>
-          {/* <input
+          <input
             value={searchVal}
             onChange={handleSearchValChange}
-            placeholder="Search for a location or keyword"
+            placeholder="Search for a location"
             className={styles.searchInput}
-          /> */}
+          />
         </div>
 
         <div className={styles.filtersContainer}>
