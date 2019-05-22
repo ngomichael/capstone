@@ -58,13 +58,13 @@
   display: none;
 }
 
-.showMoreButton {
+.clearButton {
   position: absolute;
   bottom: 13%;
   color: var(--primary);
 }
 
-.showMoreButton:hover {
+.clearButton:hover {
   cursor: pointer;
 }
 

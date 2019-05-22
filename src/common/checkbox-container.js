@@ -38,6 +38,18 @@ class CheckboxContainer extends React.Component {
           ))}
         </div>
 
+        {this.props.checkedItems.length !== 0 && (
+          <p
+            onClick={() => {
+              this.props.handleClearFilters()
+              this.props.onApplyFilter()
+            }}
+            className={styles.clearButton}
+          >
+            {this.props.checkedItems.length !== 0 ? 'Clear' : null}
+          </p>
+        )}
+
         <div className={styles.applyButton}>
           <Button
             type="button"

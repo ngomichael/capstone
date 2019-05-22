@@ -101,6 +101,14 @@ export const MatchedProviders = () => {
     })
   }
 
+  function handleClearFiltersOneType(map) {
+    const newMap = allCheckedItems
+    map.forEach((value, key, map) => {
+      newMap.set(key, false)
+    })
+    setAllCheckedItems(newMap)
+  }
+
   function handleApplyFilter() {
     let checkedItemsArray = []
 
@@ -164,6 +172,7 @@ export const MatchedProviders = () => {
               onClick={() => setActiveCheckboxContainer(filter.id)}
               onApplyFilter={handleApplyFilter}
               allCheckedItems={allCheckedItems}
+              handleClearFiltersOneType={handleClearFiltersOneType}
               id={filter.id}
               activeCheckboxContainer={activeCheckboxContainer}
             >

@@ -12,6 +12,7 @@ export const OptionButton = ({
   onClick,
   id,
   activeCheckboxContainer,
+  handleClearFiltersOneType,
 }) => {
   const [clicked, changeClickedStatus] = useState(false)
   const [checkedItems, setCheckedItems] = useState(new Map())
@@ -31,6 +32,16 @@ export const OptionButton = ({
     const isChecked = e.target.checked
     const newMap = new Map([...checkedItems.set(item, isChecked)])
     setCheckedItems(newMap)
+  }
+
+  function handleClearFilters() {
+    const currentFilters = checkedItems
+    const clearedFilters = new Map()
+    currentFilters.forEach((value, key, map) => {
+      clearedFilters.set(key, false)
+    })
+    setCheckedItems(clearedFilters)
+    handleClearFiltersOneType(currentFilters)
   }
 
   function findInMap(map, val) {
@@ -61,6 +72,8 @@ export const OptionButton = ({
             onChange={onChange}
             onApplyFilter={handleApplyFilter}
             allCheckedItems={allCheckedItems}
+            checkedItems={[...checkedItems]}
+            handleClearFilters={handleClearFilters}
             handleCheckboxChange={handleCheckboxChange}
           />
         </div>
