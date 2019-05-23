@@ -54,7 +54,10 @@ export const OptionButton = ({
   }
 
   return (
-    <div className={styles.container}>
+    <div
+      onBlur={() => changeClickedStatus(!clicked)}
+      className={styles.container}
+    >
       <button
         onClick={handleClickedStatusChange}
         className={

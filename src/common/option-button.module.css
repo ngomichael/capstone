@@ -7,14 +7,12 @@
 
 .checkboxContainer {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   animation: slideDown 250ms ease forwards;
 }
 
 .checkboxContainerHidden {
-  position: relative;
-  z-index: 1;
-
+  composes: checkboxContainer;
   animation: slideUp 250ms ease forwards;
 }
 
