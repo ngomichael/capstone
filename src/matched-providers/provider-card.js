@@ -3,6 +3,7 @@ import { Link } from '@reach/router'
 import PropTypes from 'prop-types'
 import styles from './provider-card.module.css'
 import { Mail, Heart, ExternalLink } from 'react-feather'
+import AcceptingClientsIcon from '../icons/accepting-clients.png'
 
 export const ProviderCard = ({ provider }) => {
   const [isHovered, setIsHovered] = useState(false)
@@ -14,6 +15,8 @@ export const ProviderCard = ({ provider }) => {
   function handleMouseLeave() {
     setIsHovered(!isHovered)
   }
+
+  // console.log(provider)
 
   return (
     <div className={styles.container}>
@@ -43,7 +46,16 @@ export const ProviderCard = ({ provider }) => {
             <div className={styles.photoandInfoContainer}>
               <img src={provider.photo} className={styles.providerPhoto} />
               <div className={styles.providerInfo}>
-                <p className={styles.name}>{provider.name}</p>
+                <div className={styles.nameAndTagContainer}>
+                  <p className={styles.name}>{provider.name}</p>
+                  <img
+                    src={AcceptingClientsIcon}
+                    className={styles.acceptingClientsIcon}
+                  />
+                  {/* <div className={styles.acceptingClientsTag}>
+                    Accepting new clients
+                  </div> */}
+                </div>
                 <b className={styles.matchPercentage}>100% Match</b>
                 <p className={styles.address}>{provider.address}</p>
               </div>
@@ -55,6 +67,7 @@ export const ProviderCard = ({ provider }) => {
                 <div className={styles.itemContainer} key={item.label}>
                   <p className={styles.label}>{item.label}</p>
                   <p>{item.values.slice(0, 3).join(', ')}</p>
+                  {console.log(item.values)}
                 </div>
               )
             })}

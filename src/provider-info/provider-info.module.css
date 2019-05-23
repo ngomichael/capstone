@@ -52,6 +52,20 @@
   font-weight: var(--fw-5);
 }
 
+.iconAndTagContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.acceptingClientsIcon {
+  position: absolute;
+  top: 12px;
+  left: 5px;
+  width: 35px;
+  height: 35px;
+}
+
 .acceptingClientsTag {
   border-radius: 5px;
   border: 2px solid var(--primary);
@@ -59,7 +73,8 @@
   color: var(--primary);
   padding: var(--s-2);
   margin-top: var(--s-2);
-  width: 200px;
+  text-indent: 30px;
+  width: 215px;
 }
 
 .hideAcceptingClientsTag {

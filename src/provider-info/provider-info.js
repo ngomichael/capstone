@@ -7,6 +7,7 @@ import { BackButton } from '../common/back-button'
 import { Button, TYPES, SIZES } from '../common/button'
 import { Heart } from 'react-feather'
 import firebase from '../firebase/firebase'
+import AcceptingClientsIcon from '../icons/accepting-clients.png'
 
 export const ProviderInfo = ({ providerId }) => {
   useEffect(() => {
@@ -28,6 +29,8 @@ export const ProviderInfo = ({ providerId }) => {
     setIsModalOpen(true)
   }
 
+  console.log(provider)
+
   return (
     <div className={styles.container}>
       {isModalOpen && (
@@ -48,9 +51,16 @@ export const ProviderInfo = ({ providerId }) => {
                 <img src={provider.photo} className={styles.providerPhoto} />
                 <div>
                   <p className={styles.name}>{provider.name}</p>
+                  <p>{provider.care_types.join(', ')}</p>
                   <p>{provider.credentials}</p>
-                  <div className={styles.acceptingClientsTag}>
-                    Accepting new clients
+                  <div className={styles.iconAndTagContainer}>
+                    <img
+                      src={AcceptingClientsIcon}
+                      className={styles.acceptingClientsIcon}
+                    />
+                    <div className={styles.acceptingClientsTag}>
+                      Accepting new clients
+                    </div>
                   </div>
                 </div>
               </div>

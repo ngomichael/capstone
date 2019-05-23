@@ -65,6 +65,7 @@
   /* color: var(--primary); */
   font-size: var(--fs-5);
   font-weight: var(--fw-5);
+  margin-right: var(--s-3);
 }
 
 .matchPercentage {
@@ -102,6 +103,31 @@
   border: 2px solid var(--primary);
   background-color: var(--lightest-gray);
   cursor: pointer;
+}
+
+.nameAndTagContainer {
+  display: flex;
+  align-items: center;
+}
+
+.acceptingClientsIcon {
+  border-radius: 50%;
+  /* border: 1px solid var(--primary); */
+  background-color: var(--primary-light);
+  box-shadow: var(--bs-1);
+  width: 40px;
+  height: 40px;
+  margin-top: var(--s-1);
+}
+
+.acceptingClientsTag {
+  border-radius: 5px;
+  border: 2px solid var(--primary);
+  text-align: center;
+  color: var(--primary);
+  padding: var(--s-2);
+  margin-top: var(--s-2);
+  width: 175px;
 }
 
 .overview {
