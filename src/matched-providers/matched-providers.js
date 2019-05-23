@@ -207,7 +207,9 @@ export const MatchedProviders = () => {
         ) : (
           <div className={styles.noProviders}>
             <UndrawEmpty primaryColor="hsl(174, 74%, 39%)" />
-            <p className={styles.noProvidersText}>No providers found...</p>
+            <p className={styles.noProvidersText}>
+              No providers found, please try again with new filters
+            </p>
           </div>
         )}
 

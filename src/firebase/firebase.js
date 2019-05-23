@@ -34,7 +34,7 @@ class Firebase {
     }
   }
 
-  addUserInformation(firstName, lastName, password, email) {
+  addUserInformation(firstName, password, email) {
     if (!this.auth.currentUser) {
       return alert('Not Authorized')
     }
@@ -44,7 +44,6 @@ class Firebase {
       .doc(this.auth.currentUser.uid)
       .set({
         first_name: firstName,
-        last_name: lastName,
         email: email,
         password: password,
         questionnaire_finished: false,

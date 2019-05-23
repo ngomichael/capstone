@@ -34,8 +34,8 @@
   position: relative;
   composes: checkboxes;
   overflow: scroll;
-  border: 2px solid rgba(135, 135, 135, 0.5);
-  border-radius: var(--br-1);
+  /* border: 2px solid rgba(135, 135, 135, 0.5);
+  border-radius: var(--br-1); */
   padding: var(--s-3) var(--s-3) var(--s-0) var(--s-3);
   /* background: linear-gradient(transparent, 98%, var(--light-gray)) no-repeat; */
 }

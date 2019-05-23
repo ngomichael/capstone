@@ -3,20 +3,16 @@ import { Link, Redirect } from '@reach/router'
 import firebase from '../firebase/firebase'
 import styles from './sign-up.module.css'
 import { Button, TYPES, SIZES } from '../common/button'
+import { InputField } from '../common/input-field'
 
 export const SignUp = () => {
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [createdAccount, setCreatedAccount] = useState(false)
 
-  function handleFirstNameChange(e) {
-    setFirstName(e.target.value)
-  }
-
-  function handleLastNameChange(e) {
-    setLastName(e.target.value)
+  function handleNameChange(e) {
+    setName(e.target.value)
   }
 
   function handleEmailChange(e) {
@@ -30,13 +26,15 @@ export const SignUp = () => {
   async function handleSignUp() {
     try {
       await firebase.register(name, email, password)
-      await firebase.addUserInformation(firstName, lastName, password, email)
+      await firebase.addUserInformation(name, password, email)
       setCreatedAccount(true)
       return <Redirect noThrow to="/getStarted" />
     } catch (err) {
       console.log(err)
     }
   }
+
+  console.log(name)
 
   return (
     <div className={styles.container}>
@@ -46,34 +44,26 @@ export const SignUp = () => {
         few seconds and will help us save your information for next time!
       </p>
       <form className={styles.form}>
-        <input
-          className={styles.input}
-          value={firstName}
-          type="text"
-          placeholder="First Name"
-          onChange={handleFirstNameChange}
-        />
-        <input
-          className={styles.input}
-          value={lastName}
-          type="text"
-          placeholder="Last Name"
-          onChange={handleLastNameChange}
-        />
-        <input
-          className={styles.input}
-          value={email}
-          type="text"
-          placeholder="Email"
-          onChange={handleEmailChange}
-        />
-        <input
-          className={styles.input}
-          value={password}
-          type="password"
-          placeholder="Password"
-          onChange={handlePasswordChange}
-        />
+        <div>
+          <InputField
+            value={name}
+            type="text"
+            onChange={handleNameChange}
+            label="Name"
+          />
+          <InputField
+            value={email}
+            type="text"
+            onChange={handleEmailChange}
+            label="Email"
+          />
+          <InputField
+            value={password}
+            type="password"
+            onChange={handlePasswordChange}
+            label="Password"
+          />
+        </div>
 
         <Button
           type="button"

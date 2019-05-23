@@ -94,6 +94,22 @@ export const ProviderInfo = ({ providerId }) => {
               </p>
             </div>
             <div className={styles.sectionContainer}>
+              <p className={styles.sectionHeader}>Accepted Insurance(s)</p>
+              <p className={styles.sectionDescription}>
+                Instantly break out into full speed gallop across the house for
+                no reason meeeeouw for purr as loud as possible, be the most
+                annoying cat that you can, and, knock everything off the table
+                for stare out cat door then go back inside.
+              </p>
+              <div className={styles.sectionContent}>
+                <ul className={styles.listContainer}>
+                  {provider.insurances.map(insurance => (
+                    <li key={insurance}>{insurance}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div className={styles.sectionContainer}>
               <p className={styles.sectionHeader}>
                 Specialties: Issues, Client Focus, and Identity/Population
               </p>
