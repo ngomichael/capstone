@@ -34,6 +34,25 @@ class Firebase {
     }
   }
 
+  addUserInformation(firstName, lastName, password, email) {
+    if (!this.auth.currentUser) {
+      return alert('Not Authorized')
+    }
+
+    return this.db
+      .collection('users_test')
+      .doc(this.auth.currentUser.uid)
+      .set({
+        first_name: firstName,
+        last_name: lastName,
+        email: email,
+        password: password,
+        questionnaire_finished: false,
+      })
+
+      .catch(err => console.log(err))
+  }
+
   addUserQuestionnaireAnswers(answers) {
     const terms = [
       ...answers.zip_code,
@@ -92,6 +111,7 @@ class Firebase {
           approaches: answers.approaches,
           populations: answers.populations,
           user_type: 'client',
+          questionnaire_finished: true,
         },
         { merge: true }
       )
@@ -220,24 +240,6 @@ class Firebase {
         }
         // { merge: true }
       )
-  }
-
-  addUserInformation(firstName, lastName, password, email) {
-    if (!this.auth.currentUser) {
-      return alert('Not Authorized')
-    }
-
-    return this.db
-      .collection('users_test')
-      .doc(this.auth.currentUser.uid)
-      .set({
-        first_name: firstName,
-        last_name: lastName,
-        email: email,
-        password: password,
-      })
-
-      .catch(err => console.log(err))
   }
 
   getProviderInfo(providerId) {
