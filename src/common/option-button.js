@@ -54,10 +54,7 @@ export const OptionButton = ({
   }
 
   return (
-    <div
-      onBlur={() => changeClickedStatus(!clicked)}
-      className={styles.container}
-    >
+    <div className={styles.container}>
       <button
         onClick={handleClickedStatusChange}
         className={
@@ -68,7 +65,6 @@ export const OptionButton = ({
       >
         <p className={styles.filterButtonText}>{children}</p>
       </button>
-      {/* {activeCheckboxContainer === id && clicked && ( */}
       <div
         className={
           activeCheckboxContainer === id && clicked
