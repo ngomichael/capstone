@@ -11,6 +11,21 @@
   animation: slideDown 250ms ease forwards;
 }
 
+.checkboxContainerHidden {
+  position: relative;
+  z-index: 1;
+
+  animation: slideUp 250ms ease forwards;
+}
+
+@keyframes slideUp {
+  100% {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+}
+
 @keyframes slideDown {
   from {
     opacity: 0.5;

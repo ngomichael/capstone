@@ -65,19 +65,25 @@ export const OptionButton = ({
       >
         <p className={styles.filterButtonText}>{children}</p>
       </button>
-      {activeCheckboxContainer === id && clicked && (
-        <div className={styles.checkboxContainer}>
-          <CheckboxContainer
-            options={options}
-            onChange={onChange}
-            onApplyFilter={handleApplyFilter}
-            allCheckedItems={allCheckedItems}
-            checkedItems={[...checkedItems]}
-            handleClearFilters={handleClearFilters}
-            handleCheckboxChange={handleCheckboxChange}
-          />
-        </div>
-      )}
+      {/* {activeCheckboxContainer === id && clicked && ( */}
+      <div
+        className={
+          activeCheckboxContainer === id && clicked
+            ? styles.checkboxContainer
+            : styles.checkboxContainerHidden
+        }
+      >
+        <CheckboxContainer
+          options={options}
+          onChange={onChange}
+          onApplyFilter={handleApplyFilter}
+          allCheckedItems={allCheckedItems}
+          checkedItems={[...checkedItems]}
+          handleClearFilters={handleClearFilters}
+          handleCheckboxChange={handleCheckboxChange}
+        />
+      </div>
+      {/* )} */}
     </div>
   )
 }
