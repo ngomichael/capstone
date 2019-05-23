@@ -37,7 +37,7 @@ class Firebase {
 
   addUserQuestionnaire(answers) {
     if (!this.auth.currentUser) {
-      this.db.collection('questionnaire_answers').add({
+      this.db.collection('users_test').add({
         zip_code: answers.zip_code,
         care_types: answers.care_types,
         issues: answers.issues,
@@ -73,7 +73,7 @@ class Firebase {
     }
 
     return this.db
-      .collection('users_pearcare')
+      .collection('users_test')
       .doc(this.auth.currentUser.uid)
       .set({
         first_name: firstName,

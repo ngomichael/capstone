@@ -29,7 +29,9 @@ const overviewItems = [
   },
 ]
 
-export const ProviderCard = ({ provider }) => {
+
+
+export const ProviderCard = ({ provider, highest}) => {
   const [isHovered, setIsHovered] = useState(false)
 
   function handleMouseEnter() {
@@ -41,7 +43,7 @@ export const ProviderCard = ({ provider }) => {
   }
 
   const { name, photo, credentials, summary } = provider
-
+  console.log('this is inside providerCard', provider);
   return (
     <Link to="/providerInfo" className={styles.link}>
       <div
@@ -56,6 +58,7 @@ export const ProviderCard = ({ provider }) => {
               <p className={styles.name}>{name}</p>
               <p>Seattle, WA 98107</p>
               <p>100% Match</p>
+              <p> Matches four out of {highest} Criteria </p>
             </div>
           </div>
           <div className={styles.contactActions}>

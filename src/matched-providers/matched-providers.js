@@ -94,13 +94,14 @@ const filters = [
   },
 ]
 
-export const MatchedProviders = () => {
+export const MatchedProviders = (props) => {
   const [searchVal, setSearchVal] = useState('')
 
   function handleSearchValChange(e) {
     setSearchVal(e.target.value)
   }
 
+  console.log('this is the provider', props.provider_list)
   return (
     <div className={styles.container}>
       <HomeHeader />
@@ -122,9 +123,9 @@ export const MatchedProviders = () => {
           ))}
         </div> */}
         <div className={styles.providersContainer}>
-          {providers.map(provider => (
-            <ProviderCard provider={provider} key={provider.name} />
-          ))}
+          {props.provider_list.map(provider => {
+           return <ProviderCard provider={provider} key={provider.name} highest={props.provider_list[0].provider_score} />
+          })}
         </div>
         <p className={styles.pageInfo}>1-3 of 18 results</p>
         <Button
