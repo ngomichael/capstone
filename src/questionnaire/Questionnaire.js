@@ -38,7 +38,6 @@ export const questionnaireQuestions = [
         value: 'Testing',
         label: 'Testing',
       },
-      { id: 'Not sure', value: 'Not sure', label: 'Not sure' },
     ],
     name: 'care_types',
     pageNum: 1,
@@ -50,36 +49,168 @@ export const questionnaireQuestions = [
     supplementaryText:
       "Providers often have different areas of expertise. Having a provider who has experience with what you're struggling with could enhance the quality of your care.",
     terms: [
-      { id: 'Anxiety', value: 'Anxiety', label: 'Anxiety' },
-      { id: 'Depression', value: 'Depression', label: 'Depression' },
-      {
-        id: 'Life Transition Challenges',
-        value: 'Life Transition Challenges',
-        label: 'Life Transition Challenges',
-      },
-      {
-        id: 'Relationship Issues',
-        value: 'Relationship Issues',
-        label: 'Relationship Issues',
-      },
-      {
-        id: 'Eating Disorders',
-        value: 'Eating Disorders',
-        label: 'Eating Disorders',
-      },
-      {
-        id: 'Anger Management',
-        value: 'Anger Management',
-        label: 'Anger Management',
-      },
       { id: 'ADHD', value: 'ADHD', label: 'ADHD' },
       {
-        id: 'Behavioral Issues',
-        value: 'Behavioral Issues',
-        label: 'Behavioral Issues',
+        id: 'Addiction (Substance, Gambling, Sex, etc.)',
+        value: 'Addiction (Substance, Gambling, Sex, etc.)',
+        label: 'Addiction (Substance, Gambling, Sex, etc.)',
       },
-      { id: 'Drug Abuse', value: 'Drug Abuse', label: 'Drug Abuse' },
+      {
+        id: 'Adoption',
+        value: 'Adoption',
+        label: 'Adoption',
+      },
+      {
+        id: 'Alzheimer’s',
+        value: 'Alzheimer’s',
+        label: 'Alzheimer’s',
+      },
+      {
+        id: 'Anger management',
+        value: 'Anger management',
+        label: 'Anger management',
+      },
+      {
+        id: 'Antisocial Personality',
+        value: 'Antisocial Personality',
+        label: 'Antisocial Personality',
+      },
+      { id: 'Anxiety', value: 'Anxiety', label: 'Anxiety' },
+      {
+        id: 'Asperger’s',
+        value: 'Asperger’s',
+        label: 'Asperger’s',
+      },
+      { id: 'Autism', value: 'Autism', label: 'Autism' },
+      {
+        id: 'Behavioral issues',
+        value: 'Behavioral issues',
+        label: 'Behavioral issues',
+      },
+      { id: 'Bipolar', value: 'Bipolar', label: 'Bipolar' },
+      { id: 'Body Image', value: 'Body Image', label: 'Body Image' },
+      {
+        id: 'Borderline personality',
+        value: 'Borderline personality',
+        label: 'Borderline personality',
+      },
+      {
+        id: 'Chronic illness/pain',
+        value: 'Chronic illness/pain',
+        label: 'Chronic illness/pain',
+      },
+      { id: 'Codependency', value: 'Codependency', label: 'Codependency' },
+      { id: 'Depression', value: 'Depression', label: 'Depression' },
+      {
+        id: 'Developmental Disorders',
+        value: 'Developmental Disorders',
+        label: 'Developmental Disorders',
+      },
+      { id: 'Divorce', value: 'Divorce', label: 'Divorce' },
+      {
+        id: 'Dual diagnosis',
+        value: 'Dual diagnosis',
+        label: 'Dual diagnosis',
+      },
+      {
+        id: 'Eating disorders',
+        value: 'Eating disorders',
+        label: 'Eating disorders',
+      },
+      {
+        id: 'Emotional disturbance',
+        value: 'Emotional disturbance',
+        label: 'Emotional disturbance',
+      },
+      {
+        id: 'Family conflict',
+        value: 'Family conflict',
+        label: 'Family conflict',
+      },
+      { id: 'Grief', value: 'Grief', label: 'Grief' },
+      { id: 'Hoarding', value: 'Hoarding', label: 'Hoarding' },
+      {
+        id: 'Identity development',
+        value: 'Identity development',
+        label: 'Identity development',
+      },
+      { id: 'Infertility', value: 'Infertility', label: 'Infertility' },
       { id: 'Infidelity', value: 'Infidelity', label: 'Infidelity' },
+      {
+        id: 'Intellectual disabilities',
+        value: 'Intellectual disabilities',
+        label: 'Intellectual disabilities',
+      },
+      {
+        id: 'Learning disabilities',
+        value: 'Learning disabilities',
+        label: 'Learning disabilities',
+      },
+      { id: 'Life coaching', value: 'Life coaching', label: 'Life coaching' },
+      {
+        id: 'Life transitions',
+        value: 'Life transitions',
+        label: 'Life transitions',
+      },
+      { id: 'Medical detox', value: 'Medical detox', label: 'Medical detox' },
+      {
+        id: 'Narcissistic personality',
+        value: 'Narcissistic personality',
+        label: 'Narcissistic personality',
+      },
+      {
+        id: 'Obsessive-compulsive (OCD)',
+        value: 'Obsessive-compulsive (OCD)',
+        label: 'Obsessive-compulsive (OCD)',
+      },
+      {
+        id: 'Oppositional-defiant (ODD)',
+        value: 'Oppositional-defiant (ODD)',
+        label: 'Oppositional-defiant (ODD)',
+      },
+      { id: 'Parenting', value: 'Parenting', label: 'Parenting' },
+      {
+        id: 'Pregnancy, Prenatal, Postpartum',
+        value: 'Pregnancy, Prenatal, Postpartum',
+        label: 'Pregnancy, Prenatal, Postpartum',
+      },
+      { id: 'PTSD', value: 'PTSD', label: 'PTSD' },
+      {
+        id: 'Racial Identity',
+        value: 'Racial Identity',
+        label: 'Racial Identity',
+      },
+      {
+        id: 'Relationship issues',
+        value: 'Relationship issues',
+        label: 'Relationship issues',
+      },
+      { id: 'School issues', value: 'School issues', label: 'School issues' },
+      { id: 'Self esteem', value: 'Self esteem', label: 'Self esteem' },
+      { id: 'Self harming', value: 'Self harming', label: 'Self harming' },
+      {
+        id: 'Sleep or insomnia issues',
+        value: 'Sleep or insomnia issues',
+        label: 'Sleep or insomnia issues',
+      },
+      { id: 'Spirituality', value: 'Spirituality', label: 'Spirituality' },
+      {
+        id: 'Sports Performance',
+        value: 'Sports Performance',
+        label: 'Sports Performance',
+      },
+      { id: 'Stress', value: 'Stress', label: 'Stress' },
+      {
+        id: 'Substance abuse',
+        value: 'Substance abuse',
+        label: 'Substance abuse',
+      },
+      {
+        id: 'Substance abuse',
+        value: 'Substance abuse',
+        label: 'Substance abuse',
+      },
+      { id: 'Trauma', value: 'Trauma', label: 'Trauma' },
     ],
     name: 'issues',
     pageNum: 1,
@@ -92,37 +223,157 @@ export const questionnaireQuestions = [
     terms: [
       { id: 'Aetna', value: 'Aetna', label: 'Aetna' },
       {
-        id: 'Beacon Health Options',
-        value: 'Beacon Health Options',
-        label: 'Beacon Health Options',
+        id: 'Anthem',
+        value: 'Anthem',
+        label: 'Anthem',
       },
+      {
+        id: 'Apple Health',
+        value: 'Apple Health',
+        label: 'Apple Health',
+      },
+      { id: 'Asuris', value: 'Asuris', label: 'Asuris' },
       {
         id: 'Blue Cross Blue Shield',
         value: 'Blue Cross Blue Shield',
         label: 'Blue Cross Blue Shield',
       },
-      { id: 'Cigna', value: 'Cigna', label: 'Cigna' },
+      { id: 'BridgeSpan', value: 'BridgeSpan', label: 'BridgeSpan' },
+      { id: 'Cambia', value: 'Cambia', label: 'Cambia' },
       {
-        id: 'Harvard Pilgrim Health',
-        value: 'Harvard Pilgrim Health',
-        label: 'Harvard Pilgrim Health',
-      },
-      { id: 'Medicare', value: 'Medicare', label: 'Medicare' },
-      { id: 'Tufts', value: 'Tufts', label: 'Tufts' },
-      {
-        id: 'UnitedHealthcare',
-        value: 'UnitedHealthcare',
-        label: 'UnitedHealthcare',
+        id: 'Carefirst',
+        value: 'Carefirst',
+        label: 'Carefirst',
       },
       {
-        id: 'University student insurance/ Affiliate extended insurance',
-        value: 'University student insurance/ Affiliate extended insurance',
-        label: 'University student insurance/ Affiliate extended insurance',
+        id: 'Centene',
+        value: 'Centene',
+        label: 'Centene',
       },
       {
-        id: "My insurance isn't listed",
-        value: "My insurance isn't listed",
-        label: "My insurance isn't listed",
+        id: 'Cigna',
+        value: 'Cigna',
+        label: 'Cigna',
+      },
+      {
+        id: 'Community Health Plan of Washington',
+        value: 'Community Health Plan of Washington',
+        label: 'Community Health Plan of Washington',
+      },
+      {
+        id: 'Coordinated Care',
+        value: 'Coordinated Care',
+        label: 'Coordinated Care',
+      },
+      {
+        id: 'Coventry',
+        value: 'Coventry',
+        label: 'Coventry',
+      },
+      {
+        id: 'HCSC',
+        value: 'HCSC',
+        label: 'HCSC',
+      },
+      {
+        id: 'Health Alliance',
+        value: 'Health Alliance',
+        label: 'Health Alliance',
+      },
+      {
+        id: 'Highmark',
+        value: 'Highmark',
+        label: 'Highmark',
+      },
+      {
+        id: 'HIP',
+        value: 'HIP',
+        label: 'HIP',
+      },
+      {
+        id: 'Humana',
+        value: 'Humana',
+        label: 'Humana',
+      },
+      {
+        id: 'Independent Blue Cross',
+        value: 'Independent Blue Cross',
+        label: 'Independent Blue Cross',
+      },
+      {
+        id: 'ISHIP',
+        value: 'ISHIP',
+        label: 'ISHIP',
+      },
+      {
+        id: 'Kaiser Foundation Health Plan of Washington',
+        value: 'Kaiser Foundation Health Plan of Washington',
+        label: 'Kaiser Foundation Health Plan of Washington',
+      },
+      {
+        id: 'Kaiser Permanente',
+        value: 'Kaiser Permanente',
+        label: 'Kaiser Permanente',
+      },
+      {
+        id: 'Lifetime',
+        value: 'Lifetime',
+        label: 'Lifetime',
+      },
+      {
+        id: 'LifeWise',
+        value: 'LifeWise',
+        label: 'LifeWise',
+      },
+      {
+        id: 'Medicaid',
+        value: 'Medicaid',
+        label: 'Medicaid',
+      },
+      {
+        id: 'Medicare',
+        value: 'Medicare',
+        label: 'Medicare',
+      },
+      {
+        id: 'Metropolitan',
+        value: 'Metropolitan',
+        label: 'Metropolitan',
+      },
+      {
+        id: 'Molina',
+        value: 'Molina',
+        label: 'Molina',
+      },
+      {
+        id: 'Premera Blue Cross',
+        value: 'Premera Blue Cross',
+        label: 'Premera Blue Cross',
+      },
+      {
+        id: 'Regence BlueShield',
+        value: 'Regence BlueShield',
+        label: 'Regence BlueShield',
+      },
+      {
+        id: 'United',
+        value: 'United',
+        label: 'United',
+      },
+      {
+        id: 'Wellcare',
+        value: 'Wellcare',
+        label: 'Wellcare',
+      },
+      {
+        id: 'Wellpoint',
+        value: 'Wellpoint',
+        label: 'Wellpoint',
+      },
+      {
+        id: 'Other',
+        value: 'Other',
+        label: 'Other',
       },
     ],
     name: 'insurances',
@@ -174,37 +425,84 @@ export const questionnaireQuestions = [
       'Some patients prefer their providers have completed a certain degree or certificate program.',
     terms: [
       {
-        id: 'Marriage and Family Therapist (MA, MFT, LMFT, LCMFT)',
-        value: 'Marriage and Family Therapist (MA, MFT, LMFT, LCMFT)',
-        label: 'Marriage and Family Therapist (MA, MFT, LMFT, LCMFT)',
+        id: 'AAPC (Association of Pastoral Counselors)',
+        value: 'AAPC (Association of Pastoral Counselors)',
+        label: 'AAPC (Association of Pastoral Counselors)',
       },
       {
-        id: 'Psychiatrist (MD, Doctor)',
-        value: 'Psychiatrist (MD, Doctor)',
-        label: 'Psychiatrist (MD, Doctor)',
+        id: 'ACSW (Academy of Certified Social Worker)',
+        value: 'ACSW (Academy of Certified Social Worker)',
+        label: 'ACSW (Academy of Certified Social Worker)',
       },
       {
-        id: 'Psychologist: Doctorate Level (PhD, PsyD, EdD)',
-        value: 'Psychologist: Doctorate Level (PhD, PsyD, EdD)',
-        label: 'Psychologist: Doctorate Level (PhD, PsyD, EdD)',
+        id: 'DO (Doctor of Osteopathic Medicine)',
+        value: 'DO (Doctor of Osteopathic Medicine)',
+        label: 'DO (Doctor of Osteopathic Medicine)',
       },
       {
-        id: 'Psychologist: Masters Level (MA, MS, LGPC, LCPC)',
-        value: 'Psychologist: Masters Level (MA, MS, LGPC, LCPC)',
-        label: 'Psychologist: Masters Level (MA, MS, LGPC, LCPC)',
+        id: 'FNP-BC (Family Nurse Practitioner Board Certified)',
+        value: 'FNP-BC (Family Nurse Practitioner Board Certified)',
+        label: 'FNP-BC (Family Nurse Practitioner Board Certified)',
       },
       {
-        id:
-          'Social Worker (MSW, LGSW, LCSW, LMSW, LCSW-C, LISW, LSW and other SW licenses)',
-        value:
-          'Social Worker (MSW, LGSW, LCSW, LMSW, LCSW-C, LISW, LSW and other SW licenses)',
-        label:
-          'Social Worker (MSW, LGSW, LCSW, LMSW, LCSW-C, LISW, LSW and other SW licenses)',
+        id: 'LCSW, Licensed Clinical Social Worker',
+        value: 'LCSW, Licensed Clinical Social Worker',
+        label: 'LCSW, Licensed Clinical Social Worker',
       },
       {
-        id: ' Pastoral Counseling (MA, CCPT, CpastC, NCPC, NCCA)',
-        value: ' Pastoral Counseling (MA, CCPT, CpastC, NCPC, NCCA)',
-        label: ' Pastoral Counseling (MA, CCPT, CpastC, NCPC, NCCA)',
+        id: 'LICSW, Licensed Independent Social Workers',
+        value: 'LICSW, Licensed Independent Social Workers',
+        label: 'LICSW, Licensed Independent Social Workers',
+      },
+      {
+        id: 'LMFT, Licensed Marriage and Family Therapist',
+        value: 'LMFT, Licensed Marriage and Family Therapist',
+        label: 'LMFT, Licensed Marriage and Family Therapist',
+      },
+      {
+        id: 'LPC (Licensed Professional Counselor)',
+        value: 'LPC (Licensed Professional Counselor)',
+        label: 'LPC (Licensed Professional Counselor)',
+      },
+      {
+        id: 'MD (Doctor of Medicine)',
+        value: 'MD (Doctor of Medicine)',
+        label: 'MD (Doctor of Medicine)',
+      },
+      {
+        id: 'M.S./M.A. (Master’s degree)',
+        value: 'M.S./M.A. (Master’s degree)',
+        label: 'M.S./M.A. (Master’s degree)',
+      },
+      {
+        id: 'MSW (Master’s degree in social work)',
+        value: 'MSW (Master’s degree in social work)',
+        label: 'MSW (Master’s degree in social work)',
+      },
+      {
+        id: 'NCLEX (National Council Licensure Examination)',
+        value: 'NCLEX (National Council Licensure Examination)',
+        label: 'NCLEX (National Council Licensure Examination)',
+      },
+      {
+        id: 'Ph.D. (Doctor of Philosophy)',
+        value: 'Ph.D. (Doctor of Philosophy)',
+        label: 'Ph.D. (Doctor of Philosophy)',
+      },
+      {
+        id: 'PharmD (Doctor of Pharmacy)',
+        value: 'PharmD (Doctor of Pharmacy)',
+        label: 'PharmD (Doctor of Pharmacy)',
+      },
+      {
+        id: 'PMHNP-BC (Board Certification in psychiatric nursing)',
+        value: 'PMHNP-BC (Board Certification in psychiatric nursing)',
+        label: 'PMHNP-BC (Board Certification in psychiatric nursing)',
+      },
+      {
+        id: 'Ph.D. (Doctor of Philosophy)',
+        value: 'Ph.D. (Doctor of Philosophy)',
+        label: 'Ph.D. (Doctor of Philosophy)',
       },
     ],
     name: 'credentials',
@@ -545,7 +843,8 @@ export const Questionnaire = () => {
               Excluding the first question, all questions are optional and you
               are able to select multiple answers if it better reflects the
               experiences you are going through. If you don't know how to answer
-              a question or if it does not apply, just leave it blank.
+              a question or if it does not apply, please just leave the input
+              blank.
             </p>
           )}
           <Formik

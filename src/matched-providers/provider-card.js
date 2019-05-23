@@ -52,9 +52,6 @@ export const ProviderCard = ({ provider }) => {
                     src={AcceptingClientsIcon}
                     className={styles.acceptingClientsIcon}
                   />
-                  {/* <div className={styles.acceptingClientsTag}>
-                    Accepting new clients
-                  </div> */}
                 </div>
                 <b className={styles.matchPercentage}>100% Match</b>
                 <p className={styles.address}>{provider.address}</p>
@@ -67,7 +64,6 @@ export const ProviderCard = ({ provider }) => {
                 <div className={styles.itemContainer} key={item.label}>
                   <p className={styles.label}>{item.label}</p>
                   <p>{item.values.slice(0, 3).join(', ')}</p>
-                  {console.log(item.values)}
                 </div>
               )
             })}
