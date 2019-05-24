@@ -29,8 +29,6 @@ export const ProviderInfo = ({ providerId }) => {
     setIsModalOpen(true)
   }
 
-  console.log(provider)
-
   return (
     <div className={styles.container}>
       {isModalOpen && (
@@ -70,7 +68,12 @@ export const ProviderInfo = ({ providerId }) => {
                   <p>{provider.phone_number}</p>
                   {provider.email && <p>{provider.email}</p>}
                   {provider.website && (
-                    <a href={provider.website} className={styles.websiteLink}>
+                    <a
+                      href={provider.website}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      className={styles.websiteLink}
+                    >
                       {provider.website}
                     </a>
                   )}

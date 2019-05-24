@@ -43,6 +43,7 @@
 .filterButton {
   border: 2px solid #a3ded8;
   border-radius: 4px;
+  box-shadow: var(--bs-1);
   padding: var(--s-2) var(--s-4) var(--s-2) var(--s-4);
   margin: var(--s-1) var(--s-1) var(--s-2) var(--s-1);
   font-size: var(--fs-3);

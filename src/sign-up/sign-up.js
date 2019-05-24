@@ -4,6 +4,7 @@ import firebase from '../firebase/firebase'
 import styles from './sign-up.module.css'
 import { Button, TYPES, SIZES } from '../common/button'
 import { InputField } from '../common/input-field'
+import { HomeHeader } from '../common/home-header'
 
 export const SignUp = () => {
   const [name, setName] = useState('')
@@ -34,48 +35,53 @@ export const SignUp = () => {
     }
   }
 
-  console.log(name)
-
   return (
     <div className={styles.container}>
-      <p className={styles.title}>Create your PearCare Account</p>
-      <p className={styles.description}>
-        Before you start searching, please create an account! It only takes a
-        few seconds and will help us save your information for next time!
-      </p>
-      <form className={styles.form}>
-        <div>
-          <InputField
-            value={name}
-            type="text"
-            onChange={handleNameChange}
-            label="Name"
-          />
-          <InputField
-            value={email}
-            type="text"
-            onChange={handleEmailChange}
-            label="Email"
-          />
-          <InputField
-            value={password}
-            type="password"
-            onChange={handlePasswordChange}
-            label="Password"
-          />
-        </div>
+      <HomeHeader />
+      <div className={styles.maxWidthContainer}>
+        <div className={styles.signUpInfoContainer}>
+          <p className={styles.title}>Create your PearCare Account</p>
+          <p className={styles.description}>
+            Before you start searching, please create an account! It only takes
+            a few seconds and will help us save your information for next time!
+          </p>
+          <form className={styles.form}>
+            <div className={styles.inputContainer}>
+              <InputField
+                value={name}
+                type="text"
+                onChange={handleNameChange}
+                label="Name"
+              />
 
-        <Button
-          type="button"
-          buttonType={TYPES.PRIMARY}
-          buttonSize={SIZES.MEDIUM}
-          onClick={handleSignUp}
-        >
-          Create Account
-        </Button>
-      </form>
-      {createdAccount ? <Redirect noThrow to="/getStarted" /> : null}
-      <Link to="/">Sign In</Link>
+              <InputField
+                value={email}
+                type="text"
+                onChange={handleEmailChange}
+                label="Email"
+              />
+
+              <InputField
+                value={password}
+                type="password"
+                onChange={handlePasswordChange}
+                label="Password"
+              />
+            </div>
+
+            <Button
+              type="button"
+              buttonType={TYPES.PRIMARY}
+              buttonSize={SIZES.MEDIUM}
+              onClick={handleSignUp}
+            >
+              Create Account
+            </Button>
+          </form>
+          {createdAccount ? <Redirect noThrow to="/getStarted" /> : null}
+          <Link to="/">Sign In</Link>
+        </div>
+      </div>
     </div>
   )
 }

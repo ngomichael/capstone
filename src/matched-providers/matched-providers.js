@@ -435,11 +435,6 @@ const filters = [
         value: 'PMHNP-BC (Board Certification in psychiatric nursing)',
         label: 'PMHNP-BC (Board Certification in psychiatric nursing)',
       },
-      {
-        id: 'Ph.D. (Doctor of Philosophy)',
-        value: 'Ph.D. (Doctor of Philosophy)',
-        label: 'Ph.D. (Doctor of Philosophy)',
-      },
     ].map(credential => credential.value),
   },
   {
