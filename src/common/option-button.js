@@ -13,6 +13,7 @@ export const OptionButton = ({
   id,
   activeCheckboxContainer,
   handleClearFiltersOneType,
+  handleShowGrayBackground,
 }) => {
   const [clicked, changeClickedStatus] = useState(false)
   const [checkedItems, setCheckedItems] = useState(new Map())
@@ -20,6 +21,7 @@ export const OptionButton = ({
   function handleClickedStatusChange() {
     changeClickedStatus(!clicked)
     onClick()
+    handleShowGrayBackground(!clicked)
   }
 
   function handleApplyFilter() {

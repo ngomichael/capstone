@@ -6,6 +6,15 @@
   align-items: center;
 }
 
+.grayBackground {
+  position: absolute;
+  z-index: 2;
+  width: 99vw;
+  height: 197%;
+  top: 330px;
+  background-color: rgba(255, 255, 255, 0.543);
+}
+
 .maxWidthContainer {
   display: flex;
   flex-direction: column;
@@ -66,7 +75,7 @@
   width: 80%;
   margin-top: var(--s-2);
   margin-bottom: var(--s-2);
-  box-shadow: inset 0 -8px 10px -15px #000000;
+  /* box-shadow: inset 0 -8px 10px -15px #000000; */
 }
 
 .searchResults {

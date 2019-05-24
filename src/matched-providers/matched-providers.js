@@ -456,6 +456,7 @@ export const MatchedProviders = () => {
   const [pageCount, setPageCount] = useState(1)
   const [allCheckedItems, setAllCheckedItems] = useState(new Map())
   const [activeCheckboxContainer, setActiveCheckboxContainer] = useState()
+  const [showGrayBackground, setShowGrayBackground] = useState(false)
 
   useEffect(() => {
     getProviders()
@@ -471,6 +472,10 @@ export const MatchedProviders = () => {
     allCheckedItems.forEach((value, key) => {
       value === true && checkedItemsArray.push(key)
     })
+  }
+
+  function handleShowGrayBackground(clicked) {
+    setShowGrayBackground(clicked)
   }
 
   function handleClearFiltersOneType(map) {
@@ -524,7 +529,9 @@ export const MatchedProviders = () => {
   return (
     <div className={styles.container}>
       <OnboardingHeader step={2} />
+
       <div className={styles.maxWidthContainer}>
+        {showGrayBackground && <div className={styles.grayBackground} />}
         <div className={styles.titleAndSearchContainer}>
           <h1>Providers for you</h1>
           <div className={styles.searchContainer}>
@@ -557,6 +564,7 @@ export const MatchedProviders = () => {
               onApplyFilter={handleApplyFilter}
               allCheckedItems={allCheckedItems}
               handleClearFiltersOneType={handleClearFiltersOneType}
+              handleShowGrayBackground={handleShowGrayBackground}
               id={filter.id}
               activeCheckboxContainer={activeCheckboxContainer}
             >
