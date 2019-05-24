@@ -171,11 +171,6 @@ const filters = [
         value: 'Substance abuse',
         label: 'Substance abuse',
       },
-      {
-        id: 'Substance abuse',
-        value: 'Substance abuse',
-        label: 'Substance abuse',
-      },
       { id: 'Trauma', value: 'Trauma', label: 'Trauma' },
     ].map(issue => issue.value),
   },
