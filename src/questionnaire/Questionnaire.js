@@ -790,8 +790,10 @@ const renderQuestions = (setFieldValue, currPageNum) => {
   return questionnaireQuestions.map((question, index) => {
     return currPageNum === question.pageNum ? (
       <div className={styles.questionsContainer} key={index}>
-        <p className={styles.questionNumber}>{index + 1}</p>
-        <ArrowRight size={18} className={styles.arrow} />
+        <div className={styles.arrowAndNumberContainer}>
+          <p className={styles.questionNumber}>{index + 1}</p>
+          <ArrowRight size={18} className={styles.arrow} />
+        </div>
         <div>
           <p className={styles.question}>{question.question}</p>
           {returnCorrectQuestionFormat(question, setFieldValue, currPageNum)}

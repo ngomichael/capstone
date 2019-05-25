@@ -27,6 +27,7 @@ export const OptionButton = ({
   function handleApplyFilter() {
     changeClickedStatus(false)
     onApplyFilter()
+    handleShowGrayBackground(!clicked)
   }
 
   function handleCheckboxChange(e) {

@@ -5,7 +5,7 @@ import styles from './provider-card.module.css'
 import { Mail, Heart, ExternalLink } from 'react-feather'
 import AcceptingClientsIcon from '../icons/accepting-clients.png'
 
-export const ProviderCard = ({ provider }) => {
+export const ProviderCard = ({ provider, delay }) => {
   const [isHovered, setIsHovered] = useState(false)
 
   function handleMouseEnter() {
@@ -16,11 +16,12 @@ export const ProviderCard = ({ provider }) => {
     setIsHovered(!isHovered)
   }
 
-  // console.log(provider)
-
   return (
     <div className={styles.container}>
-      <div className={styles.contactActions}>
+      <div
+        className={styles.contactActions}
+        style={{ animationDelay: `${delay}ms` }}
+      >
         <a className={styles.contactAction} href={`mailto: ${provider.email}`}>
           <Mail />
         </a>
@@ -39,6 +40,7 @@ export const ProviderCard = ({ provider }) => {
       <Link to={provider.id} className={styles.link}>
         <div
           className={styles.card}
+          style={{ animationDelay: `${delay}ms` }}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >

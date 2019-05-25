@@ -589,8 +589,12 @@ export const MatchedProviders = () => {
 
         {currentProviders.length !== 0 ? (
           <div className={styles.providersContainer}>
-            {currentProviders.map(provider => (
-              <ProviderCard provider={provider} key={provider.name} />
+            {currentProviders.map((provider, idx) => (
+              <ProviderCard
+                provider={provider}
+                key={provider.name}
+                delay={100 * idx}
+              />
             ))}
           </div>
         ) : (

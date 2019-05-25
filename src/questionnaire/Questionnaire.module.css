@@ -32,6 +32,11 @@
   margin-bottom: var(--s-6);
 }
 
+.arrowAndNumberContainer {
+  display: flex;
+  align-items: center;
+}
+
 .questionNumber {
   display: flex;
   align-items: center;
@@ -42,7 +47,6 @@
 .arrow {
   flex-shrink: 0;
   margin-right: var(--s-3);
-  margin-top: var(--s-1);
 }
 
 .question {
