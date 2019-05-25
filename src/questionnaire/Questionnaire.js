@@ -859,7 +859,7 @@ export const Questionnaire = () => {
               navigate('/questionnaireCompleted')
             }}
           >
-            {({ isSubmitting, setFieldValue }) => (
+            {({ isSubmitting, setFieldValue, values }) => (
               <Form>
                 {renderQuestions(setFieldValue, currPageNum)}
                 {currPageNum === 2 && (
@@ -868,7 +868,9 @@ export const Questionnaire = () => {
                       type="submit"
                       buttonType={TYPES.PRIMARY}
                       buttonSize={SIZES.MEDIUM}
-                      disabled={isSubmitting}
+                      disabled={
+                        values.zip_code.length === 0 ? 'disabled' : false
+                      }
                     >
                       Finish
                     </Button>
