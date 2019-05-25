@@ -8,6 +8,7 @@ import { Button, TYPES, SIZES } from '../common/button'
 import { ChevronDown, Search } from 'react-feather'
 import Select from 'react-select'
 import ReactPaginate from 'react-paginate'
+import AcceptingClientsIcon from '../icons/accepting-clients.png'
 import firebase from '../firebase/firebase'
 
 const filters = [
@@ -575,6 +576,15 @@ export const MatchedProviders = () => {
               />
             </OptionButton>
           ))}
+        </div>
+
+        <div className={styles.iconKey}>
+          <img
+            src={AcceptingClientsIcon}
+            className={styles.acceptingClientsIcon}
+          />
+          <span>&mdash;</span>
+          <span style={{ marginLeft: '7px' }}> Accepting new clients</span>
         </div>
 
         {currentProviders.length !== 0 ? (
