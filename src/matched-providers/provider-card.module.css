@@ -9,18 +9,18 @@
   flex-direction: column;
   align-items: flex-start;
   border-left: 6px solid var(--primary-light);
-  /* border-bottom: 2px solid var(--light-gray); */
   border-radius: var(--br-1);
   box-shadow: var(--bs-3);
   padding: var(--s-4) var(--s-4) var(--s-4) var(--s-4);
   margin: var(--s-6) var(--s-0) var(--s-6) var(--s-0);
-  opacity: var(--opacity-0);
-  animation: slideInFromLeft 900ms ease forwards;
-  transition: box-shadow 200ms ease, transform 200ms ease;
+  transition: box-shadow 200ms ease, transform 200ms ease,
+    border-left 200ms ease;
+  animation: slideInFromLeft 900ms ease;
 }
 
 .card:hover {
   box-shadow: var(--bs-2);
+  border-left: 6px solid var(--primary);
   transform: translateY(1px);
 }
 

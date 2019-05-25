@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { hot } from 'react-hot-loader'
-import { Router } from '@reach/router'
+import { Router, Match } from '@reach/router'
 import styles from './app.module.css'
 import { SignUp } from './sign-up/sign-up'
 import { SignIn } from './sign-in/sign-in'
@@ -10,6 +10,7 @@ import { ProviderQuestionnaire } from './questionnaire/provider-questionnaire'
 import { MatchedProviders } from './matched-providers/matched-providers'
 import { ProviderInfo } from './provider-info/provider-info'
 import { Prompt } from './prompt/prompt'
+import { OnboardingHeader } from './common/onboarding-header'
 import { UndrawAboutMe, UndrawHire, UndrawProfile } from 'react-undraw'
 import firebase from './firebase/firebase'
 import { AuthContext } from './auth-context'
@@ -40,6 +41,16 @@ class App extends Component {
         <ProviderQuestionnaire path="providerQuestionnaire" />
         <MatchedProviders path="results" />
         <ProviderInfo path="results/:providerId" />
+        {/* <Match path="(getStarted|questionnaire|questionnaireCompleted|results)"> */}
+        {/* <Match path="results">
+          {props => (props.match ? <OnboardingHeader step={1} /> : null)}
+        </Match> */}
+        {/* <Match path="results">
+          {props => {
+            console.log(props.match)
+            return props.match ? <OnboardingHeader step={1} /> : null
+          }}
+        </Match> */}
 
         <Prompt
           path="getStarted"

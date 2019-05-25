@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styles from './matched-providers.module.css'
 import { ProviderCard } from './provider-card'
+import { Match } from '@reach/router'
 import { OnboardingHeader } from '../common/onboarding-header'
 import { UndrawEmpty } from 'react-undraw'
 import { OptionButton } from '../common/option-button'
@@ -493,6 +494,7 @@ export const MatchedProviders = () => {
     allCheckedItems.forEach((value, key) => {
       value === true && checkedItemsArray.push(key)
     })
+    // filterProviders([])
     filterProviders(checkedItemsArray)
   }
 
@@ -529,8 +531,13 @@ export const MatchedProviders = () => {
 
   return (
     <div className={styles.container}>
-      <OnboardingHeader step={2} />
-
+      {/* <OnboardingHeader step={2} /> */}
+      {/* <Match path="/results">
+        {props => {
+          console.log(props.match)
+          return props.match ? <OnboardingHeader step={1} /> : null
+        }}
+      </Match> */}
       <div className={styles.maxWidthContainer}>
         {showGrayBackground && <div className={styles.grayBackground} />}
         <div className={styles.titleAndSearchContainer}>

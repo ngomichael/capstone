@@ -52,10 +52,12 @@ export const ProviderInfo = ({ providerId }) => {
                   <p>{provider.care_types.join(', ')}</p>
                   <p>{provider.credentials}</p>
                   <div className={styles.iconAndTagContainer}>
-                    <img
-                      src={AcceptingClientsIcon}
-                      className={styles.acceptingClientsIcon}
-                    />
+                    {provider.accepting_clients && (
+                      <img
+                        src={AcceptingClientsIcon}
+                        className={styles.acceptingClientsIcon}
+                      />
+                    )}
                     <div className={styles.acceptingClientsTag}>
                       Accepting new clients
                     </div>

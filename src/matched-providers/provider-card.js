@@ -50,10 +50,12 @@ export const ProviderCard = ({ provider, delay }) => {
               <div className={styles.providerInfo}>
                 <div className={styles.nameAndTagContainer}>
                   <p className={styles.name}>{provider.name}</p>
-                  <img
-                    src={AcceptingClientsIcon}
-                    className={styles.acceptingClientsIcon}
-                  />
+                  {provider.accepting_clients && (
+                    <img
+                      src={AcceptingClientsIcon}
+                      className={styles.acceptingClientsIcon}
+                    />
+                  )}
                 </div>
                 <b className={styles.matchPercentage}>100% Match</b>
                 <p className={styles.address}>{provider.address}</p>
