@@ -488,13 +488,20 @@ export const MatchedProviders = () => {
     setAllCheckedItems(newMap)
   }
 
+  function handleClearAllFilters() {
+    const newMap = allCheckedItems
+    newMap.forEach((value, key, map) => {
+      newMap.set(key, false)
+    })
+    setAllCheckedItems(newMap)
+  }
+
   function handleApplyFilter() {
     let checkedItemsArray = []
 
     allCheckedItems.forEach((value, key) => {
       value === true && checkedItemsArray.push(key)
     })
-    // filterProviders([])
     filterProviders(checkedItemsArray)
   }
 

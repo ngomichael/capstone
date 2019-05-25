@@ -80,7 +80,7 @@ export const OptionButton = ({
           onChange={onChange}
           onApplyFilter={handleApplyFilter}
           allCheckedItems={allCheckedItems}
-          checkedItems={[...checkedItems]}
+          checkedItems={[...checkedItems.values()]}
           handleClearFilters={handleClearFilters}
           handleCheckboxChange={handleCheckboxChange}
         />

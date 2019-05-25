@@ -38,7 +38,7 @@ class CheckboxContainer extends React.Component {
           ))}
         </div>
 
-        {this.props.checkedItems.length !== 0 && (
+        {this.props.checkedItems.includes(true) && (
           <p
             onClick={() => {
               this.props.handleClearFilters()
