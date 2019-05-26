@@ -805,6 +805,8 @@ const renderQuestions = (setFieldValue, currPageNum) => {
 
 export const Questionnaire = () => {
   const [currPageNum, setCurrPageNum] = useState(1)
+  useEffect(() => window.scrollTo(0, 0))
+
   async function handleSubmit(answers) {
     await firebase.getUserProfile()
     await firebase.addUserQuestionnaireAnswers(answers)
@@ -820,7 +822,7 @@ export const Questionnaire = () => {
 
   return (
     <div className={styles.container}>
-      <OnboardingHeader step={1} />
+      {/* <OnboardingHeader step={1} /> */}
       <div className={styles.maxWidthContainer}>
         <div className={styles.questionsTitleContainer}>
           {currPageNum === 1 ? (
@@ -876,7 +878,7 @@ export const Questionnaire = () => {
                     >
                       Finish
                     </Button>
-                    <Link to="/results">
+                    <Link to="/onboardingTracker/results">
                       <Button
                         type="text"
                         buttonType={TYPES.SECONDARY}
@@ -903,7 +905,7 @@ export const Questionnaire = () => {
                 >
                   Next
                 </Button>
-                <Link to="/results">
+                <Link to="/onboardingTracker/results">
                   <Button
                     type="text"
                     buttonType={TYPES.SECONDARY}

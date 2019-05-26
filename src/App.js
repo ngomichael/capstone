@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { hot } from 'react-hot-loader'
 import { Router, Match } from '@reach/router'
+import { match } from '@reach/router/lib/utils'
 import styles from './app.module.css'
 import { SignUp } from './sign-up/sign-up'
 import { SignIn } from './sign-in/sign-in'
@@ -35,68 +36,63 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
-        <Home path="/" />
-        <Questionnaire path="questionnaire" />
-        <ProviderQuestionnaire path="providerQuestionnaire" />
-        <MatchedProviders path="results" />
-        <ProviderInfo path="results/:providerId" />
-        {/* <Match path="(getStarted|questionnaire|questionnaireCompleted|results)"> */}
-        {/* <Match path="results">
-          {props => (props.match ? <OnboardingHeader step={1} /> : null)}
-        </Match> */}
-        {/* <Match path="results">
-          {props => {
-            console.log(props.match)
-            return props.match ? <OnboardingHeader step={1} /> : null
-          }}
-        </Match> */}
+      <>
+        <Router>
+          <OnboardingHeader path="onboardingTracker/*" />
+        </Router>
+        <Router>
+          <Home path="/" />
+          <Questionnaire path="onboardingTracker/questionnaire" />
+          <ProviderQuestionnaire path="providerQuestionnaire" />
+          <MatchedProviders path="onboardingTracker/results" />
+          <ProviderInfo path="onboardingTracker/results/:providerId" />
 
-        <Prompt
-          path="getStarted"
-          image={
-            <UndrawProfile
-              primaryColor="hsl(174, 74%, 39%)"
-              className={styles.image}
-              style={{ width: '350px' }}
-            />
-          }
-          title="Tell us what matters to you"
-          p1="We're just going to ask you a few questions about what you're looking for. This will help us match you with the providers best suited for you."
-          p2="Don't worry, answering these questions will only take a few minutes"
-          buttonText="Start Questionnaire"
-          nextPath="/questionnaire"
-          prevPath="/"
-          step={1}
-          skipText="Don't have time right now?"
-          skipText2="Skip to a list of providers."
-          skipTextPath="/results"
-        />
+          <Prompt
+            path="onboardingTracker/getStarted"
+            image={
+              <UndrawProfile
+                primaryColor="hsl(174, 74%, 39%)"
+                className={styles.image}
+                style={{ width: '350px' }}
+              />
+            }
+            title="Tell us what matters to you"
+            p1="We're just going to ask you a few questions about what you're looking for. This will help us match you with the providers best suited for you."
+            p2="Don't worry, answering these questions will only take a few minutes"
+            buttonText="Start Questionnaire"
+            nextPath="/onboardingTracker/questionnaire"
+            prevPath="/"
+            step={1}
+            skipText="Don't have time right now?"
+            skipText2="Skip to a list of providers."
+            skipTextPath="/onboardingTracker/results"
+          />
 
-        <Prompt
-          path="questionnaireCompleted"
-          image={
-            <UndrawHire
-              primaryColor="hsl(174, 74%, 39%)"
-              className={styles.image}
-              style={{ width: '350px' }}
-            />
-          }
-          title="Way to go! We pear-reviewed providers just for you."
-          p1="We used your answers on the last page to find providers who may be a good fit for you."
-          p2="You can also continue adjusting what you're looking for by adding or removing filters, using the search bar, or editing your answers to the questionnaire."
-          buttonText="View Results"
-          nextPath="/results"
-          prevPath="/questionnaire"
-          step={2}
-          skipText="Want to change your answers?"
-          skipText2="Go back to the questionnaire."
-          skipTextPath="/providerQuestionnaire"
-        />
+          <Prompt
+            path="onboardingTracker/questionnaireCompleted"
+            image={
+              <UndrawHire
+                primaryColor="hsl(174, 74%, 39%)"
+                className={styles.image}
+                style={{ width: '350px' }}
+              />
+            }
+            title="Way to go! We pear-reviewed providers just for you."
+            p1="We used your answers on the last page to find providers who may be a good fit for you."
+            p2="You can also continue adjusting what you're looking for by adding or removing filters, using the search bar, or editing your answers to the questionnaire."
+            buttonText="View Results"
+            nextPath="/onboardingTracker/results"
+            prevPath="/questionnaire"
+            step={2}
+            skipText="Want to change your answers?"
+            skipText2="Go back to the questionnaire."
+            skipTextPath="/onboardingTracker/providerQuestionnaire"
+          />
 
-        <SignUp path="signup" />
-        <SignIn path="signin" />
-      </Router>
+          <SignUp path="signup" />
+          <SignIn path="signin" />
+        </Router>
+      </>
     )
   }
 }

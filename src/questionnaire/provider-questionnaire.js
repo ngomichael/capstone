@@ -478,7 +478,7 @@ export const ProviderQuestionnaire = () => {
 
   return (
     <div className={styles.container}>
-      <OnboardingHeader step={1} />
+      {/* <OnboardingHeader step={1} /> */}
       <div className={styles.maxWidthContainer}>
         <div className={styles.questionsTitleContainer}>
           {currPageNum === 1 ? (

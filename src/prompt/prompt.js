@@ -33,7 +33,7 @@ export const Prompt = ({
 
   return (
     <div className={styles.container}>
-      <OnboardingHeader step={step} />
+      {/* <OnboardingHeader step={step} /> */}
       {/* <Button
         type="button"
         buttonType={TYPES.PRIMARY}
@@ -51,7 +51,7 @@ export const Prompt = ({
             <p className={styles.p1}>{p1}</p>
             <p className={styles.p2}>{p2}</p>
             <div>
-              <Link to={nextPath}>
+              <Link to={`${nextPath}`}>
                 <Button
                   type="button"
                   buttonType={TYPES.PRIMARY}
@@ -62,7 +62,7 @@ export const Prompt = ({
               </Link>
               <div className={styles.skipTextContainer}>
                 <span>{skipText}</span>{' '}
-                <Link to={skipTextPath} className={styles.skipTextPath}>
+                <Link to={`${skipTextPath}`} className={styles.skipTextPath}>
                   {skipText2}
                 </Link>
               </div>

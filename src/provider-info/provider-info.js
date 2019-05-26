@@ -39,7 +39,7 @@ export const ProviderInfo = ({ providerId }) => {
           handleClose={handleClose}
         />
       )}
-      <OnboardingHeader step={2} />
+      {/* <OnboardingHeader step={2} /> */}
       {Object.entries(provider).length !== 0 && (
         <div className={styles.maxWidthContainer}>
           <div className={styles.providerOverviewBack}>

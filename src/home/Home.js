@@ -29,7 +29,7 @@ export const Home = () => {
           >
             <p>Learn more about how it works</p>
           </a>
-          <Link to="getStarted">
+          <Link to="onboardingTracker/getStarted">
             <Button
               type="button"
               buttonType={TYPES.PRIMARY}

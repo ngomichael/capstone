@@ -4,8 +4,30 @@ import styles from './onboarding-header.module.css'
 import { OnboardingTracker } from './onboarding-tracker'
 import PearCareIcon from '../icons/pearcare-icon.png'
 import { Link } from '@reach/router'
+import { match } from '@reach/router/lib/utils'
 
-export const OnboardingHeader = ({ step }) => {
+export const OnboardingHeader = ({ location }) => {
+  let step = 0
+  const isGetStarted = match('/onboardingTracker/getStarted', location.pathname)
+  const isQuestionnaire = match(
+    '/onboardingTracker/questionnaire',
+    location.pathname
+  )
+  const isQuestionnaireCompleted = match(
+    '/onboardingTracker/questionnaireCompleted',
+    location.pathname
+  )
+  const isResults = match('/onboardingTracker/results', location.pathname)
+  const isProviderInfo = match(
+    '/onboardingTracker/providerInfo',
+    location.pathname
+  )
+
+  if (isGetStarted || isQuestionnaire || isQuestionnaireCompleted) {
+    step = 1
+  } else if (isResults || isProviderInfo) {
+    step = 2
+  }
   return (
     <header className={styles.container}>
       <Link to="/" className={styles.logoAndNameContainer}>
@@ -20,5 +42,5 @@ export const OnboardingHeader = ({ step }) => {
 }
 
 OnboardingHeader.propTypes = {
-  step: PropTypes.number.isRequired,
+  // step: PropTypes.number.isRequired,
 }

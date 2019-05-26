@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react'
 import styles from './matched-providers.module.css'
 import { ProviderCard } from './provider-card'
 import { Match } from '@reach/router'
-import { OnboardingHeader } from '../common/onboarding-header'
+// import { useTransition, animated, config } from 'react-spring'
+import { Transition, animated } from 'react-spring/renderprops'
+// import { OnboardingHeader } from '../common/onboarding-header'
 import { UndrawEmpty } from 'react-undraw'
 import { OptionButton } from '../common/option-button'
 import { Button, TYPES, SIZES } from '../common/button'
@@ -459,6 +461,7 @@ export const MatchedProviders = () => {
   const [allCheckedItems, setAllCheckedItems] = useState(new Map())
   const [activeCheckboxContainer, setActiveCheckboxContainer] = useState()
   const [showGrayBackground, setShowGrayBackground] = useState(false)
+  const [initialAnimDone, setInitialAnimDone] = useState(false)
 
   useEffect(() => {
     getProviders()
@@ -489,10 +492,12 @@ export const MatchedProviders = () => {
   }
 
   function handleClearAllFilters() {
-    const newMap = allCheckedItems
-    newMap.forEach((value, key, map) => {
+    console.log('hello')
+    const newMap = new Map()
+    allCheckedItems.forEach((value, key, map) => {
       newMap.set(key, false)
     })
+    console.log(newMap)
     setAllCheckedItems(newMap)
   }
 
@@ -536,15 +541,10 @@ export const MatchedProviders = () => {
     indexOfLastProvider
   )
 
+  console.log(initialAnimDone)
+
   return (
     <div className={styles.container}>
-      {/* <OnboardingHeader step={2} /> */}
-      {/* <Match path="/results">
-        {props => {
-          console.log(props.match)
-          return props.match ? <OnboardingHeader step={1} /> : null
-        }}
-      </Match> */}
       <div className={styles.maxWidthContainer}>
         {showGrayBackground && <div className={styles.grayBackground} />}
         <div className={styles.titleAndSearchContainer}>
@@ -590,6 +590,14 @@ export const MatchedProviders = () => {
               />
             </OptionButton>
           ))}
+          {[...allCheckedItems.values()].includes(true) && (
+            <button
+              onClick={() => handleClearAllFilters()}
+              className={styles.clearAllButton}
+            >
+              Hello
+            </button>
+          )}
         </div>
 
         <div className={styles.iconKey}>
@@ -601,15 +609,82 @@ export const MatchedProviders = () => {
           <span style={{ marginLeft: '7px' }}> Accepting new clients</span>
         </div>
 
+        {/* const transitions = useTransition(currentProviders, provider => provider.id, {
+    config: config.default,
+    trail: 500,
+    from: {
+      transform: 'translateX(-50px)',
+      opacity: 0,
+    },
+
+    enter: {
+      transform: 'translateX(0px)',
+      opacity: 1,
+      // height: 'auto',
+    },
+
+    leave: {
+      transform: 'translateX(-50px)',
+      opacity: 0,
+      height: 0,
+    },
+
+    // update: {
+    //   transform: 'translateX(-50px)',
+    //   opacity: '0',
+    // },
+  }) */}
+
         {currentProviders.length !== 0 ? (
           <div className={styles.providersContainer}>
-            {currentProviders.map((provider, idx) => (
-              <ProviderCard
-                provider={provider}
-                key={provider.name}
-                delay={100 * idx}
-              />
-            ))}
+            <Transition
+              items={currentProviders}
+              keys={item => item.id}
+              initial={{
+                height: 'auto',
+                transform: 'translateX(-50px)',
+                opacity: '0',
+              }}
+              trail={initialAnimDone ? 0 : 150}
+              // onDestroyed={() => console.log('hey')}
+              onRest={() => setInitialAnimDone(true) || console.log('hey')}
+              from={{
+                transform: 'translateX(0px)',
+                opacity: '0',
+                height: 0,
+                // marginBottom: '0px',
+              }}
+              enter={{
+                transform: 'translateX(0px)',
+                // marginBottom: '32px',
+                height: 'auto',
+                opacity: '1',
+              }}
+              leave={{ opacity: 0, height: 0 }}
+            >
+              {item => props => (
+                <animated.div style={props}>
+                  <ProviderCard
+                    provider={item}
+                    // style={props}
+                    // key={provider.name}
+                    // delay={100 * idx}
+                  />
+                </animated.div>
+              )}
+            </Transition>
+            {/* {currentProviders.map((provider, idx) => (
+              
+            ))} */}
+            {/* {transitions.map(({ item: provider, key, props }) => (
+              <animated.div key={key} style={props}>
+                <ProviderCard
+                  provider={provider}
+                  // key={provider.name}
+                  // delay={100 * idx}
+                />
+              </animated.div>
+            ))} */}
           </div>
         ) : (
           <div className={styles.noProviders}>

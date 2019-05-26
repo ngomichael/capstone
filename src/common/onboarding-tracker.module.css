@@ -20,18 +20,24 @@
   background-color: var(--white);
   font-size: var(--fs-2);
   margin-bottom: var(--s-2);
-  transition: background-color 250ms ease;
+  transition: background-color 1000ms ease, border 1000ms ease;
 }
 
 .circleActive {
   composes: circle;
   border: none;
   background-color: var(--primary-light);
-  line-height: 30px;
+  border: solid 2px var(--primary-light);
+  line-height: 25px;
+}
+
+.linesContainer {
+  position: relative;
+  width: 65px;
 }
 
 .line {
-  width: 65px;
+  width: 100%;
   height: 3px;
   background-color: var(--white);
   border: none;
@@ -42,6 +48,18 @@
 .lineActive {
   composes: line;
   border-top: 2px solid var(--primary);
+}
+
+.filledUpLine {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  border: none;
+  background-color: var(--primary);
+}
+
+.filledUpLineActive {
+  composes: filledUpLine;
 }
 
 @media (max-width: 768px) {
