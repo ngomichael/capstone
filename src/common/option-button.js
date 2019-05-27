@@ -6,7 +6,7 @@ import styles from './option-button.module.css'
 export const OptionButton = ({
   children,
   options,
-  onChange,
+  handleCheckboxChangeMatchedProviders,
   allCheckedItems,
   onApplyFilter,
   onClick,
@@ -18,6 +18,7 @@ export const OptionButton = ({
   const [clicked, changeClickedStatus] = useState(false)
   const [checkedItems, setCheckedItems] = useState(new Map())
   console.log(checkedItems)
+
   function handleClickedStatusChange() {
     changeClickedStatus(!clicked)
     onClick()
@@ -30,7 +31,7 @@ export const OptionButton = ({
     handleShowGrayBackground(!clicked)
   }
 
-  function handleCheckboxChange(e) {
+  function handleCheckboxChangeOptionButton(e) {
     const item = e.target.name
     const isChecked = e.target.checked
     const newMap = new Map([...checkedItems.set(item, isChecked)])
@@ -83,12 +84,14 @@ export const OptionButton = ({
       >
         <CheckboxContainer
           options={options}
-          onChange={onChange}
+          handleCheckboxChangeMatchedProviders={
+            handleCheckboxChangeMatchedProviders
+          }
           onApplyFilter={handleApplyFilter}
           allCheckedItems={allCheckedItems}
           // checkedItems={[...checkedItems.values()]}
           handleClearFilters={handleClearFilters}
-          handleCheckboxChange={handleCheckboxChange}
+          handleCheckboxChangeOptionButton={handleCheckboxChangeOptionButton}
         />
       </div>
       {/* )} */}

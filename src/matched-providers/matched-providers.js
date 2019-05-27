@@ -14,11 +14,13 @@ import { filters } from '../constants/filters'
 
 export const MatchedProviders = () => {
   const [searchVal, setSearchVal] = useState('')
+
   const [allProviders, setAllProviders] = useState([])
-  const [currentPage, setCurrentPage] = useState(1)
-  const [pageCount, setPageCount] = useState(1)
   const [allCheckedItems, setAllCheckedItems] = useState(new Map())
   const [activeCheckboxContainer, setActiveCheckboxContainer] = useState()
+
+  const [currentPage, setCurrentPage] = useState(1)
+  const [pageCount, setPageCount] = useState(1)
   const [showGrayBackground, setShowGrayBackground] = useState(false)
   const [initialAnimDone, setInitialAnimDone] = useState(false)
   console.log(allCheckedItems)
@@ -27,6 +29,7 @@ export const MatchedProviders = () => {
     window.scrollTo(0, 0)
   }, [])
 
+  // handles updating allCheckedItems with what values are currently checked
   function handleCheckboxChange(e) {
     const item = e.target.name
     const isChecked = e.target.checked
@@ -39,10 +42,7 @@ export const MatchedProviders = () => {
     })
   }
 
-  function handleShowGrayBackground(clicked) {
-    setShowGrayBackground(clicked)
-  }
-
+  // handles updating allCheckedItems by changing all filter values from passed in map to
   function handleClearFiltersOneType(map) {
     const newMap = allCheckedItems
     map.forEach((value, key, map) => {
@@ -61,6 +61,7 @@ export const MatchedProviders = () => {
   //   setAllCheckedItems(newMap)
   // }
 
+  // handles applying filter by looking through allChecked Items and apply those filters and updating allProviders
   function handleApplyFilter() {
     let checkedItemsArray = []
 
@@ -68,6 +69,15 @@ export const MatchedProviders = () => {
       value === true && checkedItemsArray.push(key)
     })
     filterProviders(checkedItemsArray)
+  }
+
+  // given list of terms to filter providers by
+  async function filterProviders(terms) {
+    console.log(terms)
+    const snapshot = await firebase.filterProviders(terms)
+    const queriedProvider = snapshot.docs.map(doc => doc.data())
+    setAllProviders(queriedProvider)
+    setPageCount(Math.ceil(queriedProvider.length / providersPerPage))
   }
 
   function handleSearchValChange(e) {
@@ -82,16 +92,13 @@ export const MatchedProviders = () => {
     setPageCount(Math.ceil(snapshot.docs.map(doc => doc.data()).length / 4))
   }
 
-  async function filterProviders(terms) {
-    const snapshot = await firebase.filterProviders(terms)
-    const queriedProvider = snapshot.docs.map(doc => doc.data())
-    setAllProviders(queriedProvider)
-    setPageCount(Math.ceil(queriedProvider.length / providersPerPage))
-  }
-
   function handlePageClick(data) {
     setCurrentPage(data.selected + 1)
     window.scrollTo(0, 0)
+  }
+
+  function handleShowGrayBackground(clicked) {
+    setShowGrayBackground(clicked)
   }
 
   const indexOfLastProvider = currentPage * providersPerPage
@@ -104,7 +111,7 @@ export const MatchedProviders = () => {
   return (
     <div className={styles.container}>
       <div className={styles.maxWidthContainer}>
-        {showGrayBackground && (
+        {/* {showGrayBackground && (
           <div
             onClick={() => {
               // setShowGrayBackground(false)
@@ -112,7 +119,7 @@ export const MatchedProviders = () => {
             }}
             className={styles.grayBackground}
           />
-        )}
+        )} */}
         <div className={styles.titleAndSearchContainer}>
           <h1>Providers for you</h1>
           <div className={styles.searchContainer}>
@@ -139,7 +146,7 @@ export const MatchedProviders = () => {
             <OptionButton
               key={filter.id}
               options={filter.options}
-              onChange={handleCheckboxChange}
+              handleCheckboxChangeMatchedProviders={handleCheckboxChange}
               onClick={() => setActiveCheckboxContainer(filter.id)}
               onApplyFilter={handleApplyFilter}
               allCheckedItems={allCheckedItems}
