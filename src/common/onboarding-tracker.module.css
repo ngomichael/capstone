@@ -26,6 +26,12 @@
     transform 1000ms ease 350ms;
 }
 
+/* .circle1 {
+  composes: circle;
+  background-color: var(--white);
+  animation: backgroundColorChange 1000ms ease forwards 250ms;
+} */
+
 .circleActive {
   composes: circle;
   color: var(--white);
@@ -37,9 +43,24 @@
 
 .circleCurrentStep {
   composes: circleActive;
-  background-color: var(--primary);
-  border: solid 2px var(--primary);
-  transform: translateY(-4px);
+  background-color: var(--primary-light);
+  transform: translateY(0px);
+  animation: backgroundColorChange 1000ms ease forwards 500ms;
+}
+
+@keyframes backgroundColorChange {
+  from {
+    background-color: var(--primary-light);
+    border: solid 2px var(--primary-light);
+    transform: translateY(0px);
+  }
+
+  to {
+    background-color: var(--primary);
+    border: solid 2px var(--primary);
+    transform: translateY(-4px);
+    color: white;
+  }
 }
 
 .linesContainer {
