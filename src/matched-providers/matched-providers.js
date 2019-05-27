@@ -465,6 +465,7 @@ export const MatchedProviders = () => {
 
   useEffect(() => {
     getProviders()
+    window.scrollTo(0, 0)
   }, [])
 
   function handleCheckboxChange(e) {
@@ -562,7 +563,6 @@ export const MatchedProviders = () => {
               isSearchable={true}
               name="cities"
               placeholder="City or Zip"
-              // options={colourOptions}
             />
           </div>
         </div>
@@ -588,50 +588,42 @@ export const MatchedProviders = () => {
               />
             </OptionButton>
           ))}
-          {[...allCheckedItems.values()].includes(true) && (
+          {/* {[...allCheckedItems.values()].includes(true) && (
             <button
               onClick={() => handleClearAllFilters()}
               className={styles.clearAllButton}
             >
               Hello
             </button>
-          )}
+          )} */}
         </div>
-
-        <div className={styles.iconKey}>
-          <img
-            src={AcceptingClientsIcon}
-            className={styles.acceptingClientsIcon}
-          />
-          <span>&mdash;</span>
-          <span style={{ marginLeft: '7px' }}> Accepting new clients</span>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            width: '80%',
+          }}
+        >
+          <span
+            style={{
+              fontSize: '20px',
+              fontWeight: '400',
+              color: 'hsl(228, 14%, 58%)',
+              marginTop: '25px',
+            }}
+          >
+            {currentProviders.length} results
+          </span>
+          <div className={styles.iconKey}>
+            <img
+              src={AcceptingClientsIcon}
+              className={styles.acceptingClientsIcon}
+            />
+            <span>&mdash;</span>
+            <span style={{ marginLeft: '7px' }}> Accepting new clients</span>
+          </div>
         </div>
-
-        {/* const transitions = useTransition(currentProviders, provider => provider.id, {
-    config: config.default,
-    trail: 500,
-    from: {
-      transform: 'translateX(-50px)',
-      opacity: 0,
-    },
-
-    enter: {
-      transform: 'translateX(0px)',
-      opacity: 1,
-      // height: 'auto',
-    },
-
-    leave: {
-      transform: 'translateX(-50px)',
-      opacity: 0,
-      height: 0,
-    },
-
-    // update: {
-    //   transform: 'translateX(-50px)',
-    //   opacity: '0',
-    // },
-  }) */}
 
         {currentProviders.length !== 0 ? (
           <div className={styles.providersContainer}>
@@ -644,17 +636,15 @@ export const MatchedProviders = () => {
                 opacity: '0',
               }}
               trail={initialAnimDone ? 0 : 150}
-              // onDestroyed={() => console.log('hey')}
               onRest={() => setInitialAnimDone(true)}
               from={{
                 transform: 'translateX(0px)',
                 opacity: '0',
                 height: 0,
-                // marginBottom: '0px',
               }}
               enter={{
                 transform: 'translateX(0px)',
-                // marginBottom: '32px',
+
                 height: 'auto',
                 opacity: '1',
               }}
@@ -662,27 +652,10 @@ export const MatchedProviders = () => {
             >
               {item => props => (
                 <animated.div style={props}>
-                  <ProviderCard
-                    provider={item}
-                    // style={props}
-                    // key={provider.name}
-                    // delay={100 * idx}
-                  />
+                  <ProviderCard provider={item} />
                 </animated.div>
               )}
             </Transition>
-            {/* {currentProviders.map((provider, idx) => (
-              
-            ))} */}
-            {/* {transitions.map(({ item: provider, key, props }) => (
-              <animated.div key={key} style={props}>
-                <ProviderCard
-                  provider={provider}
-                  // key={provider.name}
-                  // delay={100 * idx}
-                />
-              </animated.div>
-            ))} */}
           </div>
         ) : (
           <div className={styles.noProviders}>

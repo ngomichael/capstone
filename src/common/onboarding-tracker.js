@@ -5,8 +5,12 @@ import styles from './onboarding-tracker.module.css'
 import classNames from 'classnames'
 
 export const OnboardingTracker = ({ step = 1 }) => {
-  const step1LineStyles = useSpring({ width: step > 1 ? '100%' : '0%' })
-  const step2LineStyles = useSpring({ width: step > 2 ? '100%' : '0%' })
+  const step1LineStyles = useSpring({
+    width: step > 1 ? '100%' : '0%',
+  })
+  const step2LineStyles = useSpring({
+    width: step > 2 ? '100%' : '0%',
+  })
 
   const line1Class = classNames(styles.filledUpLine)
 
