@@ -3,14 +3,15 @@ import styles from './home-header.module.css'
 import { Link } from '@reach/router'
 import PearCareIcon from '../icons/pearcare-icon.png'
 import { X, Menu } from 'react-feather'
+import { ROUTES, ONBOARDING_ROUTES } from '../constants/routes'
 
 const navLinksText = [
   {
     text: 'How it Works',
     link: 'https://krystl37.wixsite.com/pearcarelanding',
   },
-  { text: 'For providers', path: '/signin' },
-  { text: 'Log in/Sign up', path: '/signin' },
+  { text: 'For providers', path: ROUTES.signIn },
+  { text: 'Log in/Sign up', path: ROUTES.signIn },
 ]
 
 function renderNavLinks() {
@@ -56,7 +57,7 @@ export const HomeHeader = () => {
 
   return (
     <header className={styles.container}>
-      <Link to="/" className={styles.logoAndNameContainer}>
+      <Link to={ROUTES.home} className={styles.logoAndNameContainer}>
         <img src={PearCareIcon} className={styles.logo} />
         <p className={styles.productName}>PearCare</p>
       </Link>

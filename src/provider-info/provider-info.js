@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styles from './provider-info.module.css'
 import { OnboardingHeader } from '../common/onboarding-header'
+import { ROUTES, ONBOARDING_ROUTES } from '../constants/routes'
 import { Video } from './video'
 import { ContactModal } from './contact-modal'
 import { BackButton } from '../common/back-button'
@@ -43,7 +44,7 @@ export const ProviderInfo = ({ providerId }) => {
       {Object.entries(provider).length !== 0 && (
         <div className={styles.maxWidthContainer}>
           <div className={styles.providerOverviewBack}>
-            <BackButton path="/onboardingTracker/results" />
+            <BackButton path={`/${ONBOARDING_ROUTES.results}`} />
             <div className={styles.providerOverview}>
               <div className={styles.basicInfo}>
                 <img src={provider.photo} className={styles.providerPhoto} />
