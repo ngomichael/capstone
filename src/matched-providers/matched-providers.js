@@ -610,7 +610,7 @@ export const MatchedProviders = () => {
               marginTop: '25px',
             }}
           >
-            {currentProviders.length} results
+            {`${currentProviders.length} of ${allProviders.length} results`}
           </span>
           <div className={styles.iconKey}>
             <img
