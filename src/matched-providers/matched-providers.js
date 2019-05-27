@@ -459,7 +459,7 @@ export const MatchedProviders = () => {
   const [activeCheckboxContainer, setActiveCheckboxContainer] = useState()
   const [showGrayBackground, setShowGrayBackground] = useState(false)
   const [initialAnimDone, setInitialAnimDone] = useState(false)
-
+  console.log(allCheckedItems)
   useEffect(() => {
     getProviders()
     window.scrollTo(0, 0)
@@ -489,15 +489,15 @@ export const MatchedProviders = () => {
     setAllCheckedItems(newMap)
   }
 
-  function handleClearAllFilters() {
-    console.log('hello')
-    const newMap = new Map()
-    allCheckedItems.forEach((value, key, map) => {
-      newMap.set(key, false)
-    })
-    console.log(newMap)
-    setAllCheckedItems(newMap)
-  }
+  // function handleClearAllFilters() {
+  //   console.log('hello')
+  //   const newMap = new Map()
+  //   allCheckedItems.forEach((value, key, map) => {
+  //     newMap.set(key, false)
+  //   })
+  //   console.log(newMap)
+  //   setAllCheckedItems(newMap)
+  // }
 
   function handleApplyFilter() {
     let checkedItemsArray = []
@@ -542,7 +542,15 @@ export const MatchedProviders = () => {
   return (
     <div className={styles.container}>
       <div className={styles.maxWidthContainer}>
-        {showGrayBackground && <div className={styles.grayBackground} />}
+        {showGrayBackground && (
+          <div
+            onClick={() => {
+              // setShowGrayBackground(false)
+              // setActiveCheckboxContainer(null)
+            }}
+            className={styles.grayBackground}
+          />
+        )}
         <div className={styles.titleAndSearchContainer}>
           <h1>Providers for you</h1>
           <div className={styles.searchContainer}>
