@@ -11,6 +11,10 @@
   font-size: var(--fs-2);
 }
 
+.stepNameCurrentStep {
+  font-weight: 600;
+}
+
 .circle {
   text-align: center;
   line-height: 34px;

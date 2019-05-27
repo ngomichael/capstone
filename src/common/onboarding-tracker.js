@@ -30,11 +30,23 @@ export const OnboardingTracker = ({ step = 1 }) => {
     [styles.circleCurrentStep]: step === 3,
   })
 
+  const step1NameClass = classNames(styles.stepName, {
+    [styles.stepNameCurrentStep]: step === 1,
+  })
+
+  const step2NameClass = classNames(styles.stepName, {
+    [styles.stepNameCurrentStep]: step === 2,
+  })
+
+  const step3NameClass = classNames(styles.stepName, {
+    [styles.stepNameCurrentStep]: step === 3,
+  })
+
   return (
     <div className={styles.container}>
       <div className={styles.step}>
         <div className={circle1Class}>1</div>
-        <p className={styles.stepName}>Tell us about you</p>
+        <p className={step1NameClass}>Tell us about you</p>
       </div>
       <div className={styles.linesContainer}>
         <animated.hr style={step1LineStyles} className={line1Class} />
@@ -43,7 +55,7 @@ export const OnboardingTracker = ({ step = 1 }) => {
       </div>
       <div className={styles.step}>
         <div className={circle2Class}>2</div>
-        <p className={styles.stepName}>View Providers</p>
+        <p className={step2NameClass}>View Providers</p>
       </div>
 
       <div className={styles.linesContainer}>
@@ -52,7 +64,7 @@ export const OnboardingTracker = ({ step = 1 }) => {
       </div>
       <div className={styles.step}>
         <div className={circle3Class}>3</div>
-        <p className={styles.stepName}>Connect with providers</p>
+        <p className={step3NameClass}>Connect with providers</p>
       </div>
     </div>
   )
