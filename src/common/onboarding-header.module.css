@@ -6,11 +6,10 @@
   justify-content: space-between;
   align-items: center;
   background-color: var(--white);
-  /* background-color: beige; */
+  margin-left: var(--s-9);
   width: 100%;
   max-width: var(--mw);
   height: 100px;
-  top: 0;
   z-index: 2;
 }
 
@@ -25,8 +24,7 @@
 .logo {
   width: 65px;
   height: 65px;
-  /* border-radius: 50%; */
-  left: var(--s-7);
+  left: 145px;
   position: absolute;
 }
 

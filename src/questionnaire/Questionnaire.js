@@ -826,7 +826,7 @@ export const Questionnaire = () => {
       <div className={styles.maxWidthContainer}>
         <div className={styles.questionsTitleContainer}>
           {currPageNum === 1 ? (
-            <BackButton path="/getStarted" />
+            <BackButton path="/onboardingTracker/getStarted" />
           ) : (
             <BackButton onClick={handlePreviousPage} />
           )}

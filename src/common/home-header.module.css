@@ -1,15 +1,14 @@
 @import '../common/variables.css';
 
 .container {
-  position: sticky;
+  /* position: sticky; */
   display: flex;
   justify-content: space-between;
-  background-color: white;
   align-items: center;
+  background-color: white;
   width: 100%;
   max-width: var(--mw);
-  height: 80px;
-  top: 0;
+  height: 100px;
   z-index: 2;
 }
 
@@ -23,15 +22,16 @@
   width: 65px;
   height: 65px;
   position: absolute;
+  left: 145px;
   /* border-radius: 50%; */
 }
 
 .productName {
   font-family: 'Lato', sans-serif;
   font-weight: var(--fw-5);
-  font-size: var(--fs-5);
+  font-size: var(--fs-6);
   letter-spacing: 0.5px;
-  margin-left: var(--s-8);
+  margin-left: 72px;
 }
 
 .navContainer {

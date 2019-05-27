@@ -82,7 +82,7 @@ class App extends Component {
             p2="You can also continue adjusting what you're looking for by adding or removing filters, using the search bar, or editing your answers to the questionnaire."
             buttonText="View Results"
             nextPath="/onboardingTracker/results"
-            prevPath="/questionnaire"
+            prevPath="/onboardingTracker/questionnaire"
             step={2}
             skipText="Want to change your answers?"
             skipText2="Go back to the questionnaire."

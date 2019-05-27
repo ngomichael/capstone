@@ -8,13 +8,9 @@ export const OnboardingTracker = ({ step = 1 }) => {
   const step1LineStyles = useSpring({ width: step > 1 ? '100%' : '0%' })
   const step2LineStyles = useSpring({ width: step > 2 ? '100%' : '0%' })
 
-  const line1Class = classNames(styles.filledUpLine, {
-    [styles.filledUpLineActive]: step > 1,
-  })
+  const line1Class = classNames(styles.filledUpLine)
 
-  const line2Class = classNames(styles.filledUpLine, {
-    [styles.filledUpLineActive]: step > 2,
-  })
+  const line2Class = classNames(styles.filledUpLine)
 
   const circle1Class = classNames(styles.circleActive, {
     [styles.circleCurrentStep]: step === 1,
@@ -30,8 +26,6 @@ export const OnboardingTracker = ({ step = 1 }) => {
     [styles.circleCurrentStep]: step === 3,
   })
 
-  console.log(step)
-
   return (
     <div className={styles.container}>
       <div className={styles.step}>
@@ -44,16 +38,7 @@ export const OnboardingTracker = ({ step = 1 }) => {
         <hr className={styles.line} />
       </div>
       <div className={styles.step}>
-        <div
-          className={circle2Class}
-          // className={
-          //   step >= 2
-          //     ? `${styles.circle} ${styles.circleActive}`
-          //     : styles.circle
-          // }
-        >
-          2
-        </div>
+        <div className={circle2Class}>2</div>
         <p className={styles.stepName}>View Providers</p>
       </div>
 
@@ -62,16 +47,7 @@ export const OnboardingTracker = ({ step = 1 }) => {
         <hr className={styles.line} />
       </div>
       <div className={styles.step}>
-        <div
-          className={circle3Class}
-          // className={
-          //   step === 3
-          //     ? `${styles.circle} ${styles.circleActive}`
-          //     : styles.circle
-          // }
-        >
-          3
-        </div>
+        <div className={circle3Class}>3</div>
         <p className={styles.stepName}>Connect with providers</p>
       </div>
     </div>

@@ -6,22 +6,6 @@ import { Mail, Heart, ExternalLink } from 'react-feather'
 import AcceptingClientsIcon from '../icons/accepting-clients.png'
 
 export class ProviderCard extends React.Component {
-  // state = {
-  //   isHovered: false,
-  // }
-
-  // handleMouseEnter = () => {
-  //   this.setState({
-  //     isHovered: true,
-  //   })
-  // }
-
-  // handleMouseLeave = () => {
-  //   this.setState({
-  //     isHovered: false,
-  //   })
-  // }
-
   render() {
     const { provider, delay } = this.props
     return (

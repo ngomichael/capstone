@@ -37,6 +37,10 @@ export const OnboardingHeader = ({ location }) => {
         <img src={PearCareIcon} className={styles.logo} />
         <p className={styles.productName}>PearCare</p>
       </Link>
+      {/* <div className={styles.logoAndNameContainer}>
+          <img src={PearCareIcon} className={styles.logo} />
+          <p className={styles.productName}>PearCare</p>
+        </div> */}
       <div className={styles.onboardingTracker}>
         <OnboardingTracker step={step} />
       </div>

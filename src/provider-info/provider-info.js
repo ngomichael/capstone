@@ -43,7 +43,7 @@ export const ProviderInfo = ({ providerId }) => {
       {Object.entries(provider).length !== 0 && (
         <div className={styles.maxWidthContainer}>
           <div className={styles.providerOverviewBack}>
-            <BackButton path="/results" />
+            <BackButton path="/onboardingTracker/results" />
             <div className={styles.providerOverview}>
               <div className={styles.basicInfo}>
                 <img src={provider.photo} className={styles.providerPhoto} />
