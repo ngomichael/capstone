@@ -27,7 +27,7 @@
   justify-content: space-between;
   flex-direction: column;
   flex-wrap: wrap;
-  width: 80%;
+  width: 75%;
   margin: var(--s-7) var(--s-0) var(--s-0) var(--s-0);
 }
 
@@ -91,7 +91,8 @@
 }
 
 .sectionsContainer {
-  width: 80%;
+  width: 75%;
+  line-height: 1.75;
 }
 
 .sectionContainer {
@@ -109,6 +110,7 @@
   font-size: var(--fs-2);
   font-style: italic;
   margin: var(--s-0) var(--s-0) var(--s-4) var(--s-0);
+  max-width: 75%;
 }
 
 .sectionContent {
