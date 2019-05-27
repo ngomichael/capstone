@@ -7,41 +7,52 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: var(--fs-1);
+  font-size: var(--fs-2);
 }
 
 .circle {
   text-align: center;
-  line-height: 26px;
-  width: 30px;
-  height: 30px;
+  line-height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: var(--br-circle);
-  border: solid 2px var(--light-gray);
+  /* border: solid 2px var(--light-gray); */
+  border: solid 2px var(--primary-light);
   background-color: var(--white);
-  font-size: var(--fs-2);
+  font-size: var(--fs-3);
   margin-bottom: var(--s-2);
-  transition: background-color 1000ms ease, border 1000ms ease;
+  box-shadow: var(--bs-2);
+  transition: background-color 1000ms ease 350ms, border 1000ms ease 350ms,
+    transform 1000ms ease 350ms;
 }
 
 .circleActive {
   composes: circle;
+  color: var(--white);
   border: none;
   background-color: var(--primary-light);
   border: solid 2px var(--primary-light);
-  line-height: 25px;
+  line-height: 36px;
+}
+
+.circleCurrentStep {
+  composes: circleActive;
+  background-color: var(--primary);
+  border: solid 2px var(--primary);
+  transform: translateY(-4px);
 }
 
 .linesContainer {
   position: relative;
-  width: 65px;
+  width: 75px;
 }
 
 .line {
   width: 100%;
-  height: 3px;
-  background-color: var(--white);
+  height: 5px;
+  /* background-color: var(--white); */
   border: none;
-  border-top: 3px dotted var(--light-gray);
+  border-top: 8px dotted var(--light-gray);
   margin: var(--s-0) var(--s-0) var(--s-5) var(--s-0);
 }
 
@@ -52,15 +63,21 @@
 
 .filledUpLine {
   position: absolute;
-  width: 100%;
-  height: 3px;
+  /* width: 100%; */
+  height: 8px;
   border: none;
+  border-radius: var(--br-1);
   background-color: var(--primary);
 }
 
 .filledUpLineActive {
   composes: filledUpLine;
 }
+
+/* .step1FilledUpLine {
+  composes: filledUpLine;
+  background-color: black;
+} */
 
 @media (max-width: 768px) {
   .circle {

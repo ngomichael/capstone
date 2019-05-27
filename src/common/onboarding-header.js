@@ -19,15 +19,18 @@ export const OnboardingHeader = ({ location }) => {
   )
   const isResults = match('/onboardingTracker/results', location.pathname)
   const isProviderInfo = match(
-    '/onboardingTracker/providerInfo',
+    '/onboardingTracker/results/*',
     location.pathname
   )
 
   if (isGetStarted || isQuestionnaire || isQuestionnaireCompleted) {
     step = 1
-  } else if (isResults || isProviderInfo) {
+  } else if (isResults) {
     step = 2
+  } else if (isProviderInfo) {
+    step = 3
   }
+  console.log(step)
   return (
     <header className={styles.container}>
       <Link to="/" className={styles.logoAndNameContainer}>

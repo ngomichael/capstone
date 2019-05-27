@@ -6,9 +6,10 @@
   justify-content: space-between;
   align-items: center;
   background-color: var(--white);
+  /* background-color: beige; */
   width: 100%;
   max-width: var(--mw);
-  height: 80px;
+  height: 100px;
   top: 0;
   z-index: 2;
 }
@@ -25,15 +26,16 @@
   width: 65px;
   height: 65px;
   /* border-radius: 50%; */
+  left: var(--s-7);
   position: absolute;
 }
 
 .productName {
   font-family: 'Lato', sans-serif;
   font-weight: var(--fw-5);
-  font-size: var(--fs-5);
+  font-size: var(--fs-6);
   letter-spacing: 0.5px;
-  margin-left: var(--s-8);
+  margin-left: var(--s-9);
 }
 
 .productName:hover {

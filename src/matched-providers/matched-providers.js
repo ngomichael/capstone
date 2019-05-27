@@ -541,8 +541,6 @@ export const MatchedProviders = () => {
     indexOfLastProvider
   )
 
-  console.log(initialAnimDone)
-
   return (
     <div className={styles.container}>
       <div className={styles.maxWidthContainer}>
@@ -647,7 +645,7 @@ export const MatchedProviders = () => {
               }}
               trail={initialAnimDone ? 0 : 150}
               // onDestroyed={() => console.log('hey')}
-              onRest={() => setInitialAnimDone(true) || console.log('hey')}
+              onRest={() => setInitialAnimDone(true)}
               from={{
                 transform: 'translateX(0px)',
                 opacity: '0',
