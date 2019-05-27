@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
 import { Link, Redirect } from '@reach/router'
+import firebase from '../firebase/firebase'
 import styles from './sign-in.module.css'
 import { Button, TYPES, SIZES } from '../common/button'
-import firebase from '../firebase/firebase'
+import { InputField } from '../common/input-field'
+import { HomeHeader } from '../common/home-header'
+import { UndrawLogin } from 'react-undraw'
+import pears from '../images/pairOfPears.png'
 
 export const SignIn = () => {
   const [email, setEmail] = useState('')
@@ -29,34 +33,56 @@ export const SignIn = () => {
 
   return (
     <div className={styles.container}>
-      <p className={styles.title}>Log into your PearCare Account</p>
-      <form className={styles.form}>
-        <input
-          className={styles.input}
-          value={email}
-          type="text"
-          placeholder="Email"
-          onChange={handleEmailChange}
-        />
-        <input
-          className={styles.input}
-          value={password}
-          type="password"
-          placeholder="Password"
-          onChange={handlePasswordChange}
-        />
-        <Button
-          type="button"
-          buttonType={TYPES.PRIMARY}
-          buttonSize={SIZES.MEDIUM}
-          onClick={handleSignIn}
-        >
-          Sign In
-        </Button>
-      </form>
-      {isSignedIn ? <Redirect noThrow to="/getStarted" /> : null}
+      <HomeHeader />
+      <div className={styles.maxWidthContainer}>
+        <div className={styles.imageSignInContainer}>
+          <div className={styles.pearImagesContainer}>
+            <img src={pears} className={styles.pearImage} />
+            <img src={pears} className={styles.pearImage} />
+          </div>
+          <div className={styles.signInInfoContainer}>
+            <p className={styles.title}>Welcome back</p>
+            <p className={styles.description}>
+              Catasstrophe headbutt owner's knee, so meow to be let out for at
+              four in the morning wake up owner meeeeeeooww scratch at legs
+            </p>
+            <div className={styles.signUp}>
+              <span>Don't have an account? </span>{' '}
+              <Link className={styles.link} to="/signup">
+                Sign Up
+              </Link>
+            </div>
+            <form className={styles.form}>
+              <div className={styles.inputContainer}>
+                <InputField
+                  value={email}
+                  type="text"
+                  onChange={handleEmailChange}
+                  label="Email"
+                />
 
-      <Link to="/signup">Sign Up</Link>
+                <InputField
+                  value={password}
+                  type="password"
+                  onChange={handlePasswordChange}
+                  label="Password"
+                />
+              </div>
+
+              <Button
+                type="button"
+                buttonType={TYPES.PRIMARY}
+                buttonSize={SIZES.SMALL}
+                onClick={handleSignIn}
+              >
+                Sign In
+              </Button>
+            </form>
+            {isSignedIn ? <Redirect noThrow to="/getStarted" /> : null}
+            {/* {createdAccount ? <Redirect noThrow to="/getStarted" /> : null} */}
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

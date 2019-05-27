@@ -59,7 +59,7 @@ export const SignUp = () => {
             </p>
             <div className={styles.signIn}>
               <span>Already have an account? </span>{' '}
-              <Link className={styles.link} to="/">
+              <Link className={styles.link} to="/signin">
                 Sign In
               </Link>
             </div>

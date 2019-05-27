@@ -56,10 +56,10 @@ export const HomeHeader = () => {
 
   return (
     <header className={styles.container}>
-      <div className={styles.logoAndNameContainer}>
+      <Link to="/" className={styles.logoAndNameContainer}>
         <img src={PearCareIcon} className={styles.logo} />
         <p className={styles.productName}>PearCare</p>
-      </div>
+      </Link>
 
       {/* Display the X or Hamburger Menu Icon  */}
       {displayMenu ? (
