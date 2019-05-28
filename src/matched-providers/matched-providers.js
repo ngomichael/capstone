@@ -27,7 +27,7 @@ export const MatchedProviders = () => {
   useEffect(() => {
     getProviders()
     window.scrollTo(0, 0)
-    setAllCheckedItems(allOptionsMap)
+    // setAllCheckedItems(allOptionsMap)
   }, [])
 
   // handles updating allCheckedItems with what values are currently checked
@@ -43,6 +43,15 @@ export const MatchedProviders = () => {
     })
   }
 
+  function handleClearAllFilters() {
+    const newMap = allCheckedItems
+    newMap.forEach((value, key, map) => {
+      newMap.set(key, false)
+    })
+    setAllCheckedItems(newMap)
+    handleApplyFilter()
+  }
+
   function handleClearFiltersOneType(options) {
     const newMap = allCheckedItems
     options.forEach(option => {
@@ -51,25 +60,6 @@ export const MatchedProviders = () => {
     setAllCheckedItems(newMap)
   }
 
-  // handles updating allCheckedItems by changing all filter values from passed in map to
-  // function handleClearFiltersOneType(map) {
-  //   const newMap = allCheckedItems
-  //   map.forEach((value, key, map) => {
-  //     newMap.set(key, false)
-  //   })
-  //   setAllCheckedItems(newMap)
-  // }
-
-  // function handleClearAllFilters() {
-  //   // console.log('hello')
-  //   const newMap = new Map()
-  //   allCheckedItems.forEach((value, key, map) => {
-  //     newMap.set(key, false)
-  //   })
-  //   console.log(newMap)
-  //   setAllCheckedItems(newMap)
-  // }
-
   // handles applying filter by looking through allChecked Items and apply those filters and updating allProviders
   function handleApplyFilter() {
     let checkedItemsArray = []
@@ -77,6 +67,7 @@ export const MatchedProviders = () => {
     allCheckedItems.forEach((value, key) => {
       value === true && checkedItemsArray.push(key)
     })
+    console.log(checkedItemsArray)
     filterProviders(checkedItemsArray)
   }
 
@@ -173,14 +164,14 @@ export const MatchedProviders = () => {
               />
             </OptionButton>
           ))}
-          {/* {[...allCheckedItems.values()].includes(true) && (
+          {[...allCheckedItems.values()].includes(true) && (
             <button
-              onClick={() => handleClearAllFilters()}
+              onClick={handleClearAllFilters}
               className={styles.clearAllButton}
             >
               Hello
             </button>
-          )} */}
+          )}
         </div>
         <div
           style={{

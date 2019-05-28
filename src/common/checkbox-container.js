@@ -12,7 +12,6 @@ class CheckboxContainer extends React.Component {
   }
 
   handleChange(e) {
-    // this.props.handleCheckboxChangeOptionButton(e)
     this.props.handleCheckboxChangeMatchedProviders(e)
   }
 
