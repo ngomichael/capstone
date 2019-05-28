@@ -18,6 +18,7 @@ export const MatchedProviders = () => {
   const [allProviders, setAllProviders] = useState([])
   const [allCheckedItems, setAllCheckedItems] = useState(new Map())
   const [activeCheckboxContainer, setActiveCheckboxContainer] = useState()
+  const [appliedFilters, setAppliedFilters] = useState([])
 
   const [currentPage, setCurrentPage] = useState(1)
   const [pageCount, setPageCount] = useState(1)
@@ -73,6 +74,7 @@ export const MatchedProviders = () => {
 
   // given list of terms to filter providers by
   async function filterProviders(terms) {
+    setAppliedFilters(terms)
     console.log(terms)
     const snapshot = await firebase.filterProviders(terms)
     const queriedProvider = snapshot.docs.map(doc => doc.data())
@@ -164,12 +166,12 @@ export const MatchedProviders = () => {
               />
             </OptionButton>
           ))}
-          {[...allCheckedItems.values()].includes(true) && (
+          {appliedFilters.length !== 0 && (
             <button
               onClick={handleClearAllFilters}
               className={styles.clearAllButton}
             >
-              Hello
+              Clear all filters
             </button>
           )}
         </div>
