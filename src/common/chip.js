@@ -5,14 +5,9 @@ import { XCircle } from 'react-feather'
 
 export const Chip = ({ handleChipRemove, text }) => {
   return (
-    <div className={styles.container}>
+    <div onClick={() => handleChipRemove(text)} className={styles.container}>
       <p>{text}</p>
-      <XCircle
-        className={styles.xIcon}
-        color="hsl(180, 100%, 20%)"
-        size={20}
-        onClick={() => handleChipRemove(text)}
-      />
+      <XCircle className={styles.xIcon} color="hsl(228, 21%, 31%)" size={20} />
     </div>
   )
 }

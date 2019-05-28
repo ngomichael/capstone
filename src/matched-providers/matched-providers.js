@@ -151,17 +151,29 @@ export const MatchedProviders = () => {
           </div>
         </div>
 
-        {/* <div className={styles.filterChipsContainer}>
-            {appliedFilters.map(filter => <Chip onClick={handleChipRemove}>{filter}</Chip>)}
-        </div> */}
         <div className={styles.chipsContainer}>
-          {appliedFilters.map(filter => (
-            <Chip
-              key={filter}
-              text={filter}
-              handleChipRemove={handleChipRemove}
-            />
-          ))}
+          <Transition
+            items={appliedFilters}
+            initial={{
+              height: 'auto',
+              opacity: '0',
+            }}
+            from={{
+              opacity: '0',
+              height: 0,
+            }}
+            enter={{
+              height: 'auto',
+              opacity: '1',
+            }}
+            leave={{ opacity: 0, height: 0 }}
+          >
+            {item => props => (
+              <animated.div style={props}>
+                <Chip text={item} handleChipRemove={handleChipRemove} />
+              </animated.div>
+            )}
+          </Transition>
         </div>
         <div className={styles.filtersContainer}>
           {filters.map(filter => (
