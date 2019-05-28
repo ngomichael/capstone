@@ -10,7 +10,7 @@ import Select from 'react-select'
 import ReactPaginate from 'react-paginate'
 import AcceptingClientsIcon from '../icons/accepting-clients.png'
 import firebase from '../firebase/firebase'
-import { filters, allFilterOptions, allOptionsMap } from '../constants/filters'
+import { filters } from '../constants/filters'
 
 export const MatchedProviders = () => {
   const [searchVal, setSearchVal] = useState('')
@@ -28,7 +28,6 @@ export const MatchedProviders = () => {
   useEffect(() => {
     getProviders()
     window.scrollTo(0, 0)
-    // setAllCheckedItems(allOptionsMap)
   }, [])
 
   // handles updating allCheckedItems with what values are currently checked
@@ -76,14 +75,12 @@ export const MatchedProviders = () => {
     allCheckedItems.forEach((value, key) => {
       value === true && checkedItemsArray.push(key)
     })
-    console.log(checkedItemsArray)
     filterProviders(checkedItemsArray)
   }
 
   // given list of terms to filter providers by
   async function filterProviders(terms) {
     setAppliedFilters(terms)
-    console.log(terms)
     const snapshot = await firebase.filterProviders(terms)
     const queriedProvider = snapshot.docs.map(doc => doc.data())
     setAllProviders(queriedProvider)

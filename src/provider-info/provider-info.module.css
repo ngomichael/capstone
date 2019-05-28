@@ -14,14 +14,6 @@
   /* max-width: var(--mw); */
 }
 
-.providerOverview {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  width: 100%;
-  /* margin: var(--s-7) var(--s-0) var(--s-0) var(--s-0); */
-}
-
 .providerOverviewBack {
   display: flex;
   justify-content: space-between;
@@ -29,6 +21,28 @@
   flex-wrap: wrap;
   width: 75%;
   margin: var(--s-7) var(--s-0) var(--s-0) var(--s-0);
+  transform: translateY(-20px);
+  opacity: var(--opacity-0);
+  animation: slideInFromTop 250ms ease 500ms forwards;
+}
+
+@keyframes slideInFromTop {
+  0% {
+    opacity: var(--opacity-0);
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: var(--opacity-4);
+    transform: translateY(0);
+  }
+}
+
+.providerOverview {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  /* margin: var(--s-7) var(--s-0) var(--s-0) var(--s-0); */
 }
 
 .basicInfo {

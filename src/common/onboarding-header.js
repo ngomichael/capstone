@@ -30,7 +30,7 @@ export const OnboardingHeader = ({ location }) => {
   } else if (isProviderInfo) {
     step = 3
   }
-  console.log(step)
+
   return (
     <header className={styles.container}>
       <Link to="/" className={styles.logoAndNameContainer}>
