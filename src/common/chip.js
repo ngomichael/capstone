@@ -9,7 +9,7 @@ export const Chip = ({ handleChipRemove, text }) => {
       <p>{text}</p>
       <XCircle
         className={styles.xIcon}
-        color="black"
+        color="hsl(180, 100%, 20%)"
         size={20}
         onClick={() => handleChipRemove(text)}
       />
