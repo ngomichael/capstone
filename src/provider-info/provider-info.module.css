@@ -127,6 +127,11 @@
   max-width: 75%;
 }
 
+.sectionDescriptionSplitRow {
+  composes: sectionDescription;
+  max-width: 90%;
+}
+
 .sectionContent {
   display: flex;
   justify-content: flex-start;

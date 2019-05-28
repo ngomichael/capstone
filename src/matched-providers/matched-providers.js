@@ -156,8 +156,8 @@ export const MatchedProviders = () => {
               opacity: '0',
             }}
             from={{
-              opacity: '0',
               height: 0,
+              opacity: '0',
             }}
             enter={{
               height: 'auto',
