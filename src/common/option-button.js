@@ -45,25 +45,24 @@ export const OptionButton = ({
     handleClearFiltersOneType(options)
   }
 
-  // function findInMap(map, val) {
-  //   for (let [k, v] of map) {
-  //     if (v === val) {
-  //       return true
-  //     }
-  //   }
-  //   return false
-  // }
+  function findInMap(map, val) {
+    for (let [k, v] of map) {
+      if (v === val) {
+        return true
+      }
+    }
+    return false
+  }
 
   return (
     <div className={styles.container}>
       <button
         onClick={handleClickedStatusChange}
-        // className={
-        //   findInMap(checkedItems, true)
-        //     ? styles.activeFilterButton
-        //     : styles.filterButton
-        // }
-        className={styles.filterButton}
+        className={
+          findInMap(checkedItems, true)
+            ? styles.activeFilterButton
+            : styles.filterButton
+        }
       >
         <p className={styles.filterButtonText}>{children}</p>
       </button>
