@@ -12,7 +12,7 @@ class CheckboxContainer extends React.Component {
   }
 
   handleChange(e) {
-    this.props.handleCheckboxChangeOptionButton(e)
+    // this.props.handleCheckboxChangeOptionButton(e)
     this.props.handleCheckboxChangeMatchedProviders(e)
   }
 
@@ -38,7 +38,7 @@ class CheckboxContainer extends React.Component {
           ))}
         </div>
 
-        {[...this.props.allCheckedItems.values()].includes(true) && (
+        {this.props.checkedItems.includes(true) && (
           <p
             onClick={() => {
               this.props.handleClearFilters()
@@ -46,7 +46,7 @@ class CheckboxContainer extends React.Component {
             }}
             className={styles.clearButton}
           >
-            {[...this.props.allCheckedItems.values()].length !== 0
+            {[...this.props.checkedItems.values()].length !== 0
               ? 'Clear'
               : null}
           </p>

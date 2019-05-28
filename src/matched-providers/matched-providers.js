@@ -10,7 +10,7 @@ import Select from 'react-select'
 import ReactPaginate from 'react-paginate'
 import AcceptingClientsIcon from '../icons/accepting-clients.png'
 import firebase from '../firebase/firebase'
-import { filters } from '../constants/filters'
+import { filters, allFilterOptions, allOptionsMap } from '../constants/filters'
 
 export const MatchedProviders = () => {
   const [searchVal, setSearchVal] = useState('')
@@ -23,10 +23,11 @@ export const MatchedProviders = () => {
   const [pageCount, setPageCount] = useState(1)
   const [showGrayBackground, setShowGrayBackground] = useState(false)
   const [initialAnimDone, setInitialAnimDone] = useState(false)
-  console.log(allCheckedItems)
+
   useEffect(() => {
     getProviders()
     window.scrollTo(0, 0)
+    setAllCheckedItems(allOptionsMap)
   }, [])
 
   // handles updating allCheckedItems with what values are currently checked
@@ -42,17 +43,25 @@ export const MatchedProviders = () => {
     })
   }
 
-  // handles updating allCheckedItems by changing all filter values from passed in map to
-  function handleClearFiltersOneType(map) {
+  function handleClearFiltersOneType(options) {
     const newMap = allCheckedItems
-    map.forEach((value, key, map) => {
-      newMap.set(key, false)
+    options.forEach(option => {
+      newMap.set(option, false)
     })
     setAllCheckedItems(newMap)
   }
 
+  // handles updating allCheckedItems by changing all filter values from passed in map to
+  // function handleClearFiltersOneType(map) {
+  //   const newMap = allCheckedItems
+  //   map.forEach((value, key, map) => {
+  //     newMap.set(key, false)
+  //   })
+  //   setAllCheckedItems(newMap)
+  // }
+
   // function handleClearAllFilters() {
-  //   console.log('hello')
+  //   // console.log('hello')
   //   const newMap = new Map()
   //   allCheckedItems.forEach((value, key, map) => {
   //     newMap.set(key, false)
@@ -145,11 +154,13 @@ export const MatchedProviders = () => {
           {filters.map(filter => (
             <OptionButton
               key={filter.id}
+              allCheckedItems={allCheckedItems}
               options={filter.options}
               handleCheckboxChangeMatchedProviders={handleCheckboxChange}
-              onClick={() => setActiveCheckboxContainer(filter.id)}
+              changeActiveCheckboxContainer={() =>
+                setActiveCheckboxContainer(filter.id)
+              }
               onApplyFilter={handleApplyFilter}
-              allCheckedItems={allCheckedItems}
               handleClearFiltersOneType={handleClearFiltersOneType}
               handleShowGrayBackground={handleShowGrayBackground}
               id={filter.id}

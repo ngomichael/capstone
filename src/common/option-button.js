@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import CheckboxContainer from '../common/checkbox-container'
 import styles from './option-button.module.css'
+import { filters, allFilterOptions } from '../constants/filters'
 
 export const OptionButton = ({
   children,
@@ -9,21 +10,34 @@ export const OptionButton = ({
   handleCheckboxChangeMatchedProviders,
   allCheckedItems,
   onApplyFilter,
-  onClick,
+  changeActiveCheckboxContainer,
   id,
   activeCheckboxContainer,
   handleClearFiltersOneType,
   handleShowGrayBackground,
 }) => {
   const [clicked, changeClickedStatus] = useState(false)
-  const [checkedItems, setCheckedItems] = useState(new Map())
-  console.log(checkedItems)
+  // const [checkedItems, setCheckedItems] = useState(new Map())
+  let checkedItems = setCheckedItems()
 
   function handleClickedStatusChange() {
     changeClickedStatus(!clicked)
-    onClick()
+    changeActiveCheckboxContainer()
     handleShowGrayBackground(!clicked)
   }
+
+  // console.log(allCheckedItems)
+
+  function setCheckedItems() {
+    let newMap = new Map()
+    options.forEach(option => {
+      const value = allCheckedItems.get(option)
+      newMap = newMap.set(option, value)
+    })
+
+    return newMap
+  }
+  // console.log(checkedItems)
 
   function handleApplyFilter() {
     changeClickedStatus(false)
@@ -31,12 +45,22 @@ export const OptionButton = ({
     handleShowGrayBackground(!clicked)
   }
 
-  function handleCheckboxChangeOptionButton(e) {
-    const item = e.target.name
-    const isChecked = e.target.checked
-    const newMap = new Map([...checkedItems.set(item, isChecked)])
-    setCheckedItems(newMap)
+  function handleClearFilters() {
+    // const currentFilters = checkedItems
+    // const clearedFilters = new Map()
+    // currentFilters.forEach((value, key, map) => {
+    //   clearedFilters.set(key, false)
+    // })
+    // setCheckedItems(clearedFilters)
+    handleClearFiltersOneType(options)
   }
+
+  // function handleCheckboxChangeOptionButton(e) {
+  //   const item = e.target.name
+  //   const isChecked = e.target.checked
+  //   const newMap = new Map([...checkedItems.set(item, isChecked)])
+  //   setCheckedItems(newMap)
+  // }
 
   // const newMap = allCheckedItems
   //   map.forEach((value, key, map) => {
@@ -44,34 +68,35 @@ export const OptionButton = ({
   //   })
   //   setAllCheckedItems(newMap)
 
-  function handleClearFilters() {
-    const currentFilters = checkedItems
-    const clearedFilters = new Map()
-    currentFilters.forEach((value, key, map) => {
-      clearedFilters.set(key, false)
-    })
-    setCheckedItems(clearedFilters)
-    handleClearFiltersOneType(currentFilters)
-  }
+  // function handleClearFilters() {
+  //   const currentFilters = checkedItems
+  //   const clearedFilters = new Map()
+  //   currentFilters.forEach((value, key, map) => {
+  //     clearedFilters.set(key, false)
+  //   })
+  //   setCheckedItems(clearedFilters)
+  //   handleClearFiltersOneType(currentFilters)
+  // }
 
-  function findInMap(map, val) {
-    for (let [k, v] of map) {
-      if (v === val) {
-        return true
-      }
-    }
-    return false
-  }
+  // function findInMap(map, val) {
+  //   for (let [k, v] of map) {
+  //     if (v === val) {
+  //       return true
+  //     }
+  //   }
+  //   return false
+  // }
 
   return (
     <div className={styles.container}>
       <button
         onClick={handleClickedStatusChange}
-        className={
-          findInMap(checkedItems, true)
-            ? styles.activeFilterButton
-            : styles.filterButton
-        }
+        // className={
+        //   findInMap(checkedItems, true)
+        //     ? styles.activeFilterButton
+        //     : styles.filterButton
+        // }
+        className={styles.filterButton}
       >
         <p className={styles.filterButtonText}>{children}</p>
       </button>
@@ -89,9 +114,9 @@ export const OptionButton = ({
           }
           onApplyFilter={handleApplyFilter}
           allCheckedItems={allCheckedItems}
-          // checkedItems={[...checkedItems.values()]}
+          checkedItems={[...checkedItems.values()]}
           handleClearFilters={handleClearFilters}
-          handleCheckboxChangeOptionButton={handleCheckboxChangeOptionButton}
+          // handleCheckboxChangeOptionButton={handleCheckboxChangeOptionButton}
         />
       </div>
       {/* )} */}

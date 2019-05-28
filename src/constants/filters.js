@@ -436,3 +436,13 @@ export const filters = [
     ],
   },
 ]
+
+export let allFilterOptions = []
+filters.forEach(filter => {
+  allFilterOptions = [...allFilterOptions, ...filter.options]
+})
+
+export let allOptionsMap = new Map()
+allFilterOptions.forEach(option => {
+  allOptionsMap = allOptionsMap.set(option, false)
+})
