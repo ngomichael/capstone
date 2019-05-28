@@ -69,6 +69,14 @@
   }
 }
 
+.chipsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80%;
+}
+
 .filtersContainer {
   display: flex;
   flex-wrap: wrap;

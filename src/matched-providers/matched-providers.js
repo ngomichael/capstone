@@ -4,7 +4,7 @@ import { ProviderCard } from './provider-card'
 import { Transition, animated } from 'react-spring/renderprops'
 import { UndrawEmpty } from 'react-undraw'
 import { OptionButton } from '../common/option-button'
-import { Button, TYPES, SIZES } from '../common/button'
+import { Chip } from '../common/chip'
 import { ChevronDown, Search } from 'react-feather'
 import Select from 'react-select'
 import ReactPaginate from 'react-paginate'
@@ -42,6 +42,14 @@ export const MatchedProviders = () => {
     allCheckedItems.forEach((value, key) => {
       value === true && checkedItemsArray.push(key)
     })
+  }
+
+  function handleChipRemove(option) {
+    const newMap = new Map([
+      ...allCheckedItems.set(option, !allCheckedItems.get(option)),
+    ])
+    setAllCheckedItems(newMap)
+    handleApplyFilter()
   }
 
   function handleClearAllFilters() {
@@ -143,6 +151,18 @@ export const MatchedProviders = () => {
           </div>
         </div>
 
+        {/* <div className={styles.filterChipsContainer}>
+            {appliedFilters.map(filter => <Chip onClick={handleChipRemove}>{filter}</Chip>)}
+        </div> */}
+        <div className={styles.chipsContainer}>
+          {appliedFilters.map(filter => (
+            <Chip
+              key={filter}
+              text={filter}
+              handleChipRemove={handleChipRemove}
+            />
+          ))}
+        </div>
         <div className={styles.filtersContainer}>
           {filters.map(filter => (
             <OptionButton
