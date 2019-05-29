@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import styles from './chip.module.css'
 import { XCircle } from 'react-feather'
 

@@ -24,7 +24,7 @@
 
 .titleAndSearchContainer {
   width: 80%;
-  margin-top: var(--s-3);
+  margin-top: var(--s-6);
 }
 
 .searchContainer {
@@ -146,7 +146,8 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: var(--s-6);
+  margin-top: var(--s-0);
+  margin-bottom: var(--s-8);
   padding: var(--s-4) var(--s-4) var(--s-4) var(--s-4);
 }
 

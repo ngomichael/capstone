@@ -10,8 +10,6 @@ export const AutocompleteField = ({
   terms,
   name,
   setFieldValue,
-  pageNum,
-  currPageNum,
 }) => {
   const [multiValue, setMultiValue] = useState([])
 

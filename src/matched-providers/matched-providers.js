@@ -6,15 +6,12 @@ import { UndrawEmpty } from 'react-undraw'
 import { OptionButton } from '../common/option-button'
 import { Chip } from '../common/chip'
 import { ChevronDown, Search } from 'react-feather'
-import Select from 'react-select'
 import ReactPaginate from 'react-paginate'
 import AcceptingClientsIcon from '../icons/accepting-clients.png'
 import firebase from '../firebase/firebase'
 import { filters } from '../constants/filters'
 
 export const MatchedProviders = () => {
-  const [searchVal, setSearchVal] = useState('')
-
   const [allProviders, setAllProviders] = useState([])
   const [allCheckedItems, setAllCheckedItems] = useState(new Map())
   const [activeCheckboxContainer, setActiveCheckboxContainer] = useState()
@@ -87,10 +84,6 @@ export const MatchedProviders = () => {
     setPageCount(Math.ceil(queriedProvider.length / providersPerPage))
   }
 
-  function handleSearchValChange(e) {
-    setSearchVal(e.target.value)
-  }
-
   const providersPerPage = 4
 
   async function getProviders() {
@@ -131,20 +124,6 @@ export const MatchedProviders = () => {
           <h1>Providers for you</h1>
           <div className={styles.searchContainer}>
             <Search size={20} className={styles.searchIcon} />
-            {/* <input
-              value={searchVal}
-              onChange={handleSearchValChange}
-              placeholder="Search for a location"
-              className={styles.searchInput}
-            /> */}
-            <Select
-              className={styles.input}
-              defaultValue="blue"
-              isClearable={true}
-              isSearchable={true}
-              name="cities"
-              placeholder="City or Zip"
-            />
           </div>
         </div>
 

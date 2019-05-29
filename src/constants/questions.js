@@ -363,7 +363,7 @@ export const questionnaireQuestions = [
     pageNum: 1,
   },
   {
-    questionType: 'autocomplete',
+    questionType: 'checkbox',
     question:
       'Are you looking for someone who specializes with a specific age group?',
     supplementaryText:

@@ -59,10 +59,17 @@
   flex-wrap: wrap;
 }
 
-.checkboxesContainer {
+.ageGroupCheckboxes {
   display: flex;
   flex-direction: column;
-  margin-top: var(--s-3);
+}
+
+.checkbox {
+  margin-top: var(--s-4);
+}
+
+.checkboxText {
+  margin-left: var(--s-2);
 }
 
 .footer {

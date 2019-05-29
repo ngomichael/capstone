@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Link, navigate } from '@reach/router'
-import { Formik, Form } from 'formik'
+import { Formik, Form, Field } from 'formik'
 import styles from './questionnaire.module.css'
-import { OnboardingHeader } from '../common/onboarding-header'
-import { ROUTES, ONBOARDING_ROUTES } from '../constants/routes'
+import { ONBOARDING_ROUTES } from '../constants/routes'
+import { Checkbox } from '../common/checkbox2'
 import { QuestionField } from './question-field'
 import { Button, TYPES, SIZES } from '../common/button'
 import { BackButton } from '../common/back-button'
@@ -20,15 +20,11 @@ const returnCorrectQuestionFormat = (question, setFieldValue, currPageNum) => {
         supplementaryText={question.supplementaryText}
         terms={question.terms}
         name={question.name}
-        type={question.type}
-        isLongInput={question.isLongInput}
         setFieldValue={setFieldValue}
         key={question.question}
-        currPageNum={currPageNum}
-        pageNum={question.pageNum}
       />
     )
-  } else {
+  } else if (questionType === 'input') {
     return (
       <QuestionField
         supplementaryText={question.supplementaryText}
@@ -36,10 +32,30 @@ const returnCorrectQuestionFormat = (question, setFieldValue, currPageNum) => {
         type={question.type}
         isLongInput={question.isLongInput}
         key={question.question}
-        currPageNum={currPageNum}
       />
     )
+  } else if (questionType === 'checkbox') {
+    return (
+      <div className={styles.ageGroupCheckboxes}>
+        {question.terms.map(term => {
+          return (
+            <label className={styles.checkboxOption}>
+              <Field
+                name={question.name}
+                type="checkbox"
+                checked={true}
+                className={styles.checkbox}
+              />
+              <span className={styles.checkboxText}>{term.value}</span>
+            </label>
+          )
+        })}
+      </div>
+    )
+  } else {
+    return null
   }
+  // use setFieldValue
 }
 
 const renderQuestions = (setFieldValue, currPageNum) => {
@@ -78,7 +94,6 @@ export const Questionnaire = () => {
 
   return (
     <div className={styles.container}>
-      {/* <OnboardingHeader step={1} /> */}
       <div className={styles.maxWidthContainer}>
         <div className={styles.questionsTitleContainer}>
           {currPageNum === 1 ? (
