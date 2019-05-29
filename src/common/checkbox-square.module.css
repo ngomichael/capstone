@@ -1,0 +1,37 @@
+@import '../common/variables.css';
+
+.container {
+  width: 220px;
+  height: 160px;
+  border: 3px solid var(--light-gray);
+  border-radius: var(--br-1);
+  margin: var(--s-3) var(--s-3) var(--s-0) var(--s-3);
+  padding: var(--s-4) var(--s-2) var(--s-0) var(--s-4);
+  transition: background-color 150ms ease, border 150ms ease;
+}
+
+.container:first-child {
+  margin: var(--s-3) var(--s-3) var(--s-0) var(--s-0);
+}
+
+.container:hover {
+  cursor: pointer;
+  background-color: var(--light-gray);
+}
+
+.checkedContainer {
+  composes: container;
+  border: 3px solid var(--primary);
+}
+
+.name {
+  font-weight: var(--fw-5);
+  font-size: var(--fs-4);
+  margin-bottom: var(--s-2);
+  transition: color 150ms ease;
+}
+
+.checkedName {
+  composes: name;
+  color: var(--primary);
+}

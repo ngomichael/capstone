@@ -10,19 +10,30 @@ export const questionnaireQuestions = [
     isLongInput: false,
   },
   {
-    questionType: 'autocomplete',
+    questionType: 'checkbox-squares',
     question: 'What kind of care are you looking for?',
     supplementaryText:
       'Getting to a provider can be a big barrier in receiving care. This information helps us find providers close to you.',
     terms: [
-      { id: 'Therapist', value: 'Therapist', label: 'Therapist' },
+      {
+        id: 'Therapist',
+        description:
+          'Talking with a professional in order to work through challenges or issues',
+        value: 'Therapist',
+        label: 'Therapist',
+      },
+
       {
         id: 'Medication',
+        description:
+          'Services relating to prescription and monitoring of medication',
         value: 'Medication',
         label: 'Medication',
       },
       {
         id: 'Testing',
+        description:
+          'Evaluation to help make a diagnosis and or guide treatment',
         value: 'Testing',
         label: 'Testing',
       },

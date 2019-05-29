@@ -4,6 +4,7 @@ import { Formik, Form, Field } from 'formik'
 import styles from './questionnaire.module.css'
 import { ONBOARDING_ROUTES } from '../constants/routes'
 import { Checkbox } from '../common/checkbox2'
+import { CheckboxSquare } from '../common/checkbox-square'
 import { QuestionField } from './question-field'
 import { Button, TYPES, SIZES } from '../common/button'
 import { BackButton } from '../common/back-button'
@@ -33,6 +34,34 @@ const returnCorrectQuestionFormat = (question, setFieldValue, currPageNum) => {
         isLongInput={question.isLongInput}
         key={question.question}
       />
+    )
+  } else if (questionType === 'checkbox-squares') {
+    return (
+      <div className={styles.careTypeCardsContainer}>
+        <p className={styles.supplementaryText}>{question.supplementaryText}</p>
+        {question.terms.map(term => {
+          return (
+            <Field
+              name={question.name}
+              render={({ field }) => {
+                return (
+                  <CheckboxSquare
+                    name={term.value}
+                    supplementaryText={question.supplementaryText}
+                    description={term.description}
+                    onCheckboxClick={checked => {
+                      setFieldValue(
+                        new Map([...field.value.set(term.value, checked)])
+                      )
+                      // console.log(field.value)
+                    }}
+                  />
+                )
+              }}
+            />
+          )
+        })}
+      </div>
     )
   } else if (questionType === 'checkbox') {
     return (
@@ -134,7 +163,7 @@ export const Questionnaire = () => {
               zip_code: '',
               issues: [],
               age_groups: new Map(),
-              care_types: [],
+              care_types: new Map(),
               insurances: [],
               credentials: [],
               approaches: [],
