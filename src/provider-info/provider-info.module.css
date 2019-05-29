@@ -21,9 +21,9 @@
   flex-wrap: wrap;
   width: 75%;
   margin: var(--s-7) var(--s-0) var(--s-0) var(--s-0);
-  transform: translateY(-20px);
-  opacity: var(--opacity-0);
-  animation: slideInFromTop 500ms ease 500ms forwards;
+  /* transform: translateY(-20px); */
+  /* opacity: var(--opacity-0); */
+  /* animation: slideInFromTop 500ms ease 300ms forwards; */
 }
 
 @keyframes slideInFromTop {

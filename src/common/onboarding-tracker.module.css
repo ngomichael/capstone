@@ -48,8 +48,8 @@
   transform: translateY(0px);
   box-shadow: var(--bs-2);
   color: black;
-  animation: backgroundColorChange 1000ms ease forwards 550ms,
-    textColorChange 100ms ease forwards 550ms;
+  animation: backgroundColorChange 1000ms ease forwards 700ms,
+    textColorChange 100ms ease forwards 700ms;
 }
 
 @keyframes textColorChange {
