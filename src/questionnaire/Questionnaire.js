@@ -43,6 +43,7 @@ const returnCorrectQuestionFormat = (question, setFieldValue, currPageNum) => {
           return (
             <Field
               name={question.name}
+              // key={question.questionType}
               render={({ field }) => {
                 return (
                   <CheckboxSquare
@@ -68,7 +69,10 @@ const returnCorrectQuestionFormat = (question, setFieldValue, currPageNum) => {
       <div className={styles.ageGroupCheckboxes}>
         {question.terms.map(term => {
           return (
-            <label className={styles.checkboxOption}>
+            <label
+              className={styles.checkboxOption}
+              // key={question.supplementaryText}
+            >
               <Field
                 name={question.name}
                 className={styles.checkbox}

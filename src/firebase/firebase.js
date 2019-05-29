@@ -54,7 +54,7 @@ class Firebase {
 
   addUserQuestionnaireAnswers(answers) {
     const terms = [
-      ...answers.care_types,
+      ...[...answers.care_types.keys()],
       ...answers.issues,
       ...answers.insurances,
       ...[...answers.age_groups.keys()],
@@ -82,7 +82,7 @@ class Firebase {
         terms,
         termsObject,
         zip_code: answers.zip_code,
-        care_types: answers.care_types,
+        care_types: [...answers.care_types.keys()],
         issues: answers.issues,
         insurances: answers.insurances,
         age_groups: [...answers.age_groups.keys()],
@@ -101,7 +101,7 @@ class Firebase {
           terms,
           termsObject,
           zip_code: answers.zip_code,
-          care_types: answers.care_types,
+          care_types: [...answers.care_types.keys()],
           issues: answers.issues,
           insurances: answers.insurances,
           age_groups: [...answers.age_groups.keys()],

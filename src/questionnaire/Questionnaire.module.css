@@ -29,7 +29,7 @@
 .questionsContainer {
   display: flex;
   align-items: flex-start;
-  margin-bottom: var(--s-6);
+  margin-bottom: var(--s-7);
 }
 
 .arrowAndNumberContainer {
