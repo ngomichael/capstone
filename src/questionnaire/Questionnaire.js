@@ -42,8 +42,6 @@ const returnCorrectQuestionFormat = (question, setFieldValue, currPageNum) => {
             <label className={styles.checkboxOption}>
               <Field
                 name={question.name}
-                // type="checkbox"
-                // checked={true}
                 className={styles.checkbox}
                 render={({ field }) => {
                   return (
@@ -70,7 +68,6 @@ const returnCorrectQuestionFormat = (question, setFieldValue, currPageNum) => {
   } else {
     return null
   }
-  // use setFieldValue
 }
 
 const renderQuestions = (setFieldValue, currPageNum) => {
