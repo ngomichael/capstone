@@ -122,6 +122,10 @@
   margin-right: var(--s-2);
 }
 
+.loader {
+  margin-top: var(--s-10);
+}
+
 .searchResults {
   display: flex;
   flex-direction: column;

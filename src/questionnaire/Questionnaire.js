@@ -158,8 +158,8 @@ export const Questionnaire = () => {
               Excluding the first question, all questions are optional and you
               are able to select multiple answers if it better reflects the
               experiences you are going through. If you don't know how to answer
-              a question or if it does not apply, please just leave the input
-              blank.
+              a question or if it does not apply, feel free to just not answer
+              it.
             </p>
           )}
           <Formik

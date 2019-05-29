@@ -7,6 +7,7 @@ import { OptionButton } from '../common/option-button'
 import { Chip } from '../common/chip'
 import { ChevronDown, Search } from 'react-feather'
 import ReactPaginate from 'react-paginate'
+import { ClimbingBoxLoader } from 'react-spinners'
 import AcceptingClientsIcon from '../icons/accepting-clients.png'
 import firebase from '../firebase/firebase'
 import { filters } from '../constants/filters'
@@ -244,6 +245,16 @@ export const MatchedProviders = () => {
             </Transition>
           </div>
         ) : (
+          <div className={styles.loader}>
+            <ClimbingBoxLoader
+              sizeUnit={'px'}
+              size={25}
+              color={'hsl(174, 74%, 39%)'}
+            />
+          </div>
+        )}
+
+        {currentProviders.length === 0 && appliedFilters.length !== 0 && (
           <div className={styles.noProviders}>
             <UndrawEmpty primaryColor="hsl(174, 74%, 39%)" />
             <p className={styles.noProvidersText}>
