@@ -42,9 +42,24 @@ const returnCorrectQuestionFormat = (question, setFieldValue, currPageNum) => {
             <label className={styles.checkboxOption}>
               <Field
                 name={question.name}
-                type="checkbox"
-                checked={true}
+                // type="checkbox"
+                // checked={true}
                 className={styles.checkbox}
+                render={({ field }) => {
+                  return (
+                    <Checkbox
+                      name={term.value}
+                      onChange={e => {
+                        const item = e.target.name
+                        const isChecked = e.target.checked
+                        setFieldValue(
+                          new Map([...field.value.set(item, isChecked)])
+                        )
+                      }}
+                      checked={field.value.get(term.value)}
+                    />
+                  )
+                }}
               />
               <span className={styles.checkboxText}>{term.value}</span>
             </label>
@@ -121,7 +136,7 @@ export const Questionnaire = () => {
             initialValues={{
               zip_code: '',
               issues: [],
-              age_groups: [],
+              age_groups: new Map(),
               care_types: [],
               insurances: [],
               credentials: [],
@@ -131,7 +146,7 @@ export const Questionnaire = () => {
             onSubmit={(values, { setSubmitting }) => {
               handleSubmit(values)
               setSubmitting(false)
-              navigate('/questionnaireCompleted')
+              navigate('/onboardingTracker/questionnaireCompleted')
             }}
           >
             {({ isSubmitting, setFieldValue, values }) => (

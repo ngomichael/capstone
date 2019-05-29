@@ -54,11 +54,10 @@ class Firebase {
 
   addUserQuestionnaireAnswers(answers) {
     const terms = [
-      ...answers.zip_code,
       ...answers.care_types,
       ...answers.issues,
       ...answers.insurances,
-      ...answers.age_groups,
+      ...[...answers.age_groups.keys()],
       ...answers.credentials,
       ...answers.approaches,
       ...answers.populations,
@@ -86,7 +85,7 @@ class Firebase {
         care_types: answers.care_types,
         issues: answers.issues,
         insurances: answers.insurances,
-        age_groups: answers.age_groups,
+        age_groups: [...answers.age_groups.keys()],
         credentials: answers.credentials,
         approaches: answers.approaches,
         populations: answers.populations,
@@ -105,7 +104,7 @@ class Firebase {
           care_types: answers.care_types,
           issues: answers.issues,
           insurances: answers.insurances,
-          age_groups: answers.age_groups,
+          age_groups: [...answers.age_groups.keys()],
           credentials: answers.credentials,
           approaches: answers.approaches,
           populations: answers.populations,
@@ -118,7 +117,6 @@ class Firebase {
 
   addProviderQuestionnaireAnswers(answers) {
     const terms = [
-      ...answers.zip_code,
       ...answers.care_types,
       ...answers.issues,
       ...answers.insurances,
@@ -159,7 +157,7 @@ class Firebase {
         reminders: answers.reminders,
         insurances: answers.insurances,
         care_types: answers.care_types,
-        age_groups: answers.age_groups,
+        age_groups: [...answers.age_groups.keys()],
         populations: answers.populations,
         approaches: answers.approaches,
         issues: answers.issues,
@@ -170,7 +168,7 @@ class Firebase {
           },
           {
             label: 'Client Focus',
-            values: answers.age_groups,
+            values: [...answers.age_groups.keys()],
           },
           {
             label: 'Experienced with',
@@ -210,7 +208,7 @@ class Firebase {
           reminders: answers.reminders,
           insurances: answers.insurances,
           care_types: answers.care_types,
-          age_groups: answers.age_groups,
+          age_groups: [...answers.age_groups.keys()],
           populations: answers.populations,
           approaches: answers.approaches,
           issues: answers.issues,
@@ -221,7 +219,7 @@ class Firebase {
             },
             {
               label: 'Client Focus',
-              values: answers.age_groups,
+              values: [...answers.age_groups.keys()],
             },
             {
               label: 'Experienced with',
