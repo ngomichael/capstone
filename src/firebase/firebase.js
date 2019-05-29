@@ -157,7 +157,7 @@ class Firebase {
         reminders: answers.reminders,
         insurances: answers.insurances,
         care_types: answers.care_types,
-        age_groups: [...answers.age_groups.keys()],
+        age_groups: answers.age_groups,
         populations: answers.populations,
         approaches: answers.approaches,
         issues: answers.issues,
@@ -168,7 +168,7 @@ class Firebase {
           },
           {
             label: 'Client Focus',
-            values: [...answers.age_groups.keys()],
+            values: answers.age_groups,
           },
           {
             label: 'Experienced with',
@@ -208,7 +208,7 @@ class Firebase {
           reminders: answers.reminders,
           insurances: answers.insurances,
           care_types: answers.care_types,
-          age_groups: [...answers.age_groups.keys()],
+          age_groups: answers.age_groups,
           populations: answers.populations,
           approaches: answers.approaches,
           issues: answers.issues,
@@ -219,7 +219,7 @@ class Firebase {
             },
             {
               label: 'Client Focus',
-              values: [...answers.age_groups.keys()],
+              values: answers.age_groups,
             },
             {
               label: 'Experienced with',
