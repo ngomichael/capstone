@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { hot } from 'react-hot-loader'
-import { Router, Match } from '@reach/router'
+import { Router } from '@reach/router'
 import { ROUTES, ONBOARDING_ROUTES } from './constants/routes'
 import styles from './app.module.css'
 import { SignUp } from './sign-up/sign-up'
@@ -12,12 +12,7 @@ import { MatchedProviders } from './matched-providers/matched-providers'
 import { ProviderInfo } from './provider-info/provider-info'
 import { Prompt } from './prompt/prompt'
 import { OnboardingHeader } from './common/onboarding-header'
-import {
-  UndrawAboutMe,
-  UndrawHire,
-  UndrawProfile,
-  UndrawThroughTheDesert,
-} from 'react-undraw'
+import { UndrawHire, UndrawProfile } from 'react-undraw'
 import firebase from './firebase/firebase'
 import { UserProvider, UserConsumer } from './context/user-context'
 
