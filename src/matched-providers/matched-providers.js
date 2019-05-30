@@ -123,9 +123,6 @@ export const MatchedProviders = () => {
         )} */}
         <div className={styles.titleAndSearchContainer}>
           <h1>Providers for you</h1>
-          {/* <div className={styles.searchContainer}>
-            <Search size={20} className={styles.searchIcon} />
-          </div> */}
         </div>
 
         <div className={styles.chipsContainer}>
@@ -259,7 +256,7 @@ export const MatchedProviders = () => {
               style={{
                 fontSize: '18px',
                 fontWeight: '400',
-                // color: 'hsl(228, 14%, 58%)',
+
                 marginTop: '45px',
               }}
             >
