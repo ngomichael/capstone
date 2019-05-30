@@ -21,113 +21,99 @@ class App extends Component {
     super(props)
     this.state = {
       firebaseInitialized: false,
+      signedInUser: {},
       userInfo: {},
+      userId: '',
     }
-    this.handleGetUserInfo = this.handleGetUserInfo.bind(this)
+    this.getSignedInUserInfo = this.getSignedInUserInfo.bind(this)
   }
 
   async componentDidMount() {
-    firebase.isInitialized().then(val => {
-      this.setState({
-        firebaseInitialized: val,
-      })
+    await firebase.isInitialized().then(val => {
+      if (val) {
+        this.setState({
+          firebaseInitialized: val,
+          signedInUser: val,
+          userId: val.uid,
+        })
+
+        this.getSignedInUserInfo()
+      }
     })
-
-    // const userInformation = await firebase.getSignedInUser()
-    // console.log(userInformation)
-    // firebase.getUserProfile()
-
-    // this.setState({
-    //   userInfo: {
-    //     user: await firebase.getSignedInUser(),
-    //   },
-    // })
-
-    const userInformation = this.handleGetUserInfo()
-    console.log(userInformation)
+    firebase.getSignedInUser()
   }
 
-  async handleGetUserInfo() {
-    try {
-      const x = await firebase.getSignedInUser()
-      // console.log(x)
-    } catch (err) {
-      return err
-    }
+  async getSignedInUserInfo() {
+    // console.log(this.state.userId)
+    const snapshot = await firebase.getSignedInUserInfo(this.state.userId)
+    this.setState({
+      userInfo: snapshot.docs.map(doc => doc.data())[0],
+    })
   }
-
-  // handleSignIn() {
-  //   try {
-  //     await firebase.signIn(email, password)
-  //     setIsSignedIn(true)
-  //     return <Redirect noThrow to="/getStarted" />
-  //   } catch (err) {
-  //     console.error(err)
-  //   }
-  // }
 
   render() {
-    console.log(this.state.userInfo)
     return (
       <>
-        {/* <UserProvider value={}></UserProvider> */}
-        <Router>
-          <OnboardingHeader path={ONBOARDING_ROUTES.onboardingHeader} />
-        </Router>
-        <Router>
-          <Home path={ROUTES.home} />
-          <Questionnaire path={ONBOARDING_ROUTES.questionnaire} />
-          <ProviderQuestionnaire
-            path={ONBOARDING_ROUTES.providerQuestionnaire}
-          />
-          <MatchedProviders path={ONBOARDING_ROUTES.results} />
-          <ProviderInfo path={ONBOARDING_ROUTES.providerInfo} />
+        <UserProvider value={this.state}>
+          {/* <UserProvider value={5}> */}
+          <Router>
+            <OnboardingHeader path={ONBOARDING_ROUTES.onboardingHeader} />
+          </Router>
+          <Router>
+            <Home path={ROUTES.home} />
+            <Questionnaire path={ONBOARDING_ROUTES.questionnaire} />
+            <ProviderQuestionnaire
+              path={ONBOARDING_ROUTES.providerQuestionnaire}
+            />
+            <MatchedProviders path={ONBOARDING_ROUTES.results} />
+            <ProviderInfo path={ONBOARDING_ROUTES.providerInfo} />
 
-          <Prompt
-            path={ONBOARDING_ROUTES.getStarted}
-            image={
-              <UndrawProfile
-                primaryColor="hsl(174, 74%, 39%)"
-                className={styles.image}
-                style={{ width: '350px' }}
-              />
-            }
-            title="Tell us what matters to you"
-            p1="We're just going to ask you a few questions about what you're looking for. This will help us match you with the providers best suited for you."
-            p2="Don't worry, answering these questions will only take a few minutes"
-            buttonText="Start Questionnaire"
-            nextPath={`/${ONBOARDING_ROUTES.questionnaire}`}
-            prevPath={ROUTES.home}
-            step={1}
-            skipText="Don't have time right now?"
-            skipText2="Skip to a list of providers."
-            skipTextPath={`/${ONBOARDING_ROUTES.results}`}
-          />
+            <Prompt
+              path={ONBOARDING_ROUTES.getStarted}
+              image={
+                <UndrawProfile
+                  primaryColor="hsl(174, 74%, 39%)"
+                  className={styles.image}
+                  style={{ width: '350px' }}
+                />
+              }
+              title="Tell us what matters to you"
+              p1="We're just going to ask you a few questions about what you're looking for. This will help us match you with the providers best suited for you."
+              p2="Don't worry, answering these questions will only take a few minutes"
+              buttonText="Start Questionnaire"
+              nextPath={`/${ONBOARDING_ROUTES.questionnaire}`}
+              prevPath={ROUTES.home}
+              step={1}
+              skipText="Don't have time right now?"
+              skipText2="Skip to a list of providers."
+              skipTextPath={`/${ONBOARDING_ROUTES.results}`}
+            />
 
-          <Prompt
-            path={ONBOARDING_ROUTES.questionnaireCompleted}
-            image={
-              <UndrawHire
-                primaryColor="hsl(174, 74%, 39%)"
-                className={styles.image}
-                style={{ width: '350px' }}
-              />
-            }
-            title="Way to go! We pear-reviewed providers just for you."
-            p1="We used your answers on the last page to find providers who may be a good fit for you."
-            p2="You can also continue adjusting what you're looking for by adding or removing filters, using the search bar, or editing your answers to the questionnaire."
-            buttonText="View Results"
-            nextPath={`/${ONBOARDING_ROUTES.results}`}
-            prevPath={`/${ONBOARDING_ROUTES.questionnaire}`}
-            step={2}
-            skipText="Want to change your answers?"
-            skipText2="Go back to the questionnaire."
-            skipTextPath={`/${ONBOARDING_ROUTES.questionnaire}`}
-          />
+            <Prompt
+              path={ONBOARDING_ROUTES.questionnaireCompleted}
+              image={
+                <UndrawHire
+                  primaryColor="hsl(174, 74%, 39%)"
+                  className={styles.image}
+                  style={{ width: '350px' }}
+                />
+              }
+              title="Way to go! We pear-reviewed providers just for you."
+              p1="We used your answers on the last page to find providers who may be a good fit for you."
+              p2="You can also continue adjusting what you're looking for by adding or removing filters, using the search bar, or editing your answers to the questionnaire."
+              buttonText="View Results"
+              nextPath={`/${ONBOARDING_ROUTES.results}`}
+              prevPath={`/${ONBOARDING_ROUTES.questionnaire}`}
+              step={2}
+              skipText="Want to change your answers?"
+              skipText2="Go back to the questionnaire."
+              skipTextPath={`/${ONBOARDING_ROUTES.questionnaire}`}
+            />
 
-          <SignUp path={ROUTES.signUp} />
-          <SignIn path={ROUTES.signIn} />
-        </Router>
+            <SignUp path={ROUTES.signUp} />
+            <SignIn path={ROUTES.signIn} />
+          </Router>
+        </UserProvider>
       </>
     )
   }

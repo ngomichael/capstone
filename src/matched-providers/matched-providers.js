@@ -284,11 +284,11 @@ export const MatchedProviders = () => {
           </div>
         )}
 
-        {/* <div>
+        <div>
           <button type="button" onClick={() => firebase.signOut()}>
             Sign Out
           </button>
-        </div> */}
+        </div>
       </div>
     </div>
   )

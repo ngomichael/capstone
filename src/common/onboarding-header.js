@@ -5,6 +5,7 @@ import { OnboardingTracker } from './onboarding-tracker'
 import PearCareIcon from '../icons/pearcare-icon.png'
 import { Link } from '@reach/router'
 import { match } from '@reach/router/lib/utils'
+import { UserProvider, UserConsumer } from '../context/user-context'
 
 export const OnboardingHeader = ({ location }) => {
   let step = 0
@@ -32,19 +33,21 @@ export const OnboardingHeader = ({ location }) => {
   }
 
   return (
-    <header className={styles.container}>
-      <Link to="/" className={styles.logoAndNameContainer}>
-        <img src={PearCareIcon} className={styles.logo} />
-        <p className={styles.productName}>PearCare</p>
-      </Link>
-      {/* <div className={styles.logoAndNameContainer}>
-          <img src={PearCareIcon} className={styles.logo} />
-          <p className={styles.productName}>PearCare</p>
-        </div> */}
-      <div className={styles.onboardingTracker}>
-        <OnboardingTracker step={step} />
-      </div>
-    </header>
+    <UserConsumer>
+      {context => (
+        <header className={styles.container}>
+          {console.log(context)}
+          {/* <p>{context}</p> */}
+          <Link to="/" className={styles.logoAndNameContainer}>
+            <img src={PearCareIcon} className={styles.logo} />
+            <p className={styles.productName}>PearCare</p>
+          </Link>
+          <div className={styles.onboardingTracker}>
+            <OnboardingTracker step={step} />
+          </div>
+        </header>
+      )}
+    </UserConsumer>
   )
 }
 

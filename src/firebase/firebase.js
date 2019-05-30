@@ -16,6 +16,7 @@ class Firebase {
     app.initializeApp(config)
     this.db = app.firestore()
     this.auth = app.auth()
+    this.user = {}
   }
 
   signIn(email, password) {
@@ -34,7 +35,7 @@ class Firebase {
     }
   }
 
-  addUserInformation(firstName, password, email) {
+  addUserInformation(name, password, email) {
     if (!this.auth.currentUser) {
       return alert('Not Authorized')
     }
@@ -43,10 +44,11 @@ class Firebase {
       .collection('users_test')
       .doc(this.auth.currentUser.uid)
       .set({
-        first_name: firstName,
+        name: name,
         email: email,
         password: password,
         questionnaire_finished: false,
+        id: this.auth.currentUser.uid,
       })
 
       .catch(err => console.log(err))
@@ -246,6 +248,14 @@ class Firebase {
     return ref.get()
   }
 
+  getSignedInUserInfo(userId) {
+    const usersRef = this.db.collection('users_test')
+    let ref = usersRef.where('id', '==', userId)
+    return ref.get()
+  }
+
+  favoriteProvider() {}
+
   getAllProviders() {
     return this.db.collection('providers_test2').get()
   }
@@ -289,13 +299,17 @@ class Firebase {
       if (user) {
         console.log(user)
         // console.log(this.auth.currentUser)
+        // this.user = user
+        // console.log(this.user)
+        // return this.user
         return user
       } else {
         console.log('No user is signed in')
         console.log(this.auth.currentUser)
-        return this.auth.currentUser
+        // return this.auth.currentUser
       }
     })
+    // return this.user
   }
 
   getUserProfile() {
