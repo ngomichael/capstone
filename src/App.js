@@ -14,16 +14,25 @@ import { Prompt } from './prompt/prompt'
 import { OnboardingHeader } from './common/onboarding-header'
 import { UndrawHire, UndrawProfile } from 'react-undraw'
 import firebase from './firebase/firebase'
-import { UserProvider, UserConsumer } from './context/user-context'
+import { UserProvider } from './context/user-context'
 
 class App extends Component {
   constructor(props) {
     super(props)
+
+    this.updateUserInfo = updatedUser => {
+      this.setState(state => ({
+        ...state,
+        userInfo: updatedUser,
+      }))
+    }
+
     this.state = {
       firebaseInitialized: false,
       signedInUser: {},
       userInfo: {},
       userId: '',
+      updateUser: this.updateUser,
     }
     this.getSignedInUserInfo = this.getSignedInUserInfo.bind(this)
   }

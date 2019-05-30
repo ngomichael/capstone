@@ -7,6 +7,7 @@ import { InputField } from '../common/input-field'
 import { HomeHeader } from '../common/home-header'
 import { UndrawLogin } from 'react-undraw'
 import pears from '../images/pairOfPears.png'
+import { UserProvider, UserConsumer } from '../context/user-context'
 
 export const SignUp = () => {
   const [name, setName] = useState('')
