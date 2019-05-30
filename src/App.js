@@ -19,29 +19,63 @@ import {
   UndrawThroughTheDesert,
 } from 'react-undraw'
 import firebase from './firebase/firebase'
-import { AuthContext } from './auth-context'
+import { UserProvider, UserConsumer } from './context/user-context'
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
       firebaseInitialized: false,
+      userInfo: {},
     }
+    this.handleGetUserInfo = this.handleGetUserInfo.bind(this)
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     firebase.isInitialized().then(val => {
       this.setState({
         firebaseInitialized: val,
       })
     })
 
-    firebase.getSignedInUser()
+    // const userInformation = await firebase.getSignedInUser()
+    // console.log(userInformation)
+    // firebase.getUserProfile()
+
+    // this.setState({
+    //   userInfo: {
+    //     user: await firebase.getSignedInUser(),
+    //   },
+    // })
+
+    const userInformation = this.handleGetUserInfo()
+    console.log(userInformation)
   }
 
+  async handleGetUserInfo() {
+    try {
+      const x = await firebase.getSignedInUser()
+      // console.log(x)
+    } catch (err) {
+      return err
+    }
+  }
+
+  // handleSignIn() {
+  //   try {
+  //     await firebase.signIn(email, password)
+  //     setIsSignedIn(true)
+  //     return <Redirect noThrow to="/getStarted" />
+  //   } catch (err) {
+  //     console.error(err)
+  //   }
+  // }
+
   render() {
+    console.log(this.state.userInfo)
     return (
       <>
+        {/* <UserProvider value={}></UserProvider> */}
         <Router>
           <OnboardingHeader path={ONBOARDING_ROUTES.onboardingHeader} />
         </Router>

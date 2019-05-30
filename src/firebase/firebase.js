@@ -288,10 +288,12 @@ class Firebase {
     this.auth.onAuthStateChanged(user => {
       if (user) {
         console.log(user)
+        // console.log(this.auth.currentUser)
         return user
       } else {
         console.log('No user is signed in')
         console.log(this.auth.currentUser)
+        return this.auth.currentUser
       }
     })
   }
