@@ -19,7 +19,7 @@ export const ContactModal = ({ handleClose, name, email, website }) => {
           <p>
             {`${name} hopes to respond to all potential new clients within 3-5
             business days. If they agree you'd be a good fit, they'll ask for
-            your availability to set up an in- person consultation. If not,
+            your availability to set up an in-person consultation. If not,
             they'll let you know why and attempt to refer you to providers they
             know that may be a better fit.`}
           </p>
@@ -34,16 +34,12 @@ export const ContactModal = ({ handleClose, name, email, website }) => {
             <Button
               type="button"
               buttonType={TYPES.PRIMARY}
-              buttonSize={SIZES.MEDIUM}
+              buttonSize={SIZES.S}
             >
               Website
             </Button>
           </a>
-          <Button
-            type="button"
-            buttonType={TYPES.PRIMARY}
-            buttonSize={SIZES.MEDIUM}
-          >
+          <Button type="button" buttonType={TYPES.PRIMARY} buttonSize={SIZES.S}>
             Email
           </Button>
         </div>

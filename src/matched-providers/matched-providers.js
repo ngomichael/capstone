@@ -123,9 +123,9 @@ export const MatchedProviders = () => {
         )} */}
         <div className={styles.titleAndSearchContainer}>
           <h1>Providers for you</h1>
-          <div className={styles.searchContainer}>
+          {/* <div className={styles.searchContainer}>
             <Search size={20} className={styles.searchIcon} />
-          </div>
+          </div> */}
         </div>
 
         <div className={styles.chipsContainer}>
@@ -187,21 +187,11 @@ export const MatchedProviders = () => {
         <div
           style={{
             display: 'flex',
-            justifyContent: 'space-between',
+            justifyContent: 'flex-end',
             alignItems: 'center',
             width: '80%',
           }}
         >
-          <span
-            style={{
-              fontSize: '20px',
-              fontWeight: '400',
-              color: 'hsl(228, 14%, 58%)',
-              marginTop: '25px',
-            }}
-          >
-            {`${currentProviders.length} of ${allProviders.length} results`}
-          </span>
           <div className={styles.iconKey}>
             <img
               src={AcceptingClientsIcon}
@@ -264,25 +254,37 @@ export const MatchedProviders = () => {
         )}
 
         {currentProviders.length !== 0 && (
-          <ReactPaginate
-            previousLabel={'< Back'}
-            nextLabel={'Next >'}
-            breakLabel={'...'}
-            // breakClassName={'break-me'}
-            pageCount={pageCount}
-            // marginPagesDisplayed={2}
-            pageRangeDisplayed={3}
-            onPageChange={handlePageClick}
-            containerClassName={styles.pagination}
-            previousClassName={styles.paginationButton}
-            nextClassName={styles.paginationButton}
-            previousLinkClassName={styles.paginationLinkButton}
-            nextLinkClassName={styles.paginationLinkButton}
-            pageClassName={styles.pageClassName}
-            pageLinkClassName={styles.pageLinkClassName}
-            activeClassName={styles.activeLink}
-            disabledClassName={styles.disabledClassName}
-          />
+          <div className={styles.paginateAndResultsNumContainer}>
+            <span
+              style={{
+                fontSize: '18px',
+                fontWeight: '400',
+                // color: 'hsl(228, 14%, 58%)',
+                marginTop: '45px',
+              }}
+            >
+              {`${currentProviders.length} of ${allProviders.length} results`}
+            </span>
+            <ReactPaginate
+              previousLabel={'< Back'}
+              nextLabel={'Next >'}
+              breakLabel={'...'}
+              // breakClassName={'break-me'}
+              pageCount={pageCount}
+              // marginPagesDisplayed={2}
+              pageRangeDisplayed={3}
+              onPageChange={handlePageClick}
+              containerClassName={styles.pagination}
+              previousClassName={styles.paginationButton}
+              nextClassName={styles.paginationButton}
+              previousLinkClassName={styles.paginationLinkButton}
+              nextLinkClassName={styles.paginationLinkButton}
+              pageClassName={styles.pageClassName}
+              pageLinkClassName={styles.pageLinkClassName}
+              activeClassName={styles.activeLink}
+              disabledClassName={styles.disabledClassName}
+            />
+          </div>
         )}
 
         {/* <div>

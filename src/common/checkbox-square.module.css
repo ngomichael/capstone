@@ -2,12 +2,13 @@
 
 .container {
   width: 220px;
-  height: 160px;
-  border: 3px solid var(--light-gray);
+  height: 170px;
+  border: 2px solid var(--light-gray);
   border-radius: var(--br-1);
+  box-shadow: var(--bs-2);
   margin: var(--s-3) var(--s-3) var(--s-0) var(--s-3);
   padding: var(--s-4) var(--s-2) var(--s-0) var(--s-4);
-  transition: background-color 150ms ease, border 150ms ease;
+  transition: box-shadow 150ms ease, border 150ms ease, transform 150ms ease;
 }
 
 .container:first-child {
@@ -16,12 +17,14 @@
 
 .container:hover {
   cursor: pointer;
-  background-color: var(--light-gray);
+  box-shadow: var(--bs-1);
+  transform: translateY(2px);
+  /* background-color: var(--light-gray); */
 }
 
 .checkedContainer {
   composes: container;
-  border: 3px solid var(--primary);
+  border: 2px solid var(--primary);
 }
 
 .name {

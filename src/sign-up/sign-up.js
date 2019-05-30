@@ -31,7 +31,7 @@ export const SignUp = () => {
       await firebase.register(name, email, password)
       await firebase.addUserInformation(name, password, email)
       setCreatedAccount(true)
-      return <Redirect noThrow to="/getStarted" />
+      return <Redirect noThrow to="/onboardingTracker/getStarted" />
     } catch (err) {
       console.log(err)
     }
@@ -96,7 +96,9 @@ export const SignUp = () => {
                 Sign up
               </Button>
             </form>
-            {createdAccount ? <Redirect noThrow to="/getStarted" /> : null}
+            {createdAccount ? (
+              <Redirect noThrow to="/onboardingTracker/getStarted" />
+            ) : null}
           </div>
         </div>
       </div>

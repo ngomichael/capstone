@@ -6,6 +6,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  line-height: 1.5;
 }
 
 .maxWidthContainer {
@@ -17,7 +18,7 @@
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
-  margin: var(--s-10) var(--s-3) var(--s-0) var(--s-3);
+  margin: var(--s-9) var(--s-3) var(--s-0) var(--s-3);
 }
 
 .textContainer {

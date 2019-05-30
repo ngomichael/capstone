@@ -194,7 +194,8 @@ export const ProviderInfo = ({ providerId }) => {
           </div>
           <div className={styles.footer}>
             <div className={styles.leftSideActions}>
-              <Heart size={30} className={styles.favorite} />
+              <Heart size={30} className={styles.heartIcon} />
+              <span className={styles.saveText}>Save Provider</span>
             </div>
             <Button
               type="button"

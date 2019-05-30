@@ -20,7 +20,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   width: 75%;
-  margin: var(--s-7) var(--s-0) var(--s-0) var(--s-0);
+  margin: var(--s-5) var(--s-0) var(--s-0) var(--s-0);
   /* transform: translateY(-20px); */
   /* opacity: var(--opacity-0); */
   /* animation: slideInFromTop 500ms ease 300ms forwards; */
@@ -147,7 +147,7 @@
   position: sticky;
   display: flex;
   bottom: 0;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   background-color: var(--white);
   box-shadow: var(--bs-4);
@@ -158,14 +158,33 @@
 
 .leftSideActions {
   display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 200px;
+  height: 50px;
+  border: 3px solid var(--primary-light);
+  border-radius: var(--br-1);
+  margin-right: var(--s-8);
+  box-shadow: var(--bs-1);
+  transition: border-color 200ms ease;
 }
 
-.favorite {
+.leftSideActions:hover {
+  border: 3px solid var(--primary);
+  cursor: pointer;
+}
+
+.heartIcon {
   color: var(--primary);
 }
 
-.favorite:hover {
+/* .heartIcon:hover {
   cursor: pointer;
+} */
+
+.saveText {
+  font-size: var(--fs-4);
+  color: var(--primary);
 }
 
 .directionsLink {
