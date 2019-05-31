@@ -23,7 +23,9 @@ class App extends Component {
     this.state = {
       firebaseInitialized: false,
       signedInUser: {},
-      userInfo: {},
+      userInfo: {
+        savedProviders: [],
+      },
       userId: '',
     }
   }

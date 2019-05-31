@@ -115,9 +115,11 @@ export const MatchedProviders = () => {
   return (
     <UserConsumer>
       {context => (
-        <div className={styles.container}>
-          <div className={styles.maxWidthContainer}>
-            {/* {showGrayBackground && (
+        console.log(context),
+        (
+          <div className={styles.container}>
+            <div className={styles.maxWidthContainer}>
+              {/* {showGrayBackground && (
           <div
             onClick={() => {
               // setShowGrayBackground(false)
@@ -126,178 +128,179 @@ export const MatchedProviders = () => {
             className={styles.grayBackground}
           />
         )} */}
-            <div className={styles.titleAndSearchContainer}>
-              <h1>Providers for you</h1>
-            </div>
-
-            <div className={styles.chipsContainer}>
-              <Transition
-                items={appliedFilters}
-                initial={{
-                  height: 'auto',
-                  opacity: '0',
-                }}
-                from={{
-                  height: 0,
-                  opacity: '0',
-                }}
-                enter={{
-                  height: 'auto',
-                  opacity: '1',
-                }}
-                leave={{ opacity: 0, height: 0 }}
-              >
-                {item => props => (
-                  <animated.div style={props}>
-                    <Chip text={item} handleChipRemove={handleChipRemove} />
-                  </animated.div>
-                )}
-              </Transition>
-            </div>
-            <div className={styles.filtersContainer}>
-              {filters.map(filter => (
-                <OptionButton
-                  key={filter.id}
-                  allCheckedItems={allCheckedItems}
-                  options={filter.options}
-                  handleCheckboxChangeMatchedProviders={handleCheckboxChange}
-                  changeActiveCheckboxContainer={() =>
-                    setActiveCheckboxContainer(filter.id)
-                  }
-                  onApplyFilter={handleApplyFilter}
-                  handleClearFiltersOneType={handleClearFiltersOneType}
-                  handleShowGrayBackground={handleShowGrayBackground}
-                  id={filter.id}
-                  activeCheckboxContainer={activeCheckboxContainer}
-                >
-                  {filter.name}
-                  <ChevronDown
-                    color="hsl(174, 47%, 75%)"
-                    className={styles.chevronDown}
-                  />
-                </OptionButton>
-              ))}
-              {appliedFilters.length !== 0 && (
-                <button
-                  onClick={handleClearAllFilters}
-                  className={styles.clearAllButton}
-                >
-                  Clear all filters
-                </button>
-              )}
-            </div>
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'flex-end',
-                alignItems: 'center',
-                width: '80%',
-              }}
-            >
-              <div className={styles.iconKey}>
-                <img
-                  src={AcceptingClientsIcon}
-                  className={styles.acceptingClientsIcon}
-                />
-                <span>&mdash;</span>
-                <span style={{ marginLeft: '7px' }}>
-                  {' '}
-                  Accepting new clients
-                </span>
+              <div className={styles.titleAndSearchContainer}>
+                <h1>Providers for you</h1>
               </div>
-            </div>
 
-            {currentProviders.length !== 0 &&
-              context.userInfo.savedProviders.length !== 0 && (
-                <div className={styles.providersContainer}>
-                  <Transition
-                    items={currentProviders}
-                    keys={item => item.id}
-                    initial={{
-                      height: 'auto',
-                      transform: 'translateX(-50px)',
-                      opacity: '0',
-                    }}
-                    trail={initialAnimDone ? 0 : 150}
-                    onRest={() => setInitialAnimDone(true)}
-                    from={{
-                      transform: 'translateX(0px)',
-                      opacity: '0',
-                      height: 0,
-                    }}
-                    enter={{
-                      transform: 'translateX(0px)',
-
-                      height: 'auto',
-                      opacity: '1',
-                    }}
-                    leave={{ opacity: 0, height: 0 }}
+              <div className={styles.chipsContainer}>
+                <Transition
+                  items={appliedFilters}
+                  initial={{
+                    height: 'auto',
+                    opacity: '0',
+                  }}
+                  from={{
+                    height: 0,
+                    opacity: '0',
+                  }}
+                  enter={{
+                    height: 'auto',
+                    opacity: '1',
+                  }}
+                  leave={{ opacity: 0, height: 0 }}
+                >
+                  {item => props => (
+                    <animated.div style={props}>
+                      <Chip text={item} handleChipRemove={handleChipRemove} />
+                    </animated.div>
+                  )}
+                </Transition>
+              </div>
+              <div className={styles.filtersContainer}>
+                {filters.map(filter => (
+                  <OptionButton
+                    key={filter.id}
+                    allCheckedItems={allCheckedItems}
+                    options={filter.options}
+                    handleCheckboxChangeMatchedProviders={handleCheckboxChange}
+                    changeActiveCheckboxContainer={() =>
+                      setActiveCheckboxContainer(filter.id)
+                    }
+                    onApplyFilter={handleApplyFilter}
+                    handleClearFiltersOneType={handleClearFiltersOneType}
+                    handleShowGrayBackground={handleShowGrayBackground}
+                    id={filter.id}
+                    activeCheckboxContainer={activeCheckboxContainer}
                   >
-                    {item => props => (
-                      <animated.div style={props}>
-                        <ProviderCard provider={item} context={context} />
-                      </animated.div>
-                    )}
-                  </Transition>
+                    {filter.name}
+                    <ChevronDown
+                      color="hsl(174, 47%, 75%)"
+                      className={styles.chevronDown}
+                    />
+                  </OptionButton>
+                ))}
+                {appliedFilters.length !== 0 && (
+                  <button
+                    onClick={handleClearAllFilters}
+                    className={styles.clearAllButton}
+                  >
+                    Clear all filters
+                  </button>
+                )}
+              </div>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'flex-end',
+                  alignItems: 'center',
+                  width: '80%',
+                }}
+              >
+                <div className={styles.iconKey}>
+                  <img
+                    src={AcceptingClientsIcon}
+                    className={styles.acceptingClientsIcon}
+                  />
+                  <span>&mdash;</span>
+                  <span style={{ marginLeft: '7px' }}>
+                    {' '}
+                    Accepting new clients
+                  </span>
+                </div>
+              </div>
+
+              {currentProviders.length !== 0 &&
+                context.userInfo.savedProviders.length !== 0 && (
+                  <div className={styles.providersContainer}>
+                    <Transition
+                      items={currentProviders}
+                      keys={item => item.id}
+                      initial={{
+                        height: 'auto',
+                        transform: 'translateX(-50px)',
+                        opacity: '0',
+                      }}
+                      trail={initialAnimDone ? 0 : 150}
+                      onRest={() => setInitialAnimDone(true)}
+                      from={{
+                        transform: 'translateX(0px)',
+                        opacity: '0',
+                        height: 0,
+                      }}
+                      enter={{
+                        transform: 'translateX(0px)',
+
+                        height: 'auto',
+                        opacity: '1',
+                      }}
+                      leave={{ opacity: 0, height: 0 }}
+                    >
+                      {item => props => (
+                        <animated.div style={props}>
+                          <ProviderCard provider={item} context={context} />
+                        </animated.div>
+                      )}
+                    </Transition>
+                  </div>
+                )}
+
+              {currentProviders.length === 0 && appliedFilters.length === 0 && (
+                <div className={styles.loader}>
+                  <DotLoader
+                    sizeUnit={'px'}
+                    size={50}
+                    color={'hsl(174, 74%, 39%)'}
+                  />
                 </div>
               )}
 
-            {currentProviders.length === 0 && appliedFilters.length === 0 && (
-              <div className={styles.loader}>
-                <DotLoader
-                  sizeUnit={'px'}
-                  size={50}
-                  color={'hsl(174, 74%, 39%)'}
-                />
-              </div>
-            )}
+              {currentProviders.length === 0 && appliedFilters.length !== 0 && (
+                <div className={styles.noProviders}>
+                  <UndrawEmpty primaryColor="hsl(174, 74%, 39%)" />
+                  <p className={styles.noProvidersText}>
+                    No providers found, please try again with new filters
+                  </p>
+                </div>
+              )}
 
-            {currentProviders.length === 0 && appliedFilters.length !== 0 && (
-              <div className={styles.noProviders}>
-                <UndrawEmpty primaryColor="hsl(174, 74%, 39%)" />
-                <p className={styles.noProvidersText}>
-                  No providers found, please try again with new filters
-                </p>
-              </div>
-            )}
+              {currentProviders.length !== 0 && (
+                <div className={styles.paginateAndResultsNumContainer}>
+                  <span
+                    style={{
+                      fontSize: '18px',
+                      fontWeight: '400',
 
-            {currentProviders.length !== 0 && (
-              <div className={styles.paginateAndResultsNumContainer}>
-                <span
-                  style={{
-                    fontSize: '18px',
-                    fontWeight: '400',
-
-                    marginTop: '45px',
-                  }}
-                >
-                  {`${currentProviders.length} of ${
-                    allProviders.length
-                  } results`}
-                </span>
-                <ReactPaginate
-                  previousLabel={'< Back'}
-                  nextLabel={'Next >'}
-                  breakLabel={'...'}
-                  // breakClassName={'break-me'}
-                  pageCount={pageCount}
-                  // marginPagesDisplayed={2}
-                  pageRangeDisplayed={3}
-                  onPageChange={handlePageClick}
-                  containerClassName={styles.pagination}
-                  previousClassName={styles.paginationButton}
-                  nextClassName={styles.paginationButton}
-                  previousLinkClassName={styles.paginationLinkButton}
-                  nextLinkClassName={styles.paginationLinkButton}
-                  pageClassName={styles.pageClassName}
-                  pageLinkClassName={styles.pageLinkClassName}
-                  activeClassName={styles.activeLink}
-                  disabledClassName={styles.disabledClassName}
-                />
-              </div>
-            )}
+                      marginTop: '45px',
+                    }}
+                  >
+                    {`${currentProviders.length} of ${
+                      allProviders.length
+                    } results`}
+                  </span>
+                  <ReactPaginate
+                    previousLabel={'< Back'}
+                    nextLabel={'Next >'}
+                    breakLabel={'...'}
+                    // breakClassName={'break-me'}
+                    pageCount={pageCount}
+                    // marginPagesDisplayed={2}
+                    pageRangeDisplayed={3}
+                    onPageChange={handlePageClick}
+                    containerClassName={styles.pagination}
+                    previousClassName={styles.paginationButton}
+                    nextClassName={styles.paginationButton}
+                    previousLinkClassName={styles.paginationLinkButton}
+                    nextLinkClassName={styles.paginationLinkButton}
+                    pageClassName={styles.pageClassName}
+                    pageLinkClassName={styles.pageLinkClassName}
+                    activeClassName={styles.activeLink}
+                    disabledClassName={styles.disabledClassName}
+                  />
+                </div>
+              )}
+            </div>
           </div>
-        </div>
+        )
       )}
     </UserConsumer>
   )

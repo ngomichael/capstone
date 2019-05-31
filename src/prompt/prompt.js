@@ -6,7 +6,7 @@ import { OnboardingHeader } from '../common/onboarding-header'
 import { Button, TYPES, SIZES } from '../common/button'
 import { BackButton } from '../common/back-button'
 import firebase from '../firebase/firebase'
-import { UserProvider, UserConsumer } from '../context/user-context'
+import { UserConsumer } from '../context/user-context'
 
 export const Prompt = ({
   step,

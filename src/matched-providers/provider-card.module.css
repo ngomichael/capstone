@@ -17,7 +17,8 @@
   box-shadow: var(--bs-3);
   padding: var(--s-4) var(--s-4) var(--s-4) var(--s-4);
   /* margin: var(--s-0) var(--s-0) var(--s-0) var(--s-0); */
-  transition: box-shadow 200ms ease, border-left 200ms ease;
+  transition: box-shadow 200ms ease, border-left 200ms ease,
+    transform 200ms ease;
   /* animation: slideInFromLeft 900ms ease; */
 }
 
