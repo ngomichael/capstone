@@ -263,6 +263,15 @@ class Firebase {
       })
   }
 
+  unfavoriteProvider(providerId) {
+    return this.db
+      .collection('users_test')
+      .doc(this.auth.currentUser.uid)
+      .update({
+        savedProviders: app.firestore.FieldValue.arrayRemove(providerId),
+      })
+  }
+
   getAllProviders() {
     return this.db.collection('providers_test2').get()
   }

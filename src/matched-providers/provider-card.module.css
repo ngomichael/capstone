@@ -112,6 +112,10 @@
   cursor: pointer;
 }
 
+.contactActionActive {
+  composes: contactAction;
+}
+
 .nameAndTagContainer {
   display: flex;
   align-items: center;
