@@ -9,12 +9,13 @@ import { Heart } from 'react-feather'
 import firebase from '../firebase/firebase'
 import AcceptingClientsIcon from '../icons/accepting-clients.png'
 
-export const ProviderInfo = ({ providerId }) => {
+export const ProviderInfo = ({ providerId, location }) => {
   useEffect(() => {
     getProviderInfo()
   }, {})
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [provider, setProvider] = useState({})
+  const [isSaved, setIsSaved] = useState(location.state.isSaved)
 
   async function getProviderInfo() {
     const snapshot = await firebase.getProviderInfo(providerId)
@@ -193,8 +194,23 @@ export const ProviderInfo = ({ providerId }) => {
             </div>
           </div>
           <div className={styles.footer}>
-            <div className={styles.leftSideActions}>
-              <Heart size={30} className={styles.heartIcon} />
+            <div
+              className={styles.leftSideActions}
+              onClick={() => {
+                isSaved
+                  ? firebase.unfavoriteProvider(providerId)
+                  : firebase.favoriteProvider(providerId)
+
+                setIsSaved(!isSaved)
+              }}
+            >
+              <Heart
+                size={30}
+                style={{
+                  fill: isSaved && 'hsl(174, 74%, 39%)',
+                }}
+                className={styles.heartIcon}
+              />
               <span className={styles.saveText}>Save Provider</span>
             </div>
             <Button

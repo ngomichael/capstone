@@ -70,7 +70,11 @@ export class ProviderCard extends React.Component {
                   <ExternalLink />
                 </a>
               </div>
-              <Link to={provider.id} className={styles.link}>
+              <Link
+                to={provider.id}
+                state={{ isSaved: this.state.isSaved }}
+                className={styles.link}
+              >
                 <div
                   className={styles.card}
                   style={{ animationDelay: `${delay}ms` }}
