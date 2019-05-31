@@ -13,7 +13,13 @@ import firebase from '../firebase/firebase'
 import { AutocompleteField } from './autocomplete-field'
 import { questionnaireQuestions } from '../constants/questions'
 
-const returnCorrectQuestionFormat = (question, setFieldValue, currPageNum) => {
+const returnCorrectQuestionFormat = (
+  question,
+  setFieldValue,
+  currPageNum,
+  touched,
+  errors
+) => {
   const questionType = question.questionType
   if (questionType === 'autocomplete') {
     return (
@@ -33,6 +39,8 @@ const returnCorrectQuestionFormat = (question, setFieldValue, currPageNum) => {
         type={question.type}
         isLongInput={question.isLongInput}
         key={question.question}
+        touched={touched}
+        errors={errors}
       />
     )
   } else if (questionType === 'checkbox-squares') {
@@ -54,7 +62,6 @@ const returnCorrectQuestionFormat = (question, setFieldValue, currPageNum) => {
                       setFieldValue(
                         new Map([...field.value.set(term.value, checked)])
                       )
-                      // console.log(field.value)
                     }}
                   />
                 )
@@ -103,7 +110,7 @@ const returnCorrectQuestionFormat = (question, setFieldValue, currPageNum) => {
   }
 }
 
-const renderQuestions = (setFieldValue, currPageNum) => {
+const renderQuestions = (setFieldValue, currPageNum, touched, errors) => {
   return questionnaireQuestions.map((question, index) => {
     return currPageNum === question.pageNum ? (
       <div className={styles.questionsContainer} key={index}>
@@ -113,7 +120,13 @@ const renderQuestions = (setFieldValue, currPageNum) => {
         </div>
         <div>
           <p className={styles.question}>{question.question}</p>
-          {returnCorrectQuestionFormat(question, setFieldValue, currPageNum)}
+          {returnCorrectQuestionFormat(
+            question,
+            setFieldValue,
+            currPageNum,
+            touched,
+            errors
+          )}
         </div>
       </div>
     ) : null
@@ -179,9 +192,9 @@ export const Questionnaire = () => {
               navigate('/onboardingTracker/questionnaireCompleted')
             }}
           >
-            {({ isSubmitting, setFieldValue, values }) => (
+            {({ isSubmitting, setFieldValue, values, errors, touched }) => (
               <Form>
-                {renderQuestions(setFieldValue, currPageNum)}
+                {renderQuestions(setFieldValue, currPageNum, touched, errors)}
                 {currPageNum === 2 && (
                   <div className={styles.submitButton}>
                     <Button
