@@ -23,8 +23,8 @@
 .logo {
   width: 65px;
   height: 65px;
-  position: absolute;
-  left: 145px;
+  /* position: absolute;
+  left: 145px; */
 }
 
 .productName {
@@ -32,8 +32,8 @@
   font-weight: var(--fw-5);
   font-size: var(--fs-6);
   letter-spacing: 0.5px;
-  position: absolute;
-  left: 216px;
+  /* position: absolute;
+  left: 216px; */
 }
 
 .navContainer {

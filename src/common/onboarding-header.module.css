@@ -6,7 +6,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: var(--white);
-  margin-left: var(--s-9);
+  /* margin-left: var(--s-9); */
   width: 100%;
   max-width: var(--mw);
   height: 90px;
@@ -21,7 +21,7 @@
   margin: var(--s-0) var(--s-0) var(--s-0) var(--s-5);
 }
 
-.logo {
+/* .logo {
   width: 65px;
   height: 65px;
   left: 145px;
@@ -34,6 +34,22 @@
   font-size: var(--fs-6);
   letter-spacing: 0.5px;
   margin-left: var(--s-9);
+} */
+
+.logo {
+  width: 65px;
+  height: 65px;
+  /* position: absolute;
+  left: 145px; */
+}
+
+.productName {
+  font-family: 'Lato', sans-serif;
+  font-weight: var(--fw-5);
+  font-size: var(--fs-6);
+  letter-spacing: 0.5px;
+  /* position: absolute;
+  left: 216px; */
 }
 
 .productName:hover {

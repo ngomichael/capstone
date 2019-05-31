@@ -61,6 +61,11 @@ li {
   height: 100px;
 }
 
+.onboardingContainer {
+  display: flex;
+  justify-content: center;
+}
+
 @keyframes example {
   0% {
     background-color: rgb(204, 125, 204);

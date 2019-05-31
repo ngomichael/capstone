@@ -45,8 +45,10 @@
   position: absolute;
   display: flex;
   justify-content: space-around;
-  top: 55%;
+  /* top: 55%; */
+  top: 400px;
   width: 100%;
+  max-width: 1400px;
 }
 
 .pearImage {
