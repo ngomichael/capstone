@@ -115,8 +115,6 @@ export const MatchedProviders = () => {
   return (
     <UserConsumer>
       {context => (
-        // console.log(context),
-        // console.log(context.userInfo.savedProviders),
         <div className={styles.container}>
           <div className={styles.maxWidthContainer}>
             {/* {showGrayBackground && (
@@ -130,13 +128,6 @@ export const MatchedProviders = () => {
         )} */}
             <div className={styles.titleAndSearchContainer}>
               <h1>Providers for you</h1>
-              <button
-                onClick={() =>
-                  firebase.favoriteProvider('Ud0dc47SE7gIdn2Qrqwg')
-                }
-              >
-                PRESS ME
-              </button>
             </div>
 
             <div className={styles.chipsContainer}>
