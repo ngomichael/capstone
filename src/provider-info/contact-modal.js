@@ -4,10 +4,24 @@ import styles from './contact-modal.module.css'
 import { Button, TYPES, SIZES } from '../common/button'
 import { X } from 'react-feather'
 
-export const ContactModal = ({ handleClose, name, email, website }) => {
+export const ContactModal = ({
+  handleClose,
+  name,
+  email,
+  website,
+  setIsModalOpen,
+  isModalOpen,
+}) => {
+  console.log(isModalOpen)
   return (
-    <div className={styles.container}>
-      <div className={styles.modal}>
+    <div className={isModalOpen ? styles.container : styles.containerHidden}>
+      <div
+        className={
+          isModalOpen ? styles.fadedBackground : styles.backgroundHidden
+        }
+        onClick={() => setIsModalOpen(false)}
+      />
+      <div className={isModalOpen ? styles.modal : styles.modalHidden}>
         <X className={styles.closeButton} onClick={handleClose} />
         <div className={styles.actionItems}>
           <p className={styles.header}>

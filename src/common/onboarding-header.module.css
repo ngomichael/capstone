@@ -1,7 +1,7 @@
 @import '../common/variables.css';
 
 .container {
-  /* position: sticky; */
+  position: sticky;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10,6 +10,7 @@
   width: 100%;
   max-width: var(--mw);
   height: 90px;
+  top: 0;
   z-index: 2;
 }
 
@@ -20,21 +21,6 @@
   color: var(--black);
   margin: var(--s-0) var(--s-0) var(--s-0) var(--s-5);
 }
-
-/* .logo {
-  width: 65px;
-  height: 65px;
-  left: 145px;
-  position: absolute;
-}
-
-.productName {
-  font-family: 'Lato', sans-serif;
-  font-weight: var(--fw-5);
-  font-size: var(--fs-6);
-  letter-spacing: 0.5px;
-  margin-left: var(--s-9);
-} */
 
 .logo {
   width: 65px;

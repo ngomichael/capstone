@@ -1,16 +1,52 @@
 @import '../common/variables.css';
 
 .container {
-  /* position: absolute; */
   position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: var(--faded-black);
   z-index: 4;
   top: 0px;
+}
+
+.containerHidden {
+  display: none;
+}
+
+.fadedBackground {
+  width: 100%;
+  height: 100%;
+  background-color: var(--faded-black);
+  opacity: 0;
+  animation: fadeIn 200ms ease 50ms forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.backgroundHidden {
+  composes: fadedBackground;
+  opacity: 1;
+  animation: fadeOut 200ms ease 50ms forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
 }
 
 .modal {
@@ -28,8 +64,40 @@
   max-width: 775px;
   transform: translate(-50%, -50%);
   background-color: var(--white);
+  opacity: 0;
   padding: var(--s-8) var(--s-8) var(--s-9) var(--s-8);
+  animation: slideDown 200ms ease 50ms forwards;
 }
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -45%);
+  }
+}
+
+/* .modalHidden {
+  composes: modal;
+  
+  animation: slideUp 5000ms ease 50ms forwards;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate(-50%, -55%);
+  }
+} */
 
 .header {
   font-size: 20px;
