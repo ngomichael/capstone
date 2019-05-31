@@ -199,7 +199,7 @@ export const MatchedProviders = () => {
           </div>
         </div>
 
-        {currentProviders.length !== 0 ? (
+        {currentProviders.length !== 0 && (
           <div className={styles.providersContainer}>
             <Transition
               items={currentProviders}
@@ -231,7 +231,9 @@ export const MatchedProviders = () => {
               )}
             </Transition>
           </div>
-        ) : (
+        )}
+
+        {currentProviders.length === 0 && appliedFilters.length === 0 && (
           <div className={styles.loader}>
             <ClimbingBoxLoader
               sizeUnit={'px'}

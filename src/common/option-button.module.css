@@ -3,6 +3,7 @@
 .container {
   position: relative;
   display: block;
+  margin-bottom: var(--s-2);
 }
 
 .checkboxContainer {

@@ -31,7 +31,6 @@ export const ProviderInfo = ({ providerId }) => {
 
   return (
     <div className={styles.container}>
-      {/* {isModalOpen && ( */}
       <ContactModal
         website={provider.website}
         email={provider.email}
@@ -40,7 +39,6 @@ export const ProviderInfo = ({ providerId }) => {
         setIsModalOpen={setIsModalOpen}
         isModalOpen={isModalOpen}
       />
-      {/* )} */}
 
       {Object.entries(provider).length !== 0 && (
         <div className={styles.maxWidthContainer}>
