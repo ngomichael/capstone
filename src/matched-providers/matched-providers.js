@@ -7,7 +7,7 @@ import { OptionButton } from '../common/option-button'
 import { Chip } from '../common/chip'
 import { ChevronDown, Search } from 'react-feather'
 import ReactPaginate from 'react-paginate'
-import { ClimbingBoxLoader } from 'react-spinners'
+import { DotLoader } from 'react-spinners'
 import AcceptingClientsIcon from '../icons/accepting-clients.png'
 import firebase from '../firebase/firebase'
 import { filters } from '../constants/filters'
@@ -26,6 +26,8 @@ export const MatchedProviders = () => {
   useEffect(() => {
     getProviders()
     window.scrollTo(0, 0)
+    firebase.favoriteProvider('6NyJltgvme8SMdKAfGWf')
+    // firebase.favoriteProvider('GoROfBqoedoCsNh10lgT')
   }, [])
 
   // handles updating allCheckedItems with what values are currently checked
@@ -235,11 +237,7 @@ export const MatchedProviders = () => {
 
         {currentProviders.length === 0 && appliedFilters.length === 0 && (
           <div className={styles.loader}>
-            <ClimbingBoxLoader
-              sizeUnit={'px'}
-              size={25}
-              color={'hsl(174, 74%, 39%)'}
-            />
+            <DotLoader sizeUnit={'px'} size={50} color={'hsl(174, 74%, 39%)'} />
           </div>
         )}
 

@@ -37,6 +37,7 @@ class App extends Component {
       }
     })
 
+    // listens for signing in and up or logging out
     firebase.auth.onAuthStateChanged(async user => {
       if (user) {
         const userInfo = await firebase.getSignedInUserInfo(user.uid)
@@ -46,11 +47,11 @@ class App extends Component {
           userInfo: userInfo.docs.map(doc => doc.data())[0],
         })
 
+        // listens to the current user's document for any changes and updates
         firebase.db
           .collection('users_test')
           .doc(user.uid)
           .onSnapshot(doc => {
-            // console.log('Current data ', doc.data())
             this.setState({
               userInfo: doc.data(),
             })

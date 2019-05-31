@@ -258,12 +258,9 @@ class Firebase {
     return this.db
       .collection('users_test')
       .doc(this.auth.currentUser.uid)
-      .set(
-        {
-          savedProviders: [providerId],
-        },
-        { merge: true }
-      )
+      .update({
+        savedProviders: app.firestore.FieldValue.arrayUnion(providerId),
+      })
   }
 
   getAllProviders() {
