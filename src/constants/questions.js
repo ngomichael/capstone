@@ -1,7 +1,7 @@
 export const questionnaireQuestions = [
   {
     questionType: 'input',
-    question: "What's the city or zipcode you're seeking care in?*",
+    question: "What's the city or zipcode you're seeking care in? *",
     supplementaryText:
       'Getting to a provider can be a big barrier in receiving care. This information helps us find providers close to you.',
     name: 'zip_code',

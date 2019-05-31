@@ -201,12 +201,11 @@ export const Questionnaire = () => {
                       type="submit"
                       buttonType={TYPES.PRIMARY}
                       buttonSize={SIZES.MEDIUM}
-                      disabled={
-                        values.zip_code.length === 0 ? 'disabled' : false
-                      }
+                      disabled={values.zip_code.length < 5 ? 'disabled' : false}
                     >
                       Finish
                     </Button>
+
                     <Link to={`/${ONBOARDING_ROUTES.results}`}>
                       <Button
                         type="text"

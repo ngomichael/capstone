@@ -12,7 +12,6 @@ export const ContactModal = ({
   setIsModalOpen,
   isModalOpen,
 }) => {
-  console.log(isModalOpen)
   return (
     <div className={isModalOpen ? styles.container : styles.containerHidden}>
       <div

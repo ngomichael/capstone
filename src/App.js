@@ -25,35 +25,36 @@ class App extends Component {
       signedInUser: {},
       userInfo: {},
       userId: '',
-      updateUser: updatedUser => {
-        this.setState({
-          userInfo: updatedUser,
-        })
-      },
     }
-
-    this.getSignedInUserInfo = this.getSignedInUserInfo.bind(this)
   }
 
   async componentDidMount() {
     await firebase.isInitialized().then(async val => {
       if (val) {
-        const userInfo = await firebase.getSignedInUserInfo(val.uid)
         this.setState({
-          // firebaseInitialized: val,
-          signedInUser: val,
-          userId: val.uid,
-          userInfo,
+          firebaseInitialized: true,
         })
       }
     })
-    // firebase.getSignedInUser()
-  }
 
-  async getSignedInUserInfo() {
-    const snapshot = await firebase.getSignedInUserInfo(this.state.userId)
-    this.setState({
-      userInfo: snapshot.docs.map(doc => doc.data())[0],
+    firebase.auth.onAuthStateChanged(async user => {
+      const userInfo = await firebase.getSignedInUserInfo(user.uid)
+
+      if (user) {
+        this.setState({
+          signedInUser: user,
+          userId: user.uid,
+          userInfo: userInfo.docs.map(doc => doc.data())[0],
+        })
+      } else {
+        console.log('No user is signed in')
+
+        this.setState({
+          signedInUser: null,
+          uid: null,
+          userInfo: null,
+        })
+      }
     })
   }
 

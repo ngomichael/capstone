@@ -242,7 +242,7 @@ class Firebase {
   }
 
   getProviderInfo(providerId) {
-    console.log(providerId)
+    // console.log(providerId)
     const providersRef = this.db.collection('providers_test2')
     let ref = providersRef.where('id', '==', providerId)
     return ref.get()
@@ -254,7 +254,17 @@ class Firebase {
     return ref.get()
   }
 
-  favoriteProvider() {}
+  favoriteProvider(providerId) {
+    return this.db
+      .collection('users_test')
+      .doc(this.auth.currentUser.uid)
+      .set(
+        {
+          savedProviders: [providerId],
+        },
+        { merge: true }
+      )
+  }
 
   getAllProviders() {
     return this.db.collection('providers_test2').get()
@@ -292,24 +302,6 @@ class Firebase {
     return new Promise(resolve => {
       this.auth.onAuthStateChanged(resolve)
     })
-  }
-
-  getSignedInUser() {
-    this.auth.onAuthStateChanged(user => {
-      if (user) {
-        console.log(user)
-        // console.log(this.auth.currentUser)
-        // this.user = user
-        // console.log(this.user)
-        // return this.user
-        return user
-      } else {
-        console.log('No user is signed in')
-        console.log(this.auth.currentUser)
-        // return this.auth.currentUser
-      }
-    })
-    // return this.user
   }
 
   getUserProfile() {
