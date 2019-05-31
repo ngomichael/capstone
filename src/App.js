@@ -38,20 +38,29 @@ class App extends Component {
     })
 
     firebase.auth.onAuthStateChanged(async user => {
-      const userInfo = await firebase.getSignedInUserInfo(user.uid)
-
       if (user) {
+        const userInfo = await firebase.getSignedInUserInfo(user.uid)
         this.setState({
           signedInUser: user,
           userId: user.uid,
           userInfo: userInfo.docs.map(doc => doc.data())[0],
         })
+
+        firebase.db
+          .collection('users_test')
+          .doc(user.uid)
+          .onSnapshot(doc => {
+            // console.log('Current data ', doc.data())
+            this.setState({
+              userInfo: doc.data(),
+            })
+          })
       } else {
         console.log('No user is signed in')
 
         this.setState({
           signedInUser: null,
-          uid: null,
+          userId: null,
           userInfo: null,
         })
       }

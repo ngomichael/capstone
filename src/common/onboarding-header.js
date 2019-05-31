@@ -36,8 +36,6 @@ export const OnboardingHeader = ({ location }) => {
     <UserConsumer>
       {context => (
         <header className={styles.container}>
-          {console.log(context)}
-          {/* <p>{context}</p> */}
           <Link to="/" className={styles.logoAndNameContainer}>
             <img src={PearCareIcon} className={styles.logo} />
             <p className={styles.productName}>PearCare</p>
