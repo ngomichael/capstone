@@ -9,7 +9,7 @@ const navLinksText = [
     text: 'Dashboard',
     path: ROUTES.dashboard,
   },
-  { text: 'Tracker', path: ROUTES.signIn },
+  { text: 'Tracker', path: ROUTES.tracker },
   { text: 'Sign out', path: ROUTES.signIn },
 ]
 

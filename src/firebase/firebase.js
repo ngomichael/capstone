@@ -249,6 +249,16 @@ class Firebase {
     return ref.get()
   }
 
+  async getAllSavedProviders(providerIds) {
+    let providers = []
+    providerIds.forEach(async id => {
+      const snapshot = await this.getProviderInfo(id)
+      const provider = snapshot.docs.map(doc => doc.data())[0]
+      providers.push(provider)
+    })
+    console.log(providers)
+  }
+
   getSignedInUserInfo(userId) {
     const usersRef = this.db.collection('users_test')
     let ref = usersRef.where('id', '==', userId)
@@ -272,6 +282,22 @@ class Firebase {
         savedProviders: app.firestore.FieldValue.arrayRemove(providerId),
       })
   }
+
+  // getAllSavedProviders(providerIds) {
+
+  //   const providersRef = this.db.collection('providers_test2')
+  //   let ref = providersRef
+
+  //   formattedTerms.forEach(val => {
+  //     ref = ref.where(`termsObject.${val}`, '==', true)
+  //   })
+  //   const query = ref.get()
+  //   return query
+
+  //   providerIds.forEach(providerId => {
+
+  //   })
+  // }
 
   getAllProviders() {
     return this.db.collection('providers_test2').get()

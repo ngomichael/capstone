@@ -12,6 +12,7 @@ import { MatchedProviders } from './matched-providers/matched-providers'
 import { ProviderInfo } from './provider-info/provider-info'
 import { Prompt } from './prompt/prompt'
 import { Dashboard } from './dashboard/dashboard'
+import { Tracker } from './dashboard/tracker'
 import { OnboardingHeader } from './common/onboarding-header'
 import { DashboardHeader } from './dashboard/dashboard-header'
 import { UndrawHire, UndrawProfile } from 'react-undraw'
@@ -45,6 +46,7 @@ class App extends Component {
     firebase.auth.onAuthStateChanged(async user => {
       if (user) {
         const userInfo = await firebase.getSignedInUserInfo(user.uid)
+
         this.setState({
           signedInUser: user,
           userId: user.uid,
@@ -90,6 +92,10 @@ class App extends Component {
           />
           <MatchedProviders path={ONBOARDING_ROUTES.results} />
           <MatchedProviders path={ROUTES.results} />
+          <Tracker
+            path={ROUTES.tracker}
+            savedProviderIds={this.state.userInfo.savedProviders}
+          />
           <ProviderInfo
             path={ONBOARDING_ROUTES.providerInfo}
             prevPath={ONBOARDING_ROUTES.results}
@@ -118,7 +124,7 @@ class App extends Component {
             step={1}
             skipText="Don't have time right now?"
             skipText2="Skip to a list of providers."
-            skipTextPath={`/${ONBOARDING_ROUTES.results}`}
+            skipTextPath={`${ONBOARDING_ROUTES.results}`}
           />
 
           <Prompt
@@ -139,7 +145,7 @@ class App extends Component {
             step={2}
             skipText="Want to change your answers?"
             skipText2="Go back to the questionnaire."
-            skipTextPath={`/${ONBOARDING_ROUTES.questionnaire}`}
+            skipTextPath={`${ONBOARDING_ROUTES.questionnaire}`}
           />
 
           <SignUp path={ROUTES.signUp} />

@@ -6,6 +6,7 @@ export const ROUTES = {
   results: '/results',
   providerInfo: '/dashboard/:providerId',
   dashboardHeader: 'dashboard/*',
+  tracker: '/dashboard/tracker',
 }
 
 export const ONBOARDING_ROUTES = {
