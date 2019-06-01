@@ -11,6 +11,7 @@ import { ProviderQuestionnaire } from './questionnaire/provider-questionnaire'
 import { MatchedProviders } from './matched-providers/matched-providers'
 import { ProviderInfo } from './provider-info/provider-info'
 import { Prompt } from './prompt/prompt'
+import { Dashboard } from './dashboard/dashboard'
 import { OnboardingHeader } from './common/onboarding-header'
 import { UndrawHire, UndrawProfile } from 'react-undraw'
 import firebase from './firebase/firebase'
@@ -87,6 +88,7 @@ class App extends Component {
           />
           <MatchedProviders path={ONBOARDING_ROUTES.results} />
           <ProviderInfo path={ONBOARDING_ROUTES.providerInfo} />
+          <Dashboard path={ROUTES.dashboard} />
 
           <Prompt
             path={ONBOARDING_ROUTES.getStarted}

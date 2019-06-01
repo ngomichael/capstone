@@ -2,6 +2,7 @@ export const ROUTES = {
   home: '/',
   signIn: '/signin',
   signUp: '/signup',
+  dashboard: '/dashboard',
 }
 
 export const ONBOARDING_ROUTES = {
