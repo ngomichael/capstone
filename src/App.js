@@ -62,9 +62,12 @@ class App extends Component {
         console.log('No user is signed in')
 
         this.setState({
-          signedInUser: null,
-          userId: null,
-          userInfo: null,
+          firebaseInitialized: false,
+          signedInUser: {},
+          userInfo: {
+            savedProviders: [],
+          },
+          userId: '',
         })
       }
     })

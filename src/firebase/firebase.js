@@ -48,6 +48,7 @@ class Firebase {
         email: email,
         password: password,
         questionnaire_finished: false,
+        savedProviders: [],
         id: this.auth.currentUser.uid,
       })
 

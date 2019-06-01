@@ -209,40 +209,39 @@ export const MatchedProviders = () => {
                 </div>
               </div>
 
-              {currentProviders.length !== 0 &&
-                context.userInfo.savedProviders.length !== 0 && (
-                  <div className={styles.providersContainer}>
-                    <Transition
-                      items={currentProviders}
-                      keys={item => item.id}
-                      initial={{
-                        height: 'auto',
-                        transform: 'translateX(-50px)',
-                        opacity: '0',
-                      }}
-                      trail={initialAnimDone ? 0 : 150}
-                      onRest={() => setInitialAnimDone(true)}
-                      from={{
-                        transform: 'translateX(0px)',
-                        opacity: '0',
-                        height: 0,
-                      }}
-                      enter={{
-                        transform: 'translateX(0px)',
+              {currentProviders.length !== 0 && (
+                <div className={styles.providersContainer}>
+                  <Transition
+                    items={currentProviders}
+                    keys={item => item.id}
+                    initial={{
+                      height: 'auto',
+                      transform: 'translateX(-50px)',
+                      opacity: '0',
+                    }}
+                    trail={initialAnimDone ? 0 : 150}
+                    onRest={() => setInitialAnimDone(true)}
+                    from={{
+                      transform: 'translateX(0px)',
+                      opacity: '0',
+                      height: 0,
+                    }}
+                    enter={{
+                      transform: 'translateX(0px)',
 
-                        height: 'auto',
-                        opacity: '1',
-                      }}
-                      leave={{ opacity: 0, height: 0 }}
-                    >
-                      {item => props => (
-                        <animated.div style={props}>
-                          <ProviderCard provider={item} context={context} />
-                        </animated.div>
-                      )}
-                    </Transition>
-                  </div>
-                )}
+                      height: 'auto',
+                      opacity: '1',
+                    }}
+                    leave={{ opacity: 0, height: 0 }}
+                  >
+                    {item => props => (
+                      <animated.div style={props}>
+                        <ProviderCard provider={item} context={context} />
+                      </animated.div>
+                    )}
+                  </Transition>
+                </div>
+              )}
 
               {currentProviders.length === 0 && appliedFilters.length === 0 && (
                 <div className={styles.loader}>
