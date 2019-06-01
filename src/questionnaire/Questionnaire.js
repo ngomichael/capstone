@@ -224,7 +224,7 @@ export const Questionnaire = () => {
                             Finish
                           </Button>
 
-                          <Link to={`/${ONBOARDING_ROUTES.results}`}>
+                          <Link to={ONBOARDING_ROUTES.results}>
                             <Button
                               type="text"
                               buttonType={TYPES.SECONDARY}
@@ -251,7 +251,7 @@ export const Questionnaire = () => {
                       >
                         Next
                       </Button>
-                      <Link to={`/${ONBOARDING_ROUTES.results}`}>
+                      <Link to={ONBOARDING_ROUTES.results}>
                         <Button
                           type="text"
                           buttonType={TYPES.SECONDARY}

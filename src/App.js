@@ -13,6 +13,7 @@ import { ProviderInfo } from './provider-info/provider-info'
 import { Prompt } from './prompt/prompt'
 import { Dashboard } from './dashboard/dashboard'
 import { OnboardingHeader } from './common/onboarding-header'
+import { DashboardHeader } from './dashboard/dashboard-header'
 import { UndrawHire, UndrawProfile } from 'react-undraw'
 import firebase from './firebase/firebase'
 import { UserProvider } from './context/user-context'
@@ -79,6 +80,7 @@ class App extends Component {
       <UserProvider value={this.state}>
         <Router className={styles.onboardingContainer}>
           <OnboardingHeader path={ONBOARDING_ROUTES.onboardingHeader} />
+          <DashboardHeader path={ROUTES.dashboardHeader} />
         </Router>
         <Router>
           <Home path={ROUTES.home} />
@@ -87,7 +89,15 @@ class App extends Component {
             path={ONBOARDING_ROUTES.providerQuestionnaire}
           />
           <MatchedProviders path={ONBOARDING_ROUTES.results} />
-          <ProviderInfo path={ONBOARDING_ROUTES.providerInfo} />
+          <MatchedProviders path={ROUTES.results} />
+          <ProviderInfo
+            path={ONBOARDING_ROUTES.providerInfo}
+            prevPath={ONBOARDING_ROUTES.results}
+          />
+          <ProviderInfo
+            path={ROUTES.providerInfo}
+            prevPath={ROUTES.dashboard}
+          />
           <Dashboard path={ROUTES.dashboard} />
 
           <Prompt

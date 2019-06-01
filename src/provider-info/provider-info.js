@@ -9,7 +9,7 @@ import { Heart } from 'react-feather'
 import firebase from '../firebase/firebase'
 import AcceptingClientsIcon from '../icons/accepting-clients.png'
 
-export const ProviderInfo = ({ providerId, location }) => {
+export const ProviderInfo = ({ providerId, location, prevPath }) => {
   useEffect(() => {
     getProviderInfo()
   }, {})
@@ -44,7 +44,7 @@ export const ProviderInfo = ({ providerId, location }) => {
       {Object.entries(provider).length !== 0 && (
         <div className={styles.maxWidthContainer}>
           <div className={styles.providerOverviewBack}>
-            <BackButton path={`/${ONBOARDING_ROUTES.results}`} />
+            <BackButton path={prevPath} />
             <div className={styles.providerOverview}>
               <div className={styles.basicInfo}>
                 <img src={provider.photo} className={styles.providerPhoto} />
