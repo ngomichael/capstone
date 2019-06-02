@@ -3,7 +3,6 @@
 .container {
   /* position: absolute; */
   position: fixed;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,6 +10,7 @@
   height: 100%;
   background-color: var(--faded-black);
   z-index: 4;
+  top: 0px;
 }
 
 .modal {
@@ -20,18 +20,21 @@
   justify-content: center;
   align-items: center;
   position: fixed;
+  line-height: 1.75;
   top: 50%;
   left: 50%;
-  min-width: 490px;
-  max-width: 675px;
+  min-width: 500px;
+  border-radius: var(--br-1);
+  max-width: 775px;
   transform: translate(-50%, -50%);
   background-color: var(--white);
-  padding: var(--s-7);
+  padding: var(--s-8) var(--s-8) var(--s-9) var(--s-8);
 }
 
 .header {
-  font-size: var(--fs-4);
+  font-size: 20px;
   font-weight: var(--fw-5);
+  color: var(--primary);
 }
 
 .subheader {
@@ -51,11 +54,11 @@
 .contactButtons {
   position: absolute;
   right: 40px;
-  bottom: 20px;
+  bottom: 50px;
 }
 
 .websiteLink {
-  margin: var(--s-1);
+  margin: var(--s-1) var(--s-5) var(--s-1) var(--s-1);
 }
 
 .closeButton {

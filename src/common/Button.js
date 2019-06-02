@@ -17,6 +17,11 @@ export const SIZES = {
   LARGE: 'large',
 }
 
+export const STATUSES = {
+  REGULAR: 'regular',
+  DISABLED: 'disabled',
+}
+
 export const Button = ({
   type,
   buttonType,
@@ -26,9 +31,10 @@ export const Button = ({
   disabled = false,
 }) => {
   const btnClass = classNames(
-    styles.button,
+    // styles.button,
     styles[buttonType || TYPES.PRIMARY],
-    styles[buttonSize || SIZES.MEDIUM]
+    styles[buttonSize || SIZES.MEDIUM],
+    styles[disabled || 'button']
   )
   return (
     <button

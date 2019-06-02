@@ -1,24 +1,75 @@
 @import '../common/variables.css';
 
-.button {
+.container {
+  position: relative;
+  display: block;
+}
+
+.checkboxContainer {
+  position: relative;
+  z-index: 2;
+  animation: slideDown 250ms ease forwards;
+}
+
+.checkboxContainerHidden {
+  composes: checkboxContainer;
+  animation: slideUp 250ms ease forwards;
+}
+
+@keyframes slideUp {
+  100% {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0.5;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(5px);
+  }
+}
+
+.checkboxes {
+  position: absolute;
+}
+
+.filterButton {
   border: 2px solid #a3ded8;
   border-radius: 4px;
+  box-shadow: var(--bs-1);
   padding: var(--s-2) var(--s-4) var(--s-2) var(--s-4);
   margin: var(--s-1) var(--s-1) var(--s-2) var(--s-1);
   font-size: var(--fs-3);
   color: var(--primary);
   background-color: var(--white);
   letter-spacing: 0.05em;
+  outline: none;
   transition: background-color 200ms ease;
 }
 
-.button:hover {
+.filterButton:hover {
   cursor: pointer;
-  background-color: var(--primary-light);
+  border: 2px solid var(--primary);
+  background-color: var(--primary);
   color: var(--white);
 }
 
-.activeButton {
+.activeFilterButton {
+  composes: filterButton;
+  border: 2px solid var(--primary);
   background-color: var(--primary);
   color: var(--white);
+}
+
+.filterButtonText {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }

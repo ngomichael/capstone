@@ -1,139 +1,294 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './matched-providers.module.css'
 import { ProviderCard } from './provider-card'
-import { HomeHeader } from '../common/home-header'
+import { Transition, animated } from 'react-spring/renderprops'
+import { UndrawEmpty } from 'react-undraw'
 import { OptionButton } from '../common/option-button'
-import Therapist1 from '../images/Therapist1.jpeg'
-import Therapist2 from '../images/Therapist2.jpeg'
-import JenAdamsPhoto from '../images/Jen+Adams.jpeg'
-import { Button, TYPES, SIZES } from '../common/button'
-
-const providers = [
-  {
-    name: 'Stacy Adams',
-    photo: JenAdamsPhoto,
-    credentials: 'ARNP, PMHNP-BC',
-    isAcceptingClients: true,
-    phone: '(206) 382 1928',
-    email: 'stacyadams@mail.com',
-    website: 'https://shipshapementalhealth.com',
-    address: '87384 NE 475th St, Seattle, WA 98472',
-    biography:
-      "I am a clinician located in the heart of Ballard. I grew up in rural Ohio as a shy and awkward kid, filling time with reading, gaming, and spending time with my family's golden retrievers. I attended The Ohio State University for both my undergraduate and graduate education. I moved to Seattle after graduate school where I met my wife Olivia out of a genuine love for the Pacific Northwest. These days, I can still be found reading (mostly Sci-Fi) and gaming (Board, Card, Computer, Console). I’ve also taken up kayaking around the city with my foldable kayak, and I find biking to be my preferred method of transportation.",
-    specialties:
-      "Providers often have different areas of expertise. Having a provider who has experience with what you're struggling with could enhance the quality of your care.",
-    approach:
-      'During our sessions we will work together to understand what is working in your life through an evaluation and proceed to therapy when desired. Additionally, my approach also includes medication management so if that is a better solution to your needs, we will go that route.',
-  },
-  {
-    name: 'Regina Aiko',
-    photo: Therapist1,
-    credentials: 'LICSW',
-    isAcceptingClients: true,
-    phone: '(206) 382 1928',
-    email: 'stacyadams@mail.com',
-    website: 'https://shipshapementalhealth.com',
-    address: '87384 NE 475th St, Seattle, WA 98472',
-    biography:
-      "I am a clinician located in the heart of Ballard. I grew up in rural Ohio as a shy and awkward kid, filling time with reading, gaming, and spending time with my family's golden retrievers. I attended The Ohio State University for both my undergraduate and graduate education. I moved to Seattle after graduate school where I met my wife Olivia out of a genuine love for the Pacific Northwest. These days, I can still be found reading (mostly Sci-Fi) and gaming (Board, Card, Computer, Console). I’ve also taken up kayaking around the city with my foldable kayak, and I find biking to be my preferred method of transportation.",
-    specialties:
-      "Providers often have different areas of expertise. Having a provider who has experience with what you're struggling with could enhance the quality of your care.",
-    approach:
-      'During our sessions we will work together to understand what is working in your life through an evaluation and proceed to therapy when desired. Additionally, my approach also includes medication management so if that is a better solution to your needs, we will go that route.',
-  },
-  {
-    name: 'Glen Coco',
-    photo: Therapist2,
-    credentials: 'PsyD',
-    isAcceptingClients: true,
-    phone: '(206) 382 1928',
-    email: 'stacyadams@mail.com',
-    website: 'https://shipshapementalhealth.com',
-    address: '87384 NE 475th St, Seattle, WA 98472',
-    biography:
-      "I am a clinician located in the heart of Ballard. I grew up in rural Ohio as a shy and awkward kid, filling time with reading, gaming, and spending time with my family's golden retrievers. I attended The Ohio State University for both my undergraduate and graduate education. I moved to Seattle after graduate school where I met my wife Olivia out of a genuine love for the Pacific Northwest. These days, I can still be found reading (mostly Sci-Fi) and gaming (Board, Card, Computer, Console). I’ve also taken up kayaking around the city with my foldable kayak, and I find biking to be my preferred method of transportation.",
-    specialties:
-      "Providers often have different areas of expertise. Having a provider who has experience with what you're struggling with could enhance the quality of your care.",
-    approach:
-      'During our sessions we will work together to understand what is working in your life through an evaluation and proceed to therapy when desired. Additionally, my approach also includes medication management so if that is a better solution to your needs, we will go that route.',
-  },
-]
-
-const filters = [
-  {
-    name: 'Depression, anxiety',
-    isClicked: true,
-  },
-  {
-    name: 'Therapy',
-    isClicked: true,
-  },
-  {
-    name: 'Apple Health',
-    isClicked: true,
-  },
-  {
-    name: 'Young adult',
-    isClicked: true,
-  },
-  {
-    name: 'Credentials',
-    isClicked: false,
-  },
-  {
-    name: 'Approach',
-    isClicked: false,
-  },
-  {
-    name: 'Personality',
-    isClicked: false,
-  },
-  {
-    name: 'Identity/Population',
-    isClicked: false,
-  },
-]
+import { Chip } from '../common/chip'
+import { ChevronDown, Search } from 'react-feather'
+import ReactPaginate from 'react-paginate'
+import { ClimbingBoxLoader } from 'react-spinners'
+import AcceptingClientsIcon from '../icons/accepting-clients.png'
+import firebase from '../firebase/firebase'
+import { filters } from '../constants/filters'
 
 export const MatchedProviders = () => {
-  const [searchVal, setSearchVal] = useState('')
+  const [allProviders, setAllProviders] = useState([])
+  const [allCheckedItems, setAllCheckedItems] = useState(new Map())
+  const [activeCheckboxContainer, setActiveCheckboxContainer] = useState()
+  const [appliedFilters, setAppliedFilters] = useState([])
 
-  function handleSearchValChange(e) {
-    setSearchVal(e.target.value)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [pageCount, setPageCount] = useState(1)
+  const [showGrayBackground, setShowGrayBackground] = useState(false)
+  const [initialAnimDone, setInitialAnimDone] = useState(false)
+
+  useEffect(() => {
+    getProviders()
+    window.scrollTo(0, 0)
+  }, [])
+
+  // handles updating allCheckedItems with what values are currently checked
+  function handleCheckboxChange(e) {
+    const item = e.target.name
+    const isChecked = e.target.checked
+    const newMap = new Map([...allCheckedItems.set(item, isChecked)])
+    setAllCheckedItems(newMap)
+    let checkedItemsArray = []
+
+    allCheckedItems.forEach((value, key) => {
+      value === true && checkedItemsArray.push(key)
+    })
   }
+
+  function handleChipRemove(option) {
+    const newMap = new Map([
+      ...allCheckedItems.set(option, !allCheckedItems.get(option)),
+    ])
+    setAllCheckedItems(newMap)
+    handleApplyFilter()
+  }
+
+  function handleClearAllFilters() {
+    const newMap = allCheckedItems
+    newMap.forEach((value, key, map) => {
+      newMap.set(key, false)
+    })
+    setAllCheckedItems(newMap)
+    handleApplyFilter()
+  }
+
+  function handleClearFiltersOneType(options) {
+    const newMap = allCheckedItems
+    options.forEach(option => {
+      newMap.set(option, false)
+    })
+    setAllCheckedItems(newMap)
+  }
+
+  // handles applying filter by looking through allChecked Items and apply those filters and updating allProviders
+  function handleApplyFilter() {
+    let checkedItemsArray = []
+
+    allCheckedItems.forEach((value, key) => {
+      value === true && checkedItemsArray.push(key)
+    })
+    filterProviders(checkedItemsArray)
+  }
+
+  // given list of terms to filter providers by
+  async function filterProviders(terms) {
+    setAppliedFilters(terms)
+    const snapshot = await firebase.filterProviders(terms)
+    const queriedProvider = snapshot.docs.map(doc => doc.data())
+    setAllProviders(queriedProvider)
+    setPageCount(Math.ceil(queriedProvider.length / providersPerPage))
+  }
+
+  const providersPerPage = 4
+
+  async function getProviders() {
+    const snapshot = await firebase.getAllProviders()
+    setAllProviders(snapshot.docs.map(doc => doc.data()))
+    setPageCount(Math.ceil(snapshot.docs.map(doc => doc.data()).length / 4))
+  }
+
+  function handlePageClick(data) {
+    setCurrentPage(data.selected + 1)
+    window.scrollTo(0, 0)
+  }
+
+  function handleShowGrayBackground(clicked) {
+    setShowGrayBackground(clicked)
+  }
+
+  const indexOfLastProvider = currentPage * providersPerPage
+  const indexOfFirstProvider = indexOfLastProvider - providersPerPage
+  const currentProviders = allProviders.slice(
+    indexOfFirstProvider,
+    indexOfLastProvider
+  )
 
   return (
     <div className={styles.container}>
-      <HomeHeader />
       <div className={styles.maxWidthContainer}>
+        {/* {showGrayBackground && (
+          <div
+            onClick={() => {
+              // setShowGrayBackground(false)
+              // setActiveCheckboxContainer(null)
+            }}
+            className={styles.grayBackground}
+          />
+        )} */}
         <div className={styles.titleAndSearchContainer}>
           <h1>Providers for you</h1>
-          <input
-            value={searchVal}
-            onChange={handleSearchValChange}
-            placeholder="Search for a location or keyword"
-            className={styles.searchInput}
-          />
         </div>
-        {/* <div className={styles.filtersContainer}>
-        {filters.map(filter => (
-          <OptionButton isClicked={filter.isClicked} key={filter.name}>
-          {filter.name}
-          </OptionButton>
-          ))}
-        </div> */}
-        <div className={styles.providersContainer}>
-          {providers.map(provider => (
-            <ProviderCard provider={provider} key={provider.name} />
-          ))}
+
+        <div className={styles.chipsContainer}>
+          <Transition
+            items={appliedFilters}
+            initial={{
+              height: 'auto',
+              opacity: '0',
+            }}
+            from={{
+              height: 0,
+              opacity: '0',
+            }}
+            enter={{
+              height: 'auto',
+              opacity: '1',
+            }}
+            leave={{ opacity: 0, height: 0 }}
+          >
+            {item => props => (
+              <animated.div style={props}>
+                <Chip text={item} handleChipRemove={handleChipRemove} />
+              </animated.div>
+            )}
+          </Transition>
         </div>
-        <p className={styles.pageInfo}>1-3 of 18 results</p>
-        <Button
-          type="button"
-          buttonType={TYPES.PRIMARY}
-          buttonSize={SIZES.MEDIUM}
+        <div className={styles.filtersContainer}>
+          {filters.map(filter => (
+            <OptionButton
+              key={filter.id}
+              allCheckedItems={allCheckedItems}
+              options={filter.options}
+              handleCheckboxChangeMatchedProviders={handleCheckboxChange}
+              changeActiveCheckboxContainer={() =>
+                setActiveCheckboxContainer(filter.id)
+              }
+              onApplyFilter={handleApplyFilter}
+              handleClearFiltersOneType={handleClearFiltersOneType}
+              handleShowGrayBackground={handleShowGrayBackground}
+              id={filter.id}
+              activeCheckboxContainer={activeCheckboxContainer}
+            >
+              {filter.name}
+              <ChevronDown
+                color="hsl(174, 47%, 75%)"
+                className={styles.chevronDown}
+              />
+            </OptionButton>
+          ))}
+          {appliedFilters.length !== 0 && (
+            <button
+              onClick={handleClearAllFilters}
+              className={styles.clearAllButton}
+            >
+              Clear all filters
+            </button>
+          )}
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'flex-end',
+            alignItems: 'center',
+            width: '80%',
+          }}
         >
-          View more matches
-        </Button>
+          <div className={styles.iconKey}>
+            <img
+              src={AcceptingClientsIcon}
+              className={styles.acceptingClientsIcon}
+            />
+            <span>&mdash;</span>
+            <span style={{ marginLeft: '7px' }}> Accepting new clients</span>
+          </div>
+        </div>
+
+        {currentProviders.length !== 0 ? (
+          <div className={styles.providersContainer}>
+            <Transition
+              items={currentProviders}
+              keys={item => item.id}
+              initial={{
+                height: 'auto',
+                transform: 'translateX(-50px)',
+                opacity: '0',
+              }}
+              trail={initialAnimDone ? 0 : 150}
+              onRest={() => setInitialAnimDone(true)}
+              from={{
+                transform: 'translateX(0px)',
+                opacity: '0',
+                height: 0,
+              }}
+              enter={{
+                transform: 'translateX(0px)',
+
+                height: 'auto',
+                opacity: '1',
+              }}
+              leave={{ opacity: 0, height: 0 }}
+            >
+              {item => props => (
+                <animated.div style={props}>
+                  <ProviderCard provider={item} />
+                </animated.div>
+              )}
+            </Transition>
+          </div>
+        ) : (
+          <div className={styles.loader}>
+            <ClimbingBoxLoader
+              sizeUnit={'px'}
+              size={25}
+              color={'hsl(174, 74%, 39%)'}
+            />
+          </div>
+        )}
+
+        {currentProviders.length === 0 && appliedFilters.length !== 0 && (
+          <div className={styles.noProviders}>
+            <UndrawEmpty primaryColor="hsl(174, 74%, 39%)" />
+            <p className={styles.noProvidersText}>
+              No providers found, please try again with new filters
+            </p>
+          </div>
+        )}
+
+        {currentProviders.length !== 0 && (
+          <div className={styles.paginateAndResultsNumContainer}>
+            <span
+              style={{
+                fontSize: '18px',
+                fontWeight: '400',
+
+                marginTop: '45px',
+              }}
+            >
+              {`${currentProviders.length} of ${allProviders.length} results`}
+            </span>
+            <ReactPaginate
+              previousLabel={'< Back'}
+              nextLabel={'Next >'}
+              breakLabel={'...'}
+              // breakClassName={'break-me'}
+              pageCount={pageCount}
+              // marginPagesDisplayed={2}
+              pageRangeDisplayed={3}
+              onPageChange={handlePageClick}
+              containerClassName={styles.pagination}
+              previousClassName={styles.paginationButton}
+              nextClassName={styles.paginationButton}
+              previousLinkClassName={styles.paginationLinkButton}
+              nextLinkClassName={styles.paginationLinkButton}
+              pageClassName={styles.pageClassName}
+              pageLinkClassName={styles.pageLinkClassName}
+              activeClassName={styles.activeLink}
+              disabledClassName={styles.disabledClassName}
+            />
+          </div>
+        )}
+
+        {/* <div>
+          <button type="button" onClick={() => firebase.signOut()}>
+            Sign Out
+          </button>
+        </div> */}
       </div>
     </div>
   )

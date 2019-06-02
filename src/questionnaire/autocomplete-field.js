@@ -10,14 +10,22 @@ export const AutocompleteField = ({
   terms,
   name,
   setFieldValue,
-  pageNum,
-  currPageNum,
 }) => {
   const [multiValue, setMultiValue] = useState([])
 
-  const handleMultiChange = option => {
-    setMultiValue(option)
-    setFieldValue(name, option)
+  const handleMultiChange = options => {
+    setMultiValue(options)
+    setFieldValue(name, options.map(option => option.value))
+  }
+
+  const compare = (a, b) => {
+    if (a.value < b.value) {
+      return -1
+    }
+    if (a.value > b.value) {
+      return 1
+    }
+    return 0
   }
 
   return (
@@ -27,19 +35,19 @@ export const AutocompleteField = ({
         components={makeAnimated()}
         isMulti
         name={name}
-        options={terms}
+        options={terms.sort(compare)}
         value={multiValue}
         onChange={handleMultiChange}
         className={styles.input}
         maxMenuHeight={150}
-        // defaultInputValue="Michael"
+        placeholder="Select all that apply"
       />
     </div>
   )
 }
 
 AutocompleteField.propTypes = {
-  supplementaryText: PropTypes.string.isRequired,
+  supplementaryText: PropTypes.string,
   name: PropTypes.string.isRequired,
   terms: PropTypes.arrayOf(
     PropTypes.shape({

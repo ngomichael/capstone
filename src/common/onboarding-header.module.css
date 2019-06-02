@@ -6,31 +6,34 @@
   justify-content: space-between;
   align-items: center;
   background-color: var(--white);
+  margin-left: var(--s-9);
   width: 100%;
   max-width: var(--mw);
-  height: 80px;
-  top: 0;
+  height: 90px;
   z-index: 2;
 }
 
 .logoAndNameContainer {
   display: flex;
   align-items: center;
+  text-decoration: none;
+  color: var(--black);
   margin: var(--s-0) var(--s-0) var(--s-0) var(--s-5);
 }
 
 .logo {
-  width: 38px;
-  height: 45px;
-  /* border-radius: 50%; */
+  width: 65px;
+  height: 65px;
+  left: 145px;
+  position: absolute;
 }
 
 .productName {
   font-family: 'Lato', sans-serif;
   font-weight: var(--fw-5);
-  font-size: var(--fs-5);
+  font-size: var(--fs-6);
   letter-spacing: 0.5px;
-  margin-left: var(--s-3);
+  margin-left: var(--s-9);
 }
 
 .productName:hover {
@@ -43,7 +46,7 @@
 
 @media (max-width: 768px) {
   .logo {
-    width: 33px;
+    width: 40px;
     height: 40px;
   }
 
@@ -54,7 +57,7 @@
 
 @media (max-width: 378px) {
   .logo {
-    width: 40px;
+    width: 45px;
     height: 45px;
   }
 

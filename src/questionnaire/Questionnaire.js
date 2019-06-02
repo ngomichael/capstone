@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { Link, navigate } from '@reach/router'
-import { Formik, Form } from 'formik'
+import { Formik, Form, Field } from 'formik'
 import styles from './questionnaire.module.css'
-import { OnboardingHeader } from '../common/onboarding-header'
+import { ONBOARDING_ROUTES } from '../constants/routes'
+import { Checkbox } from '../common/checkbox2'
+import { CheckboxSquare } from '../common/checkbox-square'
 import { QuestionField } from './question-field'
 import { Button, TYPES, SIZES } from '../common/button'
 import { BackButton } from '../common/back-button'
 import { ArrowRight } from 'react-feather'
 import firebase from '../firebase/firebase'
 import { AutocompleteField } from './autocomplete-field'
+<<<<<<< HEAD
 
 export const questionnaireQuestions = [
   {
@@ -174,6 +177,9 @@ export const questionnaireQuestions = [
     pageNum: 2,
   },
 ]
+=======
+import { questionnaireQuestions } from '../constants/questions'
+>>>>>>> 34ba14f4952850953f119f91300b7f70e4878de3
 
 const returnCorrectQuestionFormat = (question, setFieldValue, currPageNum) => {
   const questionType = question.questionType
@@ -183,15 +189,11 @@ const returnCorrectQuestionFormat = (question, setFieldValue, currPageNum) => {
         supplementaryText={question.supplementaryText}
         terms={question.terms}
         name={question.name}
-        type={question.type}
-        isLongInput={question.isLongInput}
         setFieldValue={setFieldValue}
         key={question.question}
-        currPageNum={currPageNum}
-        pageNum={question.pageNum}
       />
     )
-  } else {
+  } else if (questionType === 'input') {
     return (
       <QuestionField
         supplementaryText={question.supplementaryText}
@@ -199,9 +201,73 @@ const returnCorrectQuestionFormat = (question, setFieldValue, currPageNum) => {
         type={question.type}
         isLongInput={question.isLongInput}
         key={question.question}
-        currPageNum={currPageNum}
       />
     )
+  } else if (questionType === 'checkbox-squares') {
+    return (
+      <div className={styles.careTypeCardsContainer}>
+        <p className={styles.supplementaryText}>{question.supplementaryText}</p>
+        {question.terms.map(term => {
+          return (
+            <Field
+              name={question.name}
+              // key={question.questionType}
+              render={({ field }) => {
+                return (
+                  <CheckboxSquare
+                    name={term.value}
+                    supplementaryText={question.supplementaryText}
+                    description={term.description}
+                    onCheckboxClick={checked => {
+                      setFieldValue(
+                        new Map([...field.value.set(term.value, checked)])
+                      )
+                      // console.log(field.value)
+                    }}
+                  />
+                )
+              }}
+            />
+          )
+        })}
+      </div>
+    )
+  } else if (questionType === 'checkbox') {
+    return (
+      <div className={styles.ageGroupCheckboxes}>
+        {question.terms.map(term => {
+          return (
+            <label
+              className={styles.checkboxOption}
+              // key={question.supplementaryText}
+            >
+              <Field
+                name={question.name}
+                className={styles.checkbox}
+                render={({ field }) => {
+                  return (
+                    <Checkbox
+                      name={term.value}
+                      onChange={e => {
+                        const item = e.target.name
+                        const isChecked = e.target.checked
+                        setFieldValue(
+                          new Map([...field.value.set(item, isChecked)])
+                        )
+                      }}
+                      checked={field.value.get(term.value)}
+                    />
+                  )
+                }}
+              />
+              <span className={styles.checkboxText}>{term.value}</span>
+            </label>
+          )
+        })}
+      </div>
+    )
+  } else {
+    return null
   }
 }
 
@@ -209,8 +275,10 @@ const renderQuestions = (setFieldValue, currPageNum) => {
   return questionnaireQuestions.map((question, index) => {
     return currPageNum === question.pageNum ? (
       <div className={styles.questionsContainer} key={index}>
-        <p className={styles.questionNumber}>{index + 1}</p>
-        <ArrowRight size={18} className={styles.arrow} />
+        <div className={styles.arrowAndNumberContainer}>
+          <p className={styles.questionNumber}>{index + 1}</p>
+          <ArrowRight size={18} className={styles.arrow} />
+        </div>
         <div>
           <p className={styles.question}>{question.question}</p>
           {returnCorrectQuestionFormat(question, setFieldValue, currPageNum)}
@@ -222,9 +290,11 @@ const renderQuestions = (setFieldValue, currPageNum) => {
 
 export const Questionnaire = () => {
   const [currPageNum, setCurrPageNum] = useState(1)
+  useEffect(() => window.scrollTo(0, 0))
+
   async function handleSubmit(answers) {
     await firebase.getUserProfile()
-    await firebase.addUserQuestionnaire(answers)
+    await firebase.addUserQuestionnaireAnswers(answers)
   }
 
   function handleNextPage() {
@@ -237,11 +307,10 @@ export const Questionnaire = () => {
 
   return (
     <div className={styles.container}>
-      <OnboardingHeader step={1} />
       <div className={styles.maxWidthContainer}>
         <div className={styles.questionsTitleContainer}>
           {currPageNum === 1 ? (
-            <BackButton path="/getStarted" />
+            <BackButton path={`/${ONBOARDING_ROUTES.getStarted}`} />
           ) : (
             <BackButton onClick={handlePreviousPage} />
           )}
@@ -252,12 +321,21 @@ export const Questionnaire = () => {
               ? "First, let's figure out the essentials"
               : "Besides the basics, is there anything else you're looking for in a provider?"}
           </h1>
+          {currPageNum === 1 && (
+            <p className={styles.questionnaireDescription}>
+              Excluding the first question, all questions are optional and you
+              are able to select multiple answers if it better reflects the
+              experiences you are going through. If you don't know how to answer
+              a question or if it does not apply, feel free to just not answer
+              it.
+            </p>
+          )}
           <Formik
             initialValues={{
               zip_code: '',
               issues: [],
-              ageGroup: [],
-              careType: [],
+              age_groups: new Map(),
+              care_types: new Map(),
               insurances: [],
               credentials: [],
               approaches: [],
@@ -266,10 +344,10 @@ export const Questionnaire = () => {
             onSubmit={(values, { setSubmitting }) => {
               handleSubmit(values)
               setSubmitting(false)
-              navigate('/questionnaireCompleted')
+              navigate('/onboardingTracker/questionnaireCompleted')
             }}
           >
-            {({ isSubmitting, setFieldValue }) => (
+            {({ isSubmitting, setFieldValue, values }) => (
               <Form>
                 {renderQuestions(setFieldValue, currPageNum)}
                 {currPageNum === 2 && (
@@ -278,11 +356,13 @@ export const Questionnaire = () => {
                       type="submit"
                       buttonType={TYPES.PRIMARY}
                       buttonSize={SIZES.MEDIUM}
-                      disabled={isSubmitting}
+                      disabled={
+                        values.zip_code.length === 0 ? 'disabled' : false
+                      }
                     >
                       Finish
                     </Button>
-                    <Link to="/results">
+                    <Link to={`/${ONBOARDING_ROUTES.results}`}>
                       <Button
                         type="text"
                         buttonType={TYPES.SECONDARY}
@@ -309,7 +389,7 @@ export const Questionnaire = () => {
                 >
                   Next
                 </Button>
-                <Link to="/results">
+                <Link to={`/${ONBOARDING_ROUTES.results}`}>
                   <Button
                     type="text"
                     buttonType={TYPES.SECONDARY}
