@@ -141,12 +141,11 @@ calculateResults() {
       // Need to find out how to connect user's name to their answers later on...
 
       // Get user's questionnaire answers
-      let questionnaire_id = user_id;
-      let questionnaireRef = firebase.db
+      let userRef = firebase.db
         .collection('users_test')
-        .doc(questionnaire_id)
+        .doc(user_id)
       let user_answers = ''
-      questionnaireRef
+      userRef
         .get()
         .then(doc => {
           if (doc.exists) {
@@ -155,7 +154,7 @@ calculateResults() {
               user_terms: user_answers.terms.length
             })
           } else {
-            console.log('No such questionnaire!')
+            console.log('No such user!')
           }
         })
         .catch(error => {
@@ -179,10 +178,13 @@ calculateResults() {
          
              //add provider score to each provider 
             provider_answers.provider_score = this.getRankingScore(user_answers, provider_answers);
-            //add distance to the provider and set the state 
-           this.getDuration(user_answers.zip_code, provider_answers.address, provider_answers)
+               
+          this.setState((prevState) => ({
+            all_providers: [...prevState.all_providers, provider_answers]
+         }));
           }, this)
         })
+        //once state is filled with all the providers and their ranking, sort the provider list from highest to lowest
         .then(() => {
           console.log('the highest score is ',  this.state.all_providers[0].provider_score );
           let sorted_list = this.state.all_providers.sort((a, b ) => {
