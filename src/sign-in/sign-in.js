@@ -3,6 +3,7 @@ import { Link, Redirect } from '@reach/router'
 import firebase from '../firebase/firebase'
 import styles from './sign-in.module.css'
 import { Button, TYPES, SIZES } from '../common/button'
+import { ROUTES, ONBOARDING_ROUTES } from '../constants/routes'
 import { InputField } from '../common/input-field'
 import { HomeHeader } from '../common/home-header'
 import { UndrawLogin } from 'react-undraw'
@@ -25,7 +26,6 @@ export const SignIn = () => {
     try {
       await firebase.signIn(email, password)
       setIsSignedIn(true)
-      return <Redirect noThrow to="/getStarted" />
     } catch (err) {
       console.error(err)
     }
@@ -48,7 +48,7 @@ export const SignIn = () => {
             </p>
             <div className={styles.signUp}>
               <span>Don't have an account? </span>{' '}
-              <Link className={styles.link} to="/signup">
+              <Link className={styles.link} to={ROUTES.signUp}>
                 Sign Up
               </Link>
             </div>
@@ -78,7 +78,9 @@ export const SignIn = () => {
                 Sign In
               </Button>
             </form>
-            {isSignedIn ? <Redirect noThrow to="/getStarted" /> : null}
+            {isSignedIn ? (
+              <Redirect noThrow to={ONBOARDING_ROUTES.getStarted} />
+            ) : null}
             {/* {createdAccount ? <Redirect noThrow to="/getStarted" /> : null} */}
           </div>
         </div>
