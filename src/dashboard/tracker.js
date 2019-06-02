@@ -62,6 +62,7 @@ export const Tracker = ({ savedProviderIds }) => {
             //   />
             // </div>
 
+            // How do we distinguish when to show loader vs no saved providers
             <div className={styles.noProviders}>
               <UndrawEmpty primaryColor="hsl(174, 74%, 39%)" />
               <p className={styles.noProvidersText}>

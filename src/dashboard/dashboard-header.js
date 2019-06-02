@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import styles from './dashboard-header.module.css'
-import { Link } from '@reach/router'
+import { Link, navigate } from '@reach/router'
 import PearCareIcon from '../icons/pearcare-icon.png'
 import { ROUTES } from '../constants/routes'
+import firebase from '../firebase/firebase'
 
 const navLinksText = [
   {
@@ -10,12 +11,25 @@ const navLinksText = [
     path: ROUTES.dashboard,
   },
   { text: 'Tracker', path: ROUTES.tracker },
-  { text: 'Sign out', path: ROUTES.signIn },
+  { text: 'Sign out', path: ROUTES.home },
 ]
+
+async function handleSignOut() {
+  try {
+    await firebase.signOut()
+  } catch (err) {
+    console.error(err)
+  }
+}
 
 function renderNavLinks() {
   return navLinksText.map(link => (
-    <Link to={link.path} className={styles.navLink} key={link.text}>
+    <Link
+      to={link.path}
+      className={styles.navLink}
+      onClick={handleSignOut}
+      key={link.text}
+    >
       <li key={link.title}>{link.text}</li>
     </Link>
   ))
@@ -24,7 +38,7 @@ function renderNavLinks() {
 export const DashboardHeader = () => {
   return (
     <header className={styles.container}>
-      <Link to={ROUTES.home} className={styles.logoAndNameContainer}>
+      <Link to={ROUTES.dashboard} className={styles.logoAndNameContainer}>
         <img src={PearCareIcon} className={styles.logo} />
         <p className={styles.productName}>PearCare</p>
       </Link>
