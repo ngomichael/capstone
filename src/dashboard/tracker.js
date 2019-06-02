@@ -3,6 +3,7 @@ import styles from './tracker.module.css'
 import { Link } from '@reach/router'
 import { ROUTES } from '../constants/routes'
 import { DotLoader } from 'react-spinners'
+import { UndrawEmpty } from 'react-undraw'
 import firebase from '../firebase/firebase'
 import { Trash2 } from 'react-feather'
 import { UserConsumer } from '../context/user-context'
@@ -15,15 +16,15 @@ export const Tracker = ({ savedProviderIds }) => {
     window.scrollTo(0, 0)
   }, [savedProviderIds])
 
-  function getSavedProviders() {
-    let providers = []
-    savedProviderIds.forEach(async id => {
+  async function getSavedProviders() {
+    const providersPromises = savedProviderIds.map(async id => {
       const snapshot = await firebase.getProviderInfo(id)
       const providerInfo = snapshot.docs.map(doc => doc.data())[0]
-      providers = [...providers, providerInfo]
-      setSavedProviders(providers)
-      //   setSavedProviders([...savedProviders, providerInfo])
+      return providerInfo
     })
+
+    const providers = await Promise.all(providersPromises)
+    setSavedProviders(providers)
   }
 
   return (
@@ -37,7 +38,7 @@ export const Tracker = ({ savedProviderIds }) => {
                 return (
                   <div className={styles.savedProviderCard}>
                     <Link
-                      to={`/dashboard/${provider.id}`}
+                      to={`/dashboard/tracker/${provider.id}`}
                       className={styles.name}
                     >
                       {provider.name}
@@ -53,7 +54,21 @@ export const Tracker = ({ savedProviderIds }) => {
               })}
             </div>
           ) : (
-            <DotLoader sizeUnit={'px'} size={50} color={'hsl(174, 74%, 39%)'} />
+            // <div className={styles.loader}>
+            //   <DotLoader
+            //     sizeUnit={'px'}
+            //     size={50}
+            //     color={'hsl(174, 74%, 39%)'}
+            //   />
+            // </div>
+
+            <div className={styles.noProviders}>
+              <UndrawEmpty primaryColor="hsl(174, 74%, 39%)" />
+              <p className={styles.noProvidersText}>
+                Oops, you haven't saved any providers yet. 'Heart' a provider
+                you like to add them to your tracker
+              </p>
+            </div>
           )}
         </div>
       )}

@@ -15,6 +15,7 @@
 .savedProvidersContainer {
   width: 60%;
   border: 2px solid gray;
+  border-radius: var(--br-1);
   font-size: var(--fs-5);
 }
 
@@ -38,4 +39,26 @@
 
 .trashIcon:hover {
   cursor: pointer;
+}
+
+.loader {
+  margin-top: var(--s-9);
+}
+
+.noProviders {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: var(--s-8);
+  margin-bottom: var(--s-8);
+  padding: var(--s-4) var(--s-4) var(--s-4) var(--s-4);
+}
+
+.noProvidersText {
+  line-height: 1.75;
+  text-align: center;
+  width: 500px;
+  margin-top: var(--s-6);
 }

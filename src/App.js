@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { hot } from 'react-hot-loader'
-import { Router } from '@reach/router'
+import { Router, navigate } from '@reach/router'
 import { ROUTES, ONBOARDING_ROUTES } from './constants/routes'
 import styles from './app.module.css'
 import { SignUp } from './sign-up/sign-up'
@@ -62,6 +62,8 @@ class App extends Component {
               userInfo: doc.data(),
             })
           })
+
+        // navigate(ROUTES.dashboard)
       } else {
         console.log('No user is signed in')
 
@@ -103,6 +105,10 @@ class App extends Component {
           <ProviderInfo
             path={ROUTES.providerInfo}
             prevPath={ROUTES.dashboard}
+          />
+          <ProviderInfo
+            path={ROUTES.providerInfoTracker}
+            prevPath={ROUTES.tracker}
           />
 
           <Dashboard path={ROUTES.dashboard} />
