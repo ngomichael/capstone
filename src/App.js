@@ -23,6 +23,8 @@ class App extends Component {
     this.state = {
       all_providers:[],
       firebaseInitialized: false,
+      highest_score:0,
+      user_terms:0
     }
   }
 
@@ -46,7 +48,6 @@ class App extends Component {
     user.terms.forEach((user_term) => {
        provider.terms.forEach((provider_term => {
                   if(user_term === provider_term) {
-                    console.log("we went in the totalRank");
                     totalRank = totalRank + 1;
                   }
        }))
@@ -61,20 +62,18 @@ class App extends Component {
   // Given the location of the user zipcode as a string called user_zip, and an array of the
   //providers zip codes called providers_zip, return a list of provider objects,
   /// ordered from shortest to longest distance
- async getDuration(user_zip, providers_address, provider_object) {
-    let prefix = ' Seattle, WA '
-    let origin = prefix + user_zip
-    let destinations_list = providers_address.map(address => {
-      return address + prefix
-    }, this)
+ async getDuration(user_zip, provider_address, provider_object) {
+    let prefix = ' Seattle, WA ';
+    let origin = prefix + user_zip;
+    let destination = provider_address;
     // console.log('this is the provider address', destinations_list)
     // console.log('this is the origin ', [origin])
-    let service = new google.maps.DistanceMatrixService()
+    let service = new google.maps.DistanceMatrixService();
 
-   service.getDistanceMatrix(
+   await service.getDistanceMatrix(
       {
         origins: [origin],
-        destinations: destinations_list,
+        destinations: [destination],
         travelMode: 'DRIVING',
         avoidHighways: false,
         avoidTolls: false,
@@ -89,12 +88,12 @@ class App extends Component {
         for (let i = 0; i < origins.length; i++) {
           let results = response.rows[i].elements
           for (let j = 0; j < results.length; j++) {
-            let element = results[j]
-            let distance_text = element.distance.text
-            let distance_value = element.distance.value
-            let destination_result = destinations[j]
-            let duration_text = element.duration.text
-            let duration_value = element.duration.value
+            let element = results[j];
+            let distance_text = element.distance.text;
+            let distance_value = element.distance.value;
+            let destination_result = destinations[j];
+            let duration_text = element.duration.text;
+            let duration_value = element.duration.value;
             provider_object.distance_results = {
               provider_location: destination_result,
               client_origin: origins[i],
@@ -102,24 +101,32 @@ class App extends Component {
               distance_text: distance_text,
               travel_time: duration_value,
               travel_text: duration_text,
-            }
-           this.state.all_providers.push(provider_object);
+            };
           }
         }
-        // console.log('The final list is...');
-        // console.log(this.state.all_providers);
+       
+        this.setState((prevState) => ({
+          all_providers: [...prevState.all_providers, provider_object]
+        }));
+
+
+        
       }
     }
   }
 
 calculateResults() {
     try {
+
+   
       // An attempt  to get user data from users_pearcare collection
 
-      let user = firebase.getUserProfile()
-      let user_id = user.uid + '';
-      console.log('this is the user id', user_id);
-      let user_data = '';
+      // let user = firebase.getUserProfile()
+      // let user_id = user.uid + '';
+      // console.log('this is the user id', user_id);
+      // let user_data = '';
+
+      let user_id = '7vMGQtyObOVZSmEL0GUL'
 
       // firebase.db.collection('users_pearcare').doc(user_id).get().then((doc) =>{
       //   if (doc.exists) {
@@ -144,6 +151,9 @@ calculateResults() {
         .then(doc => {
           if (doc.exists) {
             user_answers = doc.data()
+            this.setState({
+              user_terms: user_answers.terms.length
+            })
           } else {
             console.log('No such questionnaire!')
           }
@@ -158,50 +168,37 @@ calculateResults() {
         .collection('providers_test2')
         .get()
         .then(querySnapshot => {
+
+          //Start empty
+          this.setState({
+            all_providers: []
+          })
+          //Fill up state with each provider
           querySnapshot.forEach(provider => {
             let provider_answers = provider.data()
-            // console.log('Providers answers are', provider_answers)
-            // console.log('The user answers are', user_answers)
+         
+             //add provider score to each provider 
             provider_answers.provider_score = this.getRankingScore(user_answers, provider_answers);
-
-            // Get the distance for each provider and make a new provider object that holds that information 
-            // this.setState((prevState => {
-            //   provider_list: [...this.state.provider_list, provider_answers]
-            // })
-
-            // console.log(this.state.all_providers)
-            // console.log(provider_answers)
-
-            this.setState((prevState) => ({
-              all_providers: [...prevState.all_providers, provider_answers]
-            }))
-   
-            //  full_provider.distance = results[0].distance;
-            //  full_provider.distance_text = results[0].distance_text;
-            
-            
-            // console.log('the distance function returned ', results);
-            // console.log('the result is ', distance_results[0])
-            // console.log('heres the string index', distance_results['""0""'])
-            // console.log('heres the string index', distance_results['"0"'])
-            // console.log('the full provider is ', full_provider);
-           
+            //add distance to the provider and set the state 
+           this.getDuration(user_answers.zip_code, provider_answers.address, provider_answers)
           }, this)
-        
         })
         .then(() => {
-          this.state.all_providers.sort((a, b ) => {
+          console.log('the highest score is ',  this.state.all_providers[0].provider_score );
+          let sorted_list = this.state.all_providers.sort((a, b ) => {
             return b.provider_score - a.provider_score;
           })
-          console.log('this is the sorted list', this.state.all_providers);
-         
-          let highestScore = this.state.all_providers[0].provider_score;
-          
-          this.state.all_providers.forEach((provider) => {
-          })
 
+          this.setState( {
+            all_providers: sorted_list
+           })
+          
+  
+      
+          this.setState( ({
+            highest_score: this.state.all_providers[0].provider_score
+          }) )
         })
-    
     } catch (err) {
       console.log(err)
     }
@@ -213,7 +210,7 @@ calculateResults() {
         <Router>
           <Home path="/" />
           <Questionnaire path="questionnaire" />
-          <MatchedProviders provider_list= {this.state.all_providers} path="results" />
+          <MatchedProviders provider_list= {this.state.all_providers} highest_score={this.state.highest_score} total_terms ={this.state.user_terms} path="results" />
           <ProviderInfo path="providerInfo" />
           <Prompt
             path="getStarted"

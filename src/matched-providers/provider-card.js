@@ -31,8 +31,9 @@ const overviewItems = [
 
 
 
-export const ProviderCard = ({ provider, highest}) => {
+export const ProviderCard = ({ provider, highest, total_terms}) => {
   const [isHovered, setIsHovered] = useState(false)
+  const [isRead, setIsRead] = useState(false);
 
   function handleMouseEnter() {
     setIsHovered(!isHovered)
@@ -42,9 +43,13 @@ export const ProviderCard = ({ provider, highest}) => {
     setIsHovered(!isHovered)
   }
 
-  const { name, photo, credentials, summary } = provider
-  console.log('this is inside providerCard', provider);
-  return (
+
+  const { name, photo, credentials, summary, provider_score } = provider
+  const percentage_relative = Math.round((provider_score/highest * 100)) 
+  const percentage = (Math.round((provider_score/total_terms) * 100)) 
+  // console.log('this is inside providerCard', provider);
+ 
+  return percentage_relative  >= 40 ? (
     <Link to="/providerInfo" className={styles.link}>
       <div
         className={styles.container}
@@ -57,8 +62,11 @@ export const ProviderCard = ({ provider, highest}) => {
             <div className={styles.providerInfo}>
               <p className={styles.name}>{name}</p>
               <p>Seattle, WA 98107</p>
-              <p>100% Match</p>
-              <p> Matches four out of {highest} Criteria </p>
+              <p> {percentage + "%"} Match</p>
+              <p> Matches {provider_score}  out of your {total_terms} Criteria </p>
+              <p> OR  </p>
+              <p> {percentage_relative + "%"} Match </p>
+              <p> Matches {provider_score} Criteria </p>
             </div>
           </div>
           <div className={styles.contactActions}>
@@ -82,7 +90,7 @@ export const ProviderCard = ({ provider, highest}) => {
         </div>
       </div>
     </Link>
-  )
+  ): (<div></div>)
 }
 
 ProviderCard.propTypes = {

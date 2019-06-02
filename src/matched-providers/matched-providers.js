@@ -101,7 +101,7 @@ export const MatchedProviders = (props) => {
     setSearchVal(e.target.value)
   }
 
-  console.log('this is the provider', props.provider_list)
+  console.log('this is the provider list ', props.provider_list)
   return (
     <div className={styles.container}>
       <HomeHeader />
@@ -124,7 +124,7 @@ export const MatchedProviders = (props) => {
         </div> */}
         <div className={styles.providersContainer}>
           {props.provider_list.map(provider => {
-           return <ProviderCard provider={provider} key={provider.name} highest={props.provider_list[0].provider_score} />
+           return <ProviderCard provider={provider} key={provider.name} highest={props.highest_score} total_terms={props.total_terms} />
           })}
         </div>
         <p className={styles.pageInfo}>1-3 of 18 results</p>
