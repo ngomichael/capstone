@@ -104,6 +104,7 @@ class App extends Component {
             path={ROUTES.providerInfo}
             prevPath={ROUTES.dashboard}
           />
+
           <Dashboard path={ROUTES.dashboard} />
 
           <Prompt
