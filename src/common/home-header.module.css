@@ -1,36 +1,39 @@
 @import '../common/variables.css';
 
 .container {
-  position: sticky;
+  /* position: sticky; */
   display: flex;
   justify-content: space-between;
-  background-color: white;
   align-items: center;
+  background-color: white;
   width: 100%;
   max-width: var(--mw);
-  height: 80px;
-  top: 0;
+  height: 90px;
   z-index: 2;
 }
 
 .logoAndNameContainer {
   display: flex;
   align-items: center;
+  color: black;
+  text-decoration: none;
   margin: var(--s-0) var(--s-0) var(--s-0) var(--s-5);
 }
 
 .logo {
-  width: 38px;
-  height: 45px;
-  /* border-radius: 50%; */
+  width: 65px;
+  height: 65px;
+  position: absolute;
+  left: 145px;
 }
 
 .productName {
   font-family: 'Lato', sans-serif;
   font-weight: var(--fw-5);
-  font-size: var(--fs-5);
+  font-size: var(--fs-6);
   letter-spacing: 0.5px;
-  margin-left: var(--s-3);
+  position: absolute;
+  left: 216px;
 }
 
 .navContainer {
@@ -101,10 +104,10 @@
 } */
 
 @media (max-width: 768px) {
-  .logo {
-    width: 40px;
-    height: 45px;
-  }
+  /* .logo {
+    width: 55px;
+    height: 55px;
+  } */
 
   .productName {
     font-size: 22px;
@@ -125,10 +128,10 @@
 }
 
 @media (max-width: 378px) {
-  .logo {
-    width: 40px;
-    height: 45px;
-  }
+  /* .logo {
+    width: 55px;
+    height: 55px;
+  } */
 
   .productName {
     display: none;

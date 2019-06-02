@@ -48,8 +48,8 @@
 }
 
 .small {
-  height: 38px;
-  width: 100px;
+  height: 42px;
+  width: 120px;
 }
 
 .medium {
@@ -60,6 +60,16 @@
 .large {
   height: 50px;
   width: 270px;
+}
+
+.disabled {
+  composes: button;
+  background-color: var(--gray);
+}
+
+.disabled:hover {
+  cursor: auto;
+  background-color: var(--gray);
 }
 
 @media (max-width: 768px) {
