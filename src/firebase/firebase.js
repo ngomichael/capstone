@@ -119,17 +119,16 @@ class Firebase {
   }
 
   addProviderQuestionnaireAnswers(answers) {
-    console.log('hello')
     const terms = [
-      ...answers.care_types,
+      ...[...answers.care_types.keys()],
       ...answers.issues,
       ...answers.insurances,
-      ...answers.age_groups,
+      ...[...answers.age_groups.keys()],
       ...answers.credentials,
       ...answers.approaches,
       ...answers.populations,
     ]
-
+    console.log(terms)
     const termsObject = terms.reduce((object, term) => {
       let formattedTerm = term
         .split(' ')
@@ -149,30 +148,31 @@ class Firebase {
 
       return this.db.collection('providers_test2').add({
         id: id,
-        terms,
-        termsObject,
+        zip_code: answers.zip_code,
         address: answers.address,
-        email: answers.email,
+        website: answers.website,
         phone_number: answers.phone_number,
         credentials: answers.credentials,
-        website: answers.website,
-        name: answers.name,
-        contact: answers.contact,
-        reminders: answers.reminders,
-        insurances: answers.insurances,
-        care_types: answers.care_types,
-        age_groups: answers.age_groups,
+        care_types: [...answers.care_types.keys()],
+        age_groups: [...answers.age_groups.keys()],
         populations: answers.populations,
         approaches: answers.approaches,
         issues: answers.issues,
+        email: answers.email,
+        name: answers.name,
+        insurances: answers.insurances,
+        terms,
+        termsObject,
+        // contact: answers.contact,
+        // reminders: answers.reminders,
         questionnaire_answers: [
           {
             label: 'Type of Care',
-            values: answers.care_types,
+            values: [...answers.care_types.keys()],
           },
           {
             label: 'Client Focus',
-            values: answers.age_groups,
+            values: [...answers.age_groups.keys()],
           },
           {
             label: 'Experienced with',
@@ -194,53 +194,53 @@ class Firebase {
       })
     }
 
-    return this.db
-      .collection('providers_test2')
-      .doc(this.auth.currentUser.uid)
-      .set(
-        {
-          id: this.auth.currentUser.uid,
-          terms,
-          termsObject,
-          address: answers.address,
-          email: answers.email,
-          phone_number: answers.phone_number,
-          credentials: answers.credentials,
-          website: answers.website,
-          name: answers.name,
-          contact: answers.contact,
-          reminders: answers.reminders,
-          insurances: answers.insurances,
-          care_types: answers.care_types,
-          age_groups: answers.age_groups,
-          populations: answers.populations,
-          approaches: answers.approaches,
-          issues: answers.issues,
-          questionnaire_answers: [
-            {
-              label: 'Type of Care',
-              values: answers.care_types,
-            },
-            {
-              label: 'Client Focus',
-              values: answers.age_groups,
-            },
-            {
-              label: 'Experienced with',
-              values: answers.issues,
-            },
-            {
-              label: 'Credentials',
-              values: answers.credentials,
-            },
-            {
-              label: 'Approach to treatment',
-              values: answers.approaches,
-            },
-          ],
-        }
-        // { merge: true }
-      )
+    // return this.db
+    //   .collection('providers_test2')
+    //   .doc(this.auth.currentUser.uid)
+    //   .set(
+    //     {
+    //       id: this.auth.currentUser.uid,
+    //       terms,
+    //       termsObject,
+    //       address: answers.address,
+    //       email: answers.email,
+    //       phone_number: answers.phone_number,
+    //       credentials: answers.credentials,
+    //       website: answers.website,
+    //       name: answers.name,
+    //       contact: answers.contact,
+    //       reminders: answers.reminders,
+    //       insurances: answers.insurances,
+    //       care_types: answers.care_types,
+    //       age_groups: answers.age_groups,
+    //       populations: answers.populations,
+    //       approaches: answers.approaches,
+    //       issues: answers.issues,
+    //       questionnaire_answers: [
+    //         {
+    //           label: 'Type of Care',
+    //           values: answers.care_types,
+    //         },
+    //         {
+    //           label: 'Client Focus',
+    //           values: answers.age_groups,
+    //         },
+    //         {
+    //           label: 'Experienced with',
+    //           values: answers.issues,
+    //         },
+    //         {
+    //           label: 'Credentials',
+    //           values: answers.credentials,
+    //         },
+    //         {
+    //           label: 'Approach to treatment',
+    //           values: answers.approaches,
+    //         },
+    //       ],
+    //     }
+    //     // { merge: true }
+    //   )
   }
 
   getProviderInfo(providerId) {

@@ -6,9 +6,9 @@ import styles from './question-field.module.css'
 const validate = value => {
   let errorMessage
   if (value.length === 0) {
-    errorMessage = 'Zipcode is required'
+    errorMessage = 'Field is required'
   } else if (value.length < 5) {
-    errorMessage = 'Please enter a valid zipcode'
+    errorMessage = 'Please enter a valid input'
   }
   return errorMessage
 }
@@ -29,8 +29,8 @@ export const QuestionField = ({
         type={type}
         className={styles.input}
       />
-      {errors.zip_code && touched.zip_code ? (
-        <div className={styles.errorMessage}>{errors.zip_code}</div>
+      {errors[name] && touched[name] ? (
+        <div className={styles.errorMessage}>{errors[name]}</div>
       ) : null}
     </div>
   )

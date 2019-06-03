@@ -1,0 +1,28 @@
+@import '../common/variables.css';
+
+.input {
+  width: 200px;
+  height: 35px;
+  font-size: var(--fs-2);
+  border: 1px solid hsl(0, 0%, 80%);
+  border-radius: 4px;
+  background-color: var(--white);
+  padding: var(--s-0) var(--s-0) var(--s-0) var(--s-2);
+}
+
+.input:focus {
+  border: 2px solid #2684ff;
+  background-color: var(--white);
+  outline: none;
+}
+
+.supplementaryText {
+  font-size: var(--fs-2);
+  margin-bottom: var(--s-3);
+  font-style: italic;
+}
+
+.errorMessage {
+  color: red;
+  margin-top: var(--s-2);
+}

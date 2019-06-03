@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { Link, navigate } from '@reach/router'
-import { Formik, Form } from 'formik'
+import { Formik, Form, Field } from 'formik'
 import styles from './questionnaire.module.css'
 import { OnboardingHeader } from '../common/onboarding-header'
 import { ONBOARDING_ROUTES } from '../constants/routes'
 import { QuestionField } from './question-field'
+import { CheckboxSquare } from '../common/checkbox-square'
+import { Checkbox } from '../common/checkbox2'
+import { QuestionFieldNoValidation } from './question-field-no-validation'
 import { Button, TYPES, SIZES } from '../common/button'
 import { BackButton } from '../common/back-button'
 import { ArrowRight } from 'react-feather'
@@ -31,22 +34,32 @@ export const questionnaireQuestions = [
     isLongInput: false,
   },
   {
-    questionType: 'autocomplete',
+    questionType: 'checkbox-squares',
     question: 'What kind of care or services do you provide?',
 
     terms: [
-      { id: 'Therapist', value: 'Therapist', label: 'Therapist' },
+      {
+        id: 'Therapist',
+        description:
+          'Talking with a professional in order to work through challenges or issues',
+        value: 'Therapist',
+        label: 'Therapist',
+      },
+
       {
         id: 'Medication',
+        description:
+          'Services relating to prescription and monitoring of medication',
         value: 'Medication',
         label: 'Medication',
       },
       {
         id: 'Testing',
+        description:
+          'Evaluation to help make a diagnosis and or guide treatment',
         value: 'Testing',
         label: 'Testing',
       },
-      { id: 'Not sure', value: 'Not sure', label: 'Not sure' },
     ],
     name: 'care_types',
     pageNum: 1,
@@ -136,7 +149,7 @@ export const questionnaireQuestions = [
     pageNum: 1,
   },
   {
-    questionType: 'autocomplete',
+    questionType: 'checkbox',
     question: 'Do you specialize with a specific age group?',
 
     terms: [
@@ -353,7 +366,7 @@ export const questionnaireQuestions = [
     pageNum: 1,
   },
   {
-    questionType: 'input',
+    questionType: 'inputNoValidate',
     question: 'What is your email?*',
 
     name: 'email',
@@ -362,8 +375,8 @@ export const questionnaireQuestions = [
     isLongInput: false,
   },
   {
-    questionType: 'input',
-    question: 'What is your phone number?*',
+    questionType: 'inputNoValidate',
+    question: 'What is your phone number?',
 
     name: 'phone_number',
     pageNum: 2,
@@ -371,15 +384,15 @@ export const questionnaireQuestions = [
     isLongInput: false,
   },
   {
-    questionType: 'input',
-    question: "What is your practice's website?*",
+    questionType: 'inputNoValidate',
+    question: "What is your practice's website?",
     name: 'website',
     pageNum: 2,
     type: 'text',
     isLongInput: false,
   },
   {
-    questionType: 'input',
+    questionType: 'inputNoValidate',
     question: 'What is your name?*',
 
     name: 'name',
@@ -387,44 +400,44 @@ export const questionnaireQuestions = [
     type: 'text',
     isLongInput: false,
   },
-  {
-    questionType: 'autocomplete',
-    question:
-      'We will periodically remind you to update your profile to make sure those seeking services have the best experience possible. How would you like to be contacted? Please check all that apply.*',
+  // {
+  //   questionType: 'autocomplete',
+  //   question:
+  //     'We will periodically remind you to update your profile to make sure those seeking services have the best experience possible. How would you like to be contacted? Please check all that apply.*',
 
-    terms: [
-      {
-        id: 'Email',
-        value: 'Email',
-        label: 'Email',
-      },
-      {
-        id: 'Phone',
-        value: 'Phone',
-        label: 'Phone',
-      },
-    ],
-    name: 'contact',
-    pageNum: 2,
-  },
-  {
-    questionType: 'autocomplete',
-    question: 'How often would you like to be reminded to update your profile?',
-    terms: [
-      {
-        id: 'Email',
-        value: 'Email',
-        label: 'Email',
-      },
-      {
-        id: 'Phone',
-        value: 'Phone',
-        label: 'Phone',
-      },
-    ],
-    name: 'reminders',
-    pageNum: 2,
-  },
+  //   terms: [
+  //     {
+  //       id: 'Email',
+  //       value: 'Email',
+  //       label: 'Email',
+  //     },
+  //     {
+  //       id: 'Phone',
+  //       value: 'Phone',
+  //       label: 'Phone',
+  //     },
+  //   ],
+  //   name: 'contact',
+  //   pageNum: 2,
+  // },
+  // {
+  //   questionType: 'autocomplete',
+  //   question: 'How often would you like to be reminded to update your profile?',
+  //   terms: [
+  //     {
+  //       id: 'Email',
+  //       value: 'Email',
+  //       label: 'Email',
+  //     },
+  //     {
+  //       id: 'Phone',
+  //       value: 'Phone',
+  //       label: 'Phone',
+  //     },
+  //   ],
+  //   name: 'reminders',
+  //   pageNum: 2,
+  // },
 ]
 
 const returnCorrectQuestionFormat = (
@@ -442,6 +455,76 @@ const returnCorrectQuestionFormat = (
         setFieldValue={setFieldValue}
         key={question.question}
       />
+    )
+  } else if (questionType === 'inputNoValidate') {
+    return (
+      <QuestionFieldNoValidation
+        name={question.name}
+        type={question.type}
+        key={question.question}
+      />
+    )
+  } else if (questionType === 'checkbox-squares') {
+    return (
+      <div className={styles.careTypeCardsContainer}>
+        <p className={styles.supplementaryText}>{question.supplementaryText}</p>
+        {question.terms.map(term => {
+          return (
+            <Field
+              name={question.name}
+              // key={question.questionType}
+              render={({ field }) => {
+                return (
+                  <CheckboxSquare
+                    name={term.value}
+                    supplementaryText={question.supplementaryText}
+                    description={term.description}
+                    onCheckboxClick={checked => {
+                      setFieldValue(
+                        new Map([...field.value.set(term.value, checked)])
+                      )
+                    }}
+                  />
+                )
+              }}
+            />
+          )
+        })}
+      </div>
+    )
+  } else if (questionType === 'checkbox') {
+    return (
+      <div className={styles.ageGroupCheckboxes}>
+        {question.terms.map(term => {
+          return (
+            <label
+              className={styles.checkboxOption}
+              // key={question.supplementaryText}
+            >
+              <Field
+                name={question.name}
+                className={styles.checkbox}
+                render={({ field }) => {
+                  return (
+                    <Checkbox
+                      name={term.value}
+                      onChange={e => {
+                        const item = e.target.name
+                        const isChecked = e.target.checked
+                        setFieldValue(
+                          new Map([...field.value.set(item, isChecked)])
+                        )
+                      }}
+                      checked={field.value.get(term.value)}
+                    />
+                  )
+                }}
+              />
+              <span className={styles.checkboxText}>{term.value}</span>
+            </label>
+          )
+        })}
+      </div>
     )
   } else {
     return (
@@ -482,7 +565,6 @@ export const ProviderQuestionnaire = () => {
   useEffect(() => window.scrollTo(0, 0))
 
   async function handleSubmit(answers) {
-    console.log('hey')
     await firebase.addProviderQuestionnaireAnswers(answers)
   }
 
@@ -496,7 +578,6 @@ export const ProviderQuestionnaire = () => {
 
   return (
     <div className={styles.container}>
-      {/* <OnboardingHeader step={1} /> */}
       <div className={styles.maxWidthContainer}>
         <div className={styles.questionsTitleContainer}>
           {currPageNum === 1 ? (
@@ -513,23 +594,25 @@ export const ProviderQuestionnaire = () => {
           </h1>
           <Formik
             initialValues={{
+              address: '',
               zip_code: '',
-              email: '',
               phone_number: '',
               website: '',
-              name: '',
-              address: '',
-              contact: [],
-              reminders: [],
+              care_types: new Map(),
               issues: [],
-              age_groups: [],
-              care_types: [],
-              insurances: [],
+              age_groups: new Map(),
               credentials: [],
               approaches: [],
               populations: [],
+              insurances: [],
+              email: '',
+              name: '',
+
+              // contact: [],
+              // reminders: [],
             }}
             onSubmit={(values, { setSubmitting }) => {
+              console.log(values)
               handleSubmit(values)
               setSubmitting(false)
               navigate('/onboardingTracker/questionnaireCompleted')
@@ -544,7 +627,7 @@ export const ProviderQuestionnaire = () => {
                       type="submit"
                       buttonType={TYPES.PRIMARY}
                       buttonSize={SIZES.MEDIUM}
-                      // disabled={values.zip_code.length < 5 ? 'disabled' : false}
+                      disabled={values.zip_code.length < 5 ? 'disabled' : false}
                     >
                       Finish
                     </Button>
