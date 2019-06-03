@@ -59,14 +59,16 @@ export class ProviderCard extends React.Component {
                     }}
                   />
                 </a>
-                <a
-                  className={styles.contactAction}
-                  href={provider.website}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  <ExternalLink />
-                </a>
+                {provider.website && (
+                  <a
+                    className={styles.contactAction}
+                    href={provider.website}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <ExternalLink />
+                  </a>
+                )}
               </div>
               <Link
                 to={provider.id}

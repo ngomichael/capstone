@@ -84,6 +84,7 @@ export const MatchedProviders = () => {
     const queriedProvider = snapshot.docs.map(doc => doc.data())
     setAllProviders(queriedProvider)
     setPageCount(Math.ceil(queriedProvider.length / providersPerPage))
+    setCurrentPage(1)
   }
 
   const providersPerPage = 4
