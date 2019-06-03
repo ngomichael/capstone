@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { Link, Redirect } from '@reach/router'
+import { Link, Redirect, navigate } from '@reach/router'
 import firebase from '../firebase/firebase'
 import styles from './sign-up.module.css'
+import { ROUTES, ONBOARDING_ROUTES } from '../constants/routes'
 import { Button, TYPES, SIZES } from '../common/button'
 import { InputField } from '../common/input-field'
 import { HomeHeader } from '../common/home-header'
@@ -27,14 +28,7 @@ export const ProviderSignUp = () => {
   }
 
   async function handleSignUp() {
-    try {
-      await firebase.register(name, email, password)
-      await firebase.addUserInformation(name, password, email)
-      setCreatedAccount(true)
-      return <Redirect noThrow to="/onboardingTracker/getStarted" />
-    } catch (err) {
-      console.log(err)
-    }
+    return <Redirect noThrow to={ONBOARDING_ROUTES.providerQuestionnaire} />
   }
 
   return (
@@ -50,7 +44,7 @@ export const ProviderSignUp = () => {
             <p className={styles.title}>Welcome to PearCare</p>
             <p className={styles.description}>
               Creating an account is the first step to making a provider profile
-              with PearCare, Get started now!
+              with PearCare. Get started now!
             </p>
             {/* <div className={styles.signIn}>
               <span>Already have an account? </span>{' '}
@@ -87,21 +81,13 @@ export const ProviderSignUp = () => {
                 buttonType={TYPES.PRIMARY}
                 buttonSize={SIZES.SMALL}
                 onClick={() => {
-                  handleSignUp()
+                  navigate(ONBOARDING_ROUTES.providerQuestionnaire)
                 }}
               >
                 Sign up
               </Button>
             </form>
-            {createdAccount ? (
-              <Redirect noThrow to="/onboardingTracker/getStarted" />
-            ) : null}
           </div>
-        </div>
-        <div>
-          <button type="button" onClick={() => firebase.signOut()}>
-            Sign Out
-          </button>
         </div>
       </div>
     </div>

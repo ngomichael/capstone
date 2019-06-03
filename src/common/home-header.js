@@ -10,7 +10,7 @@ const navLinksText = [
     text: 'How it Works',
     link: 'https://krystl37.wixsite.com/pearcarelanding',
   },
-  { text: 'For providers', path: ROUTES.signIn },
+  { text: 'For providers', path: '/providerSignUp' },
   { text: 'Log in/Sign up', path: ROUTES.signIn },
 ]
 

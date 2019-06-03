@@ -224,9 +224,9 @@ export const questionnaireQuestions = [
         label: 'Social Worker (MSW, LGSW, LCSW, LMSW)',
       },
       {
-        id: ' Pastoral Counseling (MA, CCPT, CpastC)',
-        value: ' Pastoral Counseling (MA, CCPT, CpastC)',
-        label: ' Pastoral Counseling (MA, CCPT, CpastC)',
+        id: 'Pastoral Counseling (MA, CCPT, CpastC)',
+        value: 'Pastoral Counseling (MA, CCPT, CpastC)',
+        label: 'Pastoral Counseling (MA, CCPT, CpastC)',
       },
     ],
     name: 'credentials',
@@ -653,9 +653,7 @@ export const ProviderQuestionnaire = () => {
     <div className={styles.container}>
       <div className={styles.maxWidthContainer}>
         <div className={styles.questionsTitleContainer}>
-          {currPageNum === 1 ? (
-            <BackButton path="/getStarted" />
-          ) : (
+          {currPageNum === 1 ? null : ( // <BackButton path="/getStarted" />
             <BackButton onClick={handlePreviousPage} />
           )}
 
@@ -691,7 +689,8 @@ export const ProviderQuestionnaire = () => {
               console.log(values)
               handleSubmit(values)
               setSubmitting(false)
-              navigate('/onboardingTracker/questionnaireCompleted')
+              // navigate to home
+              navigate('/')
             }}
           >
             {({ isSubmitting, setFieldValue, values, touched, errors }) => (

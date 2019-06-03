@@ -30,6 +30,8 @@ export const ProviderInfo = ({ providerId, location, prevPath }) => {
     setIsModalOpen(true)
   }
 
+  console.log(provider)
+
   return (
     <div className={styles.container}>
       <ContactModal
@@ -53,7 +55,7 @@ export const ProviderInfo = ({ providerId, location, prevPath }) => {
                   <p>{provider.care_types.join(', ')}</p>
                   <p>{provider.credentials}</p>
                   <div className={styles.iconAndTagContainer}>
-                    {provider.accepting_clients && (
+                    {provider.accepting_clients === 'Yes' && (
                       <img
                         src={AcceptingClientsIcon}
                         className={styles.acceptingClientsIcon}
@@ -96,18 +98,7 @@ export const ProviderInfo = ({ providerId, location, prevPath }) => {
                 figuring out if you're able to relate and if they are able to
                 fully understand your situation.
               </p>
-              <p className={styles.sectionContent}>
-                I am a clinician located in the heart of Ballard. I grew up in
-                rural Ohio as a shy and awkward kid, filling time with reading,
-                gaming, and spending time with my family's golden retrievers. I
-                attended The Ohio State University for both my undergraduate and
-                graduate education. I moved to Seattle after graduate school
-                where I met my wife Olivia out of a genuine love for the Pacific
-                Northwest. These days, I can still be found reading (mostly
-                Sci-Fi) and gaming (Board, Card, Computer, Console). I’ve also
-                taken up kayaking around the city with my foldable kayak, and I
-                find biking to be my preferred method of transportation.
-              </p>
+              <p className={styles.sectionContent}>{provider.biography}</p>
             </div>
 
             <div className={styles.sectionContainer}>

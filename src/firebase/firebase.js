@@ -144,9 +144,9 @@ class Firebase {
     }, {})
 
     if (!this.auth.currentUser) {
-      const id = this.db.collection('providers_test2').doc().id
+      const id = this.db.collection('providers_test3').doc().id
 
-      return this.db.collection('providers_test2').add({
+      return this.db.collection('providers_test3').add({
         id: id,
         zip_code: answers.zip_code,
         address: answers.address,
@@ -161,10 +161,10 @@ class Firebase {
         email: answers.email,
         name: answers.name,
         insurances: answers.insurances,
+        accepting_clients: [...answers.accepting_clients.keys()],
         payment_type: [...answers.payment_type.keys()],
         cost: answers.cost,
         biography: answers.biography,
-        accepting_clients: [...answers.accepting_clients.keys()],
         terms,
         termsObject,
         // contact: answers.contact,
@@ -249,7 +249,7 @@ class Firebase {
 
   getProviderInfo(providerId) {
     // console.log(providerId)
-    const providersRef = this.db.collection('providers_test2')
+    const providersRef = this.db.collection('providers_test3')
     let ref = providersRef.where('id', '==', providerId)
     return ref.get()
   }
@@ -305,7 +305,7 @@ class Firebase {
   // }
 
   getAllProviders() {
-    return this.db.collection('providers_test2').get()
+    return this.db.collection('providers_test3').get()
   }
 
   filterProviderName(name) {

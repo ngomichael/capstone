@@ -48,6 +48,7 @@ class App extends Component {
     firebase.auth.onAuthStateChanged(async user => {
       if (user) {
         const userInfo = await firebase.getSignedInUserInfo(user.uid)
+        console.log(userInfo)
 
         this.setState({
           signedInUser: user,
@@ -86,6 +87,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <UserProvider value={this.state}>
         <Router className={styles.onboardingContainer}>
