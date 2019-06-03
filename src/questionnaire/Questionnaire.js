@@ -191,6 +191,7 @@ export const Questionnaire = () => {
                 }}
                 onSubmit={(values, { setSubmitting }) => {
                   handleSubmit(values)
+                  //calculateResults(values)
                   setSubmitting(false)
                   navigate('/onboardingTracker/questionnaireCompleted')
                 }}

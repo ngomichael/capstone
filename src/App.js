@@ -164,7 +164,7 @@ class App extends Component {
     }
   }
 
-calculateResults() {
+calculateResults(context) {
     try {
 
       let user_id = '7vMGQtyObOVZSmEL0GUL'
@@ -206,14 +206,14 @@ calculateResults() {
           querySnapshot.forEach(provider => {
             let provider_answers = provider.data()
          
-             //add provider score to each provider 
+             //add provider score to each provider
             provider_answers.provider_score = this.getRankingScore(user_answers, provider_answers);
+            
             //add distance to the provider and set the state 
             // this.getDuration(user_answers.zip_code, provider_answers.address, provider_answers)
           }, this)
         })
         .then(() => {
-          console.log('the highest score is ',  this.state.all_providers[0].provider_score );
           let sorted_list = this.state.all_providers.sort((a, b ) => {
             return b.provider_score - a.provider_score;
           })
@@ -221,7 +221,8 @@ calculateResults() {
           this.setState( {
             all_providers: sorted_list
            })
-          
+           
+           console.log('the highest score is ',  this.state.all_providers[0].provider_score );
   
       
           this.setState( ({
