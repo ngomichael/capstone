@@ -128,7 +128,7 @@ class Firebase {
       ...answers.approaches,
       ...answers.populations,
     ]
-    console.log(terms)
+
     const termsObject = terms.reduce((object, term) => {
       let formattedTerm = term
         .split(' ')
@@ -161,6 +161,10 @@ class Firebase {
         email: answers.email,
         name: answers.name,
         insurances: answers.insurances,
+        payment_type: [...answers.payment_type.keys()],
+        cost: answers.cost,
+        biography: answers.biography,
+        accepting_clients: [...answers.accepting_clients.keys()],
         terms,
         termsObject,
         // contact: answers.contact,

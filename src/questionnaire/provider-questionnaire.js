@@ -16,6 +16,15 @@ import { AutocompleteField } from './autocomplete-field'
 
 export const questionnaireQuestions = [
   {
+    questionType: 'inputNoValidate',
+    question: 'What is your name?*',
+
+    name: 'name',
+    pageNum: 1,
+    type: 'text',
+    isLongInput: false,
+  },
+  {
     questionType: 'input',
     question: 'What is the address of your practice?*',
 
@@ -367,13 +376,74 @@ export const questionnaireQuestions = [
   },
   {
     questionType: 'inputNoValidate',
+    question:
+      "Each provider profile has a biography section, explaining that individual's background, education, and other information they would like potential clients to know. Please provide your biography in the space below",
+    name: 'biography',
+    pageNum: 2,
+    type: 'text',
+    isLongInput: false,
+  },
+  {
+    questionType: 'inputNoValidate',
     question: 'What is your email?*',
-
     name: 'email',
     pageNum: 2,
     type: 'text',
     isLongInput: false,
   },
+  {
+    questionType: 'checkbox',
+    question:
+      'What forms of payment do you accept besides insurance, if any? Please mark all that apply.',
+
+    terms: [
+      {
+        id: 'Credit card',
+        value: 'Credit card',
+        label: 'Credit card',
+      },
+      {
+        id: 'Debit card',
+        value: 'Debit card',
+        label: 'Debit card',
+      },
+      {
+        id: 'Cash',
+        value: 'Cash',
+        label: 'Cash',
+      },
+      {
+        id: 'Check',
+        value: 'Check',
+        label: 'Check',
+      },
+      { id: 'Venmo', value: 'Venmo', label: 'Venmo' },
+      { id: 'Paypal', value: 'Paypal', label: 'Paypal' },
+    ],
+    name: 'payment_type',
+    pageNum: 2,
+  },
+  {
+    questionType: 'checkbox',
+    question:
+      'Are you currently accepting new clients? Your response wil be reflected on your profile.',
+
+    terms: [
+      {
+        id: 'Yes',
+        value: 'Yes',
+        label: 'Yes',
+      },
+      {
+        id: 'No',
+        value: 'No',
+        label: 'No',
+      },
+    ],
+    name: 'accepting_clients',
+    pageNum: 2,
+  },
+
   {
     questionType: 'inputNoValidate',
     question: 'What is your phone number?',
@@ -383,19 +453,20 @@ export const questionnaireQuestions = [
     type: 'text',
     isLongInput: false,
   },
+
   {
     questionType: 'inputNoValidate',
-    question: "What is your practice's website?",
-    name: 'website',
+    question:
+      'What is the cost of treatment? You might explain the price per session and the different prices with and without insurance. Please be as specific as possible',
+    name: 'cost',
     pageNum: 2,
     type: 'text',
     isLongInput: false,
   },
   {
     questionType: 'inputNoValidate',
-    question: 'What is your name?*',
-
-    name: 'name',
+    question: "What is your practice's website?",
+    name: 'website',
     pageNum: 2,
     type: 'text',
     isLongInput: false,
@@ -544,8 +615,10 @@ const renderQuestions = (setFieldValue, currPageNum, touched, errors) => {
   return questionnaireQuestions.map((question, index) => {
     return currPageNum === question.pageNum ? (
       <div className={styles.questionsContainer} key={index}>
-        <p className={styles.questionNumber}>{index + 1}</p>
-        <ArrowRight size={18} className={styles.arrow} />
+        <div className={styles.arrowAndNumberContainer}>
+          <p className={styles.questionNumber}>{index + 1}</p>
+          <ArrowRight size={18} className={styles.arrow} />
+        </div>
         <div>
           <p className={styles.question}>{question.question}</p>
           {returnCorrectQuestionFormat(
@@ -590,7 +663,7 @@ export const ProviderQuestionnaire = () => {
           <h1 className={styles.title}>
             {currPageNum === 1
               ? "First, let's start with the basics"
-              : 'Now, let us know how to get in touch with you in the future?'}
+              : "Besides the basics, let's gather some more information for your profile"}
           </h1>
           <Formik
             initialValues={{
@@ -607,7 +680,10 @@ export const ProviderQuestionnaire = () => {
               insurances: [],
               email: '',
               name: '',
-
+              payment_type: new Map(),
+              cost: '',
+              biography: '',
+              accepting_clients: new Map(),
               // contact: [],
               // reminders: [],
             }}
