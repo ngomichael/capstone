@@ -113,7 +113,7 @@ export const MatchedProviders = () => {
   return (
     <UserConsumer>
       {context => (
-        console.log(context.userInfo),
+        console.log(context),
         (
           <div className={styles.container}>
             <div className={styles.maxWidthContainer}>

@@ -10,12 +10,14 @@ import { UserConsumer } from '../context/user-context'
 export const Home = () => {
   return (
     <UserConsumer>
-      {context => (
-        console.log(context),
-        (
-          // context.getSignedInUserInvoked && context.userId.length !== 0 ? (
-          //   <Redirect to={ROUTES.dashboard} noThrow />
-          // ) : (
+      {context =>
+        context.isLoading === false && context.userId.length !== 0 ? (
+          context.userInfo.questionnaire_finished ? (
+            <Redirect to={ROUTES.dashboard} noThrow />
+          ) : (
+            <Redirect to={ONBOARDING_ROUTES.getStarted} noThrow />
+          )
+        ) : (
           <div className={styles.container}>
             <HomeHeader />
             <div className={styles.maxWidthContainer}>
@@ -56,7 +58,7 @@ export const Home = () => {
           </div>
           // )
         )
-      )}
+      }
     </UserConsumer>
   )
 }

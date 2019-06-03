@@ -32,8 +32,8 @@ export const Tracker = ({ savedProviderIds }) => {
     <UserConsumer>
       {context => (
         console.log(isLoading),
-        console.log(savedProviders),
         (
+          // console.log(savedProviders),
           <div className={styles.container}>
             <h1 className={styles.title}>Saved Providers Tracker</h1>
             {isLoading === false && savedProviders.length !== 0 && (

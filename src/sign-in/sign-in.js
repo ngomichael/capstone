@@ -6,14 +6,13 @@ import { Button, TYPES, SIZES } from '../common/button'
 import { ROUTES, ONBOARDING_ROUTES } from '../constants/routes'
 import { InputField } from '../common/input-field'
 import { HomeHeader } from '../common/home-header'
-import { UndrawLogin } from 'react-undraw'
 import pears from '../images/pairOfPears.png'
 import { UserConsumer } from '../context/user-context'
 
-export const SignIn = () => {
+export const SignIn = ({ location }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [isSignedIn, setIsSignedIn] = useState(false)
+  // const [isSignedIn, setIsSignedIn] = useState(false)
 
   function handleEmailChange(e) {
     setEmail(e.target.value)
@@ -34,10 +33,13 @@ export const SignIn = () => {
 
   return (
     <UserConsumer>
-      {context => (
-        console.log(context),
-        context.isLoading && context.userId.length !== 0 ? (
-          <Redirect to={ROUTES.dashboard} noThrow />
+      {context =>
+        context.isLoading === false && context.userId.length !== 0 ? (
+          context.userInfo.questionnaire_finished ? (
+            <Redirect to={ROUTES.dashboard} noThrow />
+          ) : (
+            <Redirect to={ONBOARDING_ROUTES.getStarted} noThrow />
+          )
         ) : (
           <div className={styles.container}>
             <HomeHeader />
@@ -86,16 +88,12 @@ export const SignIn = () => {
                       Sign In
                     </Button>
                   </form>
-                  {isSignedIn ? (
-                    <Redirect noThrow to={ONBOARDING_ROUTES.getStarted} />
-                  ) : null}
-                  {/* {createdAccount ? <Redirect noThrow to="/getStarted" /> : null} */}
                 </div>
               </div>
             </div>
           </div>
         )
-      )}
+      }
     </UserConsumer>
   )
 }

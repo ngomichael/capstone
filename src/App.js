@@ -52,6 +52,7 @@ class App extends Component {
           signedInUser: user,
           userId: user.uid,
           userInfo: userInfo.docs.map(doc => doc.data())[0],
+          previousLocation: window.previousLocation,
         })
 
         this.setState({
@@ -77,6 +78,7 @@ class App extends Component {
           },
           userId: '',
           isLoading: false,
+          previousLocation: window.previousLocation,
         })
       }
     })
@@ -97,12 +99,14 @@ class App extends Component {
           />
           <MatchedProviders path={ONBOARDING_ROUTES.results} />
           <MatchedProviders path={ROUTES.results} />
+          <Dashboard path={ROUTES.dashboard} />
           {/* <Tracker
             path={ROUTES.tracker}
             savedProviderIds={this.state.userInfo.savedProviders}
           /> */}
           <PrivateRoute
             path={ROUTES.tracker}
+            // from={ROUTES.tracker}
             savedProviderIds={this.state.userInfo.savedProviders}
             component={Tracker}
           />
@@ -118,8 +122,6 @@ class App extends Component {
             path={ROUTES.providerInfoTracker}
             prevPath={ROUTES.tracker}
           />
-
-          <Dashboard path={ROUTES.dashboard} />
 
           <Prompt
             path={ONBOARDING_ROUTES.getStarted}
@@ -155,7 +157,7 @@ class App extends Component {
             p1="We used your answers on the last page to find providers who may be a good fit for you."
             p2="You can also continue adjusting what you're looking for by adding or removing filters, using the search bar, or editing your answers to the questionnaire."
             buttonText="View Results"
-            nextPath={`/${ONBOARDING_ROUTES.results}`}
+            nextPath={`${ONBOARDING_ROUTES.results}`}
             prevPath={`/${ONBOARDING_ROUTES.questionnaire}`}
             step={2}
             skipText="Want to change your answers?"
