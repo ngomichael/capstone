@@ -8,6 +8,7 @@ export const ROUTES = {
   providerInfoTracker: '/dashboard/tracker/:providerId',
   dashboardHeader: 'dashboard/*',
   tracker: '/dashboard/tracker',
+  providerSignUp: '/providerSignUp',
 }
 
 export const ONBOARDING_ROUTES = {

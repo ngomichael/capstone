@@ -4,6 +4,7 @@ import { Router, navigate } from '@reach/router'
 import { ROUTES, ONBOARDING_ROUTES } from './constants/routes'
 import styles from './app.module.css'
 import { SignUp } from './sign-up/sign-up'
+import { ProviderSignUp } from './sign-up/provider-sign-up'
 import { SignIn } from './sign-in/sign-in'
 import { Home } from './home/home'
 import { Questionnaire } from './questionnaire/questionnaire'
@@ -95,9 +96,6 @@ class App extends Component {
         <Router>
           <Home path={ROUTES.home} />
           <Questionnaire path={ONBOARDING_ROUTES.questionnaire} />
-          <ProviderQuestionnaire
-            path={ONBOARDING_ROUTES.providerQuestionnaire}
-          />
           <MatchedProviders path={ONBOARDING_ROUTES.results} />
           <ProviderInfo
             path={ONBOARDING_ROUTES.providerInfo}
@@ -147,6 +145,12 @@ class App extends Component {
 
           <SignUp path={ROUTES.signUp} />
           <SignIn path={ROUTES.signIn} />
+
+          <ProviderQuestionnaire
+            path={ONBOARDING_ROUTES.providerQuestionnaire}
+          />
+
+          <ProviderSignUp path={ROUTES.providerSignUp} />
 
           <PrivateRoute
             path={ROUTES.providerInfoTracker}

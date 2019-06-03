@@ -119,6 +119,7 @@ class Firebase {
   }
 
   addProviderQuestionnaireAnswers(answers) {
+    console.log('hello')
     const terms = [
       ...answers.care_types,
       ...answers.issues,

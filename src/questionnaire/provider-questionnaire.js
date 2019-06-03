@@ -3,6 +3,7 @@ import { Link, navigate } from '@reach/router'
 import { Formik, Form } from 'formik'
 import styles from './questionnaire.module.css'
 import { OnboardingHeader } from '../common/onboarding-header'
+import { ONBOARDING_ROUTES } from '../constants/routes'
 import { QuestionField } from './question-field'
 import { Button, TYPES, SIZES } from '../common/button'
 import { BackButton } from '../common/back-button'
@@ -13,10 +14,18 @@ import { AutocompleteField } from './autocomplete-field'
 export const questionnaireQuestions = [
   {
     questionType: 'input',
-    question:
-      'What is the address of your practice, including the city and zipcode?*',
+    question: 'What is the address of your practice?*',
 
     name: 'address',
+    pageNum: 1,
+    type: 'text',
+    isLongInput: false,
+  },
+  {
+    questionType: 'input',
+    question: 'What is the zipcode of your practice?*',
+
+    name: 'zip_code',
     pageNum: 1,
     type: 'text',
     isLongInput: false,
@@ -418,19 +427,20 @@ export const questionnaireQuestions = [
   },
 ]
 
-const returnCorrectQuestionFormat = (question, setFieldValue, currPageNum) => {
+const returnCorrectQuestionFormat = (
+  question,
+  setFieldValue,
+  touched,
+  errors
+) => {
   const questionType = question.questionType
   if (questionType === 'autocomplete') {
     return (
       <AutocompleteField
         terms={question.terms}
         name={question.name}
-        // type={question.type}
-        isLongInput={question.isLongInput}
         setFieldValue={setFieldValue}
         key={question.question}
-        currPageNum={currPageNum}
-        pageNum={question.pageNum}
       />
     )
   } else {
@@ -440,13 +450,14 @@ const returnCorrectQuestionFormat = (question, setFieldValue, currPageNum) => {
         type={question.type}
         isLongInput={question.isLongInput}
         key={question.question}
-        currPageNum={currPageNum}
+        touched={touched}
+        errors={errors}
       />
     )
   }
 }
 
-const renderQuestions = (setFieldValue, currPageNum) => {
+const renderQuestions = (setFieldValue, currPageNum, touched, errors) => {
   return questionnaireQuestions.map((question, index) => {
     return currPageNum === question.pageNum ? (
       <div className={styles.questionsContainer} key={index}>
@@ -454,7 +465,12 @@ const renderQuestions = (setFieldValue, currPageNum) => {
         <ArrowRight size={18} className={styles.arrow} />
         <div>
           <p className={styles.question}>{question.question}</p>
-          {returnCorrectQuestionFormat(question, setFieldValue, currPageNum)}
+          {returnCorrectQuestionFormat(
+            question,
+            setFieldValue,
+            touched,
+            errors
+          )}
         </div>
       </div>
     ) : null
@@ -463,8 +479,10 @@ const renderQuestions = (setFieldValue, currPageNum) => {
 
 export const ProviderQuestionnaire = () => {
   const [currPageNum, setCurrPageNum] = useState(1)
+  useEffect(() => window.scrollTo(0, 0))
+
   async function handleSubmit(answers) {
-    await firebase.getUserProfile()
+    console.log('hey')
     await firebase.addProviderQuestionnaireAnswers(answers)
   }
 
@@ -490,7 +508,7 @@ export const ProviderQuestionnaire = () => {
           <p>{`Questionnaire: Page ${currPageNum} of 2`}</p>
           <h1 className={styles.title}>
             {currPageNum === 1
-              ? "First, let's learn more about your practice"
+              ? "First, let's start with the basics"
               : 'Now, let us know how to get in touch with you in the future?'}
           </h1>
           <Formik
@@ -514,19 +532,19 @@ export const ProviderQuestionnaire = () => {
             onSubmit={(values, { setSubmitting }) => {
               handleSubmit(values)
               setSubmitting(false)
-              navigate('/questionnaireCompleted')
+              navigate('/onboardingTracker/questionnaireCompleted')
             }}
           >
-            {({ isSubmitting, setFieldValue }) => (
+            {({ isSubmitting, setFieldValue, values, touched, errors }) => (
               <Form>
-                {renderQuestions(setFieldValue, currPageNum)}
+                {renderQuestions(setFieldValue, currPageNum, touched, errors)}
                 {currPageNum === 2 && (
                   <div className={styles.submitButton}>
                     <Button
                       type="submit"
                       buttonType={TYPES.PRIMARY}
                       buttonSize={SIZES.MEDIUM}
-                      disabled={isSubmitting}
+                      // disabled={values.zip_code.length < 5 ? 'disabled' : false}
                     >
                       Finish
                     </Button>
