@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './home.module.css'
-import { Link } from '@reach/router'
+import { Link, Redirect } from '@reach/router'
 import { HomeHeader } from '../common/home-header'
 import { Button, TYPES, SIZES } from '../common/button'
 import { ROUTES, ONBOARDING_ROUTES } from '../constants/routes'
@@ -13,6 +13,9 @@ export const Home = () => {
       {context => (
         console.log(context),
         (
+          // context.getSignedInUserInvoked && context.userId.length !== 0 ? (
+          //   <Redirect to={ROUTES.dashboard} noThrow />
+          // ) : (
           <div className={styles.container}>
             <HomeHeader />
             <div className={styles.maxWidthContainer}>
@@ -51,6 +54,7 @@ export const Home = () => {
               </div>
             </div>
           </div>
+          // )
         )
       )}
     </UserConsumer>

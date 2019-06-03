@@ -18,13 +18,14 @@ import { DashboardHeader } from './dashboard/dashboard-header'
 import { UndrawHire, UndrawProfile } from 'react-undraw'
 import firebase from './firebase/firebase'
 import { UserProvider } from './context/user-context'
+import { PrivateRoute } from './private-route/private-route'
 
 class App extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      firebaseInitialized: false,
+      getSignedInUserInvoked: false,
       signedInUser: {},
       userInfo: {
         savedProviders: [],
@@ -36,9 +37,9 @@ class App extends Component {
   async componentDidMount() {
     await firebase.isInitialized().then(async val => {
       if (val) {
-        this.setState({
-          firebaseInitialized: true,
-        })
+        // this.setState({
+        //   getSignedInUserInvoked: true,
+        // })
       }
     })
 
@@ -48,6 +49,7 @@ class App extends Component {
         const userInfo = await firebase.getSignedInUserInfo(user.uid)
 
         this.setState({
+          getSignedInUserInvoked: true,
           signedInUser: user,
           userId: user.uid,
           userInfo: userInfo.docs.map(doc => doc.data())[0],
@@ -68,12 +70,16 @@ class App extends Component {
         console.log('No user is signed in')
 
         this.setState({
-          firebaseInitialized: false,
+          getSignedInUserInvoked: false,
           signedInUser: {},
           userInfo: {
             savedProviders: [],
           },
           userId: '',
+        })
+
+        this.setState({
+          getSignedInUserInvoked: true,
         })
       }
     })
@@ -94,9 +100,14 @@ class App extends Component {
           />
           <MatchedProviders path={ONBOARDING_ROUTES.results} />
           <MatchedProviders path={ROUTES.results} />
-          <Tracker
+          {/* <Tracker
             path={ROUTES.tracker}
             savedProviderIds={this.state.userInfo.savedProviders}
+          /> */}
+          <PrivateRoute
+            path={ROUTES.tracker}
+            savedProviderIds={this.state.userInfo.savedProviders}
+            component={Tracker}
           />
           <ProviderInfo
             path={ONBOARDING_ROUTES.providerInfo}
