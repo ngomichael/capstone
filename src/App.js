@@ -25,12 +25,12 @@ class App extends Component {
     super(props)
 
     this.state = {
-      getSignedInUserInvoked: false,
       signedInUser: {},
       userInfo: {
         savedProviders: [],
       },
       userId: '',
+      isLoading: true,
     }
   }
 
@@ -49,10 +49,13 @@ class App extends Component {
         const userInfo = await firebase.getSignedInUserInfo(user.uid)
 
         this.setState({
-          getSignedInUserInvoked: true,
           signedInUser: user,
           userId: user.uid,
           userInfo: userInfo.docs.map(doc => doc.data())[0],
+        })
+
+        this.setState({
+          isLoading: false,
         })
 
         // listens to the current user's document for any changes and updates
@@ -64,22 +67,16 @@ class App extends Component {
               userInfo: doc.data(),
             })
           })
-
-        // navigate(ROUTES.dashboard)
       } else {
         console.log('No user is signed in')
 
         this.setState({
-          getSignedInUserInvoked: false,
           signedInUser: {},
           userInfo: {
             savedProviders: [],
           },
           userId: '',
-        })
-
-        this.setState({
-          getSignedInUserInvoked: true,
+          isLoading: false,
         })
       }
     })

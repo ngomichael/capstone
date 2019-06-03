@@ -8,7 +8,7 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
     <UserConsumer>
       {context => (
         console.log(context),
-        context.getSignedInUserInvoked &&
+        context.isLoading === false &&
           (context.userId.length !== 0 ? (
             <Component {...rest} />
           ) : (

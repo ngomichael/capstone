@@ -36,7 +36,7 @@ export const SignIn = () => {
     <UserConsumer>
       {context => (
         console.log(context),
-        context.getSignedInUserInvoked && context.userId.length !== 0 ? (
+        context.isLoading && context.userId.length !== 0 ? (
           <Redirect to={ROUTES.dashboard} noThrow />
         ) : (
           <div className={styles.container}>
