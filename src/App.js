@@ -91,6 +91,7 @@ class App extends Component {
           <OnboardingHeader path={ONBOARDING_ROUTES.onboardingHeader} />
           <DashboardHeader path={ROUTES.dashboardHeader} />
         </Router>
+
         <Router>
           <Home path={ROUTES.home} />
           <Questionnaire path={ONBOARDING_ROUTES.questionnaire} />
@@ -98,31 +99,10 @@ class App extends Component {
             path={ONBOARDING_ROUTES.providerQuestionnaire}
           />
           <MatchedProviders path={ONBOARDING_ROUTES.results} />
-          <MatchedProviders path={ROUTES.results} />
-          <Dashboard path={ROUTES.dashboard} />
-          {/* <Tracker
-            path={ROUTES.tracker}
-            savedProviderIds={this.state.userInfo.savedProviders}
-          /> */}
-          <PrivateRoute
-            path={ROUTES.tracker}
-            // from={ROUTES.tracker}
-            savedProviderIds={this.state.userInfo.savedProviders}
-            component={Tracker}
-          />
           <ProviderInfo
             path={ONBOARDING_ROUTES.providerInfo}
             prevPath={ONBOARDING_ROUTES.results}
           />
-          <ProviderInfo
-            path={ROUTES.providerInfo}
-            prevPath={ROUTES.dashboard}
-          />
-          <ProviderInfo
-            path={ROUTES.providerInfoTracker}
-            prevPath={ROUTES.tracker}
-          />
-
           <Prompt
             path={ONBOARDING_ROUTES.getStarted}
             image={
@@ -167,6 +147,24 @@ class App extends Component {
 
           <SignUp path={ROUTES.signUp} />
           <SignIn path={ROUTES.signIn} />
+
+          <PrivateRoute
+            path={ROUTES.providerInfoTracker}
+            prevPath={ROUTES.tracker}
+            component={ProviderInfo}
+          />
+          <PrivateRoute
+            path={ROUTES.providerInfo}
+            prevPath={ROUTES.dashboard}
+            component={ProviderInfo}
+          />
+          <PrivateRoute path={ROUTES.results} component={MatchedProviders} />
+          <PrivateRoute path={ROUTES.dashboard} component={Dashboard} />
+          <PrivateRoute
+            path={ROUTES.tracker}
+            savedProviderIds={this.state.userInfo.savedProviders}
+            component={Tracker}
+          />
         </Router>
       </UserProvider>
     )
