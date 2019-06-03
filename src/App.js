@@ -20,6 +20,7 @@ import firebase from './firebase/firebase'
 import { UserProvider } from './context/user-context'
 import { PrivateRoute } from './private-route/private-route'
 
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -31,6 +32,9 @@ class App extends Component {
       },
       userId: '',
       isLoading: true,
+      all_providers:[],
+      highest_score:0,
+      user_terms:0
     }
   }
 
@@ -84,7 +88,153 @@ class App extends Component {
     })
   }
 
+  //given an user and a provider, look through their questionnaire responses, and provide a ranking
+  // reflecting % match. Returns a provider object with a ranking score field.
+  getRankingScore(user, provider) { 
+    let totalRank = 0;
+
+    //check approaches
+    user.terms.forEach((user_term) => {
+       provider.terms.forEach((provider_term => {
+                  if(user_term === provider_term) {
+                    totalRank = totalRank + 1;
+                  }
+       }))
+    }) 
+
+    return totalRank;
+    // console.log('passed in', user, provider);
+    // console.log('the provider address is', provider_address);
+    // console.log('the user zip is', user.zip_code );
+  }
+
+  // Given the location of the user zipcode as a string called user_zip, and an array of the
+  //providers zip codes called providers_zip, return a list of provider objects,
+  /// ordered from shortest to longest distance
+ async getDuration(user_zip, provider_address, provider_object) {
+    let prefix = ' Seattle, WA ';
+    let origin = prefix + user_zip;
+    let destination = provider_address;
+    // console.log('this is the provider address', destinations_list)
+    // console.log('this is the origin ', [origin])
+    let service = new google.maps.DistanceMatrixService();
+
+   await service.getDistanceMatrix(
+      {
+        origins: [origin],
+        destinations: [destination],
+        travelMode: 'DRIVING',
+        avoidHighways: false,
+        avoidTolls: false,
+      },
+      await ((response, status) => {callback(response, status)})
+    )
+
+   let callback = (response, status) => {
+      if (status == 'OK') {
+        let origins = response.originAddresses
+        let destinations = response.destinationAddresses
+        for (let i = 0; i < origins.length; i++) {
+          let results = response.rows[i].elements
+          for (let j = 0; j < results.length; j++) {
+            let element = results[j];
+            let distance_text = element.distance.text;
+            let distance_value = element.distance.value;
+            let destination_result = destinations[j];
+            let duration_text = element.duration.text;
+            let duration_value = element.duration.value;
+            provider_object.distance_results = {
+              provider_location: destination_result,
+              client_origin: origins[i],
+              distance: distance_value,
+              distance_text: distance_text,
+              travel_time: duration_value,
+              travel_text: duration_text,
+            };
+          }
+        }
+       
+        this.setState((prevState) => ({
+          all_providers: [...prevState.all_providers, provider_object]
+        }));
+
+
+        
+      }
+    }
+  }
+
+calculateResults() {
+    try {
+
+      let user_id = '7vMGQtyObOVZSmEL0GUL'
+
+      // Get user's questionnaire answers
+      let questionnaire_id = user_id;
+      let questionnaireRef = firebase.db
+        .collection('users_test')
+        .doc(questionnaire_id)
+      let user_answers = ''
+      questionnaireRef
+        .get()
+        .then(doc => {
+          if (doc.exists) {
+            user_answers = doc.data()
+            this.setState({
+              user_terms: user_answers.terms.length
+            })
+          } else {
+            console.log('No such questionnaire!')
+          }
+        })
+        .catch(error => {
+          console.log('Error getting document:', error)
+        })
+
+      // Look through providers to get ranked list
+    
+      firebase.db
+        .collection('providers_test2')
+        .get()
+        .then(querySnapshot => {
+
+          //Start empty
+          this.setState({
+            all_providers: []
+          })
+          //Fill up state with each provider
+          querySnapshot.forEach(provider => {
+            let provider_answers = provider.data()
+         
+             //add provider score to each provider 
+            provider_answers.provider_score = this.getRankingScore(user_answers, provider_answers);
+            //add distance to the provider and set the state 
+            // this.getDuration(user_answers.zip_code, provider_answers.address, provider_answers)
+          }, this)
+        })
+        .then(() => {
+          console.log('the highest score is ',  this.state.all_providers[0].provider_score );
+          let sorted_list = this.state.all_providers.sort((a, b ) => {
+            return b.provider_score - a.provider_score;
+          })
+
+          this.setState( {
+            all_providers: sorted_list
+           })
+          
+  
+      
+          this.setState( ({
+            highest_score: this.state.all_providers[0].provider_score
+          }) )
+        })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   render() {
+    console.log('the state of app.js is', this.state);
     return (
       <UserProvider value={this.state}>
         <Router className={styles.onboardingContainer}>
@@ -162,7 +312,7 @@ class App extends Component {
           <PrivateRoute path={ROUTES.dashboard} component={Dashboard} />
           <PrivateRoute
             path={ROUTES.tracker}
-            savedProviderIds={this.state.userInfo.savedProviders}
+            // savedProviderIds={this.state.userInfo.savedProviders}
             component={Tracker}
           />
           {/* <Tracker
