@@ -93,18 +93,26 @@ class App extends Component {
   //given an user and a provider, look through their questionnaire responses, and provide a ranking
   // reflecting % match. Returns a provider object with a ranking score field.
   getRankingScore(user, provider) { 
-    // console.log('the user is ', user)
-    // console.log('the provider is', provider)
     let totalRank = 0;
+    let insuranceTerms = new Set(['Beacon Health Options','Blue Cross Blue Shield','Harvard Pilgrim Health','Aetna','Medicare','Tufts','UnitedHealthcare','University student insurance/ Affiliate extended insurance'])
+    let takesInsurance = false;
 
     //check approaches
     user.terms.forEach((user_term) => {
        provider.terms.forEach((provider_term => {
-                  if(user_term === provider_term) {
-                    totalRank = totalRank + 1;
+                  if(user_term === provider_term && user_term != "My insurance isn't listed") {
+                    if(insuranceTerms.has(user_term)) { //is an insurance 
+                      takesInsurance = true;
+                    } else {
+                      totalRank = totalRank + 1;
+                    }
                   }
        }))
     }) 
+
+    if(takesInsurance) {
+      totalRank + 1;
+    }
   // console.log('get ranking score returns THIS', totalRank);
     return totalRank;
   }
@@ -170,14 +178,13 @@ class App extends Component {
 calculateResults(context) {
     try {
 
-      console.log('the given context for calculate results is ', context);
-
       // Look through providers to get ranked list
        //Start empty
        this.setState({
-        all_providers: [{provider_score:0}]
+        all_providers: [{provider_score:0, questionnaire_answers: []}],
+        user_terms: context.terms.length
       })
-      
+
       firebase.db
         .collection('providers_test2')
         .get()
@@ -188,7 +195,8 @@ calculateResults(context) {
          
              //add provider score to each provider
             provider_answers.provider_score = this.getRankingScore(context, provider_answers);
-            console.log('after the function, we see the score is', provider_answers.provider_score)
+
+        
             
             //Add the provider with the score to the database
             this.setState((prevState) => ({
@@ -200,9 +208,7 @@ calculateResults(context) {
           }, this)
 
         })
-
-          //sort the list of providers by their score
-
+        .then( () =>  {
           console.log('the highest score is ',  this.state.all_providers[0].provider_score );
           console.log('the final provider list is', this.state.all_providers);
           this.setState( {
@@ -218,6 +224,9 @@ calculateResults(context) {
            console.log('the highest score is ',  this.state.all_providers[0].provider_score );
            console.log('the final provider list is', this.state.all_providers);
   
+
+
+        })
         
     } catch (err) {
       console.log(err)

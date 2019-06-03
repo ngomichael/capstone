@@ -191,7 +191,8 @@ export const Questionnaire = (props) => {
                 }}
                 onSubmit={(values, { setSubmitting }) => {
                   handleSubmit(values)
-                  let updatedValues =  values;
+                  setSubmitting(false)
+                  let updatedValues = {...values} ;
                   updatedValues.age_groups = [...updatedValues.age_groups.keys()]
                   updatedValues.care_types = [...updatedValues.care_types.keys()]
                   updatedValues.terms = [...updatedValues.age_groups,
@@ -201,8 +202,7 @@ export const Questionnaire = (props) => {
                   ...updatedValues.insurances, 
                   ...updatedValues.issues, 
                   ...updatedValues.populations]
-                  props.function(values); 
-                  setSubmitting(false)
+                  props.function(updatedValues); 
                   navigate('/onboardingTracker/questionnaireCompleted')
                 }}
               >

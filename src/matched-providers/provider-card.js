@@ -70,6 +70,7 @@ export class ProviderCard extends React.Component {
                   </a>
                 )}
               </div>
+             { provider.id &&
               <Link
                 to={provider.id}
                 state={{ isSaved: this.state.isSaved }}
@@ -95,14 +96,14 @@ export class ProviderCard extends React.Component {
                             />
                           )}
                         </div>
-                        <b className={styles.matchPercentage}>100% Match</b>
+                        <b className={styles.matchPercentage}>{Math.round((provider.provider_score/context.user_terms) * 100) + '% Match'}</b>
                         <p className={styles.address}>{provider.address}</p>
                       </div>
                     </div>
                   </div>
                   <div className={styles.overview}>
-                    {provider.questionnaire_answers.map(item => {
-                      return (
+                   {provider.questionnaire_answers.length > 0 && provider.questionnaire_answers.map(item => {
+                     return (
                         <div className={styles.itemContainer} key={item.label}>
                           <p className={styles.label}>{item.label}</p>
                           <p>{item.values.slice(0, 3).join(', ')}</p>
@@ -111,7 +112,7 @@ export class ProviderCard extends React.Component {
                     })}
                   </div>
                 </div>
-              </Link>
+              </Link>}
             </div>
           </div>
         )}

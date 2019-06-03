@@ -233,7 +233,7 @@ export const MatchedProviders = () => {
                 >
                   {item => props => (
                     <animated.div style={props}>
-                      <ProviderCard provider={item}/>
+                      <ProviderCard provider={item} context={context}/>
                     </animated.div>
                   )}
                 </Transition>
