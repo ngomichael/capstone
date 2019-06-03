@@ -55,9 +55,7 @@ export class ProviderCard extends React.Component {
                 >
                   <Heart
                     style={{
-                      fill:
-                        context.userInfo.savedProviders.includes(provider.id) &&
-                        'hsl(174, 74%, 39%)',
+                      fill: this.state.isSaved && 'hsl(174, 74%, 39%)',
                     }}
                   />
                 </a>

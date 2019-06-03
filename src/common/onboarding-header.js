@@ -33,19 +33,15 @@ export const OnboardingHeader = ({ location }) => {
   }
 
   return (
-    <UserConsumer>
-      {context => (
-        <header className={styles.container}>
-          <Link to="/" className={styles.logoAndNameContainer}>
-            <img src={PearCareIcon} className={styles.logo} />
-            <p className={styles.productName}>PearCare</p>
-          </Link>
-          <div className={styles.onboardingTracker}>
-            <OnboardingTracker step={step} />
-          </div>
-        </header>
-      )}
-    </UserConsumer>
+    <header className={styles.container}>
+      <Link to="/" className={styles.logoAndNameContainer}>
+        <img src={PearCareIcon} className={styles.logo} />
+        <p className={styles.productName}>PearCare</p>
+      </Link>
+      <div className={styles.onboardingTracker}>
+        <OnboardingTracker step={step} />
+      </div>
+    </header>
   )
 }
 

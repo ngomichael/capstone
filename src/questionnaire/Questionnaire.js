@@ -154,121 +154,112 @@ export const Questionnaire = () => {
   return (
     <UserConsumer>
       {context => (
-        console.log(context),
-        (
-          <div className={styles.container}>
-            <div className={styles.maxWidthContainer}>
-              <div className={styles.questionsTitleContainer}>
-                {currPageNum === 1 ? (
-                  <BackButton path={`/${ONBOARDING_ROUTES.getStarted}`} />
-                ) : (
-                  <BackButton onClick={handlePreviousPage} />
-                )}
+        <div className={styles.container}>
+          <div className={styles.maxWidthContainer}>
+            <div className={styles.questionsTitleContainer}>
+              {currPageNum === 1 ? (
+                <BackButton path={`/${ONBOARDING_ROUTES.getStarted}`} />
+              ) : (
+                <BackButton onClick={handlePreviousPage} />
+              )}
 
-                <p>{`Questionnaire: Page ${currPageNum} of 2`}</p>
-                <h1 className={styles.title}>
-                  {currPageNum === 1
-                    ? "First, let's figure out the essentials"
-                    : "Besides the basics, is there anything else you're looking for in a provider?"}
-                </h1>
-                {currPageNum === 1 && (
-                  <p className={styles.questionnaireDescription}>
-                    Excluding the first question, all questions are optional and
-                    you are able to select multiple answers if it better
-                    reflects the experiences you are going through. If you don't
-                    know how to answer a question or if it does not apply, feel
-                    free to just not answer it.
-                  </p>
-                )}
-                <Formik
-                  initialValues={{
-                    zip_code: '',
-                    issues: [],
-                    age_groups: new Map(),
-                    care_types: new Map(),
-                    insurances: [],
-                    credentials: [],
-                    approaches: [],
-                    populations: [],
-                  }}
-                  onSubmit={(values, { setSubmitting }) => {
-                    handleSubmit(values)
-                    setSubmitting(false)
-                    navigate('/onboardingTracker/questionnaireCompleted')
-                  }}
-                >
-                  {({
-                    isSubmitting,
-                    setFieldValue,
-                    values,
-                    errors,
-                    touched,
-                  }) => (
-                    <Form>
-                      {renderQuestions(
-                        setFieldValue,
-                        currPageNum,
-                        touched,
-                        errors
-                      )}
-                      {currPageNum === 2 && (
-                        <div className={styles.submitButton}>
+              <p>{`Questionnaire: Page ${currPageNum} of 2`}</p>
+              <h1 className={styles.title}>
+                {currPageNum === 1
+                  ? "First, let's figure out the essentials"
+                  : "Besides the basics, is there anything else you're looking for in a provider?"}
+              </h1>
+              {currPageNum === 1 && (
+                <p className={styles.questionnaireDescription}>
+                  Excluding the first question, all questions are optional and
+                  you are able to select multiple answers if it better reflects
+                  the experiences you are going through. If you don't know how
+                  to answer a question or if it does not apply, feel free to
+                  just not answer it.
+                </p>
+              )}
+              <Formik
+                initialValues={{
+                  zip_code: '',
+                  issues: [],
+                  age_groups: new Map(),
+                  care_types: new Map(),
+                  insurances: [],
+                  credentials: [],
+                  approaches: [],
+                  populations: [],
+                }}
+                onSubmit={(values, { setSubmitting }) => {
+                  handleSubmit(values)
+                  setSubmitting(false)
+                  navigate('/onboardingTracker/questionnaireCompleted')
+                }}
+              >
+                {({ isSubmitting, setFieldValue, values, errors, touched }) => (
+                  <Form>
+                    {renderQuestions(
+                      setFieldValue,
+                      currPageNum,
+                      touched,
+                      errors
+                    )}
+                    {currPageNum === 2 && (
+                      <div className={styles.submitButton}>
+                        <Button
+                          type="submit"
+                          buttonType={TYPES.PRIMARY}
+                          buttonSize={SIZES.MEDIUM}
+                          disabled={
+                            values.zip_code.length < 5 ? 'disabled' : false
+                          }
+                        >
+                          Finish
+                        </Button>
+
+                        <Link to={ONBOARDING_ROUTES.results}>
                           <Button
-                            type="submit"
-                            buttonType={TYPES.PRIMARY}
-                            buttonSize={SIZES.MEDIUM}
-                            disabled={
-                              values.zip_code.length < 5 ? 'disabled' : false
-                            }
+                            type="text"
+                            buttonType={TYPES.SECONDARY}
+                            buttonSize={SIZES.LARGE}
+                            onClick={handlePreviousPage}
+                            className={styles.skipButton}
                           >
-                            Finish
+                            Skip to a list of providers
                           </Button>
-
-                          <Link to={ONBOARDING_ROUTES.results}>
-                            <Button
-                              type="text"
-                              buttonType={TYPES.SECONDARY}
-                              buttonSize={SIZES.LARGE}
-                              onClick={handlePreviousPage}
-                              className={styles.skipButton}
-                            >
-                              Skip to a list of providers
-                            </Button>
-                          </Link>
-                        </div>
-                      )}
-                    </Form>
-                  )}
-                </Formik>
-                <div className={styles.buttonContainer}>
-                  {currPageNum === 1 && (
-                    <div>
+                        </Link>
+                      </div>
+                    )}
+                  </Form>
+                )}
+              </Formik>
+              <div className={styles.buttonContainer}>
+                {currPageNum === 1 && (
+                  <div>
+                    <Button
+                      type="text"
+                      buttonType={TYPES.PRIMARY}
+                      buttonSize={SIZES.MEDIUM}
+                      onClick={handleNextPage}
+                    >
+                      Next
+                    </Button>
+                    <Link to={ONBOARDING_ROUTES.results}>
                       <Button
                         type="text"
-                        buttonType={TYPES.PRIMARY}
-                        buttonSize={SIZES.MEDIUM}
-                        onClick={handleNextPage}
+                        buttonType={TYPES.SECONDARY}
+                        buttonSize={SIZES.LARGE}
+                        onClick={handlePreviousPage}
+                        className={styles.skipButton}
                       >
-                        Next
+                        Skip to a list of providers
                       </Button>
-                      <Link to={ONBOARDING_ROUTES.results}>
-                        <Button
-                          type="text"
-                          buttonType={TYPES.SECONDARY}
-                          buttonSize={SIZES.LARGE}
-                          onClick={handlePreviousPage}
-                          className={styles.skipButton}
-                        >
-                          Skip to a list of providers
-                        </Button>
-                      </Link>
-                    </div>
-                  )}
-                </div>
+                    </Link>
+                  </div>
+                )}
               </div>
             </div>
           </div>
-        )
+        </div>
       )}
     </UserConsumer>
   )

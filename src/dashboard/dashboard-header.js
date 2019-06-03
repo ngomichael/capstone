@@ -9,9 +9,14 @@ const navLinksText = [
   {
     text: 'Dashboard',
     path: ROUTES.dashboard,
+    onClick: () => {},
   },
-  { text: 'Tracker', path: ROUTES.tracker },
-  { text: 'Sign out', path: ROUTES.home },
+  {
+    text: 'Tracker',
+    path: ROUTES.tracker,
+    onClick: () => navigate(ROUTES.tracker),
+  },
+  { text: 'Sign out', path: ROUTES.home, onClick: handleSignOut },
 ]
 
 async function handleSignOut() {
@@ -27,7 +32,7 @@ function renderNavLinks() {
     <Link
       to={link.path}
       className={styles.navLink}
-      onClick={handleSignOut}
+      onClick={link.onClick}
       key={link.text}
     >
       <li key={link.title}>{link.text}</li>

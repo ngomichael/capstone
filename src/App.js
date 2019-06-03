@@ -165,6 +165,10 @@ class App extends Component {
             savedProviderIds={this.state.userInfo.savedProviders}
             component={Tracker}
           />
+          {/* <Tracker
+            path={ROUTES.tracker}
+            savedProviderIds={this.state.userInfo.savedProviders}
+          /> */}
         </Router>
       </UserProvider>
     )

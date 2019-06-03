@@ -12,7 +12,6 @@ import { UserConsumer } from '../context/user-context'
 export const SignIn = ({ location }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  // const [isSignedIn, setIsSignedIn] = useState(false)
 
   function handleEmailChange(e) {
     setEmail(e.target.value)
@@ -25,7 +24,6 @@ export const SignIn = ({ location }) => {
   async function handleSignIn() {
     try {
       await firebase.signIn(email, password)
-      setIsSignedIn(true)
     } catch (err) {
       console.error(err)
     }
@@ -33,7 +31,8 @@ export const SignIn = ({ location }) => {
 
   return (
     <UserConsumer>
-      {context =>
+      {context => (
+        console.log(context),
         context.isLoading === false && context.userId.length !== 0 ? (
           context.userInfo.questionnaire_finished ? (
             <Redirect to={ROUTES.dashboard} noThrow />
@@ -93,7 +92,7 @@ export const SignIn = ({ location }) => {
             </div>
           </div>
         )
-      }
+      )}
     </UserConsumer>
   )
 }

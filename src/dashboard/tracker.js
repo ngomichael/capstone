@@ -31,7 +31,8 @@ export const Tracker = ({ savedProviderIds }) => {
   return (
     <UserConsumer>
       {context => (
-        console.log(isLoading),
+        // console.log(isLoading),
+        console.log('WHAT THE FUCK'),
         (
           // console.log(savedProviders),
           <div className={styles.container}>

@@ -35,43 +35,40 @@ export const Prompt = ({
   return (
     <UserConsumer>
       {context => (
-        console.log(context),
-        (
-          <div className={styles.container}>
-            <div className={styles.maxWidthContainer}>
-              <div className={styles.mainContentContainer}>
-                {image}
-                <div className={styles.textContainer}>
-                  <BackButton path={prevPath} />
-                  <h1 className={styles.title}>{title}</h1>
-                  <p className={styles.p1}>{p1}</p>
-                  <p className={styles.p2}>{p2}</p>
-                  <div>
-                    <Link to={`${nextPath}`}>
-                      <Button
-                        type="button"
-                        buttonType={TYPES.PRIMARY}
-                        buttonSize={SIZES.MEDIUM}
-                      >
-                        {buttonText}
-                      </Button>
+        <div className={styles.container}>
+          <div className={styles.maxWidthContainer}>
+            <div className={styles.mainContentContainer}>
+              {image}
+              <div className={styles.textContainer}>
+                <BackButton path={prevPath} />
+                <h1 className={styles.title}>{title}</h1>
+                <p className={styles.p1}>{p1}</p>
+                <p className={styles.p2}>{p2}</p>
+                <div>
+                  <Link to={`${nextPath}`}>
+                    <Button
+                      type="button"
+                      buttonType={TYPES.PRIMARY}
+                      buttonSize={SIZES.MEDIUM}
+                    >
+                      {buttonText}
+                    </Button>
+                  </Link>
+                  <div className={styles.skipTextContainer}>
+                    <span>{skipText}</span>{' '}
+                    <Link
+                      to={`${skipTextPath}`}
+                      className={styles.skipTextPath}
+                    >
+                      {skipText2}
                     </Link>
-                    <div className={styles.skipTextContainer}>
-                      <span>{skipText}</span>{' '}
-                      <Link
-                        to={`${skipTextPath}`}
-                        className={styles.skipTextPath}
-                      >
-                        {skipText2}
-                      </Link>
-                    </div>
                   </div>
                 </div>
               </div>
-              {isSignedOut ? <Redirect noThrow to="/" /> : null}
             </div>
+            {isSignedOut ? <Redirect noThrow to="/" /> : null}
           </div>
-        )
+        </div>
       )}
     </UserConsumer>
   )
