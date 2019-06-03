@@ -202,7 +202,7 @@ export const MatchedProviders = () => {
         {currentProviders.length !== 0 ? (
           <div className={styles.providersContainer}>
             <Transition
-              items={currentProviders}
+              items={currentProviders} // pass in all provider information
               keys={item => item.id}
               initial={{
                 height: 'auto',
@@ -224,7 +224,7 @@ export const MatchedProviders = () => {
               }}
               leave={{ opacity: 0, height: 0 }}
             >
-              {item => props => (
+              {item => props => ( //loops through what you specified 
                 <animated.div style={props}>
                   <ProviderCard provider={item} />
                 </animated.div>

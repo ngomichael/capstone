@@ -173,9 +173,11 @@ export const Questionnaire = () => {
               approaches: [],
               populations: [],
             }}
-            onSubmit={(values, { setSubmitting }) => {
+            onSubmit={(values, { setSubmitting }) => { //heres where you add all the functions you want
               handleSubmit(values)
               setSubmitting(false)
+              //Functions 
+              //call the function, and pass in context value to give current user info 
               navigate('/onboardingTracker/questionnaireCompleted')
             }}
           >
