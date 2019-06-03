@@ -24,7 +24,9 @@ import { PrivateRoute } from './private-route/private-route'
 class App extends Component {
   constructor(props) {
     super(props)
-
+    this.getRankingScore = this.getRankingScore.bind(this)
+    this.calculateResults = this.calculateResults.bind(this)
+    this.getDuration = this.getDuration.bind(this)
     this.state = {
       signedInUser: {},
       userInfo: {
@@ -51,11 +53,11 @@ class App extends Component {
     firebase.auth.onAuthStateChanged(async user => {
       if (user) {
         const userInfo = await firebase.getSignedInUserInfo(user.uid)
-
         this.setState({
           signedInUser: user,
           userId: user.uid,
           userInfo: userInfo.docs.map(doc => doc.data())[0],
+          
           previousLocation: window.previousLocation,
         })
 
@@ -91,6 +93,8 @@ class App extends Component {
   //given an user and a provider, look through their questionnaire responses, and provide a ranking
   // reflecting % match. Returns a provider object with a ranking score field.
   getRankingScore(user, provider) { 
+    // console.log('the user is ', user)
+    // console.log('the provider is', provider)
     let totalRank = 0;
 
     //check approaches
@@ -101,11 +105,8 @@ class App extends Component {
                   }
        }))
     }) 
-
+  // console.log('get ranking score returns THIS', totalRank);
     return totalRank;
-    // console.log('passed in', user, provider);
-    // console.log('the provider address is', provider_address);
-    // console.log('the user zip is', user.zip_code );
   }
 
   // Given the location of the user zipcode as a string called user_zip, and an array of the
@@ -164,78 +165,66 @@ class App extends Component {
     }
   }
 
+  // What does the given context have?
+  // How do I give the final made by this function to the context so that the matchedproviders component can use it?
 calculateResults(context) {
     try {
 
-      let user_id = '7vMGQtyObOVZSmEL0GUL'
-
-      // Get user's questionnaire answers
-      let questionnaire_id = user_id;
-      let questionnaireRef = firebase.db
-        .collection('users_test')
-        .doc(questionnaire_id)
-      let user_answers = ''
-      questionnaireRef
-        .get()
-        .then(doc => {
-          if (doc.exists) {
-            user_answers = doc.data()
-            this.setState({
-              user_terms: user_answers.terms.length
-            })
-          } else {
-            console.log('No such questionnaire!')
-          }
-        })
-        .catch(error => {
-          console.log('Error getting document:', error)
-        })
+      console.log('the given context for calculate results is ', context);
 
       // Look through providers to get ranked list
-    
+       //Start empty
+       this.setState({
+        all_providers: [{provider_score:0}]
+      })
+      
       firebase.db
         .collection('providers_test2')
         .get()
         .then(querySnapshot => {
-
-          //Start empty
-          this.setState({
-            all_providers: []
-          })
           //Fill up state with each provider
           querySnapshot.forEach(provider => {
             let provider_answers = provider.data()
          
              //add provider score to each provider
-            provider_answers.provider_score = this.getRankingScore(user_answers, provider_answers);
+            provider_answers.provider_score = this.getRankingScore(context, provider_answers);
+            console.log('after the function, we see the score is', provider_answers.provider_score)
             
+            //Add the provider with the score to the database
+            this.setState((prevState) => ({
+              all_providers: [...prevState.all_providers, provider_answers]
+            }));
+    
             //add distance to the provider and set the state 
             // this.getDuration(user_answers.zip_code, provider_answers.address, provider_answers)
           }, this)
-        })
-        .then(() => {
-          let sorted_list = this.state.all_providers.sort((a, b ) => {
-            return b.provider_score - a.provider_score;
-          })
 
+        })
+
+          //sort the list of providers by their score
+
+          console.log('the highest score is ',  this.state.all_providers[0].provider_score );
+          console.log('the final provider list is', this.state.all_providers);
           this.setState( {
-            all_providers: sorted_list
+            all_providers: this.state.all_providers.sort((a, b ) => {
+              return b.provider_score - a.provider_score;
+            })
            })
-           
-           console.log('the highest score is ',  this.state.all_providers[0].provider_score );
-  
-      
-          this.setState( ({
+
+           this.setState( ({
             highest_score: this.state.all_providers[0].provider_score
           }) )
-        })
+
+           console.log('the highest score is ',  this.state.all_providers[0].provider_score );
+           console.log('the final provider list is', this.state.all_providers);
+  
+        
     } catch (err) {
       console.log(err)
     }
   }
 
   render() {
-    console.log('the state of app.js is', this.state);
     return (
       <UserProvider value={this.state}>
         <Router className={styles.onboardingContainer}>
@@ -245,7 +234,7 @@ calculateResults(context) {
 
         <Router>
           <Home path={ROUTES.home} />
-          <Questionnaire path={ONBOARDING_ROUTES.questionnaire} />
+          <Questionnaire path={ONBOARDING_ROUTES.questionnaire} function={this.calculateResults} />
           <ProviderQuestionnaire
             path={ONBOARDING_ROUTES.providerQuestionnaire}
           />

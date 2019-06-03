@@ -25,7 +25,7 @@ export class ProviderCard extends React.Component {
   }
 
   render() {
-    const { provider, delay } = this.props
+    const { provider, delay } = this.props  //is this.props the item given from the matched-providers??, To get the fields do I just decompose the item? 
     return (
       <UserConsumer>
         {context => (

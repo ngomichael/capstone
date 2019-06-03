@@ -68,6 +68,7 @@ export const Prompt = ({
             </div>
             {isSignedOut ? <Redirect noThrow to="/" /> : null}
           </div>
+          <button type='button' onClick={handleSignOut}> Sign out </button>
         </div>
       )}
     </UserConsumer>
