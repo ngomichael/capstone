@@ -139,40 +139,60 @@ export const ProviderInfo = ({ providerId, location, prevPath }) => {
                 </ul>
               </div>
             </div>
-            <div style={{ display: 'flex' }}>
-              <div className={styles.sectionContainer}>
-                <p className={styles.sectionHeader}>Treatment Approach</p>
-                <p className={styles.sectionDescriptionSplitRow}>
-                  Providers can use a wide range of approaches. If you're
-                  looking for a particular approach, that can narrow down the
-                  providers we think are a good fit for you.
-                </p>
-                <div className={styles.sectionContent}>
-                  <ul className={styles.listContainer}>
-                    {provider.approaches.map(approach => (
-                      <li key={approach}>{approach}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
 
-              <div className={styles.sectionContainer}>
-                <p className={styles.sectionHeader}>Accepted Insurance(s)</p>
-                <p className={styles.sectionDescriptionSplitRow}>
-                  Instantly break out into full speed gallop across the house
-                  for no reason meeeeouw for purr as loud as possible, be the
-                  most annoying cat that you can, and, knock everything off the
-                  table for stare out cat door then go back inside.
-                </p>
-                <div className={styles.sectionContent}>
-                  <ul className={styles.listContainer}>
-                    {provider.insurances.map(insurance => (
-                      <li key={insurance}>{insurance}</li>
-                    ))}
-                  </ul>
-                </div>
+            <div className={styles.sectionContainer}>
+              <p className={styles.sectionHeader}>
+                Accepted Insurance(s), Cost, and Payment types
+              </p>
+              <p className={styles.sectionDescription}>
+                Instantly break out into full speed gallop across the house for
+                no reason meeeeouw for purr as loud as possible, be the most
+                annoying cat that you can, and, knock everything off the table
+                for stare out cat door then go back inside.
+              </p>
+              <div className={styles.sectionContent}>
+                <ul className={styles.listContainer}>
+                  <p>
+                    <b>Insurances</b>
+                  </p>
+                  {provider.insurances.map(insurance => (
+                    <li key={insurance}>{insurance}</li>
+                  ))}
+                </ul>
+                <ul className={styles.listContainer}>
+                  <p>
+                    <b>Cost</b>
+                  </p>
+                  <p>{provider.cost}</p>
+                </ul>
+
+                <ul className={styles.listContainer}>
+                  <p>
+                    <b>Payment types</b>
+                  </p>
+                  {provider.payment_type.map(payment_type => (
+                    <li key={payment_type}>{payment_type}</li>
+                  ))}
+                </ul>
               </div>
             </div>
+
+            <div className={styles.sectionContainer}>
+              <p className={styles.sectionHeader}>Treatment Approach</p>
+              <p className={styles.sectionDescription}>
+                Providers can use a wide range of approaches. If you're looking
+                for a particular approach, that can narrow down the providers we
+                think are a good fit for you.
+              </p>
+              <div className={styles.sectionContent}>
+                <ul className={styles.listContainer}>
+                  {provider.approaches.map(approach => (
+                    <li key={approach}>{approach}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
             <div className={styles.sectionContainer}>
               <p className={styles.sectionHeader}>Video</p>
               <p className={styles.sectionDescription}>
