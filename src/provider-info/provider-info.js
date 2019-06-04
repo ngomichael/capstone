@@ -30,8 +30,6 @@ export const ProviderInfo = ({ providerId, location, prevPath }) => {
     setIsModalOpen(true)
   }
 
-  console.log(provider)
-
   return (
     <div className={styles.container}>
       <ContactModal
@@ -55,7 +53,7 @@ export const ProviderInfo = ({ providerId, location, prevPath }) => {
                   <p>{provider.care_types.join(', ')}</p>
                   <p>{provider.credentials}</p>
                   <div className={styles.iconAndTagContainer}>
-                    {provider.accepting_clients === 'Yes' && (
+                    {provider.accepting_clients[0] === 'Yes' && (
                       <img
                         src={AcceptingClientsIcon}
                         className={styles.acceptingClientsIcon}

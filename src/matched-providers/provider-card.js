@@ -26,6 +26,7 @@ export class ProviderCard extends React.Component {
 
   render() {
     const { provider, delay } = this.props
+
     return (
       <UserConsumer>
         {context => (
@@ -88,7 +89,7 @@ export class ProviderCard extends React.Component {
                       <div className={styles.providerInfo}>
                         <div className={styles.nameAndTagContainer}>
                           <p className={styles.name}>{provider.name}</p>
-                          {provider.accepting_clients && (
+                          {provider.accepting_clients[0] === 'Yes' && (
                             <img
                               src={AcceptingClientsIcon}
                               className={styles.acceptingClientsIcon}

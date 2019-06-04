@@ -17,7 +17,7 @@ import { AutocompleteField } from './autocomplete-field'
 export const questionnaireQuestions = [
   {
     questionType: 'inputNoValidate',
-    question: 'What is your name?*',
+    question: "What is your or your practice's name? I.e Bob Joe, Psy.D*",
 
     name: 'name',
     pageNum: 1,
@@ -385,6 +385,14 @@ export const questionnaireQuestions = [
   },
   {
     questionType: 'inputNoValidate',
+    question: 'Please upload a profile picture below.*',
+    name: 'photo',
+    pageNum: 2,
+    type: 'text',
+    isLongInput: false,
+  },
+  {
+    questionType: 'inputNoValidate',
     question: 'What is your email?*',
     name: 'email',
     pageNum: 2,
@@ -677,6 +685,7 @@ export const ProviderQuestionnaire = () => {
               populations: [],
               insurances: [],
               email: '',
+              photo: '',
               name: '',
               payment_type: new Map(),
               cost: '',

@@ -32,6 +32,9 @@ class App extends Component {
       },
       userId: '',
       isLoading: true,
+      all_providers: [],
+      highest_score: 0,
+      // user_terms
     }
   }
 

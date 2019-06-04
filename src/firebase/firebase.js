@@ -151,6 +151,7 @@ class Firebase {
         zip_code: answers.zip_code,
         address: answers.address,
         website: answers.website,
+        photo: answers.photo,
         phone_number: answers.phone_number,
         credentials: answers.credentials,
         care_types: [...answers.care_types.keys()],
