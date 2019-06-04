@@ -1,0 +1,26 @@
+@import '../common/variables.css';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 325px;
+  height: 175px;
+  border: 2px solid var(--gray);
+  border-radius: var(--br-1);
+  font-size: var(--fs-2);
+  padding: var(--s-6) var(--s-6) var(--s-6) var(--s-6);
+}
+
+.title {
+  font-size: var(--fs-4);
+  font-weight: var(--fw-5);
+  margin-bottom: var(--s-3);
+}
+
+.description {
+  margin-bottom: var(--s-3);
+}
+
+.link {
+  color: var(--primary);
+}
