@@ -111,31 +111,37 @@ export const ProviderInfo = ({ providerId, location, prevPath }) => {
               </p>
 
               <div className={styles.sectionContent}>
-                <ul className={styles.listContainer}>
-                  <p>
-                    <b>Issues</b>
-                  </p>
-                  {provider.issues.map(issue => (
-                    <li key={issue}>{issue}</li>
-                  ))}
-                </ul>
-                <ul className={styles.listContainer}>
-                  <p>
-                    <b>Client Focus</b>
-                  </p>
-                  {provider.age_groups.map(age_group => (
-                    <li key={age_group}>{age_group}</li>
-                  ))}
-                </ul>
+                {provider.issues.length !== 0 && (
+                  <ul className={styles.listContainer}>
+                    <p>
+                      <b>Issues</b>
+                    </p>
+                    {provider.issues.map(issue => (
+                      <li key={issue}>{issue}</li>
+                    ))}
+                  </ul>
+                )}
+                {provider.age_groups.length !== 0 && (
+                  <ul className={styles.listContainer}>
+                    <p>
+                      <b>Client Focus</b>
+                    </p>
+                    {provider.age_groups.map(age_group => (
+                      <li key={age_group}>{age_group}</li>
+                    ))}
+                  </ul>
+                )}
 
-                <ul className={styles.listContainer}>
-                  <p>
-                    <b>Population</b>
-                  </p>
-                  {provider.populations.map(population => (
-                    <li key={population}>{population}</li>
-                  ))}
-                </ul>
+                {provider.populations.length !== 0 && (
+                  <ul className={styles.listContainer}>
+                    <p>
+                      <b>Population</b>
+                    </p>
+                    {provider.populations.map(population => (
+                      <li key={population}>{population}</li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </div>
 
@@ -158,21 +164,25 @@ export const ProviderInfo = ({ providerId, location, prevPath }) => {
                     <li key={insurance}>{insurance}</li>
                   ))}
                 </ul>
-                <ul className={styles.listContainer}>
-                  <p>
-                    <b>Cost</b>
-                  </p>
-                  <p>{provider.cost}</p>
-                </ul>
+                {provider.cost.length !== 0 && (
+                  <ul className={styles.listContainer}>
+                    <p>
+                      <b>Cost</b>
+                    </p>
+                    <p>{provider.cost}</p>
+                  </ul>
+                )}
 
-                <ul className={styles.listContainer}>
-                  <p>
-                    <b>Payment types</b>
-                  </p>
-                  {provider.payment_type.map(payment_type => (
-                    <li key={payment_type}>{payment_type}</li>
-                  ))}
-                </ul>
+                {provider.payment_type.length !== 0 && (
+                  <ul className={styles.listContainer}>
+                    <p>
+                      <b>Payment types</b>
+                    </p>
+                    {provider.payment_type.map(payment_type => (
+                      <li key={payment_type}>{payment_type}</li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </div>
 
@@ -192,7 +202,7 @@ export const ProviderInfo = ({ providerId, location, prevPath }) => {
               </div>
             </div>
 
-            <div className={styles.sectionContainer}>
+            {/* <div className={styles.sectionContainer}>
               <p className={styles.sectionHeader}>Video</p>
               <p className={styles.sectionDescription}>
                 Part of being able to form a successful working relationship
@@ -201,7 +211,7 @@ export const ProviderInfo = ({ providerId, location, prevPath }) => {
                 envision yourself working with this provider.
               </p>
               <Video />
-            </div>
+            </div> */}
           </div>
           <div className={styles.footer}>
             <div
