@@ -18,7 +18,6 @@ export const Tracker = ({ savedProviderIds }) => {
   }, [savedProviderIds])
 
   async function getSavedProviders() {
-    // console.log('hello')
     const providersPromises = savedProviderIds.map(async id => {
       const snapshot = await firebase.getProviderInfo(id)
       setIsLoading(false)
@@ -45,12 +44,22 @@ export const Tracker = ({ savedProviderIds }) => {
               {savedProviders.map(provider => {
                 return (
                   <div className={styles.savedProviderCard}>
-                    <Link
-                      to={`/dashboard/tracker/${provider.id}`}
-                      className={styles.name}
-                    >
-                      {provider.name}
-                    </Link>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                      {provider.photo ? (
+                        <img
+                          src={provider.photo}
+                          className={styles.providerPhoto}
+                        />
+                      ) : (
+                        <div className={styles.providerNoPhoto} />
+                      )}
+                      <Link
+                        to={`/dashboard/tracker/${provider.id}`}
+                        className={styles.name}
+                      >
+                        {provider.name}
+                      </Link>
+                    </div>
                     <Trash2
                       size={30}
                       color="rgb(255, 62, 62)"
