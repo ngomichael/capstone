@@ -191,6 +191,7 @@ class App extends Component {
   // How do I give the final made by this function to the context so that the matchedproviders component can use it?
   calculateResults(context) {
     try {
+      // console.log('ehy')
       this.setState({
         all_providers: [],
       })

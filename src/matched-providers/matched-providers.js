@@ -27,10 +27,21 @@ export const MatchedProviders = props => {
 
   useEffect(() => {
     // console.log(props.context.updatedValues)
-    props.context.calcResultsFunction(props.context.updatedValues.updatedValues)
+    props.context.updatedValues.length !== 0
+      ? props.context.updatedValues.updatedValues.length !== 0 &&
+        props.context.calcResultsFunction(
+          props.context.updatedValues.updatedValues
+        )
+      : getAllProviders()
 
     window.scrollTo(0, 0)
   }, [props.context.updatedValues])
+
+  async function getAllProviders() {
+    const snapshot = await firebase.getAllProviders()
+    setAllProviders(snapshot.docs.map(doc => doc.data()))
+    setAllUntouchedProviders(snapshot.docs.map(doc => doc.data()))
+  }
 
   // handles updating allCheckedItems with what values are currently checked
   function handleCheckboxChange(e) {
@@ -130,9 +141,17 @@ export const MatchedProviders = props => {
   return (
     <UserConsumer>
       {context => (
-        appliedFilters.length === 0 && setAllProviders(context.all_providers),
+        console.log(allProviders),
+        console.log(allUntouchedProviders),
+        // console.log(props.context.updatedValues),
         appliedFilters.length === 0 &&
-          setAllUntouchedProviders(context.all_providers),
+          props.context.updatedValues.length !== 0 &&
+          (props.context.updatedValues.updatedValues.length !== 0 &&
+            setAllProviders(context.all_providers)),
+        appliedFilters.length === 0 &&
+          props.context.updatedValues.length !== 0 &&
+          (props.context.updatedValues.updatedValues.length !== 0 &&
+            setAllUntouchedProviders(context.all_providers)),
         setPageCount(Math.ceil(allProviders.length / 4)),
         (
           <div className={styles.container}>

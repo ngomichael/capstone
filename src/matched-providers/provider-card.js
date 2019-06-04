@@ -104,12 +104,15 @@ export class ProviderCard extends React.Component {
                                 />
                               )}
                             </div>
-                            <b className={styles.matchPercentage}>
-                              {Math.round(
-                                (provider.provider_score / context.user_terms) *
-                                  100
-                              ) + '% Match'}
-                            </b>
+                            {provider.provider_score && (
+                              <b className={styles.matchPercentage}>
+                                {Math.round(
+                                  (provider.provider_score /
+                                    context.user_terms) *
+                                    100
+                                ) + '% Match'}
+                              </b>
+                            )}
                             <p className={styles.address}>{provider.address}</p>
                           </div>
                         </div>
