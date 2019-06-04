@@ -209,7 +209,9 @@ export const MatchedProviders = () => {
            {currentProviders.length !== 0 && (
               <div className={styles.providersContainer}>
                 <Transition
-                  items={context.all_providers}
+                  items={context.all_providers.sort((a, b ) => {
+                    return b.provider_score - a.provider_score;
+                  })}
                   keys={item => item.id}
                   initial={{
                     height: 'auto',
