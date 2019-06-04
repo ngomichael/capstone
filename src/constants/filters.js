@@ -337,6 +337,7 @@ export const filters = [
       'Adolescents (ages 14 to 19)',
       'Young Adults',
       'Adults',
+      'Elderly (ages 65+)',
     ],
   },
   {

@@ -15,6 +15,7 @@ import { UserConsumer } from '../context/user-context'
 
 export const MatchedProviders = props => {
   const [allProviders, setAllProviders] = useState([])
+  const [allUntouchedProviders, setAllUntouchedProviders] = useState([])
   const [allCheckedItems, setAllCheckedItems] = useState(new Map())
   const [activeCheckboxContainer, setActiveCheckboxContainer] = useState()
   const [appliedFilters, setAppliedFilters] = useState([])
@@ -84,15 +85,20 @@ export const MatchedProviders = props => {
     setAppliedFilters(terms)
     const snapshot = await firebase.filterProviders(terms)
     const queriedProvider = snapshot.docs.map(doc => doc.data())
+    // console.log('queriedProvider', queriedProvider)
     let updatedProviders = []
+    // console.log('updatedPRoviders', updatedProviders)
     for (let i = 0; i < queriedProvider.length; i++) {
       updatedProviders = [
         ...updatedProviders,
-        ...allProviders.filter(provider => {
+        ...allUntouchedProviders.filter(provider => {
           return queriedProvider[i].id === provider.id
         }),
       ]
     }
+    // console.log('allUntouchedProviders', allUntouchedProviders)
+    // // console.log(allProviders)
+    // console.log('updatedProviders', updatedProviders)
 
     setAllProviders(
       updatedProviders.sort((a, b) => {
@@ -125,6 +131,8 @@ export const MatchedProviders = props => {
     <UserConsumer>
       {context => (
         appliedFilters.length === 0 && setAllProviders(context.all_providers),
+        appliedFilters.length === 0 &&
+          setAllUntouchedProviders(context.all_providers),
         setPageCount(Math.ceil(allProviders.length / 4)),
         (
           <div className={styles.container}>
