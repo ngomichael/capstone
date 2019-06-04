@@ -143,61 +143,62 @@ class Firebase {
       return object
     }, {})
 
-    if (!this.auth.currentUser) {
-      const id = this.db.collection('providers_test3').doc().id
-
-      return this.db.collection('providers_test3').add({
-        id: id,
-        zip_code: answers.zip_code,
-        address: answers.address,
-        website: answers.website,
-        photo: answers.photo,
-        phone_number: answers.phone_number,
-        credentials: answers.credentials,
-        care_types: [...answers.care_types.keys()],
-        age_groups: [...answers.age_groups.keys()],
-        populations: answers.populations,
-        approaches: answers.approaches,
-        issues: answers.issues,
-        email: answers.email,
-        name: answers.name,
-        insurances: answers.insurances,
-        accepting_clients: [...answers.accepting_clients.keys()],
-        payment_type: [...answers.payment_type.keys()],
-        cost: answers.cost,
-        biography: answers.biography,
-        terms,
-        termsObject,
-        // contact: answers.contact,
-        // reminders: answers.reminders,
-        questionnaire_answers: [
-          {
-            label: 'Type of Care',
-            values: [...answers.care_types.keys()],
-          },
-          {
-            label: 'Client Focus',
-            values: [...answers.age_groups.keys()],
-          },
-          {
-            label: 'Experienced with',
-            values: answers.issues,
-          },
-          {
-            label: 'Credentials',
-            values: answers.credentials,
-          },
-          {
-            label: 'Approach to treatment',
-            values: answers.approaches,
-          },
-          {
-            label: 'Accepted insurances',
-            values: answers.insurances,
-          },
-        ],
-      })
-    }
+    // if (!this.auth.currentUser) {
+    const id = this.db.collection('providers_test3').doc().id
+    console.log(id)
+    console.log(answers)
+    return this.db.collection('providers_test3').add({
+      id: id,
+      zip_code: answers.zip_code,
+      address: answers.address,
+      website: answers.website,
+      photo: answers.photo,
+      phone_number: answers.phone_number,
+      credentials: answers.credentials,
+      care_types: [...answers.care_types.keys()],
+      age_groups: [...answers.age_groups.keys()],
+      populations: answers.populations,
+      approaches: answers.approaches,
+      issues: answers.issues,
+      email: answers.email,
+      name: answers.name,
+      insurances: answers.insurances,
+      accepting_clients: [...answers.accepting_clients.keys()],
+      payment_type: [...answers.payment_type.keys()],
+      cost: answers.cost,
+      biography: answers.biography,
+      terms,
+      termsObject,
+      // contact: answers.contact,
+      // reminders: answers.reminders,
+      questionnaire_answers: [
+        {
+          label: 'Type of Care',
+          values: [...answers.care_types.keys()],
+        },
+        {
+          label: 'Client Focus',
+          values: [...answers.age_groups.keys()],
+        },
+        {
+          label: 'Experienced with',
+          values: answers.issues,
+        },
+        {
+          label: 'Credentials',
+          values: answers.credentials,
+        },
+        {
+          label: 'Approach to treatment',
+          values: answers.approaches,
+        },
+        {
+          label: 'Accepted insurances',
+          values: answers.insurances,
+        },
+      ],
+    })
+    // }
 
     // return this.db
     //   .collection('providers_test2')
