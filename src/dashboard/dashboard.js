@@ -14,6 +14,12 @@ const actions = [
     linkText: "Let's go view and reach out to them.",
     path: ROUTES.tracker,
   },
+  {
+    title: 'Retake our questionnaire',
+    description: 'Things change. Let us know if you need something different.',
+    linkText: 'Go to questionnaire.',
+    path: ROUTES.questionnaire,
+  },
 ]
 
 export const Dashboard = () => {

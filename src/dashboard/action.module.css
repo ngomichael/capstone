@@ -8,6 +8,7 @@
   border: 2px solid var(--gray);
   border-radius: var(--br-1);
   font-size: var(--fs-2);
+  margin-right: var(--s-8);
   padding: var(--s-6) var(--s-6) var(--s-6) var(--s-6);
 }
 
