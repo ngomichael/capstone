@@ -421,19 +421,158 @@ export const filters = [
     ].map(credential => credential.value),
   },
   {
-    id: 6,
-    name: 'Approach',
-    options: ['Integrative', 'Non-Directive', 'Career counseling'],
-  },
-  {
     id: 7,
-    name: 'Identity/Population',
+    name: 'Approach/Population',
     options: [
-      'Asian/Asian-American therapists',
-      'Black/African-American therapists',
-      'Latinx therapists',
-      'LGBTQ+ therapists',
-    ],
+      {
+        id: 'Accelerated Experiential Dynamic Psychotherapy (AEDP)',
+        value: 'Accelerated Experiential Dynamic Psychotherapy (AEDP)',
+        label: 'Accelerated Experiential Dynamic Psychotherapy (AEDP)',
+      },
+      {
+        id: 'Acceptance and Commitment Therapy',
+        value: 'Acceptance and Commitment Therapy',
+        label: 'Acceptance and Commitment Therapy',
+      },
+      { id: 'Art Therapy', value: 'Art Therapy', label: 'Art Therapy' },
+      {
+        id: 'Career counseling',
+        value: 'Career counseling',
+        label: 'Career counseling',
+      },
+      {
+        id: 'Cognitive Behavioral Therapy (CBT)',
+        value: 'Cognitive Behavioral Therapy (CBT)',
+        label: 'Cognitive Behavioral Therapy (CBT)',
+      },
+      {
+        id: 'Couples Therapy',
+        value: 'Couples Therapy',
+        label: 'Couples Therapy',
+      },
+      {
+        id: 'Dance/Movement Therapy (DMT)',
+        value: 'Dance/Movement Therapy (DMT)',
+        label: 'Dance/Movement Therapy (DMT)',
+      },
+      {
+        id: 'Dialectical Behavioral Therapy (DBT)',
+        value: 'Dialectical Behavioral Therapy (DBT)',
+        label: 'Dialectical Behavioral Therapy (DBT)',
+      },
+      {
+        id: 'Emotionally Focused Couples Therapy',
+        value: 'Emotionally Focused Couples Therapy',
+        label: 'Emotionally Focused Couples Therapy',
+      },
+      {
+        id: 'Emotional Freedom Technique (Tapping)',
+        value: 'Emotional Freedom Technique (Tapping)',
+        label: 'Emotional Freedom Technique (Tapping)',
+      },
+      {
+        id: 'Existential Therapy',
+        value: 'Existential Therapy',
+        label: 'Existential Therapy',
+      },
+      {
+        id: 'Exposure and Response Prevention',
+        value: 'Exposure and Response Prevention',
+        label: 'Exposure and Response Prevention',
+      },
+      {
+        id: 'Eye Movement Desensitization and Reprocessing (EMDR)',
+        value: 'Eye Movement Desensitization and Reprocessing (EMDR)',
+        label: 'Eye Movement Desensitization and Reprocessing (EMDR)',
+      },
+      {
+        id: 'Gestalt Therapy',
+        value: 'Gestalt Therapy',
+        label: 'Gestalt Therapy',
+      },
+      {
+        id: 'Habit Reversal Therapy',
+        value: 'Habit Reversal Therapy',
+        label: 'Habit Reversal Therapy',
+      },
+      {
+        id: 'Holistic Therapy',
+        value: 'Holistic Therapy',
+        label: 'Holistic Therapy',
+      },
+      {
+        id: 'Internal Family Systems',
+        value: 'Internal Family Systems',
+        label: 'Internal Family Systems',
+      },
+      {
+        id: 'Interpersonal Therapy',
+        value: 'Interpersonal Therapy',
+        label: 'Interpersonal Therapy',
+      },
+      {
+        id: 'Mindfulness Practices',
+        value: 'Mindfulness Practices',
+        label: 'Mindfulness Practices',
+      },
+      {
+        id: 'Mindfulness Based Stress Reduction',
+        value: 'Mindfulness Based Stress Reduction',
+        label: 'Mindfulness Based Stress Reduction',
+      },
+      {
+        id: 'Motivational Interviewing',
+        value: 'Motivational Interviewing',
+        label: 'Motivational Interviewing',
+      },
+      {
+        id: 'Multicultural Therapy',
+        value: 'Multicultural Therapy',
+        label: 'Multicultural Therapy',
+      },
+      {
+        id: 'Narrative Therapy',
+        value: 'Narrative Therapy',
+        label: 'Narrative Therapy',
+      },
+      {
+        id: 'Pastoral Counseling',
+        value: 'Pastoral Counseling',
+        label: 'Pastoral Counseling',
+      },
+      {
+        id: 'Positive Psychology',
+        value: 'Positive Psychology',
+        label: 'Positive Psychology',
+      },
+      {
+        id: 'Psychoanalytic Therapy',
+        value: 'Psychoanalytic Therapy',
+        label: 'Psychoanalytic Therapy',
+      },
+      {
+        id: 'Psychodynamic Therapy',
+        value: 'Psychodynamic Therapy',
+        label: 'Psychodynamic Therapy',
+      },
+      { id: 'Sex therapy', value: 'Sex therapy', label: 'Sex therapy' },
+      {
+        id: 'Solution-focused Therapy',
+        value: 'Solution-focused Therapy',
+        label: 'Solution-focused Therapy',
+      },
+      {
+        id: 'Sports psychology',
+        value: 'Sports psychology',
+        label: 'Sports psychology',
+      },
+      {
+        id: 'Supportive Therapy',
+        value: 'Supportive Therapy',
+        label: 'Supportive Therapy',
+      },
+      { id: 'Yoga', value: 'Yoga', label: 'Yoga' },
+    ].map(credential => credential.value),
   },
 ]
 

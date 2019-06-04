@@ -156,7 +156,7 @@ export const MatchedProviders = () => {
             <div className={styles.filtersContainer}>
               {filters.map(filter => (
                 <OptionButton
-                  key={filter.id}
+                  // key={filter.id}
                   allCheckedItems={allCheckedItems}
                   options={filter.options}
                   handleCheckboxChangeMatchedProviders={handleCheckboxChange}

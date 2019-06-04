@@ -23,7 +23,7 @@
 }
 
 .titleAndSearchContainer {
-  width: 80%;
+  width: 87%;
   margin-top: var(--s-6);
 }
 
@@ -74,13 +74,13 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
-  width: 80%;
+  width: 87%;
 }
 
 .filtersContainer {
   display: flex;
   flex-wrap: wrap;
-  width: 80%;
+  width: 87%;
   margin-top: var(--s-3);
 }
 
@@ -134,7 +134,7 @@
 
 .providersContainer {
   position: relative;
-  width: 80%;
+  width: 87%;
   /* border-top: 2px solid var(--light-gray);
   border-right: 2px solid var(--light-gray);
   border-left: 2px solid var(--light-gray); */
