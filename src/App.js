@@ -56,8 +56,10 @@ class App extends Component {
         this.setState({
           signedInUser: user,
           userId: user.uid,
-          userInfo: userInfo.docs.map(doc => doc.data())[0],
-
+          // userInfo: userInfo.docs.map(doc => doc.data())[0],
+          userInfo: {
+            savedProviders: [],
+          },
           previousLocation: window.previousLocation,
         })
 
@@ -197,7 +199,7 @@ class App extends Component {
       })
 
       firebase.db
-        .collection('providers_test2')
+        .collection('providers_test3')
         .get()
         .then(querySnapshot => {
           //Fill up state with each provider

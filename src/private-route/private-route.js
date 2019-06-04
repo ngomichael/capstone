@@ -13,7 +13,8 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
         context.isLoading === false && context.userId.length !== 0 ? (
           <Component {...rest} />
         ) : (
-          <Redirect to={ROUTES.signIn} noThrow />
+          // <Redirect to={ROUTES.signIn} noThrow />
+          <Component {...rest} />
         )
       )}
     </UserConsumer>

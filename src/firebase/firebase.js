@@ -92,6 +92,7 @@ class Firebase {
         credentials: answers.credentials,
         approaches: answers.approaches,
         populations: answers.populations,
+        savedProviders: [],
         user_type: 'client',
       })
     }
@@ -111,6 +112,7 @@ class Firebase {
           credentials: answers.credentials,
           approaches: answers.approaches,
           populations: answers.populations,
+          savedProviders: [],
           user_type: 'client',
           questionnaire_finished: true,
         },

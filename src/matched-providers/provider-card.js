@@ -30,102 +30,105 @@ export class ProviderCard extends React.Component {
     return (
       <UserConsumer>
         {context => (
-          <div className={styles.wrapper}>
-            <div className={styles.container}>
-              <div
-                className={styles.contactActions}
-                style={{ animationDelay: `${delay}ms` }}
-              >
-                <a
-                  className={styles.contactAction}
-                  href={`mailto: ${provider.email}`}
+          console.log(context),
+          (
+            <div className={styles.wrapper}>
+              <div className={styles.container}>
+                <div
+                  className={styles.contactActions}
+                  style={{ animationDelay: `${delay}ms` }}
                 >
-                  <Mail />
-                </a>
-                <a
-                  className={styles.contactAction}
-                  onClick={() => {
-                    this.state.isSaved
-                      ? firebase.unfavoriteProvider(provider.id)
-                      : firebase.favoriteProvider(provider.id)
-
-                    this.setState({
-                      isSaved: !this.state.isSaved,
-                    })
-                  }}
-                >
-                  <Heart
-                    style={{
-                      fill: this.state.isSaved && 'hsl(174, 74%, 39%)',
-                    }}
-                  />
-                </a>
-                {provider.website && (
                   <a
                     className={styles.contactAction}
-                    href={provider.website}
-                    rel="noopener noreferrer"
-                    target="_blank"
+                    href={`mailto: ${provider.email}`}
                   >
-                    <ExternalLink />
+                    <Mail />
                   </a>
-                )}
-              </div>
-              {provider.id && (
-                <Link
-                  to={provider.id}
-                  state={{ isSaved: this.state.isSaved }}
-                  className={styles.link}
-                >
-                  <div
-                    className={styles.card}
-                    style={{ animationDelay: `${delay}ms` }}
+                  <a
+                    className={styles.contactAction}
+                    onClick={() => {
+                      this.state.isSaved
+                        ? firebase.unfavoriteProvider(provider.id)
+                        : firebase.favoriteProvider(provider.id)
+
+                      this.setState({
+                        isSaved: !this.state.isSaved,
+                      })
+                    }}
                   >
-                    <div className={styles.contactInfo}>
-                      <div className={styles.photoandInfoContainer}>
-                        <img
-                          src={provider.photo}
-                          className={styles.providerPhoto}
-                        />
-                        <div className={styles.providerInfo}>
-                          <div className={styles.nameAndTagContainer}>
-                            <p className={styles.name}>{provider.name}</p>
-                            {provider.accepting_clients[0] === 'Yes' && (
-                              <img
-                                src={AcceptingClientsIcon}
-                                className={styles.acceptingClientsIcon}
-                              />
-                            )}
+                    <Heart
+                      style={{
+                        fill: this.state.isSaved && 'hsl(174, 74%, 39%)',
+                      }}
+                    />
+                  </a>
+                  {provider.website && (
+                    <a
+                      className={styles.contactAction}
+                      href={provider.website}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <ExternalLink />
+                    </a>
+                  )}
+                </div>
+                {provider.id && (
+                  <Link
+                    to={provider.id}
+                    state={{ isSaved: this.state.isSaved }}
+                    className={styles.link}
+                  >
+                    <div
+                      className={styles.card}
+                      style={{ animationDelay: `${delay}ms` }}
+                    >
+                      <div className={styles.contactInfo}>
+                        <div className={styles.photoandInfoContainer}>
+                          <img
+                            src={provider.photo}
+                            className={styles.providerPhoto}
+                          />
+                          <div className={styles.providerInfo}>
+                            <div className={styles.nameAndTagContainer}>
+                              <p className={styles.name}>{provider.name}</p>
+                              {provider.accepting_clients[0] === 'Yes' && (
+                                <img
+                                  src={AcceptingClientsIcon}
+                                  className={styles.acceptingClientsIcon}
+                                />
+                              )}
+                            </div>
+                            <b className={styles.matchPercentage}>
+                              {Math.round(
+                                (provider.provider_score / context.user_terms) *
+                                  100
+                              ) + '% Match'}
+                            </b>
+                            <p className={styles.address}>{provider.address}</p>
                           </div>
-                          <b className={styles.matchPercentage}>
-                            {Math.round(
-                              (provider.provider_score / context.user_terms) *
-                                100
-                            ) + '% Match'}
-                          </b>
-                          <p className={styles.address}>{provider.address}</p>
                         </div>
                       </div>
+                      <div className={styles.overview}>
+                        {provider.questionnaire_answers.length > 0 &&
+                          provider.questionnaire_answers.map(item => {
+                            return (
+                              <div
+                                className={styles.itemContainer}
+                                key={item.label}
+                              >
+                                <p className={styles.label}>{item.label}</p>
+                                <p>{item.values.slice(0, 3).join(', ')}</p>
+                              </div>
+                            )
+                          })}
+                      </div>
                     </div>
-                    <div className={styles.overview}>
-                      {provider.questionnaire_answers.length > 0 &&
-                        provider.questionnaire_answers.map(item => {
-                          return (
-                            <div
-                              className={styles.itemContainer}
-                              key={item.label}
-                            >
-                              <p className={styles.label}>{item.label}</p>
-                              <p>{item.values.slice(0, 3).join(', ')}</p>
-                            </div>
-                          )
-                        })}
-                    </div>
-                  </div>
-                </Link>
-              )}
+                  </Link>
+                )}
+              </div>
             </div>
-          </div>
+          )
         )}
       </UserConsumer>
     )
