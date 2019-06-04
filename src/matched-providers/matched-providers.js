@@ -282,8 +282,13 @@ export const MatchedProviders = props => {
                       marginTop: '45px',
                     }}
                   >
-                    {`${currentProviders.length} of ${allProviders.length -
-                      1} results`}
+                    <span>{`${currentProviders.length} of `}</span>
+                    {appliedFilters.length === 0
+                      ? ` ${allProviders.length - 1} results`
+                      : `${allProviders.length}`}
+
+                    {/* {`${currentProviders.length} of ${allProviders.length -
+                      1} results`} */}
                   </span>
                   <ReactPaginate
                     previousLabel={'< Back'}
