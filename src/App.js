@@ -31,8 +31,8 @@ class App extends Component {
       signedInUser: {},
       userInfo: {
         savedProviders: [],
-        updatedValues: [],
       },
+      updatedValues: [],
       userId: '',
       isLoading: true,
       all_providers: [],
@@ -51,8 +51,8 @@ class App extends Component {
           userId: user.uid,
           userInfo: {
             savedProviders: [],
-            updatedValues: [],
           },
+          updatedValues: [],
           previousLocation: window.previousLocation,
         })
 
@@ -69,6 +69,15 @@ class App extends Component {
               userInfo: doc.data(),
             })
           })
+
+        firebase.db
+          .collection('users_updated_values')
+          .doc(user.uid)
+          .onSnapshot(doc => {
+            this.setState({
+              updatedValues: doc.data(),
+            })
+          })
       } else {
         console.log('No user is signed in')
 
@@ -76,8 +85,8 @@ class App extends Component {
           signedInUser: {},
           userInfo: {
             savedProviders: [],
-            updatedValues: [],
           },
+          updatedValues: [],
           userId: '',
           isLoading: false,
           previousLocation: window.previousLocation,

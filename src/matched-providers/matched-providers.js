@@ -25,10 +25,11 @@ export const MatchedProviders = props => {
   const [initialAnimDone, setInitialAnimDone] = useState(false)
 
   useEffect(() => {
-    props.context.calcResultsFunction(props.context.userInfo.updatedValues)
+    console.log(props.context.updatedValues)
+    props.context.calcResultsFunction(props.context.updatedValues.updatedValues)
 
     window.scrollTo(0, 0)
-  }, [props.context.userInfo])
+  }, [props.context.updatedValues])
 
   // handles updating allCheckedItems with what values are currently checked
   function handleCheckboxChange(e) {

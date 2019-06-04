@@ -55,14 +55,31 @@ class Firebase {
       .catch(err => console.log(err))
   }
 
+  addUpdatedValuesForRankingOnRegister() {
+    if (!this.auth.currentUser) {
+      return alert('Not Authorized')
+    }
+
+    console.log('got in')
+
+    return this.db
+      .collection('users_updated_values')
+      .doc(this.auth.currentUser.uid)
+      .set({
+        updatedValues: [],
+      })
+
+      .catch(err => console.log(err))
+  }
+
   addUpdatedValuesForRanking(updatedValues) {
     if (!this.auth.currentUser) {
       return alert('Not Authorized')
     }
-    console.log(updatedValues)
+    console.log('got in bich')
 
     return this.db
-      .collection('users_test')
+      .collection('users_updated_values')
       .doc(this.auth.currentUser.uid)
       .set(
         {

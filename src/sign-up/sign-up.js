@@ -31,6 +31,7 @@ export const SignUp = () => {
     try {
       await firebase.register(name, email, password)
       await firebase.addUserInformation(name, password, email)
+      await firebase.addUpdatedValuesForRankingOnRegister()
       setCreatedAccount(true)
       return <Redirect noThrow to="/onboardingTracker/getStarted" />
     } catch (err) {
