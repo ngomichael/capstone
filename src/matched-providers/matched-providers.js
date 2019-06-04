@@ -209,9 +209,9 @@ export const MatchedProviders = props => {
               <div
                 style={{
                   display: 'flex',
-                  justifyContent: 'flex-end',
+                  justifyContent: 'flex-start',
                   alignItems: 'center',
-                  width: '80%',
+                  width: '87%',
                 }}
               >
                 <div className={styles.iconKey}>
