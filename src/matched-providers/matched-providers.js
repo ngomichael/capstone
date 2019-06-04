@@ -25,11 +25,10 @@ export const MatchedProviders = props => {
   const [initialAnimDone, setInitialAnimDone] = useState(false)
 
   useEffect(() => {
-    // setAllProviders(props.context),
     props.context.calcResultsFunction(props.context.userInfo.updatedValues)
 
     window.scrollTo(0, 0)
-  }, [props.context.userInfo.updatedValues])
+  }, [props.context.userInfo])
 
   // handles updating allCheckedItems with what values are currently checked
   function handleCheckboxChange(e) {
@@ -84,20 +83,16 @@ export const MatchedProviders = props => {
     setAppliedFilters(terms)
     const snapshot = await firebase.filterProviders(terms)
     const queriedProvider = snapshot.docs.map(doc => doc.data())
-    // console.log('queriedProvider', queriedProvider)
     let updatedProviders = []
     for (let i = 0; i < queriedProvider.length; i++) {
       updatedProviders = [
         ...updatedProviders,
         ...allProviders.filter(provider => {
-          console.log(queriedProvider[i].id)
-          console.log(provider.id)
           return queriedProvider[i].id === provider.id
         }),
       ]
     }
-    // console.log('updatedProviders', updatedProviders)
-    // setAllProviders(queriedProvider)
+
     setAllProviders(
       updatedProviders.sort((a, b) => {
         return b.provider_score - a.provider_score
@@ -125,17 +120,10 @@ export const MatchedProviders = props => {
     indexOfLastProvider
   )
 
-  // console.log('allProviders', allProviders)
-  // console.log('currentProviders', currentProviders)
-
   return (
     <UserConsumer>
       {context => (
-        // console.log(context.all_providers),
-        // setPageCount(Math.ceil(context.all_providers.length / 4)),
-        // context.all_providers.pop(),
         appliedFilters.length === 0 && setAllProviders(context.all_providers),
-        // appliedFilters.length !== 0 && props.context.calcResultsFunction(props.context.userInfo.updatedValues),
         setPageCount(Math.ceil(allProviders.length / 4)),
         (
           <div className={styles.container}>
