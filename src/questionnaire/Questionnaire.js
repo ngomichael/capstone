@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link, navigate } from '@reach/router'
 import { Formik, Form, Field } from 'formik'
 import styles from './questionnaire.module.css'
-import { ONBOARDING_ROUTES } from '../constants/routes'
+import { ONBOARDING_ROUTES, ROUTES } from '../constants/routes'
 import { Checkbox } from '../common/checkbox2'
 import { CheckboxSquare } from '../common/checkbox-square'
 import { QuestionField } from './question-field'
@@ -114,7 +114,7 @@ const returnCorrectQuestionFormat = (
 const renderQuestions = (setFieldValue, currPageNum, touched, errors) => {
   return questionnaireQuestions.map((question, index) => {
     return currPageNum === question.pageNum ? (
-      <div className={styles.questionsContainer} key={index}>
+      <div className={styles.questionsContainer} key={question.question}>
         <div className={styles.arrowAndNumberContainer}>
           <p className={styles.questionNumber}>{index + 1}</p>
           <ArrowRight size={18} className={styles.arrow} />
@@ -158,7 +158,7 @@ export const Questionnaire = props => {
           <div className={styles.maxWidthContainer}>
             <div className={styles.questionsTitleContainer}>
               {currPageNum === 1 ? (
-                <BackButton path={`/${ONBOARDING_ROUTES.getStarted}`} />
+                <BackButton path={props.prevPath} />
               ) : (
                 <BackButton onClick={handlePreviousPage} />
               )}
@@ -211,7 +211,11 @@ export const Questionnaire = props => {
                   // console.log(updatedValues)
                   firebase.addUpdatedValuesForRanking(updatedValues)
                   props.calculateResults(updatedValues)
-                  navigate('/onboardingTracker/questionnaireCompleted')
+                  navigate(
+                    props.prevPath !== ROUTES.dashboard
+                      ? '/onboardingTracker/questionnaireCompleted'
+                      : ROUTES.dashboard
+                  )
                 }}
               >
                 {({ isSubmitting, setFieldValue, values, errors, touched }) => (
@@ -235,17 +239,19 @@ export const Questionnaire = props => {
                           Finish
                         </Button>
 
-                        <Link to={ONBOARDING_ROUTES.results}>
-                          <Button
-                            type="text"
-                            buttonType={TYPES.SECONDARY}
-                            buttonSize={SIZES.LARGE}
-                            onClick={handlePreviousPage}
-                            className={styles.skipButton}
-                          >
-                            Skip to a list of providers
-                          </Button>
-                        </Link>
+                        {props.prevPath !== ROUTES.dashboard && (
+                          <Link to={ONBOARDING_ROUTES.results}>
+                            <Button
+                              type="text"
+                              buttonType={TYPES.SECONDARY}
+                              buttonSize={SIZES.LARGE}
+                              onClick={handlePreviousPage}
+                              className={styles.skipButton}
+                            >
+                              Skip to a list of providers
+                            </Button>
+                          </Link>
+                        )}
                       </div>
                     )}
                   </Form>
@@ -262,17 +268,19 @@ export const Questionnaire = props => {
                     >
                       Next
                     </Button>
-                    <Link to={ONBOARDING_ROUTES.results}>
-                      <Button
-                        type="text"
-                        buttonType={TYPES.SECONDARY}
-                        buttonSize={SIZES.LARGE}
-                        onClick={handlePreviousPage}
-                        className={styles.skipButton}
-                      >
-                        Skip to a list of providers
-                      </Button>
-                    </Link>
+                    {props.prevPath !== ROUTES.dashboard && (
+                      <Link to={ONBOARDING_ROUTES.results}>
+                        <Button
+                          type="text"
+                          buttonType={TYPES.SECONDARY}
+                          buttonSize={SIZES.LARGE}
+                          onClick={handlePreviousPage}
+                          className={styles.skipButton}
+                        >
+                          Skip to a list of providers
+                        </Button>
+                      </Link>
+                    )}
                   </div>
                 )}
               </div>

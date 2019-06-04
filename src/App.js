@@ -191,6 +191,9 @@ class App extends Component {
   // How do I give the final made by this function to the context so that the matchedproviders component can use it?
   calculateResults(context) {
     try {
+      this.setState({
+        all_providers: [],
+      })
       // Look through providers to get ranked list
       //Start empty
       this.setState({
@@ -261,6 +264,7 @@ class App extends Component {
           <Home path={ROUTES.home} />
           <Questionnaire
             path={ONBOARDING_ROUTES.questionnaire}
+            prevPath={`/${ONBOARDING_ROUTES.getStarted}`}
             calculateResults={this.calculateResults}
           />
 
@@ -339,6 +343,12 @@ class App extends Component {
             path={ROUTES.tracker}
             savedProviderIds={this.state.userInfo.savedProviders}
             component={Tracker}
+          />
+          <PrivateRoute
+            path={ROUTES.questionnaire}
+            prevPath={ROUTES.dashboard}
+            calculateResults={this.calculateResults}
+            component={Questionnaire}
           />
           {/* <Tracker
             path={ROUTES.tracker}
