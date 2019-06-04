@@ -21,7 +21,7 @@ export const Dashboard = () => {
             <h1 className={styles.welcomeMessage}>Welcome back Arin</h1>
           </div>
 
-          <MatchedProviders />
+          <MatchedProviders context={context} />
         </div>
       )}
     </UserConsumer>
