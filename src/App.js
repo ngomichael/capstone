@@ -34,7 +34,6 @@ class App extends Component {
       isLoading: true,
       all_providers: [],
       highest_score: 0,
-      // user_terms
     }
   }
 
