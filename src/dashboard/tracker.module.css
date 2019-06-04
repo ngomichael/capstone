@@ -23,7 +23,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100px;
+  height: 130px;
   border-bottom: 2px solid gray;
   padding: var(--s-0) var(--s-8) var(--s-0) var(--s-8);
 }
