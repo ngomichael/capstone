@@ -51,9 +51,7 @@ export const SignIn = ({ location }) => {
                 <div className={styles.signInInfoContainer}>
                   <p className={styles.title}>Welcome back</p>
                   <p className={styles.description}>
-                    Catasstrophe headbutt owner's knee, so meow to be let out
-                    for at four in the morning wake up owner meeeeeeooww scratch
-                    at legs
+                    Sign in to view your saved providers.
                   </p>
                   <div className={styles.signUp}>
                     <span>Don't have an account? </span>{' '}

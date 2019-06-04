@@ -141,8 +141,8 @@ export const MatchedProviders = props => {
   return (
     <UserConsumer>
       {context => (
-        console.log(allProviders),
-        console.log(allUntouchedProviders),
+        // console.log(allProviders),
+        // console.log(allUntouchedProviders),
         // console.log(props.context.updatedValues),
         appliedFilters.length === 0 &&
           props.context.updatedValues.length !== 0 &&

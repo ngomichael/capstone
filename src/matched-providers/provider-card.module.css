@@ -63,6 +63,18 @@
   box-shadow: var(--bs-2);
 }
 
+.providerNoPhoto {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  background-size: contain;
+  background-color: var(--light-gray);
+  border-radius: 50%;
+  margin: var(--s-0) var(--s-5) var(--s-0) var(--s-0);
+  box-shadow: var(--bs-2);
+}
+
 .providerInfo {
   width: 100%;
   font-size: var(--fs-2);

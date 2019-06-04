@@ -90,10 +90,14 @@ export class ProviderCard extends React.Component {
                     >
                       <div className={styles.contactInfo}>
                         <div className={styles.photoandInfoContainer}>
-                          <img
-                            src={provider.photo}
-                            className={styles.providerPhoto}
-                          />
+                          {provider.photo ? (
+                            <img
+                              src={provider.photo}
+                              className={styles.providerPhoto}
+                            />
+                          ) : (
+                            <div className={styles.providerNoPhoto} />
+                          )}
                           <div className={styles.providerInfo}>
                             <div className={styles.nameAndTagContainer}>
                               <p className={styles.name}>{provider.name}</p>

@@ -6,14 +6,15 @@ import { ROUTES } from '../constants/routes'
 export const PrivateRoute = ({ component: Component, ...rest }) => {
   return (
     <UserConsumer>
-      {context =>
-        context.isLoading === false && context.userId.length !== 0 ? (
-          <Component {...rest} />
-        ) : (
-          <Redirect to={ROUTES.signIn} noThrow />
-          // <Component {...rest} />
-        )
-      }
+      {context => (
+        // context.isLoading === false && context.userId.length !== 0 ? (
+        //   <Component {...rest} />
+        // ) : (
+        //   <Redirect to={ROUTES.signIn} noThrow />
+        //   // <Component {...rest} />
+        // )
+        <Component {...rest} />
+      )}
     </UserConsumer>
   )
 }

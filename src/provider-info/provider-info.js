@@ -53,17 +53,19 @@ export const ProviderInfo = ({ providerId, location, prevPath }) => {
                   <p className={styles.name}>{provider.name}</p>
                   <p>{provider.care_types.join(', ')}</p>
                   <p>{provider.credentials[0]}</p>
-                  <div className={styles.iconAndTagContainer}>
-                    {provider.accepting_clients[0] === 'Yes' && (
+
+                  {provider.accepting_clients[0] === 'Yes' && (
+                    <div className={styles.iconAndTagContainer}>
                       <img
                         src={AcceptingClientsIcon}
                         className={styles.acceptingClientsIcon}
                       />
-                    )}
-                    <div className={styles.acceptingClientsTag}>
-                      Accepting new clients
+
+                      <div className={styles.acceptingClientsTag}>
+                        Accepting new clients
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
               <div className={styles.contactInfo}>
@@ -150,20 +152,21 @@ export const ProviderInfo = ({ providerId, location, prevPath }) => {
                 Accepted Insurance(s), Cost, and Payment types
               </p>
               <p className={styles.sectionDescription}>
-                Instantly break out into full speed gallop across the house for
-                no reason meeeeouw for purr as loud as possible, be the most
-                annoying cat that you can, and, knock everything off the table
-                for stare out cat door then go back inside.
+                Providers can accept a wide range of insurances and payment
+                types which can affect how much an individual has to pay per
+                session.
               </p>
               <div className={styles.sectionContent}>
-                <ul className={styles.listContainer}>
-                  <p>
-                    <b>Insurances</b>
-                  </p>
-                  {provider.insurances.map(insurance => (
-                    <li key={insurance}>{insurance}</li>
-                  ))}
-                </ul>
+                {provider.insurances.length !== 0 && (
+                  <ul className={styles.listContainer}>
+                    <p>
+                      <b>Insurances</b>
+                    </p>
+                    {provider.insurances.map(insurance => (
+                      <li key={insurance}>{insurance}</li>
+                    ))}
+                  </ul>
+                )}
                 {provider.cost.length !== 0 && (
                   <ul className={styles.listContainer}>
                     <p>

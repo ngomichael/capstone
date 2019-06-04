@@ -18,7 +18,7 @@ export const Tracker = ({ savedProviderIds }) => {
   }, [savedProviderIds])
 
   async function getSavedProviders() {
-    console.log('hello')
+    // console.log('hello')
     const providersPromises = savedProviderIds.map(async id => {
       const snapshot = await firebase.getProviderInfo(id)
       setIsLoading(false)

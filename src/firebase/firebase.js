@@ -36,9 +36,9 @@ class Firebase {
   }
 
   addUserInformation(name, password, email) {
-    if (!this.auth.currentUser) {
-      return alert('Not Authorized')
-    }
+    // if (!this.auth.currentUser) {
+    //   return alert('Not Authorized')
+    // }
 
     return this.db
       .collection('users_test')
@@ -56,9 +56,9 @@ class Firebase {
   }
 
   addUpdatedValuesForRankingOnRegister() {
-    if (!this.auth.currentUser) {
-      return alert('Not Authorized')
-    }
+    // if (!this.auth.currentUser) {
+    //   return alert('Not Authorized')
+    // }
 
     console.log('got in')
 
@@ -73,9 +73,9 @@ class Firebase {
   }
 
   addUpdatedValuesForRanking(updatedValues) {
-    if (!this.auth.currentUser) {
-      return alert('Not Authorized')
-    }
+    // if (!this.auth.currentUser) {
+    //   return alert('Not Authorized')
+    // }
     console.log('got in bich')
 
     return this.db
