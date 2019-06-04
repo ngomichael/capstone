@@ -210,7 +210,7 @@ export const Questionnaire = props => {
                   ]
                   console.log(updatedValues)
                   firebase.addUpdatedValuesForRanking(updatedValues)
-                  props.function(updatedValues)
+                  props.calculateResults(updatedValues)
                   navigate('/onboardingTracker/questionnaireCompleted')
                 }}
               >

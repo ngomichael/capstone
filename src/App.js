@@ -31,12 +31,14 @@ class App extends Component {
       signedInUser: {},
       userInfo: {
         savedProviders: [],
+        updatedValues: [],
       },
       userId: '',
       isLoading: true,
       all_providers: [],
       highest_score: 0,
       user_terms: 0,
+      calcResultsFunction: this.calculateResults,
     }
   }
 
@@ -49,6 +51,7 @@ class App extends Component {
           userId: user.uid,
           userInfo: {
             savedProviders: [],
+            updatedValues: [],
           },
           previousLocation: window.previousLocation,
         })
@@ -73,6 +76,7 @@ class App extends Component {
           signedInUser: {},
           userInfo: {
             savedProviders: [],
+            updatedValues: [],
           },
           userId: '',
           isLoading: false,
@@ -248,10 +252,13 @@ class App extends Component {
           <Home path={ROUTES.home} />
           <Questionnaire
             path={ONBOARDING_ROUTES.questionnaire}
-            function={this.calculateResults}
+            calculateResults={this.calculateResults}
           />
 
-          <MatchedProviders path={ONBOARDING_ROUTES.results} />
+          <MatchedProviders
+            path={ONBOARDING_ROUTES.results}
+            context={this.state}
+          />
           <ProviderInfo
             path={ONBOARDING_ROUTES.providerInfo}
             prevPath={ONBOARDING_ROUTES.results}

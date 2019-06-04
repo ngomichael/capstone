@@ -13,7 +13,7 @@ import firebase from '../firebase/firebase'
 import { filters } from '../constants/filters'
 import { UserConsumer } from '../context/user-context'
 
-export const MatchedProviders = () => {
+export const MatchedProviders = props => {
   const [allProviders, setAllProviders] = useState([])
   const [allCheckedItems, setAllCheckedItems] = useState(new Map())
   const [activeCheckboxContainer, setActiveCheckboxContainer] = useState()
@@ -26,8 +26,9 @@ export const MatchedProviders = () => {
 
   useEffect(() => {
     getProviders()
+    props.context.calcResultsFunction(props.context.userInfo.updatedValues)
     window.scrollTo(0, 0)
-  }, [])
+  }, [props.context.userInfo.updatedValues])
 
   // handles updating allCheckedItems with what values are currently checked
   function handleCheckboxChange(e) {
@@ -114,6 +115,7 @@ export const MatchedProviders = () => {
   return (
     <UserConsumer>
       {context => (
+        // console.log(props.userInfo.updatedValues),
         <div className={styles.container}>
           <div className={styles.maxWidthContainer}>
             {/* {showGrayBackground && (

@@ -33,13 +33,14 @@ export const SignIn = ({ location }) => {
     <UserConsumer>
       {context => (
         console.log(context.userInfo),
-        context.isLoading === false && context.userId.length !== 0 ? (
-          context.userInfo.questionnaire_finished ? (
-            <Redirect to={ROUTES.dashboard} noThrow />
-          ) : (
-            <Redirect to={ONBOARDING_ROUTES.getStarted} noThrow />
-          )
-        ) : (
+        (
+          // context.isLoading === false && context.userId.length !== 0 ? (
+          //   context.userInfo.questionnaire_finished ? (
+          //     <Redirect to={ROUTES.dashboard} noThrow />
+          //   ) : (
+          //     <Redirect to={ONBOARDING_ROUTES.getStarted} noThrow />
+          //   )
+          // ) : (
           <div className={styles.container}>
             <HomeHeader />
             <div className={styles.maxWidthContainer}>
@@ -92,7 +93,9 @@ export const SignIn = ({ location }) => {
             </div>
           </div>
         )
-      )}
+      )
+      // )
+      }
     </UserConsumer>
   )
 }
