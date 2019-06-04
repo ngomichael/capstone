@@ -1,5 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link, Redirect, navigate } from '@reach/router'
+import { ROUTES, ONBOARDING_ROUTES } from '../constants/routes'
 import styles from './contact-modal.module.css'
 import { Button, TYPES, SIZES } from '../common/button'
 import { X } from 'react-feather'
@@ -11,6 +13,7 @@ export const ContactModal = ({
   website,
   setIsModalOpen,
   isModalOpen,
+  locationPathname,
 }) => {
   return (
     <div className={isModalOpen ? styles.container : styles.containerHidden}>
@@ -43,6 +46,11 @@ export const ContactModal = ({
             rel="noreferrer noopener"
             target="_blank"
             className={styles.websiteLink}
+            onClick={() =>
+              locationPathname.includes('onboarding')
+                ? navigate(ROUTES.dashboard)
+                : null
+            }
           >
             <Button
               type="button"
@@ -52,9 +60,22 @@ export const ContactModal = ({
               Website
             </Button>
           </a>
-          <Button type="button" buttonType={TYPES.PRIMARY} buttonSize={SIZES.S}>
-            Email
-          </Button>
+          <a
+            href={`mailto:${email}`}
+            onClick={() =>
+              locationPathname.includes('onboarding')
+                ? navigate(ROUTES.dashboard)
+                : null
+            }
+          >
+            <Button
+              type="button"
+              buttonType={TYPES.PRIMARY}
+              buttonSize={SIZES.S}
+            >
+              Email
+            </Button>
+          </a>
         </div>
       </div>
     </div>

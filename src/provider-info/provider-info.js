@@ -39,6 +39,7 @@ export const ProviderInfo = ({ providerId, location, prevPath }) => {
         handleClose={handleClose}
         setIsModalOpen={setIsModalOpen}
         isModalOpen={isModalOpen}
+        locationPathname={location.pathname}
       />
 
       {Object.entries(provider).length !== 0 && (
