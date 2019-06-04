@@ -6,6 +6,7 @@ import { UndrawEmpty } from 'react-undraw'
 import firebase from '../firebase/firebase'
 import { Trash2 } from 'react-feather'
 import { UserConsumer } from '../context/user-context'
+import { ProviderCard } from '../matched-providers/provider-card'
 
 export const Tracker = ({ savedProviderIds }) => {
   const [savedProviders, setSavedProviders] = useState([])
@@ -43,30 +44,31 @@ export const Tracker = ({ savedProviderIds }) => {
             <div className={styles.savedProvidersContainer}>
               {savedProviders.map(provider => {
                 return (
-                  <div className={styles.savedProviderCard}>
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                      {provider.photo ? (
-                        <img
-                          src={provider.photo}
-                          className={styles.providerPhoto}
-                        />
-                      ) : (
-                        <div className={styles.providerNoPhoto} />
-                      )}
-                      <Link
-                        to={`/dashboard/tracker/${provider.id}`}
-                        className={styles.name}
-                      >
-                        {provider.name}
-                      </Link>
-                    </div>
-                    <Trash2
-                      size={30}
-                      color="rgb(255, 62, 62)"
-                      className={styles.trashIcon}
-                      onClick={() => firebase.unfavoriteProvider(provider.id)}
-                    />
-                  </div>
+                  <ProviderCard provider={provider} context={context} />
+                  // <div className={styles.savedProviderCard}>
+                  //   <div style={{ display: 'flex', alignItems: 'center' }}>
+                  //     {provider.photo ? (
+                  //       <img
+                  //         src={provider.photo}
+                  //         className={styles.providerPhoto}
+                  //       />
+                  //     ) : (
+                  //       <div className={styles.providerNoPhoto} />
+                  //     )}
+                  //     <Link
+                  //       to={`/dashboard/tracker/${provider.id}`}
+                  //       className={styles.name}
+                  //     >
+                  //       {provider.name}
+                  //     </Link>
+                  //   </div>
+                  //   <Trash2
+                  //     size={30}
+                  //     color="rgb(255, 62, 62)"
+                  //     className={styles.trashIcon}
+                  //     onClick={() => firebase.unfavoriteProvider(provider.id)}
+                  //   />
+                  // </div>
                 )
               })}
             </div>

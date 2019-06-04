@@ -7,15 +7,15 @@
 }
 
 .title {
-  width: 60%;
+  width: 70%;
   font-size: var(--fs-7);
   margin: var(--s-5) var(--s-0) var(--s-5) var(--s-0);
 }
 
 .savedProvidersContainer {
-  width: 60%;
-  border: 2px solid gray;
-  border-radius: var(--br-1);
+  width: 70%;
+  /* border: 2px solid gray; */
+  /* border-radius: var(--br-1); */
   font-size: var(--fs-5);
 }
 

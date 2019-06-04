@@ -26,7 +26,7 @@ export class ProviderCard extends React.Component {
 
   render() {
     const { provider, delay } = this.props
-
+    console.log(this.state.isSaved)
     return (
       <UserConsumer>
         {context => (
