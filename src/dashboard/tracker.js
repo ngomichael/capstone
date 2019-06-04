@@ -13,16 +13,20 @@ export const Tracker = ({ savedProviderIds }) => {
 
   useEffect(() => {
     getSavedProviders()
+
     window.scrollTo(0, 0)
   }, [savedProviderIds])
 
   async function getSavedProviders() {
+    console.log('hello')
     const providersPromises = savedProviderIds.map(async id => {
       const snapshot = await firebase.getProviderInfo(id)
       setIsLoading(false)
       const providerInfo = snapshot.docs.map(doc => doc.data())[0]
+
       return providerInfo
     })
+    // console.log(providersPromises)
 
     const providers = await Promise.all(providersPromises)
     setSavedProviders(providers)
@@ -32,55 +36,45 @@ export const Tracker = ({ savedProviderIds }) => {
     <UserConsumer>
       {context => (
         // console.log(isLoading),
-        console.log('WHAT THE FUCK'),
-        (
-          // console.log(savedProviders),
-          <div className={styles.container}>
-            <h1 className={styles.title}>Saved Providers Tracker</h1>
-            {isLoading === false && savedProviders.length !== 0 && (
-              <div className={styles.savedProvidersContainer}>
-                {savedProviders.map(provider => {
-                  return (
-                    <div className={styles.savedProviderCard}>
-                      <Link
-                        to={`/dashboard/tracker/${provider.id}`}
-                        className={styles.name}
-                      >
-                        {provider.name}
-                      </Link>
-                      <Trash2
-                        size={30}
-                        color="rgb(255, 62, 62)"
-                        className={styles.trashIcon}
-                        onClick={() => firebase.unfavoriteProvider(provider.id)}
-                      />
-                    </div>
-                  )
-                })}
-              </div>
-            )}
+        // console.log('WHAT THE FUCK'),
+        // console.log(savedProviders),
+        <div className={styles.container}>
+          <h1 className={styles.title}>Saved Providers Tracker</h1>
+          {isLoading === false && savedProviders.length !== 0 && (
+            <div className={styles.savedProvidersContainer}>
+              {savedProviders.map(provider => {
+                return (
+                  <div className={styles.savedProviderCard}>
+                    <Link
+                      to={`/dashboard/tracker/${provider.id}`}
+                      className={styles.name}
+                    >
+                      {provider.name}
+                    </Link>
+                    <Trash2
+                      size={30}
+                      color="rgb(255, 62, 62)"
+                      className={styles.trashIcon}
+                      onClick={() => firebase.unfavoriteProvider(provider.id)}
+                    />
+                  </div>
+                )
+              })}
+            </div>
+          )}
 
-            {isLoading === false && savedProviders.length === 0 && (
-              <div className={styles.noProviders}>
-                <UndrawEmpty primaryColor="hsl(174, 74%, 39%)" />
-                <p className={styles.noProvidersText}>
-                  Oops, you haven't saved any providers yet. 'Heart' a provider
-                  you like to add them to your tracker
-                </p>
-              </div>
-            )}
+          {isLoading === false && savedProviders.length === 0 && (
+            <div className={styles.noProviders}>
+              <UndrawEmpty primaryColor="hsl(174, 74%, 39%)" />
+              <p className={styles.noProvidersText}>
+                Oops, you haven't saved any providers yet. 'Heart' a provider
+                you like to add them to your tracker
+              </p>
+            </div>
+          )}
 
-            {isLoading === true && savedProviders.length === 0 && (
-              <div className={styles.loader}>
-                <DotLoader
-                  sizeUnit={'px'}
-                  size={50}
-                  color={'hsl(174, 74%, 39%)'}
-                />
-              </div>
-            )}
-          </div>
-        )
+          {/* //// */}
+        </div>
       )}
     </UserConsumer>
   )

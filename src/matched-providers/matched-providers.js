@@ -25,7 +25,7 @@ export const MatchedProviders = props => {
   const [initialAnimDone, setInitialAnimDone] = useState(false)
 
   useEffect(() => {
-    console.log(props.context.updatedValues)
+    // console.log(props.context.updatedValues)
     props.context.calcResultsFunction(props.context.updatedValues.updatedValues)
 
     window.scrollTo(0, 0)

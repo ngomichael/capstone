@@ -222,11 +222,11 @@ class App extends Component {
           }, this)
         })
         .then(() => {
-          console.log(
-            'the highest score is ',
-            this.state.all_providers[0].provider_score
-          )
-          console.log('the final provider list is', this.state.all_providers)
+          // console.log(
+          //   'the highest score is ',
+          //   this.state.all_providers[0].provider_score
+          // )
+          // console.log('the final provider list is', this.state.all_providers)
           this.setState({
             all_providers: this.state.all_providers.sort((a, b) => {
               return b.provider_score - a.provider_score
@@ -237,11 +237,11 @@ class App extends Component {
             highest_score: this.state.all_providers[0].provider_score,
           })
 
-          console.log(
-            'the highest score is ',
-            this.state.all_providers[0].provider_score
-          )
-          console.log('the final provider list is', this.state.all_providers)
+          // console.log(
+          //   'the highest score is ',
+          //   this.state.all_providers[0].provider_score
+          // )
+          // console.log('the final provider list is', this.state.all_providers)
         })
     } catch (err) {
       console.log(err)
@@ -337,7 +337,7 @@ class App extends Component {
           <PrivateRoute path={ROUTES.dashboard} component={Dashboard} />
           <PrivateRoute
             path={ROUTES.tracker}
-            // savedProviderIds={this.state.userInfo.savedProviders}
+            savedProviderIds={this.state.userInfo.savedProviders}
             component={Tracker}
           />
           {/* <Tracker
