@@ -41,22 +41,12 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    await firebase.isInitialized().then(async val => {
-      if (val) {
-        // this.setState({
-        //   getSignedInUserInvoked: true,
-        // })
-      }
-    })
-
     // listens for signing in and up or logging out
     firebase.auth.onAuthStateChanged(async user => {
       if (user) {
-        const userInfo = await firebase.getSignedInUserInfo(user.uid)
         this.setState({
           signedInUser: user,
           userId: user.uid,
-          // userInfo: userInfo.docs.map(doc => doc.data())[0],
           userInfo: {
             savedProviders: [],
           },
@@ -128,7 +118,6 @@ class App extends Component {
     if (takesInsurance) {
       totalRank + 1
     }
-    // console.log('get ranking score returns THIS', totalRank);
     return totalRank
   }
 
@@ -139,8 +128,6 @@ class App extends Component {
     let prefix = ' Seattle, WA '
     let origin = prefix + user_zip
     let destination = provider_address
-    // console.log('this is the provider address', destinations_list)
-    // console.log('this is the origin ', [origin])
     let service = new google.maps.DistanceMatrixService()
 
     await service.getDistanceMatrix(

@@ -55,6 +55,25 @@ class Firebase {
       .catch(err => console.log(err))
   }
 
+  addUpdatedValuesForRanking(updatedValues) {
+    if (!this.auth.currentUser) {
+      return alert('Not Authorized')
+    }
+    console.log(updatedValues)
+
+    return this.db
+      .collection('users_test')
+      .doc(this.auth.currentUser.uid)
+      .set(
+        {
+          updatedValues: updatedValues,
+        },
+        { merge: true }
+      )
+
+      .catch(err => console.log(err))
+  }
+
   addUserQuestionnaireAnswers(answers) {
     const terms = [
       ...[...answers.care_types.keys()],
