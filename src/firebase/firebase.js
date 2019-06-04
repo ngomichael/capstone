@@ -316,7 +316,7 @@ class Firebase {
   }
 
   filterProviders(terms) {
-    const providersRef = this.db.collection('providers_test2')
+    const providersRef = this.db.collection('providers_test3')
     let ref = providersRef
 
     const formattedTerms = terms.map(term => {
