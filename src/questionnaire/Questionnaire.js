@@ -134,7 +134,7 @@ const renderQuestions = (setFieldValue, currPageNum, touched, errors) => {
   })
 }
 
-export const Questionnaire = () => {
+export const Questionnaire = (props) => {
   const [currPageNum, setCurrPageNum] = useState(1)
   useEffect(() => window.scrollTo(0, 0))
 
@@ -192,6 +192,17 @@ export const Questionnaire = () => {
                 onSubmit={(values, { setSubmitting }) => {
                   handleSubmit(values)
                   setSubmitting(false)
+                  let updatedValues = {...values} ;
+                  updatedValues.age_groups = [...updatedValues.age_groups.keys()]
+                  updatedValues.care_types = [...updatedValues.care_types.keys()]
+                  updatedValues.terms = [...updatedValues.age_groups,
+                  ...updatedValues.approaches, 
+                  ...updatedValues.care_types,
+                  ...updatedValues.credentials,
+                  ...updatedValues.insurances, 
+                  ...updatedValues.issues, 
+                  ...updatedValues.populations]
+                  props.function(updatedValues); 
                   navigate('/onboardingTracker/questionnaireCompleted')
                 }}
               >

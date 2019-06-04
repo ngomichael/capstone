@@ -24,7 +24,9 @@ import { PrivateRoute } from './private-route/private-route'
 class App extends Component {
   constructor(props) {
     super(props)
-
+    this.getRankingScore = this.getRankingScore.bind(this)
+    this.calculateResults = this.calculateResults.bind(this)
+    this.getDuration = this.getDuration.bind(this)
     this.state = {
       signedInUser: {},
       userInfo: {
@@ -34,6 +36,7 @@ class App extends Component {
       isLoading: true,
       all_providers: [],
       highest_score: 0,
+      user_terms: 0,
     }
   }
 
@@ -50,16 +53,11 @@ class App extends Component {
     firebase.auth.onAuthStateChanged(async user => {
       if (user) {
         const userInfo = await firebase.getSignedInUserInfo(user.uid)
-        console.log('WAIT WTF')
-        console.log(userInfo.docs.map(doc => doc.data())[0])
-
         this.setState({
           signedInUser: user,
           userId: user.uid,
-          // userInfo: userInfo.docs.map(doc => doc.data())[0],
-          userInfo: {
-            savedProviders: [],
-          },
+          userInfo: userInfo.docs.map(doc => doc.data())[0],
+
           previousLocation: window.previousLocation,
         })
 
@@ -92,6 +90,162 @@ class App extends Component {
     })
   }
 
+  //given an user and a provider, look through their questionnaire responses, and provide a ranking
+  // reflecting % match. Returns a provider object with a ranking score field.
+  getRankingScore(user, provider) {
+    let totalRank = 0
+    let insuranceTerms = new Set([
+      'Beacon Health Options',
+      'Blue Cross Blue Shield',
+      'Harvard Pilgrim Health',
+      'Aetna',
+      'Medicare',
+      'Tufts',
+      'UnitedHealthcare',
+      'University student insurance/ Affiliate extended insurance',
+    ])
+    let takesInsurance = false
+
+    //check approaches
+    user.terms.forEach(user_term => {
+      provider.terms.forEach(provider_term => {
+        if (
+          user_term === provider_term &&
+          user_term != "My insurance isn't listed"
+        ) {
+          if (insuranceTerms.has(user_term)) {
+            //is an insurance
+            takesInsurance = true
+          } else {
+            totalRank = totalRank + 1
+          }
+        }
+      })
+    })
+
+    if (takesInsurance) {
+      totalRank + 1
+    }
+    // console.log('get ranking score returns THIS', totalRank);
+    return totalRank
+  }
+
+  // Given the location of the user zipcode as a string called user_zip, and an array of the
+  //providers zip codes called providers_zip, return a list of provider objects,
+  /// ordered from shortest to longest distance
+  async getDuration(user_zip, provider_address, provider_object) {
+    let prefix = ' Seattle, WA '
+    let origin = prefix + user_zip
+    let destination = provider_address
+    // console.log('this is the provider address', destinations_list)
+    // console.log('this is the origin ', [origin])
+    let service = new google.maps.DistanceMatrixService()
+
+    await service.getDistanceMatrix(
+      {
+        origins: [origin],
+        destinations: [destination],
+        travelMode: 'DRIVING',
+        avoidHighways: false,
+        avoidTolls: false,
+      },
+      await ((response, status) => {
+        callback(response, status)
+      })
+    )
+
+    let callback = (response, status) => {
+      if (status == 'OK') {
+        let origins = response.originAddresses
+        let destinations = response.destinationAddresses
+        for (let i = 0; i < origins.length; i++) {
+          let results = response.rows[i].elements
+          for (let j = 0; j < results.length; j++) {
+            let element = results[j]
+            let distance_text = element.distance.text
+            let distance_value = element.distance.value
+            let destination_result = destinations[j]
+            let duration_text = element.duration.text
+            let duration_value = element.duration.value
+            provider_object.distance_results = {
+              provider_location: destination_result,
+              client_origin: origins[i],
+              distance: distance_value,
+              distance_text: distance_text,
+              travel_time: duration_value,
+              travel_text: duration_text,
+            }
+          }
+        }
+
+        this.setState(prevState => ({
+          all_providers: [...prevState.all_providers, provider_object],
+        }))
+      }
+    }
+  }
+
+  // What does the given context have?
+  // How do I give the final made by this function to the context so that the matchedproviders component can use it?
+  calculateResults(context) {
+    try {
+      // Look through providers to get ranked list
+      //Start empty
+      this.setState({
+        all_providers: [{ provider_score: 0, questionnaire_answers: [] }],
+        user_terms: context.terms.length,
+      })
+
+      firebase.db
+        .collection('providers_test2')
+        .get()
+        .then(querySnapshot => {
+          //Fill up state with each provider
+          querySnapshot.forEach(provider => {
+            let provider_answers = provider.data()
+
+            //add provider score to each provider
+            provider_answers.provider_score = this.getRankingScore(
+              context,
+              provider_answers
+            )
+
+            //Add the provider with the score to the database
+            this.setState(prevState => ({
+              all_providers: [...prevState.all_providers, provider_answers],
+            }))
+
+            //add distance to the provider and set the state
+            // this.getDuration(user_answers.zip_code, provider_answers.address, provider_answers)
+          }, this)
+        })
+        .then(() => {
+          console.log(
+            'the highest score is ',
+            this.state.all_providers[0].provider_score
+          )
+          console.log('the final provider list is', this.state.all_providers)
+          this.setState({
+            all_providers: this.state.all_providers.sort((a, b) => {
+              return b.provider_score - a.provider_score
+            }),
+          })
+
+          this.setState({
+            highest_score: this.state.all_providers[0].provider_score,
+          })
+
+          console.log(
+            'the highest score is ',
+            this.state.all_providers[0].provider_score
+          )
+          console.log('the final provider list is', this.state.all_providers)
+        })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   render() {
     console.log(this.state)
     return (
@@ -103,7 +257,11 @@ class App extends Component {
 
         <Router>
           <Home path={ROUTES.home} />
-          <Questionnaire path={ONBOARDING_ROUTES.questionnaire} />
+          <Questionnaire
+            path={ONBOARDING_ROUTES.questionnaire}
+            function={this.calculateResults}
+          />
+
           <MatchedProviders path={ONBOARDING_ROUTES.results} />
           <ProviderInfo
             path={ONBOARDING_ROUTES.providerInfo}
@@ -174,7 +332,7 @@ class App extends Component {
           <PrivateRoute path={ROUTES.dashboard} component={Dashboard} />
           <PrivateRoute
             path={ROUTES.tracker}
-            savedProviderIds={this.state.userInfo.savedProviders}
+            // savedProviderIds={this.state.userInfo.savedProviders}
             component={Tracker}
           />
           {/* <Tracker
