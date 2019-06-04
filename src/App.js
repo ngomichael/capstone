@@ -50,12 +50,16 @@ class App extends Component {
     firebase.auth.onAuthStateChanged(async user => {
       if (user) {
         const userInfo = await firebase.getSignedInUserInfo(user.uid)
-        console.log(userInfo)
+        console.log('WAIT WTF')
+        console.log(userInfo.docs.map(doc => doc.data())[0])
 
         this.setState({
           signedInUser: user,
           userId: user.uid,
-          userInfo: userInfo.docs.map(doc => doc.data())[0],
+          // userInfo: userInfo.docs.map(doc => doc.data())[0],
+          userInfo: {
+            savedProviders: [],
+          },
           previousLocation: window.previousLocation,
         })
 
