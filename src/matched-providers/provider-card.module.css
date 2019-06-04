@@ -93,6 +93,7 @@
 }
 
 .address {
+  margin-top: var(--s-2);
   font-size: var(--fs-3);
 }
 
