@@ -18,7 +18,7 @@ export const Dashboard = () => {
               justifyContent: 'center',
             }}
           >
-            <h1 className={styles.welcomeMessage}>Welcome back Arin</h1>
+            <h1 className={styles.welcomeMessage}>Welcome back</h1>
           </div>
 
           <MatchedProviders context={context} />

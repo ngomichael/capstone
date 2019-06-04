@@ -52,7 +52,7 @@ export const ProviderInfo = ({ providerId, location, prevPath }) => {
                 <div>
                   <p className={styles.name}>{provider.name}</p>
                   <p>{provider.care_types.join(', ')}</p>
-                  <p>{provider.credentials}</p>
+                  <p>{provider.credentials[0]}</p>
                   <div className={styles.iconAndTagContainer}>
                     {provider.accepting_clients[0] === 'Yes' && (
                       <img
