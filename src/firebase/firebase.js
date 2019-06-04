@@ -351,6 +351,7 @@ class Firebase {
         .join('_')
         .toLowerCase()
     })
+    console.log(formattedTerms)
 
     formattedTerms.forEach(val => {
       ref = ref.where(`termsObject.${val}`, '==', true)

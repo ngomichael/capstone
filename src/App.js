@@ -240,7 +240,7 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state)
+    // console.log(this.state)
     return (
       <UserProvider value={this.state}>
         <Router className={styles.onboardingContainer}>

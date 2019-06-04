@@ -25,8 +25,9 @@ export const MatchedProviders = props => {
   const [initialAnimDone, setInitialAnimDone] = useState(false)
 
   useEffect(() => {
-    getProviders()
+    // setAllProviders(props.context),
     props.context.calcResultsFunction(props.context.userInfo.updatedValues)
+
     window.scrollTo(0, 0)
   }, [props.context.userInfo.updatedValues])
 
@@ -83,18 +84,30 @@ export const MatchedProviders = props => {
     setAppliedFilters(terms)
     const snapshot = await firebase.filterProviders(terms)
     const queriedProvider = snapshot.docs.map(doc => doc.data())
-    setAllProviders(queriedProvider)
+    // console.log('queriedProvider', queriedProvider)
+    let updatedProviders = []
+    for (let i = 0; i < queriedProvider.length; i++) {
+      updatedProviders = [
+        ...updatedProviders,
+        ...allProviders.filter(provider => {
+          console.log(queriedProvider[i].id)
+          console.log(provider.id)
+          return queriedProvider[i].id === provider.id
+        }),
+      ]
+    }
+    // console.log('updatedProviders', updatedProviders)
+    // setAllProviders(queriedProvider)
+    setAllProviders(
+      updatedProviders.sort((a, b) => {
+        return b.provider_score - a.provider_score
+      })
+    )
     setPageCount(Math.ceil(queriedProvider.length / providersPerPage))
     setCurrentPage(1)
   }
 
   const providersPerPage = 4
-
-  async function getProviders() {
-    const snapshot = await firebase.getAllProviders()
-    setAllProviders(snapshot.docs.map(doc => doc.data()))
-    setPageCount(Math.ceil(snapshot.docs.map(doc => doc.data()).length / 4))
-  }
 
   function handlePageClick(data) {
     setCurrentPage(data.selected + 1)
@@ -112,13 +125,22 @@ export const MatchedProviders = props => {
     indexOfLastProvider
   )
 
+  // console.log('allProviders', allProviders)
+  // console.log('currentProviders', currentProviders)
+
   return (
     <UserConsumer>
       {context => (
-        // console.log(props.userInfo.updatedValues),
-        <div className={styles.container}>
-          <div className={styles.maxWidthContainer}>
-            {/* {showGrayBackground && (
+        // console.log(context.all_providers),
+        // setPageCount(Math.ceil(context.all_providers.length / 4)),
+        // context.all_providers.pop(),
+        appliedFilters.length === 0 && setAllProviders(context.all_providers),
+        // appliedFilters.length !== 0 && props.context.calcResultsFunction(props.context.userInfo.updatedValues),
+        setPageCount(Math.ceil(allProviders.length / 4)),
+        (
+          <div className={styles.container}>
+            <div className={styles.maxWidthContainer}>
+              {/* {showGrayBackground && (
           <div
             onClick={() => {
               // setShowGrayBackground(false)
@@ -127,107 +149,22 @@ export const MatchedProviders = props => {
             className={styles.grayBackground}
           />
         )} */}
-            <div className={styles.titleAndSearchContainer}>
-              <h1>Providers for you</h1>
-            </div>
-
-            <div className={styles.chipsContainer}>
-              <Transition
-                items={appliedFilters}
-                initial={{
-                  height: 'auto',
-                  opacity: '0',
-                }}
-                from={{
-                  height: 0,
-                  opacity: '0',
-                }}
-                enter={{
-                  height: 'auto',
-                  opacity: '1',
-                }}
-                leave={{ opacity: 0, height: 0 }}
-              >
-                {item => props => (
-                  <animated.div style={props}>
-                    <Chip text={item} handleChipRemove={handleChipRemove} />
-                  </animated.div>
-                )}
-              </Transition>
-            </div>
-            <div className={styles.filtersContainer}>
-              {filters.map(filter => (
-                <OptionButton
-                  // key={filter.id}
-                  allCheckedItems={allCheckedItems}
-                  options={filter.options}
-                  handleCheckboxChangeMatchedProviders={handleCheckboxChange}
-                  changeActiveCheckboxContainer={() =>
-                    setActiveCheckboxContainer(filter.id)
-                  }
-                  onApplyFilter={handleApplyFilter}
-                  handleClearFiltersOneType={handleClearFiltersOneType}
-                  handleShowGrayBackground={handleShowGrayBackground}
-                  id={filter.id}
-                  activeCheckboxContainer={activeCheckboxContainer}
-                >
-                  {filter.name}
-                  <ChevronDown
-                    color="hsl(174, 47%, 75%)"
-                    className={styles.chevronDown}
-                  />
-                </OptionButton>
-              ))}
-              {appliedFilters.length !== 0 && (
-                <button
-                  onClick={handleClearAllFilters}
-                  className={styles.clearAllButton}
-                >
-                  Clear all filters
-                </button>
-              )}
-            </div>
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'flex-end',
-                alignItems: 'center',
-                width: '80%',
-              }}
-            >
-              <div className={styles.iconKey}>
-                <img
-                  src={AcceptingClientsIcon}
-                  className={styles.acceptingClientsIcon}
-                />
-                <span>&mdash;</span>
-                <span style={{ marginLeft: '7px' }}>
-                  {' '}
-                  Accepting new clients
-                </span>
+              <div className={styles.titleAndSearchContainer}>
+                <h1>Providers for you</h1>
               </div>
-            </div>
 
-            {currentProviders.length !== 0 && (
-              <div className={styles.providersContainer}>
+              <div className={styles.chipsContainer}>
                 <Transition
-                  items={context.all_providers}
-                  keys={item => item.id}
+                  items={appliedFilters}
                   initial={{
                     height: 'auto',
-                    transform: 'translateX(-50px)',
                     opacity: '0',
                   }}
-                  trail={initialAnimDone ? 0 : 150}
-                  onRest={() => setInitialAnimDone(true)}
                   from={{
-                    transform: 'translateX(0px)',
-                    opacity: '0',
                     height: 0,
+                    opacity: '0',
                   }}
                   enter={{
-                    transform: 'translateX(0px)',
-
                     height: 'auto',
                     opacity: '1',
                   }}
@@ -235,69 +172,154 @@ export const MatchedProviders = props => {
                 >
                   {item => props => (
                     <animated.div style={props}>
-                      <ProviderCard provider={item} context={context} />
+                      <Chip text={item} handleChipRemove={handleChipRemove} />
                     </animated.div>
                   )}
                 </Transition>
               </div>
-            )}
-
-            {currentProviders.length === 0 && appliedFilters.length === 0 && (
-              <div className={styles.loader}>
-                <DotLoader
-                  sizeUnit={'px'}
-                  size={50}
-                  color={'hsl(174, 74%, 39%)'}
-                />
+              <div className={styles.filtersContainer}>
+                {filters.map(filter => (
+                  <OptionButton
+                    // key={filter.id}
+                    allCheckedItems={allCheckedItems}
+                    options={filter.options}
+                    handleCheckboxChangeMatchedProviders={handleCheckboxChange}
+                    changeActiveCheckboxContainer={() =>
+                      setActiveCheckboxContainer(filter.id)
+                    }
+                    onApplyFilter={handleApplyFilter}
+                    handleClearFiltersOneType={handleClearFiltersOneType}
+                    handleShowGrayBackground={handleShowGrayBackground}
+                    id={filter.id}
+                    activeCheckboxContainer={activeCheckboxContainer}
+                  >
+                    {filter.name}
+                    <ChevronDown
+                      color="hsl(174, 47%, 75%)"
+                      className={styles.chevronDown}
+                    />
+                  </OptionButton>
+                ))}
+                {appliedFilters.length !== 0 && (
+                  <button
+                    onClick={handleClearAllFilters}
+                    className={styles.clearAllButton}
+                  >
+                    Clear all filters
+                  </button>
+                )}
               </div>
-            )}
-
-            {currentProviders.length === 0 && appliedFilters.length !== 0 && (
-              <div className={styles.noProviders}>
-                <UndrawEmpty primaryColor="hsl(174, 74%, 39%)" />
-                <p className={styles.noProvidersText}>
-                  No providers found, please try again with new filters
-                </p>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'flex-end',
+                  alignItems: 'center',
+                  width: '80%',
+                }}
+              >
+                <div className={styles.iconKey}>
+                  <img
+                    src={AcceptingClientsIcon}
+                    className={styles.acceptingClientsIcon}
+                  />
+                  <span>&mdash;</span>
+                  <span style={{ marginLeft: '7px' }}>
+                    {' '}
+                    Accepting new clients
+                  </span>
+                </div>
               </div>
-            )}
 
-            {currentProviders.length !== 0 && (
-              <div className={styles.paginateAndResultsNumContainer}>
-                <span
-                  style={{
-                    fontSize: '18px',
-                    fontWeight: '400',
+              {currentProviders.length !== 0 && (
+                <div className={styles.providersContainer}>
+                  <Transition
+                    // items={context.all_providers}
+                    items={currentProviders}
+                    keys={item => item.id}
+                    initial={{
+                      height: 'auto',
+                      transform: 'translateX(-50px)',
+                      opacity: '0',
+                    }}
+                    trail={initialAnimDone ? 0 : 150}
+                    onRest={() => setInitialAnimDone(true)}
+                    from={{
+                      transform: 'translateX(0px)',
+                      opacity: '0',
+                      height: 0,
+                    }}
+                    enter={{
+                      transform: 'translateX(0px)',
+                      height: 'auto',
+                      opacity: '1',
+                    }}
+                    leave={{ opacity: 0, height: 0 }}
+                  >
+                    {item => props => (
+                      <animated.div style={props}>
+                        <ProviderCard provider={item} context={context} />
+                      </animated.div>
+                    )}
+                  </Transition>
+                </div>
+              )}
 
-                    marginTop: '45px',
-                  }}
-                >
-                  {`${currentProviders.length} of ${
-                    allProviders.length
-                  } results`}
-                </span>
-                <ReactPaginate
-                  previousLabel={'< Back'}
-                  nextLabel={'Next >'}
-                  breakLabel={'...'}
-                  // breakClassName={'break-me'}
-                  pageCount={pageCount}
-                  // marginPagesDisplayed={2}
-                  pageRangeDisplayed={3}
-                  onPageChange={handlePageClick}
-                  containerClassName={styles.pagination}
-                  previousClassName={styles.paginationButton}
-                  nextClassName={styles.paginationButton}
-                  previousLinkClassName={styles.paginationLinkButton}
-                  nextLinkClassName={styles.paginationLinkButton}
-                  pageClassName={styles.pageClassName}
-                  pageLinkClassName={styles.pageLinkClassName}
-                  activeClassName={styles.activeLink}
-                  disabledClassName={styles.disabledClassName}
-                />
-              </div>
-            )}
+              {currentProviders.length === 0 && appliedFilters.length === 0 && (
+                <div className={styles.loader}>
+                  <DotLoader
+                    sizeUnit={'px'}
+                    size={50}
+                    color={'hsl(174, 74%, 39%)'}
+                  />
+                </div>
+              )}
+
+              {currentProviders.length === 0 && appliedFilters.length !== 0 && (
+                <div className={styles.noProviders}>
+                  <UndrawEmpty primaryColor="hsl(174, 74%, 39%)" />
+                  <p className={styles.noProvidersText}>
+                    No providers found, please try again with new filters
+                  </p>
+                </div>
+              )}
+
+              {currentProviders.length !== 0 && (
+                <div className={styles.paginateAndResultsNumContainer}>
+                  <span
+                    style={{
+                      fontSize: '18px',
+                      fontWeight: '400',
+
+                      marginTop: '45px',
+                    }}
+                  >
+                    {`${currentProviders.length} of ${allProviders.length -
+                      1} results`}
+                  </span>
+                  <ReactPaginate
+                    previousLabel={'< Back'}
+                    nextLabel={'Next >'}
+                    breakLabel={'...'}
+                    // breakClassName={'break-me'}
+                    pageCount={pageCount}
+                    // marginPagesDisplayed={2}
+                    pageRangeDisplayed={3}
+                    onPageChange={handlePageClick}
+                    containerClassName={styles.pagination}
+                    previousClassName={styles.paginationButton}
+                    nextClassName={styles.paginationButton}
+                    previousLinkClassName={styles.paginationLinkButton}
+                    nextLinkClassName={styles.paginationLinkButton}
+                    pageClassName={styles.pageClassName}
+                    pageLinkClassName={styles.pageLinkClassName}
+                    activeClassName={styles.activeLink}
+                    disabledClassName={styles.disabledClassName}
+                  />
+                </div>
+              )}
+            </div>
           </div>
-        </div>
+        )
       )}
     </UserConsumer>
   )
