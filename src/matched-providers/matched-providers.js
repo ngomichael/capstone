@@ -26,13 +26,14 @@ export const MatchedProviders = props => {
   const [initialAnimDone, setInitialAnimDone] = useState(false)
 
   useEffect(() => {
-    // console.log(props.context.updatedValues)
-    props.context.updatedValues.length !== 0
+    props.context.updatedValues.length
       ? props.context.updatedValues.updatedValues.length !== 0 &&
         props.context.calcResultsFunction(
           props.context.updatedValues.updatedValues
         )
       : getAllProviders()
+
+    // getAllProviders()
 
     window.scrollTo(0, 0)
   }, [props.context.updatedValues])
@@ -141,8 +142,8 @@ export const MatchedProviders = props => {
   return (
     <UserConsumer>
       {context => (
-        // console.log(allProviders),
-        // console.log(allUntouchedProviders),
+        console.log(allProviders),
+        console.log(props.context.updatedValues.length),
         // console.log(props.context.updatedValues),
         appliedFilters.length === 0 &&
           props.context.updatedValues.length !== 0 &&
